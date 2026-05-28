@@ -1,5 +1,5 @@
-const TILE_COUNT = 40;
-const ACCENT_INDICES = [6, 14, 22, 30, 38];
+const TILE_COUNT = 60;
+const ACCENT_INDICES = [10, 22, 30, 38, 50];
 const ACCENT_COLORS = ['#0F172A', '#475569', '#0D9488', '#22D3EE', '#94A3B8'];
 
 export function setupSpiralBackground(): void {
@@ -7,31 +7,25 @@ export function setupSpiralBackground(): void {
   if (!host) return;
 
   const cx = 800;
-  const cy = 450;
-  const baseRadius = 70;
-  const growth = 0.115;
-  const angleStep = 0.55;
-  const tileW = 30;
-  const tileH = 8;
+  const cy = 760;
+  const innerR = 70;
+  const outerR = 480;
+  const tileWidth = 12;
+  const startAngle = -90;
+  const endAngle = 90;
 
   const tiles: string[] = [];
   for (let i = 0; i < TILE_COUNT; i++) {
-    const theta = i * angleStep;
-    const r = baseRadius * Math.exp(growth * theta);
-    const x = cx + r * Math.cos(theta);
-    const y = cy + r * Math.sin(theta);
-    const deg = (theta * 180) / Math.PI + 90;
-
+    const angle = startAngle + (i / (TILE_COUNT - 1)) * (endAngle - startAngle);
     const accentSlot = ACCENT_INDICES.indexOf(i);
     const fill = accentSlot === -1 ? '#FFFFFF' : ACCENT_COLORS[accentSlot];
     const stroke = accentSlot === -1 ? '#E2E8F0' : 'none';
-    const opacity = accentSlot === -1 ? '0.9' : '1';
 
     tiles.push(
-      `<g transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${deg.toFixed(2)})">` +
+      `<g transform="translate(${cx} ${cy}) rotate(${angle.toFixed(2)})">` +
         `<rect class="intro__spiral-tile" style="--i:${i}" ` +
-        `x="${-tileW / 2}" y="${-tileH / 2}" width="${tileW}" height="${tileH}" rx="1" ` +
-        `fill="${fill}" stroke="${stroke}" stroke-width="1" fill-opacity="${opacity}"/>` +
+        `x="${-tileWidth / 2}" y="${-outerR}" width="${tileWidth}" height="${outerR - innerR}" rx="1" ` +
+        `fill="${fill}" stroke="${stroke}" stroke-width="1"/>` +
         `</g>`
     );
   }

@@ -49,13 +49,13 @@ describe('scroll modules', () => {
     expect(headerLogo?.style.opacity).toBe('');
   });
 
-  it('setupSpiralBackground renders 40 tiles and 5 accent fills', async () => {
+  it('setupSpiralBackground renders 60 fan tiles and 5 accent fills', async () => {
     document.body.innerHTML = '<div data-spiral-bg></div>';
     const { setupSpiralBackground } = await import('../src/components/spiralBackground');
     setupSpiralBackground();
     const host = document.querySelector('[data-spiral-bg]');
     const tiles = host?.querySelectorAll('rect.intro__spiral-tile');
-    expect(tiles?.length).toBe(40);
+    expect(tiles?.length).toBe(60);
     const accents = host?.querySelectorAll('rect[fill="#0F172A"], rect[fill="#475569"], rect[fill="#0D9488"], rect[fill="#22D3EE"], rect[fill="#94A3B8"]');
     expect(accents?.length).toBe(5);
   });

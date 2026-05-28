@@ -116,8 +116,8 @@ body[data-theme='ui-dark'] .header--scrolled {
 
 .intro__spiral-tile {
   opacity: 0;
-  animation: intro-spiral-tile-in 600ms var(--ease-out) forwards;
-  animation-delay: calc(var(--i) * 55ms);
+  animation: intro-spiral-tile-in 500ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 30ms);
 }
 
 @keyframes intro-spiral-tile-in {
