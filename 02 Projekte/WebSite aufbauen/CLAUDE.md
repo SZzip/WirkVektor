@@ -1,524 +1,242 @@
-# CLAUDE.md — WebGL Website Project
+# CLAUDE.md — Website-Projekt
 
-## Project context
+## Projekt-Kontext
 
-This repository contains a WebGL-based interactive website.
+Dieses Verzeichnis enthält die WirkVektor-Website als statischen OnePager. Der Code liegt im Unterordner `site/`. Die inhaltliche Vorlage steht in [[Inhaltskonzept OnePager]], das Designsystem in [[DESIGN]] auf Repo-Ebene, der aktuelle Fortschritt in `PROGRESS.md`.
 
-Primary goals:
+Ziel:
 
-- Deliver a stable, performant, accessible WebGL experience.
-- Prefer correctness, validation, graceful degradation, and maintainability over visual shortcuts.
-- The application must not silently fail on unsupported devices, shader errors, context loss, invalid assets, or malformed runtime data.
+- Stabile, performante, barrierearme Website für mittelständische Entscheider.
+- Sachliche, vertrauenswürdige Wirkung über strukturierte Komposition statt visuelle Effekte.
+- Wirkung des Inhalts steht über visueller Verspieltheit. Keine Hype-Animationen.
 
-Target stack:
+## Tech-Stack
 
-- Runtime: TypeScript
-- Bundler: Vite
-- Rendering: WebGL2 first, WebGL1 fallback if explicitly supported
-- Optional renderer abstraction: Three.js, regl, luma.gl, or custom WebGL
-- Styling: CSS modules, Tailwind, or project-defined CSS system
-- Testing: Vitest, Playwright, ESLint, TypeScript strict mode
+- **Runtime:** TypeScript (strict mode)
+- **Bundler:** Vite
+- **Scroll:** Lenis (smooth scroll) + GSAP ScrollTrigger (Parallax, Clip-Reveal, Pinning)
+- **Validation:** Zod (Content-Schemas, Form-Validierung)
+- **Styling:** Vanilla CSS mit CSS Custom Properties als Designtokens — kein CSS-Framework
+- **Test:** Vitest mit jsdom
+- **Lint/Format:** ESLint + Prettier
+- **Fonts:** Hanken Grotesk (Display) + Inter (Body), aktuell via Google Fonts CDN
 
-Replace this section if the actual stack differs.
+Diese Wahl ist bewusst minimal. Kein React, kein Framework, kein WebGL. Eine statische Site reicht für den OnePager und hält Bundle, Komplexität und Wartungslast klein.
 
-## Claude working rules
+## Projektstruktur
 
-Claude treats this file as project context.
+```
+02 Projekte/WebSite aufbauen/
+├── CLAUDE.md                    Diese Datei
+├── PROGRESS.md                  Aktueller Stand und nächste Schritte
+├── Website aufbauen.md          Projekt-Übersicht
+├── Inhaltskonzept OnePager.md   Vollständiger Content, wörtlich übernommen
+├── Sitemap.md                   Sektion-Struktur
+├── Asset-Liste.md               Asset-Bedarf und Status
+└── site/                        Code
+    ├── package.json
+    ├── tsconfig.json
+    ├── vite.config.ts
+    ├── .eslintrc.cjs
+    ├── index.html               OnePager mit allen 11 Sektionen + Modals
+    ├── public/                  favicon, fonts (wenn self-hosted)
+    ├── src/
+    │   ├── main.ts              Entry: orchestriert Init-Reihenfolge
+    │   ├── render.ts            Content-Module ins DOM rendern
+    │   ├── styles/              tokens, base, layout, components, sections
+    │   ├── scroll/              lenis, scrollTrigger, themeObserver, revealOnView
+    │   ├── components/          nav, modal, carousel, contactForm, bookmarkList
+    │   ├── assets/              SVGs (Logo, Icons, Platzhalter)
+    │   └── types/               content.ts (typed + Zod-validiert)
+    └── tests/                   Vitest-Specs
+```
 
-Before making non-trivial changes:
+## Claude Arbeitsregeln
 
-- Inspect the existing project structure.
-- Identify affected files before editing.
-- Explain the implementation plan briefly.
-- Do not invent unavailable APIs, package scripts, shader uniforms, asset names, or browser capabilities.
-- Prefer small, reviewable changes over large rewrites.
-- Preserve public APIs unless the user explicitly asks for a breaking change.
-- When uncertain, inspect local files before assuming behavior.
+Vor nicht-trivialen Änderungen:
 
-When editing code:
+- Erst PROGRESS.md lesen, um Stand und offene Punkte zu kennen.
+- Bei Content-Änderungen den exakten Wortlaut aus [[Inhaltskonzept OnePager]] übernehmen — keine Paraphrasen.
+- Bei visuellen Änderungen das Designsystem aus [[DESIGN]] respektieren — keine eigenen Farben oder Schriftgrößen.
+- Bei TypeScript-Änderungen die Strict-Mode-Regeln einhalten.
+- Bei neuen Komponenten prüfen, ob bestehende wiederverwendbar sind.
 
-- Use TypeScript strictly.
-- Avoid `any` unless there is a documented reason.
-- Prefer explicit types for exported functions, renderer state, asset manifests, shader inputs, and configuration.
-- Do not suppress TypeScript, ESLint, or runtime validation errors without explaining why.
-- Do not introduce global mutable renderer state unless it is isolated behind a lifecycle manager.
-- Do not add dependencies without checking whether the project already has an equivalent package.
+Beim Editieren:
 
-## Required commands
+- TypeScript strict — kein `any` ohne dokumentierten Grund.
+- Explizite Typen für exportierte Funktionen, Content-Module, Form-Schemas.
+- Validation-Fehler und Type-Errors nicht unterdrücken.
+- Keine Dependencies hinzufügen, ohne zu prüfen, ob das Projekt schon eine äquivalente hat.
+- Kleine, reviewbare Changes vor großen Rewrites.
 
-Use the package manager already used by the repository.
+## Erforderliche Befehle
 
-Expected commands:
+Aus `site/`:
 
 ```bash
-npm run typecheck
-npm run lint
-npm run test
-npm run build
-npm run preview
+npm run typecheck    # tsc --noEmit
+npm run lint         # ESLint
+npm run test         # Vitest run
+npm run build        # tsc + vite build
+npm run dev          # Vite Dev-Server
+npm run preview      # Production-Bundle lokal prüfen
 ```
 
-If available, also run:
-
-```bash
-npm run test:e2e
-npm run test:visual
-npm run analyze
-npm run validate:assets
-npm run validate:shaders
-```
-
-Before declaring work complete:
-
-- Type checking must pass.
-- Linting must pass.
-- Unit tests must pass.
-- Production build must pass.
-- WebGL-specific validation must pass where available.
-- Any skipped command must be reported with the exact reason.
-
-## Validation policy
-
-All external or runtime data must be validated.
-
-Validate:
+Bevor Arbeit als erledigt gemeldet wird:
 
-- URL query parameters
-- CMS/API responses
-- asset manifests
-- texture metadata
-- model metadata
-- animation configuration
-- feature flags
-- WebGL capability detection results
-- user-controlled scene settings
-- environment variables
-- build-time configuration
+- Type-Check muss grün sein.
+- Lint muss grün sein.
+- Tests müssen grün sein.
+- Production-Build muss durchlaufen.
+- Bei Form- oder Validation-Änderungen: manuelle Verifikation im Browser.
+- Übersprungene Befehle explizit mit Grund melden.
 
-Preferred validation approach:
+## Schreibstil im Code und in Texten
 
-- Use schema validation such as Zod, Valibot, TypeBox, or the existing project standard.
-- Keep schemas near the data boundary.
-- Convert unknown input into typed internal data before use.
-- Fail closed for security-sensitive inputs.
-- Fail gracefully for UX-sensitive rendering features.
+Texte für die Website folgen [[Schreibstil]]. Kernregeln:
 
-Do not:
+- Sachlich, klar, vertrauenswürdig. Keine Hype-Sprache.
+- Verboten: „revolutionär", „disruptiv", „bahnbrechend", „Game Changer", Alarmismus.
+- Konkret und belegbar — kein Folienzauber.
+- „KI" ausgeschrieben (Ausnahmen: „AI Literacy", „EU AI Act").
 
-- Trust JSON shape without validation.
-- Cast unknown values directly into application types.
-- Let invalid content reach shader uniforms, buffer creation, texture upload, or DOM injection.
+Der `content.test.ts` prüft die Hype-Wort-Liste automatisch — neue Inhalte dürfen den Test nicht brechen.
 
-## WebGL capability checks
+## Designsystem
 
-Renderer initialization must validate capabilities before creating the scene.
+Die Tokens stehen in `src/styles/tokens.css` und entsprechen [[DESIGN]]:
 
-Required checks:
+- **Navy Deep `#0F172A`** — Primärfarbe, Headlines, Primary Button, Dark Background
+- **Slate Mid `#475569`** — Body-Text, sekundär
+- **Vector Teal `#0D9488`** — Akzent für CTAs, Impact-Highlights
+- **Impact Cyan `#22D3EE`** — Akzent im Dark-Mode
+- **Off-White `#F7F9FB`** — Light Background
+- **Safety Border `#E2E8F0`** — Trennlinien
 
-- WebGL2 availability.
-- WebGL1 fallback availability, if supported.
-- required extensions.
-- optional extensions with graceful fallback.
-- max texture size.
-- max cube map texture size.
-- max renderbuffer size.
-- max vertex attributes.
-- max varying vectors.
-- max texture image units.
-- supported compressed texture formats, if used.
-- highp precision availability in vertex and fragment shaders.
-- antialias support expectations.
-- device pixel ratio limits.
-- memory-sensitive mobile conditions.
-
-If a required capability is missing:
-
-- Show a non-WebGL fallback.
-- Explain the unsupported feature in user-safe language.
-- Do not crash or show a blank canvas.
-
-## Shader validation
-
-All shader programs must be validated.
-
-Required shader checks:
-
-- Vertex shader compile status.
-- Fragment shader compile status.
-- Program link status.
-- Program validation status where appropriate.
-- Shader info logs captured in development.
-- Program info logs captured in development.
-- Uniform locations checked before use.
-- Attribute locations checked before use.
-- Required defines documented.
-- Precision qualifiers explicitly defined.
-- Shader source generated deterministically.
-
-Do not:
-
-- Ignore shader compiler logs.
-- Continue rendering with a failed shader program.
-- Use string-concatenated shader code without clear validation.
-- Introduce shader branches that depend on undefined runtime macros.
-- Assume WebGL1 and WebGL2 GLSL syntax are interchangeable.
+Typografie:
 
-## WebGL error handling
+- **Hanken Grotesk** — Display und Headlines, Letter-Spacing -0.02em
+- **Inter** — Body, UI-Labels
 
-During development:
+Shape: 4px Button-Radius, 8px Card-Radius. Keine starken Schatten — Tonal Layers und 1px-Borders.
 
-- Check `gl.getError()` around initialization, shader compilation, framebuffer setup, texture upload, and resource allocation.
-- Treat unexpected WebGL errors as defects.
-- Include enough debug information to identify the failing resource or pass.
+## Content-Pipeline
 
-In production:
+Modulare Content-Blöcke (Carousels, Role-Cards, Outcomes, Contact-Infos, Values, Trust-Strip) liegen in `src/types/content.ts` als typisiertes Object mit Zod-Schema und werden zur Laufzeit in `src/render.ts` ins DOM gerendert.
 
-- Avoid expensive per-frame `gl.getError()` calls unless guarded behind a debug flag.
-- Log structured renderer errors where project telemetry exists.
-- Never spam logs every frame.
+- Änderung von Slide-Texten, Outcomes, Role-Cards → `content.ts` editieren.
+- Layout-Änderung → `index.html` + `styles/sections.css`.
+- Static Page-Headlines stehen direkt in `index.html`, weil sie nur einmal vorkommen.
 
-Allowed WebGL errors for a well-formed app should be limited to:
+## Animation und Motion
 
-- `OUT_OF_MEMORY`
-- `CONTEXT_LOST_WEBGL`
+Drei Mechanismen:
 
-Any other WebGL error requires investigation.
+1. **Lenis** — Smooth Scrolling für die ganze Seite. In `src/scroll/lenis.ts`. Deaktiviert sich automatisch bei `prefers-reduced-motion`.
+2. **GSAP ScrollTrigger** — Parallax (`[data-parallax="0.18"]`) und Clip-Reveal (`[data-clip-reveal]`). In `src/scroll/scrollTrigger.ts`.
+3. **IntersectionObserver** — Reveal-on-View (`[data-reveal]`) und Theme-Wechsel pro Sektion (`[data-theme]`).
 
-## Context loss handling
+Regeln:
 
-The application must handle WebGL context loss.
+- Alle Animationen müssen `prefers-reduced-motion: reduce` respektieren.
+- Keine Animationen, die Layout-Shifts verursachen.
+- Keine Endlos-Loops oder Auto-Play-Carousel.
+- Animationen unterstützen den Inhalt, sie sind nicht der Inhalt.
 
-Required behavior:
+## Validierung
 
-- Listen for `webglcontextlost`.
-- Prevent default behavior when appropriate.
-- Stop the render loop after context loss.
-- Mark GPU resources as invalid.
-- Show a recoverable UI state if possible.
-- Listen for `webglcontextrestored`.
-- Recreate shaders, buffers, textures, framebuffers, VAOs, and render targets.
-- Reload GPU-side resources from CPU-side source data.
-- Resume rendering only after successful reinitialization.
+Alle Daten an Systemgrenzen werden mit Zod validiert:
 
-Do not:
+- **Content-Module** (`src/types/content.ts`) — Schema sichert Struktur (Slide-Anzahl, Eyebrow vorhanden, IDs eindeutig).
+- **Form-Eingaben** (`src/components/contactForm.ts`) — E-Mail-Format, Required-Fields, DSGVO-Checkbox.
 
-- Assume context loss only happens during rendering.
-- Assume GPU resources survive context restoration.
-- Continue using stale WebGL object handles.
-- Hide context loss behind a generic error.
+Nicht:
 
-## Resource lifecycle
+- JSON-Shape ohne Validierung übernehmen.
+- Unbekannte Werte direkt in DOM injizieren — alle dynamischen Strings durch `escapeHtml` in `render.ts`.
 
-Every GPU resource must have clear ownership and disposal.
+## Accessibility
 
-Resources requiring explicit lifecycle management:
+Mindeststandards:
 
-- buffers
-- vertex arrays
-- textures
-- framebuffers
-- renderbuffers
-- shader objects
-- programs
-- transform feedback objects
-- query objects
-- Three.js geometries
-- Three.js materials
-- Three.js textures
-- Three.js render targets
-- event listeners
-- animation frame handles
-- workers
-- audio/video sources used as textures
+- Semantisches HTML: `<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`.
+- Headline-Hierarchie ist eindeutig (eine `<h1>`, keine übersprungenen Stufen).
+- Alle Buttons und Links haben aussagekräftige Texte oder `aria-label`.
+- SVGs haben `<title>`/`<desc>` oder `aria-hidden="true"` wenn dekorativ.
+- Fokus-Indikator sichtbar (`:focus-visible`).
+- Modale Dialoge: `role="dialog"`, `aria-modal="true"`, Escape schließt, Klick auf Overlay schließt.
+- Carousel: `aria-roledescription="Karussell"`, Tastatur-Navigation mit Pfeiltasten, `aria-hidden` auf inaktiven Slides.
+- Form-Errors über `aria-live` oder direkt am Feld.
+- Kontrast: Light-Mode 4.5:1+, Dark-Mode 4.5:1+ — geprüft an Headline, Body, Buttons.
 
-Required cleanup:
+Lighthouse-Ziel: a11y ≥ 95.
 
-- Cancel `requestAnimationFrame`.
-- Remove event listeners.
-- Dispose renderer abstractions.
-- Delete raw WebGL resources.
-- Release large CPU-side asset caches when no longer needed.
-- Clean up on route changes, component unmount, and hot-module replacement.
-
-Do not create a new WebGL context per component unless explicitly required.
-
-## Render loop rules
-
-The render loop must be deterministic and bounded.
-
-Required:
-
-- Use `requestAnimationFrame`.
-- Clamp large delta times.
-- Separate update, simulation, and render phases.
-- Avoid allocations inside the hot path.
-- Avoid creating vectors, matrices, materials, textures, geometries, or arrays per frame.
-- Avoid synchronous layout reads in the render loop.
-- Avoid blocking GPU readbacks in production.
-- Pause or reduce work when the tab is hidden.
-- Respect `prefers-reduced-motion`.
-
-Performance-sensitive code must avoid:
-
-- repeated shader compilation
-- repeated texture uploads
-- repeated framebuffer reconfiguration
-- unnecessary state changes
-- excessive draw calls
-- per-frame DOM mutations
-- per-frame object traversal where cached alternatives exist
-
-## Performance budgets
-
-Default budgets unless the project defines stricter ones:
-
-Desktop:
+## Performance
 
-- Initial JS payload: below project budget
-- Stable frame time target: 16.7 ms for 60 FPS
-- Avoid sustained frame time above 33 ms
-- No obvious shader compilation stutter after first interaction
-
-Mobile:
-
-- Cap device pixel ratio if necessary.
-- Prefer adaptive resolution.
-- Prefer compressed textures where supported.
-- Reduce post-processing.
-- Avoid excessive transparent overdraw.
-- Avoid loading desktop-quality assets by default.
-
-Rendering:
-
-- Batch draw calls where practical.
-- Use instancing for repeated geometry when supported.
-- Reuse materials and programs.
-- Precompute static geometry.
-- Avoid unnecessary framebuffer invalidation.
-- Prefer smaller render targets for post-processing.
-- Track texture memory and large render target allocations.
-
-## Asset validation
-
-All render assets must be validated before use.
-
-Validate:
-
-- file existence
-- file extension
-- MIME type where available
-- dimensions
-- power-of-two requirements where relevant
-- maximum texture size
-- color space assumptions
-- alpha usage
-- mipmap requirements
-- compression format support
-- model scale
-- model vertex count
-- animation clip names
-- HDR/LDR expectations
-- fallback asset availability
-
-Do not:
+Budgets:
 
-- Upload unvalidated images directly to GPU.
-- Assume textures loaded successfully.
-- Assume remote assets have stable shape or dimensions.
-- Block the main thread with large parsing work if a worker is viable.
+- Initial JS-Payload nach Gzip: aktuell ~68 KB — Ziel bleibt unter 100 KB.
+- Initial CSS nach Gzip: aktuell ~5 KB.
+- LCP-Ziel: < 2.5 s auf 4G Mobile.
+- CLS-Ziel: 0.
 
-## Security rules
-
-Security-sensitive behavior:
-
-- Do not use `eval`, `new Function`, or unsafe dynamic code generation.
-- Do not inject unsanitized HTML.
-- Do not load third-party scripts without explicit approval.
-- Prefer local assets over CDN assets.
-- If CDN use is required, document integrity and trust assumptions.
-- Validate all remote asset URLs.
-- Restrict asset loading to approved origins.
-- Do not expose secrets in client-side code.
-- Do not commit `.env` files containing secrets.
-- Keep Content Security Policy compatible with the rendering implementation.
+Praktiken:
 
-Shader and asset content must not become an injection path.
-
-## Accessibility and fallback
-
-The WebGL canvas must not be the only accessible content.
-
-Required:
-
-- Provide fallback content when WebGL is unavailable.
-- Provide meaningful loading, error, and reduced-motion states.
-- Respect keyboard navigation where interaction exists.
-- Avoid trapping focus inside canvas interactions.
-- Provide labels or surrounding semantic HTML for canvas-driven experiences.
-- Do not rely on color alone.
-- Ensure sufficient contrast for UI overlays.
-- Provide non-animated alternatives for critical content.
-- Respect `prefers-reduced-motion`.
-
-## Browser and device support
-
-Validate against:
-
-- Latest stable Chrome
-- Latest stable Firefox
-- Latest stable Safari
-- iOS Safari if mobile support is required
-- Android Chrome if mobile support is required
-
-Do not assume:
-
-- WebGL2 is available everywhere.
-- floating point render targets are available.
-- linear filtering for float textures is available.
-- compressed texture formats are universal.
-- high-DPI rendering is affordable.
-- context restoration behaves identically across browsers.
-
-## Testing requirements
-
-Unit tests:
-
-- math utilities
-- matrix transforms
-- camera calculations
-- asset manifest parsing
-- config validation
-- capability fallback decisions
-- renderer state transitions
-
-Integration tests:
-
-- renderer initialization
-- fallback when WebGL is unavailable
-- failed shader compilation path
-- failed asset loading path
-- context loss and restoration
-- route/component cleanup
-
-E2E tests:
-
-- page loads without blank canvas
-- loading state appears
-- error state appears for forced unsupported capabilities
-- primary interactions work
-- no fatal console errors
-- no unhandled promise rejections
-
-Visual tests where practical:
-
-- baseline scene render
-- resized canvas
-- mobile viewport
-- reduced-motion mode
-- fallback mode
-
-## Error reporting
-
-Renderer errors must be structured.
-
-Include:
-
-- error category
-- failing resource
-- browser capability snapshot
-- WebGL version
-- relevant extension availability
-- asset URL or logical asset ID
-- shader program name
-- recoverability flag
-
-Do not expose internal stack traces to end users in production UI.
-
-## File organization
-
-Recommended structure:
-
-```text
-src/
-  app/
-  components/
-  rendering/
-    core/
-    shaders/
-    materials/
-    geometry/
-    textures/
-    passes/
-    lifecycle/
-    capabilities/
-    validation/
-  assets/
-  config/
-  tests/
-```
-
-Rules:
-
-- Keep WebGL calls isolated under `src/rendering`.
-- Keep validation schemas near data boundaries.
-- Keep shader source in dedicated files or clearly named modules.
-- Keep renderer lifecycle code separate from UI components.
-- Keep feature detection separate from rendering implementation.
-- Keep fallback UI outside the renderer.
-
-## Documentation expectations
-
-For every new rendering feature, document:
-
-- purpose
-- required capabilities
-- fallback behavior
-- performance impact
-- cleanup requirements
-- test coverage
-- known browser limitations
-
-For every new shader, document:
-
-- uniforms
-- attributes
-- varyings
-- required extensions
-- precision assumptions
-- expected coordinate space
-- color space assumptions
-
-## Completion checklist
-
-A task is not complete until:
-
-- TypeScript passes.
-- Linting passes.
-- Unit tests pass.
-- Production build passes.
-- WebGL initialization has validated required capabilities.
-- Shader compile/link errors are handled.
-- Asset loading errors are handled.
-- Context loss behavior is not broken.
-- Resource cleanup is accounted for.
-- Fallback UI exists for unsupported WebGL.
-- Accessibility impact has been considered.
-- Performance-sensitive changes avoid per-frame allocations.
-- The final response lists commands run and any commands not run.
-
-## Do not do these things
-
-Do not:
-
-- Ship a blank canvas as an error state.
-- Ignore shader compiler output.
-- Ignore failed texture uploads.
-- Ignore context loss.
-- Allocate large objects in the render loop.
-- Add global renderer state without lifecycle ownership.
-- Add dependencies without justification.
-- Suppress validation failures.
-- Use unsupported extensions without fallback.
-- Assume all users have discrete GPUs.
-- Assume mobile Safari behaves like desktop Chrome.
-- Claim validation passed if commands were not run.
+- Keine globalen `requestAnimationFrame`-Loops außerhalb von Lenis/GSAP.
+- IntersectionObserver für Reveal — kein Scroll-Listener mit hoher Frequenz.
+- SVGs inline, keine separaten Image-Requests für Icons.
+- Schriften via Google Fonts mit `display=swap` (Phase 2: Self-Hosting).
+
+## Browser-Support
+
+Validierung gegen:
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest, Desktop und iOS)
+- Android Chrome (latest)
+
+IE 11 und ältere Versionen werden nicht unterstützt.
+
+## Sicherheit
+
+- Kein `eval`, kein `new Function`.
+- Alle dynamischen Strings in `render.ts` durch `escapeHtml` geschleust.
+- Keine Drittanbieter-Skripte ohne explizite Freigabe.
+- Form-Submits: aktuell nur Client-Validierung, Backend wird in Phase 2 angebunden (Honeypot oder hCaptcha vorgesehen).
+- Keine `.env`-Dateien mit Secrets im Repo.
+
+## Deployment
+
+Aktueller Stand (Details in PROGRESS.md):
+
+- Ziel: Hetzner Webhosting auf `www639.your-server.de`, Domain `wirkvektor.de`.
+- Build-Artefakt: `site/dist/` nach `npm run build`.
+- Upload aktuell **nicht** aus der Cloud-Session möglich (Network-Policy sperrt SFTP) — entweder Policy ändern oder lokal mit `deploy.sh`.
+
+Vor jedem Deploy:
+
+- Tests grün
+- Build grün
+- Letzte Änderungen committet und gepusht
+
+## Was nicht in dieses Projekt gehört
+
+- WebGL, Three.js, GPU-Rendering — die Site ist statisch.
+- React, Vue, Svelte oder andere SPA-Frameworks — Overkill für einen OnePager.
+- Externe Tracking-Skripte (Google Analytics, Facebook Pixel) — nur Plausible oder ähnlich datenschutzfreundliche Lösungen.
+- CMS-Integration — Inhalte sind im Repo, Änderungen via PR.
+- Animierte Hintergründe, parallaxe Stars, autoplay-Video — passt nicht zum Schreibstil.
+
+## Completion-Checklist
+
+Eine Aufgabe ist nicht erledigt, bevor:
+
+- TypeScript-Strict-Check grün ist.
+- ESLint grün ist.
+- Vitest-Tests grün sind.
+- Production-Build grün ist.
+- Bei UI-Änderungen: manuelle Browser-Prüfung dokumentiert ist.
+- PROGRESS.md aktualisiert ist, wenn sich der Stand verändert hat.
+- Änderungen committet und gepusht sind.
+- Übersprungene Schritte explizit mit Grund gemeldet werden.
