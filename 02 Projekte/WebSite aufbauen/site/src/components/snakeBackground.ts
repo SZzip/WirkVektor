@@ -3,6 +3,17 @@ const ACCENT_INDICES = [12, 28, 44, 60, 74];
 const ACCENT_COLORS = [0x0f172a, 0x475569, 0x0d9488, 0x22d3ee, 0x94a3b8];
 const BASE_COLOR = 0xfafbfc;
 
+// Plättchen: width × 1.7, depth × 1.7, height (= Dicke) ÷ 2 gegenüber der Vorversion
+const TILE_WIDTH = 0.714;
+const TILE_THICKNESS = 0.035;
+const TILE_DEPTH = 0.374;
+
+// DNA-Helix-Parameter
+const HELIX_LENGTH = 16;
+const HELIX_RADIUS = 1.4;
+const HELIX_TURNS = 5;
+const HELIX_SEGMENTS_PER_TURN = 30;
+
 export async function setupSnakeBackground(): Promise<void> {
   const found = document.querySelector<HTMLElement>('[data-spiral-bg]');
   if (!found) return;
@@ -22,64 +33,58 @@ export async function setupSnakeBackground(): Promise<void> {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  camera.position.set(0, 0.5, 12);
+  camera.position.set(0, 0.6, 11);
   camera.lookAt(0, 0, 0);
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.85);
-  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
-  dir.position.set(4, 6, 8);
-  scene.add(ambient, dir);
+  const ambient = new THREE.AmbientLight(0xffffff, 1.5);
+  const dirA = new THREE.DirectionalLight(0xffffff, 1.4);
+  dirA.position.set(4, 6, 8);
+  const dirB = new THREE.DirectionalLight(0xffffff, 0.6);
+  dirB.position.set(-5, -2, 6);
+  scene.add(ambient, dirA, dirB);
 
-  const controlPoints = [
-    new THREE.Vector3(-7, -1.0, -3),
-    new THREE.Vector3(-4.5, 1.4, -1),
-    new THREE.Vector3(-2, -1.1, 1.2),
-    new THREE.Vector3(0.2, 1.6, -0.6),
-    new THREE.Vector3(2.6, -1.2, 1.8),
-    new THREE.Vector3(4.8, 1.2, -1.2),
-    new THREE.Vector3(7, -0.8, 0.5),
-  ];
-  const initialOffsets = controlPoints.map((p) => p.clone());
-  const phases = controlPoints.map((_, i) => i * 0.7);
+  // Build DNA-Helix curve
+  const helixPoints: InstanceType<typeof THREE.Vector3>[] = [];
+  const totalSegments = HELIX_TURNS * HELIX_SEGMENTS_PER_TURN;
+  for (let i = 0; i <= totalSegments; i++) {
+    const t = i / totalSegments;
+    const angle = t * HELIX_TURNS * Math.PI * 2;
+    const x = -HELIX_LENGTH / 2 + t * HELIX_LENGTH;
+    const y = Math.cos(angle) * HELIX_RADIUS;
+    const z = Math.sin(angle) * HELIX_RADIUS;
+    helixPoints.push(new THREE.Vector3(x, y, z));
+  }
+  const curve = new THREE.CatmullRomCurve3(helixPoints, false, 'catmullrom', 0.5);
 
-  const curve = new THREE.CatmullRomCurve3(controlPoints, false, 'catmullrom', 0.5);
+  const helixGroup = new THREE.Group();
+  scene.add(helixGroup);
 
-  const tileGeometry = new THREE.BoxGeometry(0.42, 0.07, 0.22);
+  const tileGeometry = new THREE.BoxGeometry(TILE_WIDTH, TILE_THICKNESS, TILE_DEPTH);
   const baseMaterial = new THREE.MeshStandardMaterial({
     color: BASE_COLOR,
     roughness: 0.55,
-    metalness: 0.1,
+    metalness: 0.08,
   });
   const accentMaterials = ACCENT_COLORS.map(
-    (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55, metalness: 0.1 })
+    (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55, metalness: 0.08 })
   );
 
   const tiles: InstanceType<typeof THREE.Mesh>[] = [];
-  const tileOrient = new THREE.Object3D();
   for (let i = 0; i < TILE_COUNT; i++) {
     const accentSlot = ACCENT_INDICES.indexOf(i);
     const material = accentSlot === -1 ? baseMaterial : accentMaterials[accentSlot];
     const mesh = new THREE.Mesh(tileGeometry, material);
-    scene.add(mesh);
+    helixGroup.add(mesh);
     tiles.push(mesh);
   }
 
   const tmpUp = new THREE.Vector3(0, 1, 0);
   const tmpTangent = new THREE.Vector3();
   const tmpTarget = new THREE.Vector3();
+  const tileOrient = new THREE.Object3D();
 
   function placeTiles(time: number): void {
-    for (let i = 0; i < controlPoints.length; i++) {
-      const base = initialOffsets[i];
-      const phase = phases[i] + time * 0.5;
-      controlPoints[i].set(
-        base.x,
-        base.y + Math.sin(phase) * 0.5,
-        base.z + Math.cos(phase * 0.85) * 0.6
-      );
-    }
-
-    const flow = (time * 0.04) % 1;
+    const flow = (time * 0.05) % 1;
     for (let i = 0; i < TILE_COUNT; i++) {
       const t = (((i / TILE_COUNT + flow) % 1) + 1) % 1;
       const u = 0.001 + t * 0.998;
@@ -91,6 +96,9 @@ export async function setupSnakeBackground(): Promise<void> {
       tileOrient.lookAt(tmpTarget);
       tiles[i].quaternion.copy(tileOrient.quaternion);
     }
+
+    // DNA-Twist: ganze Helix dreht sich langsam um die x-Achse
+    helixGroup.rotation.x = time * 0.18;
   }
 
   function resize(): void {
