@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WirkVektor – Kundenerstkontakt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0F172A;
+    --slate-mid: #475569;
+    --vector-teal: #0D9488;
+    --impact-cyan: #22D3EE;
+    --background: #F7F9FB;
+    --surface: #FFFFFF;
+    --safety-border: #E2E8F0;
+    --on-surface: #191C1E;
+    --on-surface-variant: #45464D;
+    --font-head: "Hanken Grotesk", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--background);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.55;
+    overflow: hidden;
+  }
+
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    padding: 64px 96px 96px 96px;
+    overflow: hidden;
+    background: var(--background);
+  }
+  .slide.active { display: flex; flex-direction: column; }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+    margin-bottom: 12px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-head);
+    color: var(--navy-deep);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  h1 { font-size: 64px; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+  h2 { font-size: 40px; font-weight: 600; line-height: 1.15; }
+  h3 { font-size: 22px; font-weight: 600; line-height: 1.25; }
+
+  p { margin: 0; color: var(--on-surface-variant); }
+  .lead { font-size: 22px; color: var(--slate-mid); max-width: 880px; line-height: 1.5; }
+
+  .rule {
+    width: 56px;
+    height: 3px;
+    background: var(--vector-teal);
+    margin: 16px 0 28px 0;
+  }
+
+  /* Header bar with brand + slide number */
+  .topbar {
+    position: absolute;
+    top: 28px;
+    left: 96px;
+    right: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-mid);
+  }
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .topbar .vector {
+    width: 18px; height: 18px;
+    position: relative;
+  }
+  .topbar .vector::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    width: 14px; height: 1.5px;
+    background: var(--navy-deep);
+    transform: translateY(-50%);
+  }
+  .topbar .vector::after {
+    content: "";
+    position: absolute;
+    right: 0; top: 50%;
+    width: 0; height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid var(--vector-teal);
+    transform: translateY(-50%);
+  }
+
+  .pager {
+    position: absolute;
+    bottom: 28px;
+    right: 96px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--slate-mid);
+  }
+  .progress {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--safety-border);
+  }
+  .progress > span {
+    display: block;
+    height: 100%;
+    background: var(--vector-teal);
+    width: 0;
+    transition: width 240ms ease;
+  }
+
+  /* Title slide */
+  .title-slide {
+    justify-content: center;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(13,148,136,0.06), transparent 55%),
+      var(--background);
+  }
+  .title-slide h1 {
+    font-size: 88px;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+  }
+  .title-slide .claim {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--slate-mid);
+    margin-top: 24px;
+  }
+  .title-slide .meta {
+    margin-top: 64px;
+    display: flex;
+    gap: 48px;
+    color: var(--slate-mid);
+    font-size: 16px;
+  }
+  .title-slide .meta strong { color: var(--navy-deep); display: block; font-weight: 600; font-size: 18px; }
+  .title-slide .meta .label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* Agenda */
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    margin-top: 32px;
+    max-width: 1080px;
+  }
+  .agenda-item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--safety-border);
+  }
+  .agenda-item .num {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--vector-teal);
+    min-width: 40px;
+  }
+  .agenda-item .text {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--navy-deep);
+  }
+
+  /* List columns for observations */
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 48px;
+    margin-top: 28px;
+    max-width: 1100px;
+  }
+  .obs {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--safety-border);
+  }
+  .obs .marker {
+    flex: 0 0 8px;
+    width: 8px; height: 8px;
+    margin-top: 9px;
+    background: var(--vector-teal);
+    transform: rotate(45deg);
+  }
+  .obs strong {
+    display: block;
+    font-family: var(--font-head);
+    color: var(--navy-deep);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .obs span {
+    color: var(--slate-mid);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Principles slide */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .principle {
+    background: var(--surface);
+    border: 1px solid var(--safety-border);
+    border-radius: 8px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .principle .ax {
+    width: 32px; height: 2px;
+    background: var(--vector-teal);
+  }
+  .principle h3 { font-size: 20px; }
+  .principle p { font-size: 14px; color: var(--slate-mid); line-height: 1.5; }
+  .principle .vs {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate-mid);
+  }
+
+  /* Portfolio cards */
+  .portfolio {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .module {
+    background: var(--surface);
+    border: 1px solid var(--safety-border);
+    border-radius: 8px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .module .tag {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+  }
+  .module h3 { font-size: 17px; line-height: 1.3; }
+  .module ul {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    color: var(--slate-mid);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .module ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .module ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 1px;
+    background: var(--slate-mid);
+  }
+
+  /* Packages table */
+  .packages {
+    margin-top: 28px;
+    border: 1px solid var(--safety-border);
+    border-radius: 8px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .packages .row {
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr;
+    border-bottom: 1px solid var(--safety-border);
+  }
+  .packages .row:last-child { border-bottom: none; }
+  .packages .row.head {
+    background: var(--navy-deep);
+    color: #fff;
+  }
+  .packages .row.head .cell {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 16px 20px;
+  }
+  .packages .cell {
+    padding: 18px 20px;
+    font-size: 15px;
+    color: var(--slate-mid);
+    line-height: 1.5;
+    border-right: 1px solid var(--safety-border);
+  }
+  .packages .cell:last-child { border-right: none; }
+  .packages .row:not(.head) .cell:first-child {
+    font-family: var(--font-head);
+    font-weight: 600;
+    color: var(--navy-deep);
+    font-size: 16px;
+  }
+
+  /* Process timeline */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 40px;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--safety-border);
+  }
+  .step {
+    padding: 0 20px;
+    position: relative;
+  }
+  .step:first-child { padding-left: 0; }
+  .step .dot {
+    width: 16px; height: 16px;
+    background: var(--vector-teal);
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 28px;
+    margin-top: 14px;
+    border: 4px solid var(--background);
+  }
+  .step .phase {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+    margin-bottom: 6px;
+  }
+  .step h3 { font-size: 22px; margin-bottom: 10px; }
+  .step p { font-size: 15px; color: var(--slate-mid); line-height: 1.55; max-width: 320px; }
+  .step ul {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0 0;
+    font-size: 14px;
+    color: var(--slate-mid);
+  }
+  .step ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+  .step ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 1px;
+    background: var(--vector-teal);
+  }
+
+  /* USPs */
+  .usps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 32px;
+    max-width: 1100px;
+  }
+  .usp {
+    background: var(--surface);
+    border: 1px solid var(--safety-border);
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 18px;
+  }
+  .usp .icon {
+    flex: 0 0 36px;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--vector-teal);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--vector-teal);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+  .usp h3 { font-size: 18px; margin-bottom: 4px; }
+  .usp p { font-size: 14px; color: var(--slate-mid); line-height: 1.5; }
+
+  /* Next steps */
+  .next {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 36px;
+    max-width: 1100px;
+  }
+  .next-card {
+    border: 1px solid var(--safety-border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 28px 28px;
+  }
+  .next-card.primary {
+    background: var(--navy-deep);
+    border-color: var(--navy-deep);
+    color: #fff;
+  }
+  .next-card.primary h3, .next-card.primary .label { color: #fff; }
+  .next-card.primary p { color: rgba(255,255,255,0.78); }
+  .next-card .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .next-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .next-card p { font-size: 15px; line-height: 1.55; color: var(--slate-mid); }
+  .next-card .cta {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    background: var(--vector-teal);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Contact slide */
+  .contact-slide {
+    background: var(--navy-deep);
+    color: #fff;
+    justify-content: center;
+  }
+  .contact-slide .topbar { color: rgba(255,255,255,0.55); }
+  .contact-slide .topbar .vector::before { background: #fff; }
+  .contact-slide .pager { color: rgba(255,255,255,0.55); }
+  .contact-slide h1 { color: #fff; font-size: 64px; }
+  .contact-slide .rule { background: var(--vector-teal); }
+  .contact-slide .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 40px;
+    max-width: 880px;
+  }
+  .contact-slide .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--vector-teal);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .contact-slide .value {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .contact-slide .small {
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    margin-top: 4px;
+  }
+  .contact-slide .progress { background: rgba(255,255,255,0.12); }
+
+  /* Help overlay */
+  .hint {
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    background: rgba(15,23,42,0.85);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity 400ms;
+  }
+  .hint.fade { opacity: 0; }
+
+  @media print {
+    body { overflow: visible; background: #fff; }
+    .deck { width: auto; height: auto; }
+    .slide {
+      position: relative;
+      display: flex !important;
+      page-break-after: always;
+      width: 100vw;
+      height: 100vh;
+    }
+    .hint, .pager, .progress { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- Slide 1: Title -->
+  <section class="slide title-slide active">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Kundenerstkontakt</div>
+    </div>
+    <div>
+      <div class="eyebrow">Beratung für sichere und wirksame KI</div>
+      <h1>WirkVektor</h1>
+      <div class="claim">Ihr Vektor zur wirkungsvollen KI.</div>
+      <div class="meta">
+        <div>
+          <span class="label">Gesprächspartner</span>
+          <strong>Sebastian Schucht</strong>
+          Gründer &amp; Geschäftsführer
+        </div>
+        <div>
+          <span class="label">Anlass</span>
+          <strong>Erstgespräch</strong>
+          Vorstellung &amp; Sondierung
+        </div>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">01</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 2: Agenda -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Agenda</div>
+    </div>
+    <div class="eyebrow">Worum es heute geht</div>
+    <h2>Vier Themen, ein konkreter nächster Schritt.</h2>
+    <div class="rule"></div>
+    <p class="lead">Ich gebe Ihnen einen kompakten Überblick — Sie entscheiden, wo wir tiefer hineingehen.</p>
+    <div class="agenda">
+      <div class="agenda-item"><span class="num">01</span><span class="text">Status quo: KI im Mittelstand</span></div>
+      <div class="agenda-item"><span class="num">02</span><span class="text">Unsere Haltung &amp; Positionierung</span></div>
+      <div class="agenda-item"><span class="num">03</span><span class="text">Leistungsportfolio &amp; Einstiegspakete</span></div>
+      <div class="agenda-item"><span class="num">04</span><span class="text">Vorgehen &amp; nächste Schritte</span></div>
+    </div>
+    <div class="pager"><span class="cur">02</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 3: Beobachtung -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Status quo</div>
+    </div>
+    <div class="eyebrow">Was wir im Mittelstand sehen</div>
+    <h2>KI wird ausprobiert — aber selten gesteuert.</h2>
+    <div class="rule"></div>
+    <p class="lead">Sechs Muster, die wir in nahezu jedem Erstgespräch wiederfinden.</p>
+    <div class="columns">
+      <div class="obs"><span class="marker"></span><div><strong>Unkontrollierte Tool-Nutzung</strong><span>Mitarbeitende setzen KI ein, ohne dass Datenschutz, Geschäftsgeheimnisse oder Berechtigungen abgesichert sind.</span></div></div>
+      <div class="obs"><span class="marker"></span><div><strong>Use Cases ohne Priorisierung</strong><span>Pilotprojekte starten parallel, werden aber nicht systematisch nach Nutzen, Aufwand und Risiko bewertet.</span></div></div>
+      <div class="obs"><span class="marker"></span><div><strong>Daten und Prozesse nicht vorbereitet</strong><span>Datenqualität, Zugriffsrechte und Verantwortlichkeiten sind ungeklärt — KI scheitert daran, nicht am Modell.</span></div></div>
+      <div class="obs"><span class="marker"></span><div><strong>Governance kommt zu spät</strong><span>Erst testen, dann Regeln. Das führt zu Nacharbeit, Konflikten und im Zweifel zum Projektstopp.</span></div></div>
+      <div class="obs"><span class="marker"></span><div><strong>Mitarbeitende nicht befähigt</strong><span>Ohne Schulung bleibt der Nutzen gering oder die Nutzung unkontrolliert — beides ist teuer.</span></div></div>
+      <div class="obs"><span class="marker"></span><div><strong>Nutzen wird nicht gemessen</strong><span>Begeisterung statt Kennzahlen. Was nicht gemessen wird, lässt sich auch nicht skalieren.</span></div></div>
+    </div>
+    <div class="pager"><span class="cur">03</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 4: Haltung -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Positionierung</div>
+    </div>
+    <div class="eyebrow">Unsere Haltung</div>
+    <h2>Fünf Leitsätze, an denen wir jedes Mandat ausrichten.</h2>
+    <div class="rule"></div>
+    <div class="principles">
+      <div class="principle">
+        <span class="ax"></span>
+        <h3>Wirkung statt Hype</h3>
+        <p>Business Case zuerst — Tool danach. Kein Aktionismus, sondern messbarer Nutzen.</p>
+      </div>
+      <div class="principle">
+        <span class="ax"></span>
+        <h3>Sicherheit statt Blindflug</h3>
+        <p>Informationssicherheit und Datenschutz sind Kernkompetenz, nicht Nebenpunkt.</p>
+      </div>
+      <div class="principle">
+        <span class="ax"></span>
+        <h3>Struktur statt Aktionismus</h3>
+        <p>Klare Frameworks, definierte Prozesse, nachvollziehbare Entscheidungen.</p>
+      </div>
+      <div class="principle">
+        <span class="ax"></span>
+        <h3>Befähigung statt Abhängigkeit</h3>
+        <p>Wir hinterlassen Kompetenz im Haus — keine Black Box, kein Lock-in.</p>
+      </div>
+      <div class="principle">
+        <span class="ax"></span>
+        <h3>Pragmatismus statt Folienstrategie</h3>
+        <p>Konzepte, die in Ihrer Realität funktionieren — nicht im Idealbild.</p>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">04</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 5: Leistungsportfolio -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Leistungsportfolio</div>
+    </div>
+    <div class="eyebrow">Was wir tun</div>
+    <h2>Fünf Kernbereiche — modular kombinierbar.</h2>
+    <div class="rule"></div>
+    <div class="portfolio">
+      <div class="module">
+        <span class="tag">01 · Strategie</span>
+        <h3>KI-Strategie &amp; Use-Case-Entwicklung</h3>
+        <ul>
+          <li>Reifegradanalyse</li>
+          <li>Use-Case-Priorisierung</li>
+          <li>KI-Roadmap</li>
+          <li>Business Case</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">02 · Governance</span>
+        <h3>KI-Governance &amp; Compliance</h3>
+        <ul>
+          <li>KI-Richtlinie</li>
+          <li>Risikoklassifizierung</li>
+          <li>Tool-Freigabe</li>
+          <li>EU AI Act</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">03 · Umsetzung</span>
+        <h3>Generative KI produktiv einführen</h3>
+        <ul>
+          <li>Wissensassistenten</li>
+          <li>RAG-Konzepte</li>
+          <li>Berechtigungen</li>
+          <li>Pilot zu Produktiv</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">04 · Befähigung</span>
+        <h3>KI-Schulung &amp; AI Literacy</h3>
+        <ul>
+          <li>Führungskräfte</li>
+          <li>Mitarbeitende</li>
+          <li>Fachbereiche</li>
+          <li>Risiko &amp; Datenschutz</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="tag">05 · Steuerung</span>
+        <h3>Umsetzungssteuerung &amp; Partnerkoordination</h3>
+        <ul>
+          <li>Lastenheft</li>
+          <li>Anbieterbewertung</li>
+          <li>Projektsteuerung</li>
+          <li>Betriebskonzept</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">05</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 6: Einstiegspakete -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Einstiegspakete</div>
+    </div>
+    <div class="eyebrow">Konkrete Türöffner</div>
+    <h2>Fünf standardisierte Pakete mit klarem Ergebnis.</h2>
+    <div class="rule"></div>
+    <div class="packages">
+      <div class="row head">
+        <div class="cell">Paket</div>
+        <div class="cell">Ziel</div>
+        <div class="cell">Ergebnis</div>
+      </div>
+      <div class="row">
+        <div class="cell">KI-Readiness-Check</div>
+        <div class="cell">Reifegrad und Handlungsfelder bewerten</div>
+        <div class="cell">Reifegradprofil, priorisierte Maßnahmen, Entscheidungsgrundlage</div>
+      </div>
+      <div class="row">
+        <div class="cell">KI-Use-Case-Sprint</div>
+        <div class="cell">Wirtschaftlich sinnvolle Use Cases identifizieren</div>
+        <div class="cell">Priorisierte Use-Case-Liste, Empfehlung für Pilotprojekte</div>
+      </div>
+      <div class="row">
+        <div class="cell">KI-Governance-Starterpaket</div>
+        <div class="cell">Kontrollrahmen aufbauen</div>
+        <div class="cell">Sofort nutzbarer Governance-Rahmen, klare Regeln, bessere Kontrolle</div>
+      </div>
+      <div class="row">
+        <div class="cell">AI-Literacy-Schulung</div>
+        <div class="cell">Sichere KI-Nutzung befähigen</div>
+        <div class="cell">Geschulte Mitarbeitende, reduziertes Risiko, höhere Akzeptanz</div>
+      </div>
+      <div class="row">
+        <div class="cell">Produktiver KI-Pilot</div>
+        <div class="cell">Use Case kontrolliert umsetzen</div>
+        <div class="cell">Getesteter Anwendungsfall, Skalierungs-Entscheidung</div>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">06</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 7: Vorgehen -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Vorgehen</div>
+    </div>
+    <div class="eyebrow">Wie ein Mandat typischerweise verläuft</div>
+    <h2>Drei Phasen mit Entscheidungspunkten — kein Big Bang.</h2>
+    <div class="rule"></div>
+    <div class="timeline">
+      <div class="step">
+        <div class="dot"></div>
+        <div class="phase">Phase 01 · Klarheit</div>
+        <h3>Standortbestimmung</h3>
+        <p>Wir verstehen Ihre Ausgangslage und benennen die nächsten 2–3 sinnvollen Schritte.</p>
+        <ul>
+          <li>Reifegrad &amp; Risikobild</li>
+          <li>Use-Case-Vorauswahl</li>
+          <li>Entscheidungsvorlage</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="dot"></div>
+        <div class="phase">Phase 02 · Struktur</div>
+        <h3>Rahmen &amp; Pilot</h3>
+        <p>Wir schaffen Governance und führen einen kontrollierten Use Case bis zur Pilotreife.</p>
+        <ul>
+          <li>Governance-Grundgerüst</li>
+          <li>Pilot-Setup &amp; Sicherheit</li>
+          <li>Schulung der Beteiligten</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="dot"></div>
+        <div class="phase">Phase 03 · Wirkung</div>
+        <h3>Skalierung &amp; Betrieb</h3>
+        <p>Wir überführen den Piloten in den produktiven Betrieb und messen den Nutzen.</p>
+        <ul>
+          <li>Rollout-Steuerung</li>
+          <li>Betriebs- &amp; Kontrollmodell</li>
+          <li>Nutzenmessung</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">07</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 8: USPs -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Was uns unterscheidet</div>
+    </div>
+    <div class="eyebrow">Warum WirkVektor</div>
+    <h2>Sechs Merkmale, an denen Sie uns messen können.</h2>
+    <div class="rule"></div>
+    <div class="usps">
+      <div class="usp">
+        <div class="icon">01</div>
+        <div>
+          <h3>Mittelstandsnähe statt Konzernsprache</h3>
+          <p>Konzepte, die zu Ressourcen, Tempo und Entscheidungswegen im Mittelstand passen.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="icon">02</div>
+        <div>
+          <h3>Informationssicherheit als Kernkompetenz</h3>
+          <p>Sicherheit ist von Anfang an Teil der Lösung — nicht ein Anhang am Ende.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="icon">03</div>
+        <div>
+          <h3>Wirkung vor Technologie</h3>
+          <p>Wir fragen zuerst nach dem Geschäftsnutzen, dann nach dem geeigneten Werkzeug.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="icon">04</div>
+        <div>
+          <h3>Governance als Ermöglicher</h3>
+          <p>Klare Regeln beschleunigen — sie bremsen nicht. Sie machen Skalierung erst möglich.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="icon">05</div>
+        <div>
+          <h3>Pragmatische Pakete</h3>
+          <p>Transparente Leistung, klares Ergebnis, kalkulierbarer Einstieg.</p>
+        </div>
+      </div>
+      <div class="usp">
+        <div class="icon">06</div>
+        <div>
+          <h3>Technologieoffen &amp; unabhängig</h3>
+          <p>Keine Plattformbindung, keine Provision von Anbietern. Wir empfehlen, was passt.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">08</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 9: Empfohlene erste Schritte -->
+  <section class="slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Nächste Schritte</div>
+    </div>
+    <div class="eyebrow">Empfehlung</div>
+    <h2>Zwei Wege, schnell zu Klarheit zu kommen.</h2>
+    <div class="rule"></div>
+    <p class="lead">Beide Optionen sind aufwandsarm und liefern eine belastbare Grundlage für die nächste Entscheidung.</p>
+    <div class="next">
+      <div class="next-card primary">
+        <span class="label">Empfehlung</span>
+        <h3>KI-Readiness-Check</h3>
+        <p>Strukturierte Standortbestimmung über wenige Wochen. Ergebnis: Reifegradprofil, priorisierte Handlungsfelder und eine konkrete Entscheidungsvorlage für die Geschäftsführung.</p>
+        <span class="cta">In 2–4 Wochen umsetzbar</span>
+      </div>
+      <div class="next-card">
+        <span class="label">Alternative</span>
+        <h3>Sondierungs-Workshop</h3>
+        <p>Halbtägiger Termin mit den relevanten Rollen Ihres Hauses. Ergebnis: gemeinsames Zielbild, identifizierte Use Cases und eine Einschätzung, welches Paket für Sie der richtige Einstieg ist.</p>
+        <span class="cta" style="background:transparent;color:var(--vector-teal);border:1px solid var(--vector-teal);">Ein halber Tag vor Ort oder remote</span>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">09</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+  <!-- Slide 10: Kontakt -->
+  <section class="slide contact-slide">
+    <div class="topbar">
+      <div class="brand"><span class="vector"></span>WirkVektor</div>
+      <div>Kontakt</div>
+    </div>
+    <div>
+      <div class="eyebrow" style="color: var(--vector-teal);">Sprechen wir konkret.</div>
+      <h1>Ihr Vektor zur wirkungsvollen KI.</h1>
+      <div class="rule"></div>
+      <div class="grid">
+        <div>
+          <span class="label">Ansprechpartner</span>
+          <div class="value">Sebastian Schucht</div>
+          <div class="small">Gründer &amp; Geschäftsführer, WirkVektor</div>
+        </div>
+        <div>
+          <span class="label">E-Mail</span>
+          <div class="value">info@secusolve.de</div>
+          <div class="small">Antwort in der Regel innerhalb eines Werktags</div>
+        </div>
+      </div>
+    </div>
+    <div class="pager"><span class="cur">10</span> / <span class="total">10</span></div>
+    <div class="progress"><span></span></div>
+  </section>
+
+</div>
+
+<div class="hint" id="hint">← → Folie wechseln · F Vollbild · P Drucken</div>
+
+<script>
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const total = slides.length;
+    let index = 0;
+
+    function show(i) {
+      index = Math.max(0, Math.min(total - 1, i));
+      slides.forEach((s, j) => s.classList.toggle('active', j === index));
+      slides.forEach((s) => {
+        const cur = s.querySelector('.pager .cur');
+        const tot = s.querySelector('.pager .total');
+        if (tot) tot.textContent = String(total).padStart(2, '0');
+        const bar = s.querySelector('.progress > span');
+        if (bar) bar.style.width = ((index + 1) / total * 100) + '%';
+      });
+    }
+
+    function next() { show(index + 1); }
+    function prev() { show(index - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+      else if (e.key === 'Home') { e.preventDefault(); show(0); }
+      else if (e.key === 'End') { e.preventDefault(); show(total - 1); }
+      else if (e.key.toLowerCase() === 'f') {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      } else if (e.key.toLowerCase() === 'p') {
+        window.print();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('a, button, input, .hint')) return;
+      const half = window.innerWidth / 2;
+      if (e.clientX > half) next(); else prev();
+    });
+
+    const hint = document.getElementById('hint');
+    setTimeout(() => hint.classList.add('fade'), 4500);
+
+    show(0);
+  })();
+</script>
+</body>
+</html>
