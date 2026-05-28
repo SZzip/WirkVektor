@@ -49,7 +49,7 @@ Klarheit, Verlässlichkeit, Sicherheit, Wirksamkeit, Kompetenz, Pragmatismus, Ve
 
 ## Claim und Kernbotschaft
 
-**Hauptclaim:** *KI in Wirkung übersetzen.*
+**Hauptclaim:** *Ihr Vektor zur wirkungsvollen KI.*
 
 **Kernbotschaft:** WirkVektor hilft Unternehmen, KI nicht nur zu testen, sondern sicher, strukturiert und messbar wirksam einzusetzen.
 
