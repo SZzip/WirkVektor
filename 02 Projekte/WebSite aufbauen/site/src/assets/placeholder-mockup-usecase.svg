@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500" role="img" aria-labelledby="uc-title uc-desc">
+  <title id="uc-title">Mockup Use-Case-Matrix</title>
+  <desc id="uc-desc">Mockup einer Use-Case-Matrix (Nutzen-Aufwand-Risiko) in Navy und Teal.</desc>
+  <rect width="1500" height="1500" fill="#F7F9FB"/>
+  <rect x="280" y="180" width="940" height="1180" fill="#FFFFFF" stroke="#E2E8F0"/>
+
+  <!-- Header -->
+  <rect x="280" y="180" width="940" height="120" fill="#0F172A"/>
+  <text x="320" y="250" font-family="Hanken Grotesk, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">Use-Case-Matrix</text>
+  <text x="320" y="280" font-family="Inter, sans-serif" font-size="14" fill="#22D3EE" letter-spacing="0.1em">NUTZEN · AUFWAND · RISIKO</text>
+
+  <!-- Matrix axes -->
+  <g transform="translate(380 420)" stroke="#0F172A" stroke-width="1" fill="none">
+    <line x1="0" y1="0" x2="0" y2="700"/>
+    <line x1="0" y1="700" x2="760" y2="700"/>
+    <g stroke-dasharray="2 4" opacity="0.3">
+      <line x1="0" y1="350" x2="760" y2="350"/>
+      <line x1="380" y1="0" x2="380" y2="700"/>
+    </g>
+  </g>
+
+  <!-- Axis labels -->
+  <text x="370" y="400" font-family="Inter, sans-serif" font-size="12" fill="#475569" letter-spacing="0.1em" text-anchor="end">NUTZEN ↑</text>
+  <text x="1140" y="1140" font-family="Inter, sans-serif" font-size="12" fill="#475569" letter-spacing="0.1em">AUFWAND →</text>
+
+  <!-- Bubbles (Risiko = Größe, Teal = priorisiert) -->
+  <g opacity="0.85">
+    <circle cx="540" cy="600" r="40" fill="#0D9488"/>
+    <circle cx="700" cy="540" r="55" fill="#0D9488"/>
+    <circle cx="880" cy="720" r="32" fill="#475569"/>
+    <circle cx="1020" cy="640" r="48" fill="#0D9488"/>
+    <circle cx="600" cy="900" r="28" fill="#475569"/>
+    <circle cx="800" cy="980" r="36" fill="#475569"/>
+    <circle cx="980" cy="880" r="42" fill="#0D9488"/>
+    <circle cx="1080" cy="1000" r="24" fill="#475569"/>
+  </g>
+
+  <!-- Labels next to teal bubbles -->
+  <g font-family="Inter, sans-serif" font-size="10" fill="#0F172A">
+    <text x="540" y="555" text-anchor="middle">Dokumenten-Assistent</text>
+    <text x="700" y="475" text-anchor="middle">Angebots-Generator</text>
+    <text x="1020" y="585" text-anchor="middle">Vertriebs-Coach</text>
+    <text x="980" y="830" text-anchor="middle">Helpdesk-Bot</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(320 1200)" font-family="Inter, sans-serif" font-size="12" fill="#475569">
+    <circle cx="10" cy="0" r="10" fill="#0D9488"/>
+    <text x="30" y="4">Priorisiert</text>
+    <circle cx="160" cy="0" r="10" fill="#475569"/>
+    <text x="180" y="4">Backlog</text>
+    <text x="320" y="4" letter-spacing="0.05em">Blasengröße = Risiko</text>
+  </g>
+</svg>

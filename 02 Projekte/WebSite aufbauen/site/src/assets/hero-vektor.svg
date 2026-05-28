@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="hero-vektor-title hero-vektor-desc">
+  <title id="hero-vektor-title">Architektonische Vektor-Konstruktion</title>
+  <desc id="hero-vektor-desc">Isometrische Linien-Konstruktion aus Pfeilen, Knoten und Datenflüssen in Navy und Teal — visuelles Sinnbild der WirkVektor-Methodik.</desc>
+
+  <defs>
+    <marker id="arrow-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#0D9488" stroke-width="1.4" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <g stroke="#0F172A" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Isometric grid hint -->
+    <g opacity="0.12">
+      <path d="M50 200 L550 200"/>
+      <path d="M50 400 L550 400"/>
+      <path d="M50 600 L550 600"/>
+      <path d="M150 80 L150 720"/>
+      <path d="M300 80 L300 720"/>
+      <path d="M450 80 L450 720"/>
+    </g>
+
+    <!-- Foundation block -->
+    <g opacity="0.6">
+      <path d="M120 620 L300 540 L480 620 L300 700 Z"/>
+      <path d="M120 620 L120 660 L300 740 L300 700"/>
+      <path d="M300 700 L300 740 L480 660 L480 620"/>
+    </g>
+
+    <!-- Mid layer (architecture / governance) -->
+    <g>
+      <path d="M180 480 L300 420 L420 480 L300 540 Z"/>
+      <path d="M180 480 L180 510 L300 570 L300 540"/>
+      <path d="M300 540 L300 570 L420 510 L420 480"/>
+    </g>
+
+    <!-- Top node (impact) -->
+    <g>
+      <circle cx="300" cy="300" r="32" stroke="#0D9488" stroke-width="1.6"/>
+      <circle cx="300" cy="300" r="6" fill="#0D9488"/>
+    </g>
+
+    <!-- Vertical connection from foundation to top -->
+    <path d="M300 540 L300 340" stroke-dasharray="2 4" opacity="0.5"/>
+
+    <!-- Side vector arrows -->
+    <path d="M100 140 L260 260" marker-end="url(#arrow-navy)"/>
+    <path d="M500 140 L340 260" marker-end="url(#arrow-navy)"/>
+    <path d="M100 460 L160 460" marker-end="url(#arrow-navy)"/>
+    <path d="M500 460 L440 460" marker-end="url(#arrow-navy)"/>
+  </g>
+
+  <!-- Vector Teal impact arrow -->
+  <path d="M300 260 L300 100" stroke="#0D9488" stroke-width="1.8" fill="none" stroke-linecap="round" marker-end="url(#arrow-teal)"/>
+
+  <!-- Annotations -->
+  <g font-family="Inter, sans-serif" font-size="11" fill="#475569" letter-spacing="0.06em">
+    <text x="80" y="124" text-anchor="start">STRATEGIE</text>
+    <text x="520" y="124" text-anchor="end">SICHERHEIT</text>
+    <text x="80" y="445" text-anchor="start">DATEN</text>
+    <text x="520" y="445" text-anchor="end">PROZESSE</text>
+    <text x="300" y="92" text-anchor="middle" fill="#0D9488" font-weight="600">WIRKUNG</text>
+    <text x="300" y="730" text-anchor="middle">FUNDAMENT · GOVERNANCE</text>
+  </g>
+</svg>
