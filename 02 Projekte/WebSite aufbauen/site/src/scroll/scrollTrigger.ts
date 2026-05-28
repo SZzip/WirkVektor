@@ -100,25 +100,16 @@ export function setupIntroLogoMorph(): void {
     },
   });
 
-  gsap.to(glyph, {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: section,
-      start: 'bottom 20%',
-      end: 'bottom top',
-      scrub: true,
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'bottom top',
+    onEnter: () => {
+      gsap.set(glyph, { opacity: 0 });
+      gsap.set(headerLogo, { opacity: 1 });
     },
-  });
-
-  gsap.to(headerLogo, {
-    opacity: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: section,
-      start: 'bottom 30%',
-      end: 'bottom 5%',
-      scrub: true,
+    onLeaveBack: () => {
+      gsap.set(glyph, { opacity: 1 });
+      gsap.set(headerLogo, { opacity: 0 });
     },
   });
 
