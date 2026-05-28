@@ -12,6 +12,15 @@ projekt: "[[Website aufbauen]]"
 
 OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind als statische Website unter `site/` umgesetzt, Texte und Headlines wörtlich übernommen, Designsystem nach [[DESIGN]] (Navy Deep, Vector Teal, Hanken Grotesk + Inter). Build und Tests sind grün, der Code liegt auf Branch `claude/website-project-folder-Qh7Tz` und im Draft-PR #5.
 
+**Deployment-Artefakte vorbereitet** (Branch `claude/website-project-folder-X5hDf`):
+
+- `site/public/.htaccess` mit HTTPS-Redirect, www-Redirect, gzip, Cache-Header und Security-Header. Wird durch Vite automatisch in `dist/.htaccess` kopiert.
+- `site/deploy.sh` — lokales Bash-Skript für `lftp`-Mirror nach Hetzner. Build, Test, Source-Maps entfernen, Spiegel mit `--delete`.
+- `site/.env.deploy.example` — Vorlage für Zugangsdaten. `.env.deploy` ist in `.gitignore`.
+- `site/DEPLOY.md` — Schritt-für-Schritt-Anleitung.
+
+Der finale Upload aus dieser Cloud-Session bleibt durch die Network-Policy gesperrt (Port 22 dichtgemacht — bestätigt durch SFTP-Connect-Test). Sebastian führt `./deploy.sh` lokal aus.
+
 ---
 
 ## Erledigt
@@ -81,13 +90,15 @@ OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind
 ## Offen
 
 ### Deployment
-- [ ] Hetzner-Webhosting-Zugang ist eingerichtet (Server `www639.your-server.de`, User `kistiz_0`)
-- [ ] **Blocker:** Cloud-Session-Network-Policy lässt keinen ausgehenden SFTP-Verkehr zu — direkter Upload aus der Session ist gesperrt
-- [ ] Entscheidung Deployment-Weg offen: Network-Policy aufmachen ODER lokales `deploy.sh`
-- [ ] **Sicherheitspunkt:** SFTP-Passwort wurde im Chat geteilt — muss nach erstem Deployment im KonsoleH rotiert werden
-- [ ] HTTPS via Let's Encrypt im KonsoleH aktivieren (1-Klick)
-- [ ] Optionale `.htaccess` für gzip, Cache-Header und HTTPS-Redirect anlegen
+- [x] Hetzner-Webhosting-Zugang ist eingerichtet (Server `www639.your-server.de`, User `kistiz_0`)
+- [x] Entscheidung Deployment-Weg: lokales `deploy.sh` (Cloud-Session sperrt Port 22)
+- [x] `.htaccess` für gzip, Cache-Header, HTTPS-Redirect, www-Redirect und Security-Header
+- [x] `deploy.sh` + `.env.deploy.example` + `DEPLOY.md` angelegt
+- [ ] **Auf lokalem Rechner ausführen:** `.env.deploy` anlegen, `./deploy.sh --dry` testen, dann `./deploy.sh`
+- [ ] **Sicherheitspunkt:** SFTP-Passwort wurde im Chat geteilt — nach erstem Deployment im KonsoleH rotieren und in `.env.deploy` aktualisieren
+- [ ] HTTPS via Let's Encrypt im KonsoleH aktivieren (1-Klick), für `wirkvektor.de` **und** `www.wirkvektor.de`
 - [ ] Domain `wirkvektor.de` mit der Hetzner-Webhosting-Instanz verbinden (Nameserver oder A-Records)
+- [ ] Webroot-Pfad im KonsoleH prüfen und in `.env.deploy` als `SFTP_REMOTE_DIR` setzen (`/public_html` ist nur Vermutung)
 
 ### Echte Assets (laut [[Asset-Liste]] Phase 2 und 3)
 - [ ] Sebastian Schucht — professionelles Portrait (4:5, neutral, 1000×1250)
@@ -137,9 +148,9 @@ OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind
 
 ## Nächste Schritte (priorisiert)
 
-1. **Deployment-Weg festlegen** (Network-Policy oder lokales Skript)
-2. **Erste produktive Veröffentlichung** auf `wirkvektor.de`
-3. **Passwort rotieren** nach erstem Deployment
+1. **Lokal deployen** — Branch ziehen, `.env.deploy` befüllen, `./deploy.sh --dry`, dann `./deploy.sh`
+2. **HTTPS** im KonsoleH aktivieren (Let's Encrypt, beide Hostnamen)
+3. **Passwort rotieren** nach erstem Deployment, neuen Wert in `.env.deploy`
 4. **Sebastian-Portrait** organisieren (höchste Sichtbarkeit, derzeit schwächster Platzhalter)
 5. **Impressum + Datenschutz** texten — Pflicht vor Launch
 6. **Form-Backend** anbinden (Formspree als schnellster Weg)

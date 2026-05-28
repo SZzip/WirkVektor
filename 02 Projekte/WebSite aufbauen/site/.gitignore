@@ -4,5 +4,6 @@ dist
 *.log
 .env
 .env.local
+.env.deploy
 .vite
 coverage
