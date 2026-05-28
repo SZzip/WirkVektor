@@ -34,12 +34,10 @@ export const ContentSchema = z.object({
   outcomes: z.array(OutcomeSchema).length(5),
   contactInfos: z.array(ContactInfoSchema),
   values: z.array(z.string().min(1)).length(4),
-  trustStrip: z.array(z.string().min(1)),
 });
 export type Content = z.infer<typeof ContentSchema>;
 
 export const content: Content = ContentSchema.parse({
-  trustStrip: ['EU AI ACT', 'DSGVO', 'ISO 27001', 'MICROSOFT COPILOT'],
   values: [
     'Mittelstandsnah',
     'Sicherheit als Kern',

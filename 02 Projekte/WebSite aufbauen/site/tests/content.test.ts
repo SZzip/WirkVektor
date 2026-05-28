@@ -28,12 +28,6 @@ describe('content', () => {
     expect(content.values).toHaveLength(4);
   });
 
-  it('contains required trust strip items', () => {
-    expect(content.trustStrip).toContain('EU AI ACT');
-    expect(content.trustStrip).toContain('DSGVO');
-    expect(content.trustStrip).toContain('ISO 27001');
-  });
-
   it('uses no forbidden hype words', () => {
     const forbidden = ['revolutionär', 'disruptiv', 'bahnbrechend', 'Game Changer'];
     const allText = JSON.stringify(content).toLowerCase();
