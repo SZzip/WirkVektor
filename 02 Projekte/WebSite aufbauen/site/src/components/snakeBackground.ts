@@ -1,12 +1,15 @@
-const TILE_COUNT = 80;
-const ACCENT_INDICES = [12, 28, 44, 60, 74];
+const ACCENT_RATIOS = [0.15, 0.32, 0.5, 0.7, 0.9];
 const ACCENT_COLORS = [0x0f172a, 0x475569, 0x0d9488, 0x22d3ee, 0x94a3b8];
 const BASE_COLOR = 0xfafbfc;
 
-// Plättchen: width × 1.7, depth × 1.7, height (= Dicke) ÷ 2 gegenüber der Vorversion
+// Plättchen-Maße (lang × dünn × breit)
 const TILE_WIDTH = 0.714;
 const TILE_THICKNESS = 0.035;
 const TILE_DEPTH = 0.374;
+
+// Plättchen sind aufrecht (90°-Drehung an kurzer Kante); Abstand entlang
+// der Helix entspricht der Dicke des Plättchens.
+const TILE_SPACING = TILE_THICKNESS * 2;
 
 // DNA-Helix-Parameter
 const HELIX_LENGTH = 16;
@@ -43,7 +46,7 @@ export async function setupSnakeBackground(): Promise<void> {
   dirB.position.set(-5, -2, 6);
   scene.add(ambient, dirA, dirB);
 
-  // Build DNA-Helix curve
+  // Helix-Kurve
   const helixPoints: InstanceType<typeof THREE.Vector3>[] = [];
   const totalSegments = HELIX_TURNS * HELIX_SEGMENTS_PER_TURN;
   for (let i = 0; i <= totalSegments; i++) {
@@ -55,49 +58,59 @@ export async function setupSnakeBackground(): Promise<void> {
     helixPoints.push(new THREE.Vector3(x, y, z));
   }
   const curve = new THREE.CatmullRomCurve3(helixPoints, false, 'catmullrom', 0.5);
+  const curveLength = curve.getLength();
+  const tileCount = Math.max(1, Math.floor(curveLength / TILE_SPACING));
 
-  const helixGroup = new THREE.Group();
-  scene.add(helixGroup);
-
+  // Plättchen-Geometrie um 90° an der kurzen Kante (Z) drehen → aufrecht
   const tileGeometry = new THREE.BoxGeometry(TILE_WIDTH, TILE_THICKNESS, TILE_DEPTH);
-  const baseMaterial = new THREE.MeshStandardMaterial({
-    color: BASE_COLOR,
+  tileGeometry.rotateZ(Math.PI / 2);
+
+  const tileMaterial = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
     roughness: 0.55,
     metalness: 0.08,
   });
-  const accentMaterials = ACCENT_COLORS.map(
-    (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55, metalness: 0.08 })
-  );
 
-  const tiles: InstanceType<typeof THREE.Mesh>[] = [];
-  for (let i = 0; i < TILE_COUNT; i++) {
-    const accentSlot = ACCENT_INDICES.indexOf(i);
-    const material = accentSlot === -1 ? baseMaterial : accentMaterials[accentSlot];
-    const mesh = new THREE.Mesh(tileGeometry, material);
-    helixGroup.add(mesh);
-    tiles.push(mesh);
+  const instancedMesh = new THREE.InstancedMesh(tileGeometry, tileMaterial, tileCount);
+  const helixGroup = new THREE.Group();
+  helixGroup.add(instancedMesh);
+  scene.add(helixGroup);
+
+  // Per-Instance-Farben (5 Akzente an gleichmäßig verteilten Stellen)
+  const baseColor = new THREE.Color(BASE_COLOR);
+  const accentObjs = ACCENT_COLORS.map((c) => new THREE.Color(c));
+  const accentIndices = ACCENT_RATIOS.map((r) => Math.floor(r * tileCount));
+  for (let i = 0; i < tileCount; i++) {
+    const slot = accentIndices.indexOf(i);
+    instancedMesh.setColorAt(i, slot === -1 ? baseColor : accentObjs[slot]);
   }
+  if (instancedMesh.instanceColor) instancedMesh.instanceColor.needsUpdate = true;
 
   const tmpUp = new THREE.Vector3(0, 1, 0);
   const tmpTangent = new THREE.Vector3();
   const tmpTarget = new THREE.Vector3();
+  const tmpPosition = new THREE.Vector3();
+  const tmpQuaternion = new THREE.Quaternion();
+  const tmpScale = new THREE.Vector3(1, 1, 1);
+  const tmpMatrix = new THREE.Matrix4();
   const tileOrient = new THREE.Object3D();
 
   function placeTiles(time: number): void {
     const flow = (time * 0.03) % 1;
-    for (let i = 0; i < TILE_COUNT; i++) {
-      const t = (((i / TILE_COUNT + flow) % 1) + 1) % 1;
+    for (let i = 0; i < tileCount; i++) {
+      const t = (((i / tileCount + flow) % 1) + 1) % 1;
       const u = 0.001 + t * 0.998;
-      curve.getPointAt(u, tiles[i].position);
+      curve.getPointAt(u, tmpPosition);
       curve.getTangentAt(u, tmpTangent);
-      tmpTarget.copy(tiles[i].position).add(tmpTangent);
-      tileOrient.position.copy(tiles[i].position);
+      tmpTarget.copy(tmpPosition).add(tmpTangent);
+      tileOrient.position.copy(tmpPosition);
       tileOrient.up.copy(tmpUp);
       tileOrient.lookAt(tmpTarget);
-      tiles[i].quaternion.copy(tileOrient.quaternion);
+      tmpQuaternion.copy(tileOrient.quaternion);
+      tmpMatrix.compose(tmpPosition, tmpQuaternion, tmpScale);
+      instancedMesh.setMatrixAt(i, tmpMatrix);
     }
-
-    // DNA-Twist: ganze Helix dreht sich langsam um die x-Achse
+    instancedMesh.instanceMatrix.needsUpdate = true;
     helixGroup.rotation.x = time * 0.108;
   }
 
