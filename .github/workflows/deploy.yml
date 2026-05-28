@@ -48,6 +48,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Stage build output to space-free path
+        run: cp -r "02 Projekte/WebSite aufbauen/site/dist" _deploy
+        working-directory: ${{ github.workspace }}
+
       - name: Deploy via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -55,7 +59,7 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          local_path: './02 Projekte/WebSite aufbauen/site/dist/*'
+          local_path: './_deploy/*'
           remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
           sftp_only: true
           delete_remote_files: false
