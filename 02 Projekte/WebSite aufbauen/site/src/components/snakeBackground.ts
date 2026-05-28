@@ -84,7 +84,7 @@ export async function setupSnakeBackground(): Promise<void> {
   const tileOrient = new THREE.Object3D();
 
   function placeTiles(time: number): void {
-    const flow = (time * 0.05) % 1;
+    const flow = (time * 0.03) % 1;
     for (let i = 0; i < TILE_COUNT; i++) {
       const t = (((i / TILE_COUNT + flow) % 1) + 1) % 1;
       const u = 0.001 + t * 0.998;
@@ -98,7 +98,7 @@ export async function setupSnakeBackground(): Promise<void> {
     }
 
     // DNA-Twist: ganze Helix dreht sich langsam um die x-Achse
-    helixGroup.rotation.x = time * 0.18;
+    helixGroup.rotation.x = time * 0.108;
   }
 
   function resize(): void {
