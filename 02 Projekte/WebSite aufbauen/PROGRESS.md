@@ -81,10 +81,17 @@ OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind
 ## Offen
 
 ### Deployment
-- [ ] Hetzner-Webhosting-Zugang ist eingerichtet (Server `www639.your-server.de`, User `kistiz_0`)
-- [ ] **Blocker:** Cloud-Session-Network-Policy lässt keinen ausgehenden SFTP-Verkehr zu — direkter Upload aus der Session ist gesperrt
-- [ ] Entscheidung Deployment-Weg offen: Network-Policy aufmachen ODER lokales `deploy.sh`
-- [ ] **Sicherheitspunkt:** SFTP-Passwort wurde im Chat geteilt — muss nach erstem Deployment im KonsoleH rotiert werden
+- [x] Deployment-Weg entschieden: **GitHub Actions** (Workflow `.github/workflows/deploy.yml`)
+- [x] Recherche: KonsoleH bietet keine REST-Upload-API, ausgehender SFTP aus Cloud-Session blockiert — Actions ist nachhaltigster Weg
+- [ ] **GitHub-Secrets im Repo eintragen** (Settings → Secrets and variables → Actions):
+  - `SFTP_HOST` = `www639.your-server.de`
+  - `SFTP_USER` = `kistiz_0`
+  - `SFTP_PASSWORD` = aktuelles KonsoleH-Passwort
+  - `SFTP_REMOTE_PATH` = absoluter Zielpfad auf dem Webhosting (z. B. `/public_html/` — exakter Pfad steht im KonsoleH unter „FTP/SSH-Zugang")
+- [ ] Optional: GitHub-Environment `production` mit Required-Reviewer anlegen, damit Deploys eine manuelle Freigabe brauchen
+- [ ] Ersten Workflow-Lauf via `workflow_dispatch` manuell auslösen und Ergebnis prüfen
+- [ ] **Sicherheitspunkt:** SFTP-Passwort wurde im Chat geteilt — nach erstem Deployment im KonsoleH rotieren und in GitHub-Secret aktualisieren
+- [ ] Mittelfristig: SFTP-Passwort durch SSH-Key ersetzen (KonsoleH → Public Key hinterlegen, Action auf `ssh_private_key` umstellen)
 - [ ] HTTPS via Let's Encrypt im KonsoleH aktivieren (1-Klick)
 - [ ] Optionale `.htaccess` für gzip, Cache-Header und HTTPS-Redirect anlegen
 - [ ] Domain `wirkvektor.de` mit der Hetzner-Webhosting-Instanz verbinden (Nameserver oder A-Records)
@@ -132,15 +139,17 @@ OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind
 | Eigene SVG-Platzhalter statt Stock | Stock-Bilder widersprechen den Schreibstil-Regeln (keine posed office, keine fake smiles). SVGs sind im WV-Designsystem und sofort austauschbar. |
 | Alle 11 Sektionen im ersten Wurf | Vollständige Story sichtbar, Iteration leichter |
 | Self-hosted Google Fonts via CDN (vorerst) | Schneller Start. Self-Hosting kann in Phase 2 nachgereicht werden für DSGVO-Konformität ohne Cookie-Banner. |
+| Deployment via GitHub Actions statt lokalem `deploy.sh` | KonsoleH hat keine Upload-API, ausgehender SFTP aus der Cloud-Session ist gesperrt. Actions baut nach jedem Push auf `main`, deployt via SFTP mit Repo-Secrets. Credentials liegen nicht lokal, jeder Stand ist reproduzierbar. |
 
 ---
 
 ## Nächste Schritte (priorisiert)
 
-1. **Deployment-Weg festlegen** (Network-Policy oder lokales Skript)
-2. **Erste produktive Veröffentlichung** auf `wirkvektor.de`
-3. **Passwort rotieren** nach erstem Deployment
-4. **Sebastian-Portrait** organisieren (höchste Sichtbarkeit, derzeit schwächster Platzhalter)
-5. **Impressum + Datenschutz** texten — Pflicht vor Launch
-6. **Form-Backend** anbinden (Formspree als schnellster Weg)
-7. **Manuelle Browser-Tests** auf realen Geräten
+1. **GitHub-Secrets eintragen** (`SFTP_HOST`, `SFTP_USER`, `SFTP_PASSWORD`, `SFTP_REMOTE_PATH`)
+2. **Ersten Deploy via `workflow_dispatch` auslösen** und Ergebnis unter `www639.your-server.de` prüfen
+3. **Passwort rotieren** im KonsoleH und in GitHub-Secret aktualisieren
+4. **Domain `wirkvektor.de` verbinden** + HTTPS via Let's Encrypt aktivieren
+5. **Sebastian-Portrait** organisieren (höchste Sichtbarkeit, derzeit schwächster Platzhalter)
+6. **Impressum + Datenschutz** texten — Pflicht vor Launch
+7. **Form-Backend** anbinden (Formspree als schnellster Weg)
+8. **Manuelle Browser-Tests** auf realen Geräten
