@@ -14,10 +14,12 @@ import { setupModals } from './components/modal';
 import { setupCarousels } from './components/carousel';
 import { setupBookmarks } from './components/bookmarkList';
 import { setupForms } from './components/contactForm';
+import { setupSpiralBackground } from './components/spiralBackground';
 import { renderContent } from './render';
 
 function boot(): void {
   renderContent();
+  setupSpiralBackground();
   initLenis();
   registerScrollTrigger();
   setupNav();
