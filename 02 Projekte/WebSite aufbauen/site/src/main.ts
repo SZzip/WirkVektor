@@ -4,6 +4,7 @@ import { initLenis } from './scroll/lenis';
 import {
   registerScrollTrigger,
   setupClipReveal,
+  setupIntroLogoMorph,
   setupParallaxBackgrounds,
 } from './scroll/scrollTrigger';
 import { setupRevealOnView } from './scroll/revealOnView';
@@ -28,6 +29,7 @@ function boot(): void {
   setupRevealOnView();
   setupParallaxBackgrounds();
   setupClipReveal();
+  setupIntroLogoMorph();
 }
 
 if (document.readyState === 'loading') {

@@ -106,6 +106,10 @@ body[data-theme='ui-dark'] .header--scrolled {
 }
 
 .intro__glyph {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(8rem, 28vw, 22rem);
@@ -113,10 +117,23 @@ body[data-theme='ui-dark'] .header--scrolled {
   letter-spacing: -0.04em;
   color: var(--navy-deep);
   text-align: center;
+  z-index: 110;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
 }
 
 .intro__glyph .accent {
   color: var(--vector-teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__glyph {
+    position: relative;
+    top: auto;
+    left: auto;
+    translate: none;
+  }
 }
 
 .intro__sub {
