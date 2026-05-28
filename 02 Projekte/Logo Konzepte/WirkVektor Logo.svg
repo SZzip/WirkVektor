@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="WirkVektor — KI in Wirkung übersetzen.">
+  <title>WirkVektor</title>
+  <desc>WirkVektor Logo: W-Monogramm mit aufsteigendem Vektor-Pfeil, Wortmarke und Claim.</desc>
+
+  <!-- Symbol: W mit Vektor-Pfeil -->
+  <g>
+    <!-- Linke V-Hälfte des W (Navy Deep) -->
+    <path d="M 14 25 L 30 25 L 38 72 L 46 25 L 62 25 L 38 110 Z" fill="#0F172A"/>
+    <!-- Rechte V-Hälfte des W (Navy Deep) -->
+    <path d="M 62 25 L 78 25 L 86 72 L 94 25 L 110 25 L 86 110 Z" fill="#0F172A"/>
+
+    <!-- Vektor-Pfeil (Vector Teal) — Schaft + Pfeilspitze als ein Pfad -->
+    <path d="M 67 102 L 89 16 L 81 14 L 96 2 L 102 22 L 95 20 L 73 104 Z" fill="#0D9488"/>
+  </g>
+
+  <!-- Wortmarke -->
+  <text x="135" y="78" font-family="'Hanken Grotesk', 'Inter', system-ui, sans-serif" font-weight="700" font-size="48" letter-spacing="-1.1" fill="#0F172A">WirkVektor</text>
+
+  <!-- Claim -->
+  <text x="137" y="104" font-family="'Inter', system-ui, sans-serif" font-weight="400" font-size="15" letter-spacing="0.2" fill="#475569">KI in Wirkung übersetzen.</text>
+</svg>
