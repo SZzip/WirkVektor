@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="600" height="220">
+  <rect width="600" height="220" fill="#F7F9FB"/>
+  <!-- Punkt = Ursprung (Beratung). Ausgehender Vektor + zwei konzentrische Bögen = Wirkung breitet sich gerichtet aus. -->
+  <g transform="translate(110 110)">
+    <!-- Halbkreise als Wirkungswellen, geöffnet nach rechts -->
+    <path d="M0 -70 A70 70 0 0 1 0 70" fill="none" stroke="#475569" stroke-width="3"/>
+    <path d="M0 -45 A45 45 0 0 1 0 45" fill="none" stroke="#475569" stroke-width="3"/>
+    <!-- Ursprungspunkt -->
+    <circle r="8" fill="#0F172A"/>
+    <!-- Gerichteter Vektor -->
+    <line x1="0" y1="0" x2="95" y2="0" stroke="#0D9488" stroke-width="8" stroke-linecap="square"/>
+    <path d="M105 0 L85 -10 L85 10 Z" fill="#0D9488"/>
+  </g>
+  <g transform="translate(230 130)">
+    <text font-family="Hanken Grotesk, Inter, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#0F172A" letter-spacing="-1">WirkVektor</text>
+    <text y="26" font-family="Inter, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#475569" letter-spacing="2">VON DER IDEE ZUR WIRKUNG</text>
+  </g>
+</svg>
