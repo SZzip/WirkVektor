@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1541b746f8524225",
+        "id": "e898fe43661f1c3e",
         "type": "tabs",
         "children": [
           {
-            "id": "7100d69dc0bc821f",
+            "id": "a635fd15f6989e0b",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -172,9 +172,43 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7100d69dc0bc821f",
+  "active": "a635fd15f6989e0b",
   "lastOpenFiles": [
-    "WirkVektor.md",
-    "CLAUDE.md"
+    "02 Projekte/WebSite aufbauen/CLAUDE.md",
+    "02 Projekte/WebSite aufbauen/CLAUDE",
+    "02 Projekte/WebSite aufbauen/Website aufbauen.md",
+    "02 Projekte/WebSite aufbauen",
+    "DESIGN.md",
+    "04 Ressourcen/RAG-Architekturen/RAG-Architekturen.md",
+    "04 Ressourcen/Prompt Engineering/Prompt Engineering.md",
+    "04 Ressourcen/Microsoft Copilot/Microsoft Copilot.md",
+    "04 Ressourcen/LinkedIn-Marketing/LinkedIn-Marketing.md",
+    "04 Ressourcen/ISO 27001/ISO 27001.md",
+    "04 Ressourcen/EU AI Act/EU AI Act.md",
+    "04 Ressourcen/Beratungsmethodik/Beratungsmethodik.md",
+    "03 Bereiche/Weiterbildung/Weiterbildung.md",
+    "03 Bereiche/Partnernetzwerk/Partnernetzwerk.md",
+    "03 Bereiche/Kundenbetreuung/Kundenbetreuung.md",
+    "03 Bereiche/Gesundheit/Gesundheit.md",
+    "03 Bereiche/Content und Marketing/Content und Marketing.md",
+    "03 Bereiche/Buchhaltung und Finanzen/Buchhaltung und Finanzen.md",
+    "03 Bereiche/Akquise und Vertrieb/Akquise und Vertrieb.md",
+    "02 Projekte/Mitarbeiterschulung erstellen.md",
+    "02 Projekte/Kundenschulungen erstellen.md",
+    "02 Projekte/Kundenpräsentationen erstellen.md",
+    "02 Projekte/KI-Beratungsworkflow erstellen.md",
+    "02 Projekte/Erstes Beratungsmandat akquirieren.md",
+    "01 Inbox/Brain Dump.md",
+    "00 Kontext/Über mich.md",
+    "00 Kontext/Schreibstil.md",
+    "00 Kontext/ICP.md",
+    "04 Ressourcen/RAG-Architekturen",
+    "04 Ressourcen/Prompt Engineering",
+    "04 Ressourcen/Microsoft Copilot",
+    "04 Ressourcen/LinkedIn-Marketing",
+    "04 Ressourcen/ISO 27001",
+    "04 Ressourcen/EU AI Act",
+    "04 Ressourcen/Beratungsmethodik",
+    "04 Ressourcen"
   ]
 }
