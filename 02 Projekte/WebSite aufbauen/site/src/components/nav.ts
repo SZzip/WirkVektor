@@ -4,12 +4,8 @@ export function setupNav(): void {
   const header = document.querySelector<HTMLElement>('[data-header]');
   if (!header) return;
 
-  let lastY = window.scrollY;
   const onScroll = (): void => {
-    const y = window.scrollY;
-    header.classList.toggle('header--scrolled', y > 24);
-    header.classList.toggle('header--hidden', y > lastY && y > 200);
-    lastY = y;
+    header.classList.toggle('header--scrolled', window.scrollY > 24);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
