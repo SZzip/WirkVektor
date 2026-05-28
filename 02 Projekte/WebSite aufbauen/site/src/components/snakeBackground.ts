@@ -9,7 +9,7 @@ const TILE_DEPTH = 0.374;
 
 // Plättchen sind aufrecht (90°-Drehung an kurzer Kante); Abstand entlang
 // der Helix entspricht der Dicke des Plättchens.
-const TILE_SPACING = TILE_THICKNESS * 2;
+const TILE_SPACING = TILE_THICKNESS * 8;
 
 // DNA-Helix-Parameter
 const HELIX_LENGTH = 16;
