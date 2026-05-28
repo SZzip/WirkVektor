@@ -31,7 +31,7 @@ Das Unternehmen verbindet strategische KI-Beratung mit Governance, Informationss
 
 Der zentrale Markenkern lautet:
 
-## **KI in Wirkung übersetzen.**
+## **Ihr Vektor zur wirkungsvollen KI.**
 
 WirkVektor hilft Unternehmen dabei, geeignete KI-Anwendungsfälle zu identifizieren, Risiken zu bewerten, Governance-Strukturen aufzubauen, Mitarbeitende zu befähigen und KI-Lösungen kontrolliert in den produktiven Betrieb zu überführen.
 
@@ -533,9 +533,9 @@ Besser sind klare, belastbare Aussagen wie:
 
 ## Hauptclaim
 
-# **KI in Wirkung übersetzen.**
+# **Ihr Vektor zur wirkungsvollen KI.**
 
-Dieser Claim ist kurz, merkfähig und passt direkt zum Namen WirkVektor. Er bringt auf den Punkt, dass KI nicht nur eingeführt, sondern in messbaren Nutzen verwandelt werden soll.
+Dieser Claim ist kurz, merkfähig und greift den Namen WirkVektor direkt auf. Er positioniert WirkVektor als Richtungsgeber und Partner auf dem Weg zu KI, die im Unternehmen wirkt.
 
 ## Alternative Claims
 
@@ -741,7 +741,7 @@ Die stärkste Differenzierung liegt in der Verbindung von drei Elementen:
 
 Damit lautet die zentrale Marktposition:
 
-# **WirkVektor — KI in Wirkung übersetzen.**
+# **WirkVektor — Ihr Vektor zur wirkungsvollen KI.**
 
 Oder ausführlicher:
 

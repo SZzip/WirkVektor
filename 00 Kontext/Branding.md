@@ -16,7 +16,7 @@ Bedeutung:
 
 ## Claim
 
-*KI in Wirkung übersetzen.*
+*Ihr Vektor zur wirkungsvollen KI.*
 
 ## Markenwerte
 
