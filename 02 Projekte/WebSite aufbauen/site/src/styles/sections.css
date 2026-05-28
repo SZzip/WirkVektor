@@ -116,8 +116,13 @@ body[data-theme='ui-dark'] .header--scrolled {
 
 .intro__spiral-tile {
   opacity: 0;
-  animation: intro-spiral-tile-in 500ms var(--ease-out) forwards;
-  animation-delay: calc(var(--i) * 30ms);
+  animation: intro-spiral-tile-in 600ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 18ms);
+}
+
+.intro__spiral-fan {
+  transform-origin: 0 0;
+  animation: intro-spiral-fan-spin 90s linear infinite;
 }
 
 @keyframes intro-spiral-tile-in {
@@ -129,9 +134,18 @@ body[data-theme='ui-dark'] .header--scrolled {
   }
 }
 
+@keyframes intro-spiral-fan-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro__spiral-tile {
     opacity: 1;
+    animation: none;
+  }
+  .intro__spiral-fan {
     animation: none;
   }
 }
