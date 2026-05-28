@@ -12,6 +12,15 @@ projekt: "[[Website aufbauen]]"
 
 OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind als statische Website unter `site/` umgesetzt, Texte und Headlines wörtlich übernommen, Designsystem nach [[DESIGN]] (Navy Deep, Vector Teal, Hanken Grotesk + Inter). Build und Tests sind grün, der Code liegt auf Branch `claude/website-project-folder-Qh7Tz` und im Draft-PR #5.
 
+**Deployment-Artefakte vorbereitet** (Branch `claude/website-project-folder-X5hDf`):
+
+- `site/public/.htaccess` mit HTTPS-Redirect, www-Redirect, gzip, Cache-Header und Security-Header. Wird durch Vite automatisch in `dist/.htaccess` kopiert.
+- `site/deploy.sh` — lokales Bash-Skript für `lftp`-Mirror nach Hetzner. Build, Test, Source-Maps entfernen, Spiegel mit `--delete`.
+- `site/.env.deploy.example` — Vorlage für Zugangsdaten. `.env.deploy` ist in `.gitignore`.
+- `site/DEPLOY.md` — Schritt-für-Schritt-Anleitung.
+
+Der finale Upload aus dieser Cloud-Session bleibt durch die Network-Policy gesperrt (Port 22 dichtgemacht — bestätigt durch SFTP-Connect-Test). Sebastian führt `./deploy.sh` lokal aus.
+
 ---
 
 ## Erledigt
@@ -95,6 +104,7 @@ OnePager-Scaffold steht. Allen 11 Sektionen aus [[Inhaltskonzept OnePager]] sind
 - [ ] HTTPS via Let's Encrypt im KonsoleH aktivieren (1-Klick)
 - [ ] Optionale `.htaccess` für gzip, Cache-Header und HTTPS-Redirect anlegen
 - [ ] Domain `wirkvektor.de` mit der Hetzner-Webhosting-Instanz verbinden (Nameserver oder A-Records)
+- [ ] Webroot-Pfad im KonsoleH prüfen und in `.env.deploy` als `SFTP_REMOTE_DIR` setzen (`/public_html` ist nur Vermutung)
 
 ### Echte Assets (laut [[Asset-Liste]] Phase 2 und 3)
 - [ ] Sebastian Schucht — professionelles Portrait (4:5, neutral, 1000×1250)
