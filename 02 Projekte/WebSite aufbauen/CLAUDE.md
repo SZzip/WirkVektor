@@ -122,7 +122,7 @@ Shape: 4px Button-Radius, 8px Card-Radius. Keine starken Schatten — Tonal Laye
 
 ## Content-Pipeline
 
-Modulare Content-Blöcke (Carousels, Role-Cards, Outcomes, Contact-Infos, Values, Trust-Strip) liegen in `src/types/content.ts` als typisiertes Object mit Zod-Schema und werden zur Laufzeit in `src/render.ts` ins DOM gerendert.
+Modulare Content-Blöcke (Carousels, Role-Cards, Outcomes, Contact-Infos, Values) liegen in `src/types/content.ts` als typisiertes Object mit Zod-Schema und werden zur Laufzeit in `src/render.ts` ins DOM gerendert.
 
 - Änderung von Slide-Texten, Outcomes, Role-Cards → `content.ts` editieren.
 - Layout-Änderung → `index.html` + `styles/sections.css`.
