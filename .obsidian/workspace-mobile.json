@@ -11,10 +11,12 @@
             "id": "5f15b7e2f4497248",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Neuer Tab"
+              "type": "image",
+              "state": {
+                "file": "02 Projekte/Logo Konzepte/WirkVektor Logo.svg"
+              },
+              "icon": "lucide-image",
+              "title": "WirkVektor Logo"
             }
           }
         ]
@@ -174,6 +176,10 @@
   },
   "active": "5f15b7e2f4497248",
   "lastOpenFiles": [
+    "02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
+    "/02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
+    "02 Projekte/Logo Konzepte",
+    "/02 Projekte/Logo Konzepte",
     "02 Projekte/Logo",
     "02 Projekte/Logo Konzepte/05 Impact-Linie.svg",
     "02 Projekte/Logo Konzepte/04 Kompass-Vektor.svg",
@@ -191,14 +197,10 @@
     "/02 Projekte/Kundenerstkontakt Präsentation",
     "02 Projekte/WebSite aufbauen/site/vite.config.ts",
     "02 Projekte/WebSite aufbauen/site/tsconfig.json",
-    "02 Projekte/WebSite aufbauen/site/tests/scroll.test.ts",
-    "02 Projekte/WebSite aufbauen/site/tests/content.test.ts",
-    "02 Projekte/WebSite aufbauen/site/src/types/content.ts",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-workshop.svg",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-whiteboard.svg",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-training.svg",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-portrait.svg",
-    "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-mockup-usecase.svg",
     "02 Projekte/WebSite aufbauen/site/DEPLOY.md",
     "02 Projekte/WebSite aufbauen/PROGRESS.md",
     "/02 Projekte/WebSite aufbauen/site/DEPLOY.md",
