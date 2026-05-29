@@ -201,45 +201,47 @@
 
           <div class="hebel__visuals">
             <div class="hebel__visual" data-clip-reveal>
-              <svg viewBox="0 0 1500 1500" preserveAspectRatio="xMidYMid slice" aria-label="Whiteboard-Detail">
-                <rect width="1500" height="1500" fill="#F7F9FB"/>
-                <rect x="40" y="40" width="1420" height="1420" fill="#FFFFFF" stroke="#E2E8F0"/>
-                <g stroke="#0F172A" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7">
-                  <rect x="200" y="300" width="280" height="160" rx="4"/>
-                  <rect x="610" y="300" width="280" height="160" rx="4"/>
-                  <rect x="1020" y="300" width="280" height="160" rx="4"/>
-                  <path d="M480 380 L610 380"/><path d="M890 380 L1020 380"/>
-                  <rect x="200" y="700" width="280" height="160" rx="4"/>
-                  <rect x="610" y="700" width="280" height="160" rx="4"/>
-                  <rect x="1020" y="700" width="280" height="160" rx="4"/>
-                  <path d="M480 780 L610 780"/><path d="M890 780 L1020 780"/>
-                  <path d="M340 460 L340 700" stroke-dasharray="6 6"/>
-                  <path d="M750 460 L750 700" stroke-dasharray="6 6"/>
-                  <path d="M1160 460 L1160 700" stroke-dasharray="6 6"/>
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="hebel-g-title hebel-g-desc">
+                <title id="hebel-g-title">Der Hebel zur Wirkung</title>
+                <desc id="hebel-g-desc">Strategie, Sicherheit und Umsetzung wirken gebündelt als Hebel und werden über einen Drehpunkt in große, messbare Wirkung übersetzt.</desc>
+                <defs>
+                  <marker id="hebel-head-navy" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M1 1 L11 6 L1 11" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                  <marker id="hebel-head-teal" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M1 1 L11 6 L1 11" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+
+                <rect width="1000" height="1000" fill="#FFFFFF"/>
+
+                <g stroke="#0F172A" stroke-width="1" opacity="0.05" fill="none">
+                  <path d="M125 0V1000 M250 0V1000 M375 0V1000 M500 0V1000 M625 0V1000 M750 0V1000 M875 0V1000"/>
+                  <path d="M0 125H1000 M0 250H1000 M0 375H1000 M0 500H1000 M0 625H1000 M0 750H1000 M0 875H1000"/>
                 </g>
-                <g stroke="#0D9488" stroke-width="3" fill="none">
-                  <circle cx="750" cy="1180" r="60"/>
-                  <path d="M750 1240 L750 1340" stroke-linecap="round"/>
-                  <path d="M730 1320 L750 1340 L770 1320" stroke-linecap="round"/>
+
+                <path d="M110 700 H890" stroke="#0F172A" stroke-width="2" opacity="0.25" stroke-linecap="round" fill="none"/>
+
+                <path d="M500 520 L548 700 L452 700 Z" fill="#0F172A" fill-opacity="0.08" stroke="#0F172A" stroke-width="2.5" stroke-linejoin="round"/>
+
+                <path d="M175 610 L820 432" stroke="#0F172A" stroke-width="11" fill="none" stroke-linecap="round"/>
+                <circle cx="500" cy="520" r="9" fill="#0F172A"/>
+
+                <g fill="none">
+                  <rect x="110" y="250" width="250" height="48" rx="8" stroke="#0F172A" stroke-width="2.5"/>
+                  <rect x="110" y="316" width="250" height="48" rx="8" stroke="#0F172A" stroke-width="2.5"/>
+                  <rect x="110" y="382" width="250" height="48" rx="8" stroke="#0F172A" stroke-width="2.5"/>
                 </g>
-              </svg>
-            </div>
-            <div class="hebel__visual" data-clip-reveal>
-              <svg viewBox="0 0 1500 1500" preserveAspectRatio="xMidYMid slice" aria-label="Workshop-Hände">
-                <rect width="1500" height="1500" fill="#0F172A"/>
-                <g stroke="#22D3EE" stroke-width="1" fill="none" opacity="0.3">
-                  <path d="M100 800 L1400 800"/>
-                  <path d="M100 900 L1400 900"/>
-                  <path d="M100 1000 L1400 1000"/>
+                <g font-family="Inter, sans-serif" font-size="27" font-weight="600" fill="#0F172A" text-anchor="middle">
+                  <text x="235" y="283">Strategie</text>
+                  <text x="235" y="349">Sicherheit</text>
+                  <text x="235" y="415">Umsetzung</text>
                 </g>
-                <g stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.7">
-                  <rect x="380" y="600" width="220" height="140" rx="4"/>
-                  <rect x="640" y="600" width="220" height="140" rx="4"/>
-                  <rect x="900" y="600" width="220" height="140" rx="4"/>
-                  <circle cx="490" cy="670" r="20"/>
-                  <circle cx="750" cy="670" r="20"/>
-                  <circle cx="1010" cy="670" r="20"/>
-                </g>
+                <path d="M235 432 L235 590" stroke="#0F172A" stroke-width="5" stroke-linecap="round" fill="none" marker-end="url(#hebel-head-navy)"/>
+
+                <circle cx="805" cy="437" r="9" fill="#0D9488"/>
+                <path d="M805 437 L805 210" stroke="#0D9488" stroke-width="10" stroke-linecap="round" fill="none" marker-end="url(#hebel-head-teal)"/>
+                <text x="805" y="160" font-family="Hanken Grotesk, Inter, sans-serif" font-size="46" font-weight="700" fill="#0D9488" text-anchor="middle" letter-spacing="-0.5">Wirkung</text>
               </svg>
             </div>
           </div>
