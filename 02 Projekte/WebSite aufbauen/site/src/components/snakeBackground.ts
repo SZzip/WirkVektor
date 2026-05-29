@@ -9,7 +9,7 @@ const TILE_DEPTH = 0.374;
 
 // Plättchen sind aufrecht (90°-Drehung an kurzer Kante); Abstand entlang
 // der Helix entspricht der Dicke des Plättchens.
-const TILE_SPACING = TILE_THICKNESS * 8;
+const TILE_SPACING = TILE_THICKNESS * 4;
 
 // DNA-Helix-Parameter
 const HELIX_LENGTH = 16;
@@ -96,7 +96,7 @@ export async function setupSnakeBackground(): Promise<void> {
   const tileOrient = new THREE.Object3D();
 
   function placeTiles(time: number): void {
-    const flow = (time * 0.03) % 1;
+    const flow = (time * 0.015) % 1;
     for (let i = 0; i < tileCount; i++) {
       const t = (((i / tileCount + flow) % 1) + 1) % 1;
       const u = 0.001 + t * 0.998;
@@ -111,7 +111,7 @@ export async function setupSnakeBackground(): Promise<void> {
       instancedMesh.setMatrixAt(i, tmpMatrix);
     }
     instancedMesh.instanceMatrix.needsUpdate = true;
-    helixGroup.rotation.x = time * 0.108;
+    helixGroup.rotation.x = time * 0.054;
   }
 
   function resize(): void {
