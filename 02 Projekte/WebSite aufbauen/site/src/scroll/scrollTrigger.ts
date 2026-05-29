@@ -63,13 +63,19 @@ export function setupIntroLogoMorph(): void {
       const targetMark = headerLogo.querySelector<HTMLElement>('.header__logo-mark');
       const targetEl: HTMLElement = targetMark ?? headerLogo;
       const targetRect = targetEl.getBoundingClientRect();
-      const glyphRect = glyph.getBoundingClientRect();
+      // offsetHeight ist die Layout-Höhe und damit unabhängig vom aktuellen
+      // GSAP-Transform (scale). getBoundingClientRect() würde die bereits
+      // skalierte Höhe liefern; ein Refresh (Resize, load, ScrollTrigger) im
+      // herunterskalierten Zustand erzeugte dann einen zu großen Faktor — das
+      // Logo startete beim Hochscrollen in falscher (fast voller) Größe statt
+      // in App-Bar-Größe.
+      const glyphHeight = glyph.offsetHeight;
 
-      if (glyphRect.height === 0 || targetRect.height === 0) {
+      if (glyphHeight === 0 || targetRect.height === 0) {
         return { x: 0, y: 0, scale: 1 };
       }
 
-      const scale = targetRect.height / glyphRect.height;
+      const scale = targetRect.height / glyphHeight;
       const targetCenterX = targetRect.left + targetRect.width / 2;
       const targetCenterY = targetRect.top + targetRect.height / 2;
 
