@@ -35,6 +35,7 @@ export async function setupSnakeBackground(): Promise<void> {
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xf7f9fb, 6, 18);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(0, 0.6, 11);
   camera.lookAt(0, 0, 0);
@@ -74,7 +75,10 @@ export async function setupSnakeBackground(): Promise<void> {
   const instancedMesh = new THREE.InstancedMesh(tileGeometry, tileMaterial, tileCount);
   const helixGroup = new THREE.Group();
   helixGroup.add(instancedMesh);
-  scene.add(helixGroup);
+  const helixWrapper = new THREE.Group();
+  helixWrapper.rotation.z = THREE.MathUtils.degToRad(35);
+  helixWrapper.add(helixGroup);
+  scene.add(helixWrapper);
 
   // Per-Instance-Farben (5 Akzente an gleichmäßig verteilten Stellen)
   const baseColor = new THREE.Color(BASE_COLOR);
