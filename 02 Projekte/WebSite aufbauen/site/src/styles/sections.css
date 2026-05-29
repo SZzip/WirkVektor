@@ -126,21 +126,26 @@ body[data-theme='ui-dark'] .header--scrolled {
   position: fixed;
   top: 50%;
   left: 50%;
-  translate: -50% -50%;
+  transform: translate(-50%, -50%);
+  z-index: 110;
+  pointer-events: none;
+  width: max-content;
+  text-align: center;
+}
+
+.intro__glyph-inner {
+  display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(8rem, 28vw, 22rem);
   line-height: 0.9;
   letter-spacing: -0.04em;
   color: var(--navy-deep);
-  text-align: center;
-  z-index: 110;
-  pointer-events: none;
   transform-origin: 50% 50%;
   will-change: transform, opacity;
 }
 
-.intro__glyph .accent {
+.intro__glyph-inner .accent {
   color: var(--vector-teal);
 }
 
@@ -149,7 +154,7 @@ body[data-theme='ui-dark'] .header--scrolled {
     position: relative;
     top: auto;
     left: auto;
-    translate: none;
+    transform: none;
   }
 }
 
