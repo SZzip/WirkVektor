@@ -141,8 +141,8 @@ export function setupIntroCaptionFade(): void {
   if (!caption || !section) return;
 
   // Wortmarke + Claim bleiben fix zentriert (CSS) und verblassen beim Scrollen
-  // durch die Intro-Sektion von voll sichtbar auf unsichtbar — vollständig
-  // ausgeblendet, sobald der nächste Abschnitt den Viewport erreicht.
+  // durch die Intro-Sektion von voll sichtbar auf unsichtbar. Der Fade ist auf
+  // das erste Drittel der Sektion verkürzt → 3x schnelleres Ausblenden.
   gsap.fromTo(
     caption,
     { opacity: 1 },
@@ -152,7 +152,7 @@ export function setupIntroCaptionFade(): void {
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: 'bottom top',
+        end: 'top+=33.333% top',
         scrub: true,
       },
     }
