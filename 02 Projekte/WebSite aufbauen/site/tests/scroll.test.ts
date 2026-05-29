@@ -49,6 +49,14 @@ describe('scroll modules', () => {
     expect(headerLogo?.style.opacity).toBe('');
   });
 
+  it('setupIntroClaimFade is a no-op when reduced motion is set', async () => {
+    document.body.innerHTML = `
+      <section class="intro"><p class="intro__claim" data-intro-claim>Claim</p></section>
+    `;
+    const { setupIntroClaimFade } = await import('../src/scroll/scrollTrigger');
+    expect(() => setupIntroClaimFade()).not.toThrow();
+  });
+
   it('setupSnakeBackground bails gracefully when WebGL is unavailable (jsdom)', async () => {
     document.body.innerHTML = '<div data-spiral-bg></div>';
     const { setupSnakeBackground } = await import('../src/components/snakeBackground');

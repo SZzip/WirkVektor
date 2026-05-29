@@ -131,6 +131,13 @@ body[data-theme='ui-dark'] .header--scrolled {
   }
 }
 
+.intro__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
 .intro__glyph {
   position: fixed;
   top: 50%;
@@ -150,6 +157,27 @@ body[data-theme='ui-dark'] .header--scrolled {
   will-change: transform, opacity;
 }
 
+/* Claim sitzt fix unter dem zentrierten Logo und verblasst beim Scrollen.
+   Der vertikale Offset entspricht der halben Logo-Höhe plus Abstand. */
+.intro__claim {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(clamp(8rem, 28vw, 22rem) / 2 + var(--space-8)));
+  z-index: 105;
+  margin: 0;
+  max-width: min(90vw, 32rem);
+  text-align: center;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.125rem, 1.4vw + 0.75rem, 1.75rem);
+  line-height: var(--lh-headline);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg);
+  will-change: opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro__glyph {
     position: relative;
@@ -157,18 +185,13 @@ body[data-theme='ui-dark'] .header--scrolled {
     left: auto;
     transform: none;
   }
-}
-
-.intro__sub {
-  position: absolute;
-  bottom: var(--space-12);
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: var(--fs-label-caps);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
-  color: var(--fg-muted);
+  .intro__claim {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 /* ---------- Section 1 — Hero ---------- */

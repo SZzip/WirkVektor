@@ -132,6 +132,32 @@ export function setupIntroLogoMorph(): void {
   }
 }
 
+export function setupIntroClaimFade(): void {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  const claim = document.querySelector<HTMLElement>('[data-intro-claim]');
+  const section = document.querySelector<HTMLElement>('.intro');
+  if (!claim || !section) return;
+
+  // Claim bleibt fix zentriert (CSS) und verblasst beim Scrollen durch die
+  // Intro-Sektion von voll sichtbar auf unsichtbar.
+  gsap.fromTo(
+    claim,
+    { opacity: 1 },
+    {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    }
+  );
+}
+
 export function setupClipReveal(): void {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
