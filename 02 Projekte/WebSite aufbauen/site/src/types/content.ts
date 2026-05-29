@@ -107,7 +107,7 @@ export const content: Content = ContentSchema.parse({
   ],
   befaehigungSlides: [
     {
-      eyebrow: 'AI-LITERACY-SCHULUNG',
+      eyebrow: 'KI-KOMPETENZ-SCHULUNG',
       headline: 'Sicher mit KI arbeiten',
       body: 'Praxisorientierte Schulung für Mitarbeitende, 1 bis 2 Tage.',
     },
