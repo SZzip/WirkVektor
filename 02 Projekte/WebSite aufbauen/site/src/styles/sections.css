@@ -209,7 +209,6 @@ body[data-theme='ui-dark'] .header--scrolled {
 }
 
 .hero__subline {
-  max-width: 38ch;
   margin-top: var(--space-6);
 }
 
@@ -226,7 +225,6 @@ body[data-theme='ui-dark'] .header--scrolled {
 }
 
 .hero__visual svg {
-  max-width: 520px;
   width: 100%;
   height: auto;
 }
@@ -715,7 +713,6 @@ body[data-theme='ui-dark'] .about__quote {
 }
 
 .closing__sub {
-  max-width: 50ch;
   margin: 0 auto;
   color: var(--fg-muted);
 }
@@ -833,7 +830,6 @@ body[data-theme='ui-dark'] .about__quote {
   font-weight: 600;
   color: var(--white);
   margin-top: var(--space-4);
-  max-width: 28ch;
   line-height: 1.3;
 }
 
