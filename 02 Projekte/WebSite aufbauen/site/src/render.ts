@@ -9,16 +9,16 @@ function escapeHtml(value: string): string {
     .replace(/'/g, '&#39;');
 }
 
-function renderMethodikCarousel(): void {
-  const track = document.querySelector<HTMLElement>('[data-render="methodik-track"]');
-  if (!track) return;
-  track.innerHTML = content.methodikSlides
+function renderMethodikSteps(): void {
+  const grid = document.querySelector<HTMLElement>('[data-render="methodik-steps"]');
+  if (!grid) return;
+  grid.innerHTML = content.methodikPhases
     .map(
-      (slide, i) => `
-      <article class="carousel__slide" data-carousel-slide aria-hidden="${i !== 0}">
-        <p class="eyebrow">${escapeHtml(slide.eyebrow)}</p>
-        <h3 class="headline" style="margin-top: var(--space-4);">${escapeHtml(slide.headline)}</h3>
-        <p class="body-lg" style="margin-top: var(--space-6);">${escapeHtml(slide.body)}</p>
+      (phase) => `
+      <article class="card methodik-step">
+        <span class="methodik-step__num" aria-hidden="true">${escapeHtml(phase.step)}</span>
+        <h3 class="methodik-step__title">${escapeHtml(phase.title)}</h3>
+        <p class="methodik-step__body">${escapeHtml(phase.body)}</p>
       </article>`
     )
     .join('');
@@ -97,7 +97,7 @@ function renderValues(): void {
 }
 
 export function renderContent(): void {
-  renderMethodikCarousel();
+  renderMethodikSteps();
   renderRoles();
   renderBefaehigungCarousel();
   renderOutcomes();

@@ -7,6 +7,13 @@ const CarouselSlideSchema = z.object({
 });
 export type CarouselSlide = z.infer<typeof CarouselSlideSchema>;
 
+const MethodikPhaseSchema = z.object({
+  step: z.string().min(1),
+  title: z.string().min(1),
+  body: z.string().min(1),
+});
+export type MethodikPhase = z.infer<typeof MethodikPhaseSchema>;
+
 const RoleCardSchema = z.object({
   tag: z.string().min(1),
   title: z.string().min(1),
@@ -28,7 +35,7 @@ const ContactInfoSchema = z.object({
 export type ContactInfo = z.infer<typeof ContactInfoSchema>;
 
 export const ContentSchema = z.object({
-  methodikSlides: z.array(CarouselSlideSchema).length(2),
+  methodikPhases: z.array(MethodikPhaseSchema).length(6),
   zielgruppeRoles: z.array(RoleCardSchema).length(4),
   befaehigungSlides: z.array(CarouselSlideSchema).length(5),
   outcomes: z.array(OutcomeSchema).length(5),
@@ -44,16 +51,36 @@ export const content: Content = ContentSchema.parse({
     'Wirkung vor Technologie',
     'Befähigung statt Abhängigkeit',
   ],
-  methodikSlides: [
+  methodikPhases: [
     {
-      eyebrow: '1 / 2',
-      headline: 'Verstehen, Bewerten, Priorisieren',
-      body: 'Drei Phasen, in denen aus Fragen Klarheit wird. Wir analysieren Prozesse, Daten und IT-Landschaft. Wir bewerten Use Cases nach Nutzen, Aufwand, Risiko und Compliance. Wir priorisieren, was wirtschaftlich und sicher umsetzbar ist.',
+      step: '01',
+      title: 'Verstehen',
+      body: 'Wir analysieren Geschäftsmodell, Prozesse, Datenlage und IT-Landschaft. So entsteht ein realistisches Bild der Ausgangslage.',
     },
     {
-      eyebrow: '2 / 2',
-      headline: 'Absichern, Umsetzen, Messen',
-      body: 'Die zweite Hälfte des Wegs. Wir klären Governance, Rollen und Datenzugriffe. Wir begleiten Pilotierung und Rollout. Und wir messen die Wirkung in Zeit, Qualität und Akzeptanz.',
+      step: '02',
+      title: 'Bewerten',
+      body: 'Wir prüfen mögliche KI-Anwendungsfälle nach Nutzen, Aufwand, Datenlage, Risiko und Compliance.',
+    },
+    {
+      step: '03',
+      title: 'Priorisieren',
+      body: 'Wir wählen die Vorhaben aus, die wirtschaftlich, realistisch und kontrollierbar sind.',
+    },
+    {
+      step: '04',
+      title: 'Absichern',
+      body: 'Wir klären Governance, Rollen, Datenzugriffe und Risiken, bevor KI in den produktiven Betrieb geht.',
+    },
+    {
+      step: '05',
+      title: 'Umsetzen',
+      body: 'Wir begleiten Pilotierung, Toolauswahl, Prozessintegration, Schulung und Produktivsetzung.',
+    },
+    {
+      step: '06',
+      title: 'Messen',
+      body: 'Nach der Einführung prüfen wir den Nutzen an klaren Kriterien wie Zeitersparnis, Qualität und Akzeptanz und verbessern weiter.',
     },
   ],
   zielgruppeRoles: [
