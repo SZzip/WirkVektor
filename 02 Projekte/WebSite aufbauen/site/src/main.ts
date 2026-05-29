@@ -4,7 +4,7 @@ import { initLenis } from './scroll/lenis';
 import {
   registerScrollTrigger,
   setupClipReveal,
-  setupIntroClaimFade,
+  setupIntroCaptionFade,
   setupIntroLogoMorph,
   setupParallaxBackgrounds,
 } from './scroll/scrollTrigger';
@@ -33,7 +33,7 @@ function boot(): void {
   setupParallaxBackgrounds();
   setupClipReveal();
   setupIntroLogoMorph();
-  setupIntroClaimFade();
+  setupIntroCaptionFade();
 }
 
 if (document.readyState === 'loading') {
