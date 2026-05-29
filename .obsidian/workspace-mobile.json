@@ -4,19 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "ab7fff865d02f24f",
+        "id": "b13ee23cb54bffee",
         "type": "tabs",
         "children": [
           {
-            "id": "5f15b7e2f4497248",
+            "id": "add87c0b76245605",
             "type": "leaf",
             "state": {
               "type": "image",
               "state": {
-                "file": "02 Projekte/Logo Konzepte/WirkVektor Logo.svg"
+                "file": "05 Anhänge/1000092090.svg"
               },
               "icon": "lucide-image",
-              "title": "WirkVektor Logo"
+              "title": "1000092090"
             }
           }
         ]
@@ -174,9 +174,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5f15b7e2f4497248",
+  "active": "add87c0b76245605",
   "lastOpenFiles": [
+    "05 Anhänge/1000092090.svg",
     "02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
+    "05 Anhänge/file_00000000638c71f49c806763723b8f7e.svg",
     "/02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
     "02 Projekte/Logo Konzepte",
     "/02 Projekte/Logo Konzepte",
@@ -199,8 +201,6 @@
     "02 Projekte/WebSite aufbauen/site/tsconfig.json",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-workshop.svg",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-whiteboard.svg",
-    "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-training.svg",
-    "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-portrait.svg",
     "02 Projekte/WebSite aufbauen/site/DEPLOY.md",
     "02 Projekte/WebSite aufbauen/PROGRESS.md",
     "/02 Projekte/WebSite aufbauen/site/DEPLOY.md",
