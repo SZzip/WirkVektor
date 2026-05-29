@@ -96,14 +96,7 @@ function renderValues(): void {
   list.innerHTML = content.values.map((v) => `<li>${escapeHtml(v)}</li>`).join('');
 }
 
-function renderTrustStrip(): void {
-  const strip = document.querySelector<HTMLElement>('[data-render="trust"]');
-  if (!strip) return;
-  strip.innerHTML = content.trustStrip.map((t) => `<span>${escapeHtml(t)}</span>`).join('');
-}
-
 export function renderContent(): void {
-  renderTrustStrip();
   renderMethodikCarousel();
   renderRoles();
   renderBefaehigungCarousel();

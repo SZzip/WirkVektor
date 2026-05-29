@@ -16,6 +16,7 @@ body {
   line-height: var(--lh-body);
   background: var(--bg);
   color: var(--fg);
+  overflow-x: clip;
   transition: background var(--duration-medium) var(--ease-out),
     color var(--duration-medium) var(--ease-out);
   -webkit-font-smoothing: antialiased;

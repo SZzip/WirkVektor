@@ -34,4 +34,24 @@ describe('scroll modules', () => {
       expect(el.classList.contains('is-revealed')).toBe(true);
     });
   });
+
+  it('setupIntroLogoMorph is a no-op when reduced motion is set', async () => {
+    document.body.innerHTML = `
+      <header><a class="header__logo">
+        <span class="header__logo--full"><svg></svg></span>
+        <span class="header__logo--glyph"><svg></svg></span>
+      </a></header>
+      <section class="intro"><div class="intro__glyph" data-logo-morph>WV</div></section>
+    `;
+    const { setupIntroLogoMorph } = await import('../src/scroll/scrollTrigger');
+    expect(() => setupIntroLogoMorph()).not.toThrow();
+    const headerLogo = document.querySelector<HTMLElement>('.header__logo');
+    expect(headerLogo?.style.opacity).toBe('');
+  });
+
+  it('setupSnakeBackground bails gracefully when WebGL is unavailable (jsdom)', async () => {
+    document.body.innerHTML = '<div data-spiral-bg></div>';
+    const { setupSnakeBackground } = await import('../src/components/snakeBackground');
+    await expect(setupSnakeBackground()).resolves.toBeUndefined();
+  });
 });

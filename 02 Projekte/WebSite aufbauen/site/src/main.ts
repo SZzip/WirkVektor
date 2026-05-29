@@ -4,6 +4,7 @@ import { initLenis } from './scroll/lenis';
 import {
   registerScrollTrigger,
   setupClipReveal,
+  setupIntroLogoMorph,
   setupParallaxBackgrounds,
 } from './scroll/scrollTrigger';
 import { setupRevealOnView } from './scroll/revealOnView';
@@ -13,10 +14,12 @@ import { setupModals } from './components/modal';
 import { setupCarousels } from './components/carousel';
 import { setupBookmarks } from './components/bookmarkList';
 import { setupForms } from './components/contactForm';
+import { setupSnakeBackground } from './components/snakeBackground';
 import { renderContent } from './render';
 
 function boot(): void {
   renderContent();
+  void setupSnakeBackground();
   initLenis();
   registerScrollTrigger();
   setupNav();
@@ -28,6 +31,7 @@ function boot(): void {
   setupRevealOnView();
   setupParallaxBackgrounds();
   setupClipReveal();
+  setupIntroLogoMorph();
 }
 
 if (document.readyState === 'loading') {
