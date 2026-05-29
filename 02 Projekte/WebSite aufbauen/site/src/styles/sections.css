@@ -295,14 +295,7 @@ body[data-theme='ui-dark'] .header--scrolled {
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
-  .hebel__visuals {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hebel__visuals > :nth-child(2) {
-    margin-top: var(--space-12);
-  }
-}
+/* Hebel-Visual: eine einzelne, vollbreite Grafik (kein 2-Spalten-Raster). */
 
 /* ---------- Section 3 — Methodik ---------- */
 .methodik {
