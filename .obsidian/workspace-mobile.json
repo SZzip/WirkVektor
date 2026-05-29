@@ -13,10 +13,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "05 Anhänge/1000092090.svg"
+                "file": "05 Anhänge/WirkVektor Logo.svg"
               },
               "icon": "lucide-image",
-              "title": "1000092090"
+              "title": "WirkVektor Logo"
             }
           }
         ]
@@ -176,13 +176,24 @@
   },
   "active": "add87c0b76245605",
   "lastOpenFiles": [
-    "05 Anhänge/1000092090.svg",
+    "02 Projekte/WebSite aufbauen/site/src/components/snakeBackground.ts",
+    "02 Projekte/WebSite aufbauen/Scroll-Animationen.md",
+    "/02 Projekte/WebSite aufbauen/site/tests/scroll.test.ts",
+    "/02 Projekte/WebSite aufbauen/site/src/styles/sections.css",
+    "/02 Projekte/WebSite aufbauen/site/src/scroll/scrollTrigger.ts",
+    "/02 Projekte/WebSite aufbauen/site/src/scroll",
+    "/02 Projekte/WebSite aufbauen/site/src/main.ts",
+    "/02 Projekte/WebSite aufbauen/site/src/components/snakeBackground.ts",
+    "/02 Projekte/WebSite aufbauen/site/tests/content.test.ts",
+    "/02 Projekte/WebSite aufbauen/site/tests",
+    "/02 Projekte/WebSite aufbauen/site/src/types/content.ts",
+    "/02 Projekte/WebSite aufbauen/site/src/types",
+    "/02 Projekte/WebSite aufbauen/Scroll-Animationen.md",
+    "/02 Projekte/WebSite aufbauen/CLAUDE.md",
+    "05 Anhänge/WirkVektor Logo.svg",
     "02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
     "05 Anhänge/file_00000000638c71f49c806763723b8f7e.svg",
     "/02 Projekte/Logo Konzepte/WirkVektor Logo.svg",
-    "02 Projekte/Logo Konzepte",
-    "/02 Projekte/Logo Konzepte",
-    "02 Projekte/Logo",
     "02 Projekte/Logo Konzepte/05 Impact-Linie.svg",
     "02 Projekte/Logo Konzepte/04 Kompass-Vektor.svg",
     "02 Projekte/Logo Konzepte/03 WV-Monogramm.svg",
@@ -190,22 +201,13 @@
     "02 Projekte/Logo Konzepte/02 Wordmark mit Vektor-Akzent.svg",
     "02 Projekte/Logo Konzepte/01 Vektor-Pfeil.svg",
     "WirkVektor.md",
-    "/02 Projekte/WebSite aufbauen/site/deploy.sh",
-    "02 Projekte/Kundenerstkontakt Präsentation/Präsentation.html",
     "/02 Projekte/Kundenpräsentationen erstellen.md",
-    "/02 Projekte/Kundenerstkontakt Präsentation/Präsentation.html",
     "/02 Projekte/Kundenerstkontakt Präsentation/Kundenerstkontakt Präsentation.md",
-    "02 Projekte/Kundenerstkontakt Präsentation",
-    "/02 Projekte/Kundenerstkontakt Präsentation",
-    "02 Projekte/WebSite aufbauen/site/vite.config.ts",
-    "02 Projekte/WebSite aufbauen/site/tsconfig.json",
     "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-workshop.svg",
-    "02 Projekte/WebSite aufbauen/site/src/assets/placeholder-whiteboard.svg",
     "02 Projekte/WebSite aufbauen/site/DEPLOY.md",
     "02 Projekte/WebSite aufbauen/PROGRESS.md",
     "/02 Projekte/WebSite aufbauen/site/DEPLOY.md",
     "/02 Projekte/WebSite aufbauen/PROGRESS.md",
-    "/02 Projekte/WebSite aufbauen/CLAUDE.md",
     "02 Projekte/Logo Konzepte/Logo Konzepte.md",
     "/02 Projekte/WebSite aufbauen/Website aufbauen.md",
     "/02 Projekte/WebSite aufbauen/Sitemap.md",
@@ -219,8 +221,6 @@
     "04 Ressourcen/RAG-Architekturen/RAG-Architekturen.md",
     "04 Ressourcen/Prompt Engineering/Prompt Engineering.md",
     "04 Ressourcen/Microsoft Copilot/Microsoft Copilot.md",
-    "04 Ressourcen/LinkedIn-Marketing/LinkedIn-Marketing.md",
-    "04 Ressourcen/ISO 27001/ISO 27001.md",
-    "04 Ressourcen/EU AI Act/EU AI Act.md"
+    "04 Ressourcen/LinkedIn-Marketing/LinkedIn-Marketing.md"
   ]
 }
