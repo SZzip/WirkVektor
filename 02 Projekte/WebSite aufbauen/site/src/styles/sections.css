@@ -600,7 +600,7 @@ body[data-theme='ui-light'] .role-card {
 }
 
 /* ---------- Section 7 — Wirkung ---------- */
-.wirkung__mockups {
+.wirkung__stats {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-6);
@@ -608,22 +608,60 @@ body[data-theme='ui-light'] .role-card {
 }
 
 @media (min-width: 768px) {
-  .wirkung__mockups {
+  .wirkung__stats {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.wirkung__mockup {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
+.wirkung-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
-.wirkung__mockup svg {
+.wirkung-stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw + 1rem, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  color: var(--vector-teal);
+}
+
+.wirkung-stat__value-sub {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--fg-muted);
+}
+
+.wirkung-stat__bar {
   width: 100%;
-  height: 100%;
+  height: 8px;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.wirkung-stat__label {
+  color: var(--fg);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body);
+}
+
+.wirkung-stat__source {
+  margin-top: auto;
+  color: var(--fg-subtle);
+  font-size: var(--fs-body-sm);
+}
+
+.wirkung__caveat {
+  margin-top: var(--space-8);
+  max-width: 70ch;
+  color: var(--fg-muted);
 }
 
 .outcome-list {
