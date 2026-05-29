@@ -52,6 +52,9 @@ export function setupIntroLogoMorph(): void {
   const headerLogo = document.querySelector<HTMLElement>('.header__logo');
   if (!glyph || !section || !headerLogo) return;
 
+  // Garantierter Initialzustand: Glyph zentriert (CSS-translate) + voll sichtbar,
+  // Header-Logo unsichtbar bis zum Swap am Section-Ende.
+  gsap.set(glyph, { x: 0, y: 0, scale: 1, opacity: 1 });
   gsap.set(headerLogo, { opacity: 0 });
 
   const computeTarget = (): { x: number; y: number; scale: number } => {
@@ -64,16 +67,10 @@ export function setupIntroLogoMorph(): void {
 
     const styles = window.getComputedStyle(glyph);
     const currentFontSize = parseFloat(styles.fontSize);
-    // Header SVG <text> "WV" font-size 22 (viewBox 32 tall, rendered height 28) → effective ≈ 22 × 28/32 ≈ 19.25
     const targetWvHeightPx = 22 * (28 / 32);
-    // The intro glyph's rendered height ≈ font-size × line-height (0.9) ≈ font-size × 0.9
     const currentWvHeightPx = currentFontSize * 0.9;
     const scale = targetWvHeightPx / currentWvHeightPx;
 
-    // The "WV" text is at the left edge of the header logo span.
-    // Approximate WV-glyph center inside the span:
-    // - SVG height 28px → SVG width (full) = 28 × 160 / 32 = 140px, "WV" occupies the leftmost ≈ 30px
-    // - WV center inside SVG viewBox at x ≈ 15 → in screen px ≈ 15 × 28/32 ≈ 13
     const wvCenterX = targetRect.left + 13;
     const wvCenterY = targetRect.top + targetRect.height / 2;
 
@@ -86,19 +83,24 @@ export function setupIntroLogoMorph(): void {
 
   let target = computeTarget();
 
-  gsap.to(glyph, {
-    x: () => target.x,
-    y: () => target.y,
-    scale: () => target.scale,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: section,
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
+  gsap.fromTo(
+    glyph,
+    { x: 0, y: 0, scale: 1 },
+    {
+      x: () => target.x,
+      y: () => target.y,
+      scale: () => target.scale,
+      ease: 'none',
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
 
   ScrollTrigger.create({
     trigger: section,
