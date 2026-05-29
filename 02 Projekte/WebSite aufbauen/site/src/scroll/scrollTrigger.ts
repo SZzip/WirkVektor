@@ -52,76 +52,84 @@ export function setupIntroLogoMorph(): void {
   const headerLogo = document.querySelector<HTMLElement>('.header__logo');
   if (!glyph || !section || !headerLogo) return;
 
-  // Garantierter Initialzustand: Glyph zentriert (CSS-translate) + voll sichtbar,
-  // Header-Logo unsichtbar bis zum Swap am Section-Ende.
-  gsap.set(glyph, { x: 0, y: 0, scale: 1, opacity: 1 });
-  gsap.set(headerLogo, { opacity: 0 });
+  // Header-Logo initial unsichtbar — über CSS-Klasse statt gsap.set, damit es
+  // unabhängig von der Animation-Initialisierung garantiert greift.
+  headerLogo.classList.add('header__logo--hidden');
 
-  const computeTarget = (): { x: number; y: number; scale: number } => {
-    const targetMark = headerLogo.querySelector<HTMLElement>('.header__logo-mark');
-    const targetEl: HTMLElement = targetMark ?? headerLogo;
-    const targetRect = targetEl.getBoundingClientRect();
-    const glyphRect = glyph.getBoundingClientRect();
+  const init = (): void => {
+    gsap.set(glyph, { x: 0, y: 0, scale: 1, opacity: 1 });
 
-    const scale = targetRect.height / glyphRect.height;
+    const computeTarget = (): { x: number; y: number; scale: number } => {
+      const targetMark = headerLogo.querySelector<HTMLElement>('.header__logo-mark');
+      const targetEl: HTMLElement = targetMark ?? headerLogo;
+      const targetRect = targetEl.getBoundingClientRect();
+      const glyphRect = glyph.getBoundingClientRect();
 
-    const targetCenterX = targetRect.left + targetRect.width / 2;
-    const targetCenterY = targetRect.top + targetRect.height / 2;
+      if (glyphRect.height === 0 || targetRect.height === 0) {
+        return { x: 0, y: 0, scale: 1 };
+      }
 
-    return {
-      x: targetCenterX - window.innerWidth / 2,
-      y: targetCenterY - window.innerHeight / 2,
-      scale,
+      const scale = targetRect.height / glyphRect.height;
+      const targetCenterX = targetRect.left + targetRect.width / 2;
+      const targetCenterY = targetRect.top + targetRect.height / 2;
+
+      return {
+        x: targetCenterX - window.innerWidth / 2,
+        y: targetCenterY - window.innerHeight / 2,
+        scale,
+      };
     };
-  };
 
-  let target = computeTarget();
+    let target = computeTarget();
 
-  gsap.fromTo(
-    glyph,
-    { x: 0, y: 0, scale: 1 },
-    {
-      x: () => target.x,
-      y: () => target.y,
-      scale: () => target.scale,
-      ease: 'none',
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-        invalidateOnRefresh: true,
+    gsap.fromTo(
+      glyph,
+      { x: 0, y: 0, scale: 1 },
+      {
+        x: () => target.x,
+        y: () => target.y,
+        scale: () => target.scale,
+        ease: 'none',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'bottom top',
+      onEnter: () => {
+        gsap.set(glyph, { opacity: 0 });
+        headerLogo.classList.remove('header__logo--hidden');
       },
-    }
-  );
+      onLeaveBack: () => {
+        gsap.set(glyph, { opacity: 1 });
+        headerLogo.classList.add('header__logo--hidden');
+      },
+    });
 
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'bottom top',
-    onEnter: () => {
-      gsap.set(glyph, { opacity: 0 });
-      gsap.set(headerLogo, { opacity: 1 });
-    },
-    onLeaveBack: () => {
-      gsap.set(glyph, { opacity: 1 });
-      gsap.set(headerLogo, { opacity: 0 });
-    },
-  });
-
-  const onResize = (): void => {
-    target = computeTarget();
-    ScrollTrigger.refresh();
-  };
-  window.addEventListener('resize', onResize, { passive: true });
-  window.addEventListener(
-    'load',
-    () => {
+    const refresh = (): void => {
       target = computeTarget();
       ScrollTrigger.refresh();
-    },
-    { once: true }
-  );
+    };
+    window.addEventListener('resize', refresh, { passive: true });
+    window.addEventListener('load', refresh, { once: true });
+  };
+
+  // Animation erst aufsetzen, wenn das Logo-Image geladen ist — sonst liefert
+  // getBoundingClientRect noch keine verlässlichen Maße.
+  if (glyph instanceof HTMLImageElement && !glyph.complete) {
+    glyph.addEventListener('load', init, { once: true });
+    glyph.addEventListener('error', init, { once: true });
+  } else {
+    init();
+  }
 }
 
 export function setupClipReveal(): void {

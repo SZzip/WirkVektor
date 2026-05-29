@@ -36,6 +36,12 @@ body[data-theme='ui-dark'] .header--scrolled {
   gap: var(--space-2);
   color: var(--fg);
   height: 32px;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.header__logo--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .header__logo-mark {
