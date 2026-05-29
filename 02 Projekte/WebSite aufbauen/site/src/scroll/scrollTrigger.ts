@@ -58,25 +58,19 @@ export function setupIntroLogoMorph(): void {
   gsap.set(headerLogo, { opacity: 0 });
 
   const computeTarget = (): { x: number; y: number; scale: number } => {
-    const isDesktop = window.innerWidth >= 768;
-    const targetSpan = headerLogo.querySelector<HTMLElement>(
-      isDesktop ? '.header__logo--full' : '.header__logo--glyph'
-    );
-    const targetEl: HTMLElement = targetSpan ?? headerLogo;
+    const targetMark = headerLogo.querySelector<HTMLElement>('.header__logo-mark');
+    const targetEl: HTMLElement = targetMark ?? headerLogo;
     const targetRect = targetEl.getBoundingClientRect();
+    const glyphRect = glyph.getBoundingClientRect();
 
-    const styles = window.getComputedStyle(glyph);
-    const currentFontSize = parseFloat(styles.fontSize);
-    const targetWvHeightPx = 22 * (28 / 32);
-    const currentWvHeightPx = currentFontSize * 0.9;
-    const scale = targetWvHeightPx / currentWvHeightPx;
+    const scale = targetRect.height / glyphRect.height;
 
-    const wvCenterX = targetRect.left + 13;
-    const wvCenterY = targetRect.top + targetRect.height / 2;
+    const targetCenterX = targetRect.left + targetRect.width / 2;
+    const targetCenterY = targetRect.top + targetRect.height / 2;
 
     return {
-      x: wvCenterX - window.innerWidth / 2,
-      y: wvCenterY - window.innerHeight / 2,
+      x: targetCenterX - window.innerWidth / 2,
+      y: targetCenterY - window.innerHeight / 2,
       scale,
     };
   };
