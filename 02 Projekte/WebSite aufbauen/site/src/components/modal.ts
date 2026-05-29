@@ -1,3 +1,5 @@
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 function openModal(modal: HTMLElement): void {
   modal.setAttribute('data-modal-open', '');
   document.documentElement.style.overflow = 'hidden';
@@ -10,6 +12,10 @@ function openModal(modal: HTMLElement): void {
 function closeModal(modal: HTMLElement): void {
   modal.removeAttribute('data-modal-open');
   document.documentElement.style.overflow = '';
+  // ScrollTrigger neu auswerten — der html-overflow-Lock während des Modals
+  // kann Lenis-/Trigger-State invalidieren, wodurch Header und Logo-Morph
+  // nach dem Close in einem inkonsistenten Zustand stehen bleiben.
+  ScrollTrigger.refresh();
 }
 
 function getModalById(id: string): HTMLElement | null {
@@ -47,4 +53,9 @@ export function setupModals(): void {
 export function openModalById(id: string): void {
   const modal = getModalById(id);
   if (modal) openModal(modal);
+}
+
+export function closeOpenModal(): void {
+  const open = document.querySelector<HTMLElement>('[data-modal][data-modal-open]');
+  if (open) closeModal(open);
 }

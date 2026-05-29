@@ -1,4 +1,5 @@
 import { scrollToAnchor } from '../scroll/lenis';
+import { closeOpenModal } from './modal';
 
 export function setupNav(): void {
   const header = document.querySelector<HTMLElement>('[data-header]');
@@ -17,12 +18,8 @@ export function setupNav(): void {
       const el = document.querySelector(hash);
       if (!el) return;
       ev.preventDefault();
+      closeOpenModal();
       scrollToAnchor(hash);
-      const modal = document.querySelector('[data-modal-open]');
-      if (modal instanceof HTMLElement) {
-        modal.removeAttribute('data-modal-open');
-        document.documentElement.style.overflow = '';
-      }
     });
   });
 }
