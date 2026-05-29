@@ -132,18 +132,19 @@ export function setupIntroLogoMorph(): void {
   }
 }
 
-export function setupIntroClaimFade(): void {
+export function setupIntroCaptionFade(): void {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  const claim = document.querySelector<HTMLElement>('[data-intro-claim]');
+  const caption = document.querySelector<HTMLElement>('[data-intro-fade]');
   const section = document.querySelector<HTMLElement>('.intro');
-  if (!claim || !section) return;
+  if (!caption || !section) return;
 
-  // Claim bleibt fix zentriert (CSS) und verblasst beim Scrollen durch die
-  // Intro-Sektion von voll sichtbar auf unsichtbar.
+  // Wortmarke + Claim bleiben fix zentriert (CSS) und verblassen beim Scrollen
+  // durch die Intro-Sektion von voll sichtbar auf unsichtbar — vollständig
+  // ausgeblendet, sobald der nächste Abschnitt den Viewport erreicht.
   gsap.fromTo(
-    claim,
+    caption,
     { opacity: 1 },
     {
       opacity: 0,

@@ -49,12 +49,17 @@ describe('scroll modules', () => {
     expect(headerLogo?.style.opacity).toBe('');
   });
 
-  it('setupIntroClaimFade is a no-op when reduced motion is set', async () => {
+  it('setupIntroCaptionFade is a no-op when reduced motion is set', async () => {
     document.body.innerHTML = `
-      <section class="intro"><p class="intro__claim" data-intro-claim>Claim</p></section>
+      <section class="intro">
+        <div class="intro__caption" data-intro-fade>
+          <p class="intro__wordmark">Wirk<span class="accent">Vektor</span></p>
+          <p class="intro__claim">Claim</p>
+        </div>
+      </section>
     `;
-    const { setupIntroClaimFade } = await import('../src/scroll/scrollTrigger');
-    expect(() => setupIntroClaimFade()).not.toThrow();
+    const { setupIntroCaptionFade } = await import('../src/scroll/scrollTrigger');
+    expect(() => setupIntroCaptionFade()).not.toThrow();
   });
 
   it('setupSnakeBackground bails gracefully when WebGL is unavailable (jsdom)', async () => {
