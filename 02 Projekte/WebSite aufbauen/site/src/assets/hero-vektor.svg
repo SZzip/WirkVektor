@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="hero-vektor-title hero-vektor-desc">
   <title id="hero-vektor-title">Architektonische Vektor-Konstruktion</title>
-  <desc id="hero-vektor-desc">Isometrische Linien-Konstruktion aus Pfeilen, Knoten und Datenflüssen in Navy und Teal — visuelles Sinnbild der WirkVektor-Methodik.</desc>
+  <desc id="hero-vektor-desc">Isometrische Linien-Konstruktion aus Pfeilen, Knoten und Datenflüssen in Navy und Teal, visuelles Sinnbild der WirkVektor-Methodik.</desc>
 
   <defs>
     <marker id="arrow-navy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
