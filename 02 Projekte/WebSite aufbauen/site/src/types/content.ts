@@ -81,27 +81,27 @@ export const content: Content = ContentSchema.parse({
   befaehigungSlides: [
     {
       eyebrow: 'AI-LITERACY-SCHULUNG',
-      headline: 'Sicher mit KI arbeiten.',
+      headline: 'Sicher mit KI arbeiten',
       body: 'Praxisorientierte Schulung für Mitarbeitende — 1 bis 2 Tage.',
     },
     {
       eyebrow: 'FÜHRUNGSKRÄFTE-WORKSHOP',
-      headline: 'KI strategisch führen.',
+      headline: 'KI strategisch führen',
       body: 'Halbtagesformat für GF und Bereichsleitungen.',
     },
     {
       eyebrow: 'GOVERNANCE-BRIEFING',
-      headline: 'Regeln klar kommunizieren.',
+      headline: 'Regeln klar kommunizieren',
       body: 'Vermittlung der internen KI-Richtlinie an alle Teams.',
     },
     {
       eyebrow: 'PROMPT-PRAXIS',
-      headline: 'Werkzeuge wirksam nutzen.',
+      headline: 'Werkzeuge wirksam nutzen',
       body: 'Hands-on-Sessions mit Microsoft Copilot, ChatGPT Enterprise oder unternehmenseigenen Assistenten.',
     },
     {
       eyebrow: 'LEARNING-PFAD',
-      headline: 'Wissen, das bleibt.',
+      headline: 'Wissen, das bleibt',
       body: 'Dokumentation, Materialien und Folgesessions für nachhaltige Befähigung.',
     },
   ],
