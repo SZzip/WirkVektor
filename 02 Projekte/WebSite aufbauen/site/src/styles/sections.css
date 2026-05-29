@@ -329,6 +329,42 @@ body[data-theme='ui-dark'] .header--scrolled {
   z-index: 1;
 }
 
+/* Methodik — sechs Phasen als einzelne Container */
+.methodik__steps {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--space-12);
+}
+
+.methodik-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodik-step__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-sm);
+  font-weight: 700;
+  color: var(--vector-teal);
+  letter-spacing: var(--ls-tight);
+}
+
+.methodik-step__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline-sm);
+  font-weight: 600;
+  letter-spacing: var(--ls-tight);
+  color: var(--fg);
+  margin-top: var(--space-2);
+}
+
+.methodik-step__body {
+  margin-top: var(--space-3);
+  color: var(--fg-muted);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body);
+}
+
 /* Carousel */
 .carousel {
   position: relative;

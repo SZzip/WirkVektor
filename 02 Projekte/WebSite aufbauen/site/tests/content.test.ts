@@ -6,8 +6,8 @@ describe('content', () => {
     expect(() => ContentSchema.parse(content)).not.toThrow();
   });
 
-  it('has 2 methodik slides', () => {
-    expect(content.methodikSlides).toHaveLength(2);
+  it('has 6 methodik phases', () => {
+    expect(content.methodikPhases).toHaveLength(6);
   });
 
   it('has 5 befaehigung slides', () => {
