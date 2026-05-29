@@ -61,9 +61,9 @@ export async function setupSnakeBackground(): Promise<void> {
   const curveLength = curve.getLength();
   const tileCount = Math.max(1, Math.floor(curveLength / TILE_SPACING));
 
-  // Plättchen-Geometrie um 90° an der kurzen Kante (Z) drehen → aufrecht
+  // Plättchen-Geometrie um 90° an der kurzen Kante (X) drehen → aufrecht
   const tileGeometry = new THREE.BoxGeometry(TILE_WIDTH, TILE_THICKNESS, TILE_DEPTH);
-  tileGeometry.rotateZ(Math.PI / 2);
+  tileGeometry.rotateX(Math.PI / 2);
 
   const tileMaterial = new THREE.MeshStandardMaterial({
     color: 0xffffff,
