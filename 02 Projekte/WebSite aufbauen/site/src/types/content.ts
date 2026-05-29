@@ -53,7 +53,7 @@ export const content: Content = ContentSchema.parse({
     {
       eyebrow: '2 / 2',
       headline: 'Absichern, Umsetzen, Messen',
-      body: 'Die zweite Hälfte des Wegs. Wir klären Governance, Rollen und Datenzugriffe. Wir begleiten Pilotierung und Rollout. Und wir messen die Wirkung — in Zeit, Qualität und Akzeptanz.',
+      body: 'Die zweite Hälfte des Wegs. Wir klären Governance, Rollen und Datenzugriffe. Wir begleiten Pilotierung und Rollout. Und wir messen die Wirkung in Zeit, Qualität und Akzeptanz.',
     },
   ],
   zielgruppeRoles: [
@@ -82,7 +82,7 @@ export const content: Content = ContentSchema.parse({
     {
       eyebrow: 'AI-LITERACY-SCHULUNG',
       headline: 'Sicher mit KI arbeiten',
-      body: 'Praxisorientierte Schulung für Mitarbeitende — 1 bis 2 Tage.',
+      body: 'Praxisorientierte Schulung für Mitarbeitende, 1 bis 2 Tage.',
     },
     {
       eyebrow: 'FÜHRUNGSKRÄFTE-WORKSHOP',
