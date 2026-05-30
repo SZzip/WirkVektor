@@ -52,4 +52,35 @@ Anforderungsaufnahme, Lasten- und Fachkonzepte, Tool- und Anbieterbewertung, Aus
 
 ## Preise
 
-Noch zu ergänzen.
+> Stand 2026-05. Interne Kalkulationsbasis und Richtwerte, keine veröffentlichten Listenpreise. Marktanker: BDU „Honorare im Consulting 2025" (Schnitt 1.300 €/Tag, GF/Partner 1.600 €) und Freelancer-Kompass 2025 (IT-Schnitt ~840 €/Tag, KI-Spezialisten 820–1.050 €/Tag). Aufschlag für Spezialisierung (Sicherheit/Governance/KI) und Region München. Vor Angebotslegung je Mandat prüfen.
+
+### Zieltagessätze (Kalkulationsbasis)
+
+| Rolle | Zielsatz (extern fakturiert) | Marktanker |
+|---|---|---|
+| **Sebastian (Gründer/Experte)** — strategische/GF-Beratung | **1.800–2.000 €** (Kern), bis 2.200 € als Anker | BDU GF/Partner 1.600 €, Spitze bis 2.275 € |
+| Eingesetzter Mitarbeiter — Mid-Level KI/Governance | **1.400 €** | BDU-Schnitt 1.300 € |
+| Eingesetzter Mitarbeiter — Senior Consultant | 1.600–1.900 € | BDU 1.150–2.275 € (Projektleiter) |
+| Eingesetzter Mitarbeiter — Junior | ~1.100 € | BDU Analyst 700 € |
+
+**Faustregel Mitarbeiter:** externer Satz ≈ 2,5–3,5× der Tages-Vollkosten (Gehalt + Nebenkosten + Overhead). Beispiel: 80.000 € Gehalt → ~450–500 € Vollkosten/Tag → ~1.400 € extern.
+
+### Festpreis-Korridore je Einstiegspaket
+
+Verkauf bevorzugt über Festpreis-Pakete mit klarem Ergebnis (nimmt die Tagessatz-Diskussion raus). Korridore auf Basis Solo-Lieferung durch Sebastian; bei Lieferung durch Mitarbeiter verbessert sich die Marge.
+
+| Paket | Aufwand (Beratertage) | Festpreis-Korridor | Hinweis |
+|---|---|---|---|
+| **KI-Readiness-Check** | 4–7 | **7.500–12.000 €** | Türöffner, bewusst niedrigschwellig |
+| **KI-Use-Case-Sprint** | 5–8 | **9.000–15.000 €** | inkl. 1–2 Workshops |
+| **KI-Governance-Starterpaket** | 8–12 | **14.000–22.000 €** | inkl. EU-AI-Act-Einordnung |
+| **AI-Literacy-Schulung** | 1,5–2 je Schulungstag | **2.500–3.500 € / Schulungstag** | Konzeption einmalig 1–2 Tage extra |
+| **Produktiver KI-Pilot** | 10–18 (Steuerung) | **18.000–35.000 €** | zzgl. Technik-/Lizenzkosten, stark fallabhängig |
+
+### Weitere Modelle
+
+- **Retainer** (laufende Begleitung als externer KI-Governance-/Strategiepartner): z. B. 2–4 Tage/Monat zum Tagessatz, monatlich pauschaliert.
+- **Umsetzungsbegleitung / Projektsteuerung:** nach Aufwand zum jeweiligen Tagessatz.
+
+> [!note] Einordnung
+> Tagessätze 2025 erstmals seit Jahren leicht rückläufig (–2 %, BDU), IT-Beratung –3 %, nur Strategieberatung +2 %. Mittelstand zahlt eher am Schnitt als an der Spitze. Daher: über Wirkung und klares Ergebnis verkaufen, nicht über den Tagessatz.
