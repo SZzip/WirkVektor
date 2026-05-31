@@ -74,7 +74,7 @@ motion:
   duration-slow: 800ms
 ---
 
-> Dieses Dokument beschreibt das tatsächlich auf der WirkVektor-Website (`02 Projekte/WebSite aufbauen/site`) implementierte Designsystem. Die maßgebliche Quelle der Tokens ist `src/styles/tokens.css`; dieses Dokument hält sie für alle weiteren visuellen Aufgaben (Slides, Materialien, Print) fest. Grafiken: siehe `05 Anhänge/Website Grafiken/`.
+> Dieses Dokument beschreibt das tatsächlich auf der WirkVektor-Website (`02 Projekte/WebSite aufbauen/site`) implementierte Designsystem. Die maßgebliche Quelle der Tokens ist `src/styles/tokens.css`; dieses Dokument hält sie für alle weiteren visuellen Aufgaben (Slides, Materialien, Print) fest. Grafiken: siehe `07 Anhänge/Website Grafiken/`.
 
 ## Brand & Style
 Das Designsystem ist für **WirkVektor** entwickelt — eine Beratung, die hochwertige KI mit den pragmatischen Bedürfnissen des deutschen Mittelstands verbindet. Die Markenpersönlichkeit gründet auf **Kompetenz** und **Klarheit** und verzichtet bewusst auf „KI-Hype" zugunsten einer visuellen Sprache von **Verlässlichkeit** und **gerichteter Wirkung**.
@@ -212,4 +212,4 @@ Track mit `transform`-Transition (800ms `ease-in-out`), Slides voll breit in Car
 - **Progress:** lineare, dünne Balken in Vector Teal statt zirkulärer Loader — klarer Weg von A nach B.
 
 ## Grafiken / Assets
-Alle Website-Grafiken liegen unter `05 Anhänge/Website Grafiken/` (Index dort in `README.md`). Live im Einsatz: `wirkvektor-logo.svg`, `favicon.svg`, `sebastian-schucht.png` und das Inline-Icon-Sprite. Gestaltete Kern-Illustrationen: `hero-vektor.svg`, `hebel-grafik-drehpunkt-rechts.svg`. Platzhalter-SVGs markieren Foto-/Mockup-Slots aus der [[Asset-Liste]] (Ersatz durch echte Assets in Phase 2). Das Logo-Intro nutzt einen per Canvas erzeugten Vektor-Hintergrund (kein statisches File).
+Alle Website-Grafiken liegen unter `07 Anhänge/Website Grafiken/` (Index dort in `README.md`). Live im Einsatz: `wirkvektor-logo.svg`, `favicon.svg`, `sebastian-schucht.png` und das Inline-Icon-Sprite. Gestaltete Kern-Illustrationen: `hero-vektor.svg`, `hebel-grafik-drehpunkt-rechts.svg`. Platzhalter-SVGs markieren Foto-/Mockup-Slots aus der [[Asset-Liste]] (Ersatz durch echte Assets in Phase 2). Das Logo-Intro nutzt einen per Canvas erzeugten Vektor-Hintergrund (kein statisches File).

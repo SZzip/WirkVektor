@@ -17,7 +17,7 @@ Sebastian Schucht, Gründer und Geschäftsführer von **WirkVektor** — einer s
 - **04 Ressourcen/**: Referenzmaterial und Wissen (EU AI Act, Microsoft Copilot, RAG-Architekturen, Prompt Engineering, ISO 27001, Beratungsmethodik, LinkedIn-Marketing). Jedes Thema ist ein eigener Ordner.
 - **05 Daily Notes/**: Tägliches Logbuch. Was an einem Tag passiert ist, welche Entscheidungen getroffen wurden, was offen ist. Gibt Claude die Kontinuität zwischen Sessions.
 - **06 Archiv/**: Abgeschlossene Projekte und inaktive Bereiche. Aus dem aktiven Blickfeld, aber durchsuchbar.
-- **05 Anhänge/**: Bilder, PDFs, Medien. Als Standard-Anhängeordner in Obsidian konfiguriert (`attachmentFolderPath`) — Obsidian legt hier automatisch alle eingefügten Dateien ab.
+- **07 Anhänge/**: Bilder, PDFs, Medien. Als Standard-Anhängeordner in Obsidian konfiguriert (`attachmentFolderPath`) — Obsidian legt hier automatisch alle eingefügten Dateien ab.
 
 ## Regeln für dieses Vault
 
