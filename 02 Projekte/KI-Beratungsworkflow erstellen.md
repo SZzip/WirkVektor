@@ -23,12 +23,17 @@ Der ausgearbeitete Workflow liegt im Unterordner `KI-Beratungsworkflow/`:
   - [[Management-Entscheidungsvorlage]] (Phase 1, 3, 6)
   - [[Governance-Checkliste und Risikoklassifizierung]] (Phase 4)
   - [[Pilot-Steckbrief und Erfolgsmessung]] (Phase 5–6)
+- **[[Schulungs-Workflow AI-Literacy]]** (Paket 4) mit Vorlagen:
+  - [[Curriculum-Baukasten AI-Literacy]]
+  - [[Schulungs-Drehbuch]]
+  - [[Schulungs-Feedback und Wirkungsmessung]]
 
 ## Erledigt
 - [x] Phasen detailliert ausgearbeitet (Ziel, Dauer, Beteiligte, Ablauf, Leitfragen, Outputs)
 - [x] Templates je Phase erstellt (Interviewleitfäden, Reifegrad-Assessment, Bewertungsmatrizen, Governance-Checkliste, Berichte)
 - [x] Qualitätssicherungs-Checkpoints je Phase definiert
 - [x] Workflow auf die fünf Einstiegspakete abgebildet (Mapping-Tabelle + Mandatsketten)
+- [x] Eigener Schulungs-Workflow für Paket 4 (AI-Literacy) ergänzt — damit alle fünf Pakete abgedeckt
 - [x] Phase 0 (Erstkontakt/Auftragsklärung) ergänzt, anschlussfähig an [[Kundenerstkontakt Präsentation]]
 
 ## Offen / Weiterentwicklung
