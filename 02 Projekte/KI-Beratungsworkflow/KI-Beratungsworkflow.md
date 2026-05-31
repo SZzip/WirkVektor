@@ -43,7 +43,7 @@ Die Pakete sind **modulare Ausschnitte** derselben Methodik. Du musst nie den ga
 | **KI-Readiness-Check** | 1 Verstehen (+ Teile von 2) | Reifegradprofil, priorisierte Maßnahmen | [[KI-Reifegrad-Assessment]] |
 | **KI-Use-Case-Sprint** | 2 Bewerten, 3 Priorisieren | Priorisierte Use-Case-Liste, Roadmap | [[Use-Case-Steckbrief und Bewertungsmatrix]], [[Workshop-Leitfaden Use-Case-Sprint]] |
 | **KI-Governance-Starterpaket** | 4 Absichern | Richtlinie, Leitfaden, Rollen, Freigabeprozess, Register, Risikomatrix | [[Governance-Checkliste und Risikoklassifizierung]] |
-| **AI-Literacy-Schulung** | Befähigungsschicht (parallel zu 5) | Geschulte Mitarbeitende, reduziertes Risiko | siehe [[Mitarbeiterschulung erstellen]] |
+| **AI-Literacy-Schulung** | Befähigungsschicht (eigener Workflow, parallel zu 4–5) | Geschulte Mitarbeitende, reduziertes Risiko, EU-AI-Act-Nachweis | [[Schulungs-Workflow AI-Literacy]] |
 | **Produktiver KI-Pilot** | 5 Umsetzen, 6 Messen | Getesteter Use Case, Skalierungsentscheidung | [[Pilot-Steckbrief und Erfolgsmessung]] |
 
 > [!info] Typische Mandatsketten
@@ -317,6 +317,15 @@ Geschäftlicher Nutzen · technischer Aufwand · Datenverfügbarkeit · Integrat
 
 ---
 
+# Querschnitt — AI-Literacy-Schulung (Paket 4)
+
+> [!note] Auf einen Blick
+> **Ziel:** Führungskräfte und Mitarbeitende zur sicheren, sinnvollen KI-Nutzung befähigen. **Logik:** eigener Schulungs-Workflow (Curriculum, Didaktik, Durchführung) statt 6-Phasen-Analyse. **Einsatz:** eigenständig oder begleitend zu Phase 4 (Governance) und 5 (Pilot). **Rechtlicher Anker:** EU AI Act Art. 4 (AI-Literacy-Pflicht seit 02/2025).
+
+Der vollständige Ablauf — Bedarf klären → Curriculum zuschneiden → Material vorbereiten → durchführen → Wirkung messen — steht in **[[Schulungs-Workflow AI-Literacy]]** mit eigenen Vorlagen ([[Curriculum-Baukasten AI-Literacy]], [[Schulungs-Drehbuch]], [[Schulungs-Feedback und Wirkungsmessung]]).
+
+---
+
 ## Vorlagenübersicht
 
 Alle ausfüllbaren Arbeitsvorlagen liegen in `Vorlagen/`. Pro Mandat duplizieren.
@@ -330,6 +339,9 @@ Alle ausfüllbaren Arbeitsvorlagen liegen in `Vorlagen/`. Pro Mandat duplizieren
 | [[Management-Entscheidungsvorlage]] | 1, 3 (Ergebnisberichte) |
 | [[Governance-Checkliste und Risikoklassifizierung]] | 4 Absichern |
 | [[Pilot-Steckbrief und Erfolgsmessung]] | 5 Umsetzen, 6 Messen |
+| [[Curriculum-Baukasten AI-Literacy]] | Paket 4 — Schulung |
+| [[Schulungs-Drehbuch]] | Paket 4 — Schulung |
+| [[Schulungs-Feedback und Wirkungsmessung]] | Paket 4 — Schulung |
 
 ---
 
