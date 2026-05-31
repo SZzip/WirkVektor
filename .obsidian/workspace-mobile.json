@@ -130,6 +130,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
+            "file": "04 Ressourcen/EU AI Act/EU AI Act.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           },
@@ -176,7 +177,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "add87c0b76245605",
+  "active": "a72217635d42df7a",
   "lastOpenFiles": [
     "02 Projekte/KI-Beratungsworkflow/KI-Beratungsworkflow.md",
     "02 Projekte/KI-Beratungsworkflow/Vorlagen/Use-Case-Steckbrief und Bewertungsmatrix.md",
