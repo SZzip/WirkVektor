@@ -216,7 +216,7 @@ Geschäftlicher Nutzen · technischer Aufwand · Datenverfügbarkeit · Integrat
 > [!tip] Priorisierungslogik
 > Nicht jeder mögliche Use Case ist sinnvoll. Empfiehl bewusst auch das **Weglassen**. Der erste Pilot sollte hohen Nutzen **und** beherrschbares Risiko haben — ein sichtbarer früher Erfolg trägt das ganze Programm.
 
-> [!check] QS-Checkpoint Phase 3
+Ä> [!check] QS-Checkpoint Phase 3
 > - [ ] Auswahl nachvollziehbar aus der Matrix begründet
 > - [ ] Mindestens ein Pilot-Kandidat mit gutem Nutzen-Risiko-Profil
 > - [ ] Roadmap mit Zeithorizonten
