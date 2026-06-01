@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 08 Rückseite">
+  <title>08 · Split Identity · Rückseite</title>
+  <rect width="850" height="550" fill="#F7F9FB"/>
+  <!-- Navy Block oben -->
+  <rect width="850" height="180" fill="#0F172A"/>
+
+  <!-- Wortmarke in Navy Block -->
+  <text x="60" y="100" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="44" fill="#FFFFFF" letter-spacing="-1.5">WirkVektor</text>
+  <text x="60" y="135" font-family="Inter, system-ui, sans-serif" font-style="italic"
+        font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Ihr Vektor zur wirkungsvollen KI.</text>
+
+  <!-- Glyph rechts -->
+  <text x="800" y="120" text-anchor="end" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="80" fill="#22D3EE" letter-spacing="-3">WV</text>
+
+  <!-- Untere Sektion -->
+  <text x="60" y="260" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="11" letter-spacing="3" fill="#0D9488">UNABHÄNGIGE KI-BERATUNG FÜR DEN MITTELSTAND</text>
+
+  <!-- 3 Säulen -->
+  <g transform="translate(60 320)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="700" font-size="14" fill="#0F172A">Strategie</text>
+    <text y="22" font-weight="400" font-size="12" fill="#475569">Use-Case · Roadmap</text>
+  </g>
+  <g transform="translate(310 320)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="700" font-size="14" fill="#0F172A">Governance</text>
+    <text y="22" font-weight="400" font-size="12" fill="#475569">EU AI Act · Compliance</text>
+  </g>
+  <g transform="translate(560 320)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="700" font-size="14" fill="#0F172A">Umsetzung</text>
+    <text y="22" font-weight="400" font-size="12" fill="#475569">RAG · Copilot · Schulung</text>
+  </g>
+
+  <line x1="60" y1="430" x2="790" y2="430" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="60" y="475" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="11" fill="#94A3B8">WirkVektor KI Beratungsgesellschaft mbH · Leitenstr. 18 · 84048 Mainburg</text>
+  <text x="790" y="475" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="11" fill="#94A3B8">wirkvektor.de</text>
+</svg>

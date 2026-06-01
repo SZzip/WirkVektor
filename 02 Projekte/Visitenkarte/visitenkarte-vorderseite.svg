@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte Vorderseite">
+  <title>WirkVektor Visitenkarte – Vorderseite</title>
+
+  <!-- Hintergrund: Navy Deep -->
+  <rect width="850" height="550" fill="#0F172A"/>
+
+  <!-- Subtiles Koordinatensystem als technische Signatur -->
+  <g stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0"   y1="137" x2="850" y2="137"/>
+    <line x1="0"   y1="275" x2="850" y2="275"/>
+    <line x1="0"   y1="412" x2="850" y2="412"/>
+    <line x1="212" y1="0"   x2="212" y2="550"/>
+    <line x1="425" y1="0"   x2="425" y2="550"/>
+    <line x1="637" y1="0"   x2="637" y2="550"/>
+  </g>
+
+  <!-- Ursprung-Marker (Koordinatensystem-Punkt) -->
+  <g>
+    <circle cx="80" cy="275" r="3" fill="#22D3EE"/>
+    <circle cx="80" cy="275" r="10" fill="none" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1"/>
+  </g>
+
+  <!-- Vektor: gerichtete Kraft vom Ursprung zur Wirkung -->
+  <g fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="80" y1="275" x2="760" y2="95"/>
+    <!-- Pfeilspitze -->
+    <polyline points="734,78 760,95 750,124"/>
+  </g>
+
+  <!-- Vektor-Endpunkt-Label -->
+  <text x="730" y="65" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="11" letter-spacing="2.5" fill="#22D3EE" text-anchor="end">WIRKUNG</text>
+
+  <!-- Glyph WV oben links -->
+  <text x="50" y="118" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="80" fill="#FFFFFF" letter-spacing="-3">WV</text>
+
+  <!-- Kategorie-Eyebrow -->
+  <text x="55" y="148" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="11" letter-spacing="3" fill="rgba(255,255,255,0.55)">KI · GOVERNANCE · WIRKUNG</text>
+
+  <!-- Name -->
+  <text x="50" y="395" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="52" fill="#FFFFFF" letter-spacing="-1.5">Sebastian Schucht</text>
+
+  <!-- Rolle -->
+  <text x="50" y="428" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="18" fill="rgba(255,255,255,0.72)">Gründer &amp; Geschäftsführer</text>
+
+  <!-- Akzent-Linie -->
+  <line x1="50" y1="455" x2="110" y2="455" stroke="#22D3EE" stroke-width="2"/>
+
+  <!-- Wortmarke unten links -->
+  <text x="50" y="500" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="22" fill="#FFFFFF" letter-spacing="-0.5">WirkVektor</text>
+
+  <!-- Claim klein unten rechts -->
+  <text x="800" y="500" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-style="italic" font-size="13" fill="rgba(255,255,255,0.5)" text-anchor="end">
+    Ihr Vektor zur wirkungsvollen KI.
+  </text>
+</svg>

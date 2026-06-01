@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 07 Vorderseite">
+  <title>07 · Editorial Quiet · Vorderseite</title>
+  <rect width="850" height="550" fill="#F7F9FB"/>
+
+  <!-- Eyebrow oben links -->
+  <text x="60" y="90" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="10" letter-spacing="3" fill="#0D9488">WIRKVEKTOR · MAINBURG</text>
+
+  <!-- Name groß rechts -->
+  <text x="800" y="220" text-anchor="end" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="60" fill="#0F172A" letter-spacing="-2">Sebastian</text>
+  <text x="800" y="280" text-anchor="end" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="60" fill="#0F172A" letter-spacing="-2">Schucht</text>
+
+  <text x="800" y="315" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="14" fill="#475569">Geschäftsführer · WirkVektor</text>
+
+  <!-- Dünne Trennlinie -->
+  <line x1="450" y1="380" x2="800" y2="380" stroke="#0F172A" stroke-width="1"/>
+
+  <!-- Kontaktdaten klein rechts -->
+  <g transform="translate(800 410)" text-anchor="end" font-family="Inter, system-ui, sans-serif" fill="#0F172A">
+    <text font-weight="500" font-size="13">+49 176 20 139 739 · sebastian.schucht@wirkvektor.de</text>
+    <text y="22" font-weight="400" font-size="12" fill="#475569">Leitenstr. 18 · 84048 Mainburg · wirkvektor.de</text>
+  </g>
+
+  <!-- Wortmarke unten links -->
+  <g transform="translate(60 480)">
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="20" fill="#0F172A" letter-spacing="-0.8">WV</text>
+    <line x1="38" y1="-18" x2="38" y2="4" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="48" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+          font-size="16" fill="#0F172A" letter-spacing="-0.3">WirkVektor</text>
+  </g>
+</svg>

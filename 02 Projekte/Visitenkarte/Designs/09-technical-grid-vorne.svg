@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 09 Vorderseite">
+  <title>09 · Technical Grid · Vorderseite</title>
+  <defs>
+    <pattern id="grid09" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="850" height="550" fill="#0F172A"/>
+  <rect width="850" height="550" fill="url(#grid09)"/>
+
+  <!-- Achsenmarker -->
+  <g stroke="#22D3EE" stroke-width="0.8">
+    <line x1="50" y1="275" x2="80" y2="275"/>
+    <line x1="425" y1="50" x2="425" y2="80"/>
+    <line x1="770" y1="275" x2="800" y2="275"/>
+    <line x1="425" y1="470" x2="425" y2="500"/>
+  </g>
+  <g fill="#22D3EE" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="9" letter-spacing="2">
+    <text x="50" y="265">X₀</text>
+    <text x="800" y="265" text-anchor="end">X₁</text>
+    <text x="415" y="65" text-anchor="end">Y₁</text>
+    <text x="415" y="490" text-anchor="end">Y₀</text>
+  </g>
+
+  <!-- Zentrales Glyph + Wortmarke -->
+  <g transform="translate(425 275)" text-anchor="middle">
+    <text y="-8" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="92" fill="#FFFFFF" letter-spacing="-3">WV</text>
+    <text y="44" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+          font-size="32" fill="#22D3EE" letter-spacing="-1">WirkVektor</text>
+  </g>
+
+  <!-- Bottom Label -->
+  <text x="425" y="510" text-anchor="middle" font-family="Inter, system-ui, sans-serif"
+        font-weight="600" font-size="10" letter-spacing="4" fill="rgba(255,255,255,0.5)">
+    VEKTOR ⟶ WIRKUNG · RICHTUNG · BETRAG
+  </text>
+</svg>

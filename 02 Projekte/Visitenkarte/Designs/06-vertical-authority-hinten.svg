@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 850" width="55mm" height="85mm" role="img" aria-label="WirkVektor Visitenkarte 06 Rückseite">
+  <title>06 · Vertical Authority · Rückseite</title>
+  <rect width="550" height="850" fill="#F7F9FB"/>
+  <!-- Teal Akzentleiste links -->
+  <rect x="0" y="0" width="14" height="850" fill="#0D9488"/>
+
+  <!-- Wortmarke oben -->
+  <text x="60" y="110" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="34" fill="#0F172A" letter-spacing="-1.2">WirkVektor</text>
+  <text x="60" y="135" font-family="Inter, system-ui, sans-serif" font-style="italic"
+        font-weight="400" font-size="12" fill="#475569">KI Beratungsgesellschaft mbH</text>
+
+  <line x1="60" y1="170" x2="490" y2="170" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- KONTAKT Block -->
+  <text x="60" y="220" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="11" letter-spacing="3" fill="#0D9488">KONTAKT</text>
+
+  <g transform="translate(60 260)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="600" font-size="10" letter-spacing="2" fill="#94A3B8">TELEFON</text>
+    <text y="22" font-weight="500" font-size="15" fill="#0F172A">+49 176 20 139 739</text>
+  </g>
+
+  <g transform="translate(60 350)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="600" font-size="10" letter-spacing="2" fill="#94A3B8">E-MAIL</text>
+    <text y="22" font-weight="500" font-size="15" fill="#0F172A">sebastian.schucht@</text>
+    <text y="42" font-weight="500" font-size="15" fill="#0F172A">wirkvektor.de</text>
+  </g>
+
+  <g transform="translate(60 470)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="600" font-size="10" letter-spacing="2" fill="#94A3B8">WEB</text>
+    <text y="22" font-weight="500" font-size="15" fill="#0F172A">wirkvektor.de</text>
+  </g>
+
+  <g transform="translate(60 560)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="600" font-size="10" letter-spacing="2" fill="#94A3B8">ADRESSE</text>
+    <text y="22" font-weight="500" font-size="15" fill="#0F172A">Leitenstr. 18</text>
+    <text y="42" font-weight="500" font-size="15" fill="#0F172A">84048 Mainburg</text>
+  </g>
+
+  <line x1="60" y1="720" x2="490" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Name am Ende -->
+  <text x="60" y="760" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="22" fill="#0F172A" letter-spacing="-0.6">Sebastian Schucht</text>
+  <text x="60" y="782" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="12" fill="#475569">Geschäftsführer</text>
+</svg>
