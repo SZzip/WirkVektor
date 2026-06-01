@@ -11,12 +11,14 @@
             "id": "c22473c034fb6e22",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "07 Anhänge/WirkVektor Logo.svg"
+                "file": "DESIGN.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "WirkVektor Logo"
+              "icon": "lucide-file",
+              "title": "DESIGN"
             }
           }
         ]
@@ -92,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "07 Anhänge/WirkVektor Logo.svg",
+                "file": "DESIGN.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Rückverweise auf WirkVektor Logo"
+              "title": "Rückverweise auf DESIGN"
             }
           },
           {
@@ -111,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "07 Anhänge/WirkVektor Logo.svg",
+                "file": "DESIGN.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links von WirkVektor Logo öffnen"
+              "title": "Ausgehende Links von DESIGN öffnen"
             }
           },
           {
@@ -154,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "07 Anhänge/WirkVektor Logo.svg",
+                "file": "DESIGN.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Gliederung von WirkVektor Logo"
+              "title": "Gliederung von DESIGN"
             }
           },
           {
@@ -192,8 +194,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "17b95fa487ca335a",
+  "active": "c22473c034fb6e22",
   "lastOpenFiles": [
+    "07 Anhänge/WirkVektor Logo.svg",
+    "02 Projekte/Visitenkarte/Designs/04-foil-logo-vorne.svg",
+    "02 Projekte/Visitenkarte/Designs/04-foil-logo-hinten.svg",
+    "02 Projekte/Visitenkarte/Designs/01-statement-logo-vorne.svg",
+    "02 Projekte/Visitenkarte/Designs/01-statement-logo-hinten.svg",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/build_docx.py",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/build_pptx.py",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/brand.py",
@@ -205,7 +212,6 @@
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Meeting-Protokoll.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Use-Case-Steckbrief.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Projektstatusbericht.docx",
-    "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/KI-Readiness-Bericht.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Geschäftsausstattung und Vorlagen.md",
     "WirkVektor.md",
     "02 Projekte/Visitenkarte/Designs/01-statement-glyph-hinten.svg",
@@ -214,10 +220,6 @@
     "02 Projekte/Visitenkarte/Visitenkarte.md",
     "02 Projekte/Visitenkarte/Designs/10-pure-wordmark-vorne.svg",
     "02 Projekte/Visitenkarte/Designs/10-pure-wordmark-hinten.svg",
-    "02 Projekte/Visitenkarte/Designs/09-technical-grid-vorne.svg",
-    "02 Projekte/Visitenkarte/Designs/09-technical-grid-hinten.svg",
-    "02 Projekte/Visitenkarte/Designs/08-split-identity-vorne.svg",
-    "02 Projekte/Visitenkarte/Designs/08-split-identity-hinten.svg",
-    "02 Projekte/Visitenkarte/Designs/07-editorial-quiet-vorne.svg"
+    "02 Projekte/Visitenkarte/Designs/09-technical-grid-vorne.svg"
   ]
 }

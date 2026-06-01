@@ -84,11 +84,11 @@ Das offizielle WirkVektor-Logo liegt unter `07 Anhänge/WirkVektor Logo.svg`. Es
 
 Das Logo nutzt eine quadratische Zeichenfläche (`viewBox="0 0 1448 1448"`) und besteht aus drei separaten Pfaden, die individuell eingefärbt werden können:
 
-| Pfad | Funktion | Original-Hex |
-|---|---|---|
-| **Pfad A** (`fill #434a5d`) | Haupt-V-Strich links | Slate-Dark |
-| **Pfad B** (`fill #abaeb7`) | Sekundär-Strich rechts | Slate-Cool |
-| **Pfad C** (`fill #94cccc`) | Vektor-Aufschwung (Akzent) | Teal-Cool |
+| Pfad                        | Funktion                   | Original-Hex |
+| --------------------------- | -------------------------- | ------------ |
+| **Pfad A** (`fill #434a5d`) | Haupt-V-Strich links       | Slate-Dark   |
+| **Pfad B** (`fill #abaeb7`) | Sekundär-Strich rechts     | Slate-Cool   |
+| **Pfad C** (`fill #94cccc`) | Vektor-Aufschwung (Akzent) | Teal-Cool    |
 
 ### Farbvarianten
 
