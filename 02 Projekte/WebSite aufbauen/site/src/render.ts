@@ -93,7 +93,17 @@ function renderContactInfos(): void {
 function renderValues(): void {
   const list = document.querySelector<HTMLElement>('[data-render="values"]');
   if (!list) return;
-  list.innerHTML = content.values.map((v) => `<li>${escapeHtml(v)}</li>`).join('');
+  list.innerHTML = content.values
+    .map(
+      (v) => `
+      <li>
+        <div class="values-card__value">
+          <p class="values-card__value-title">${escapeHtml(v.title)}</p>
+          <p class="values-card__value-detail">${escapeHtml(v.detail)}</p>
+        </div>
+      </li>`
+    )
+    .join('');
 }
 
 export function renderContent(): void {

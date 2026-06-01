@@ -34,22 +34,44 @@ const ContactInfoSchema = z.object({
 });
 export type ContactInfo = z.infer<typeof ContactInfoSchema>;
 
+const ValueSchema = z.object({
+  title: z.string().min(1),
+  detail: z.string().min(1),
+});
+export type Value = z.infer<typeof ValueSchema>;
+
 export const ContentSchema = z.object({
   methodikPhases: z.array(MethodikPhaseSchema).length(6),
   zielgruppeRoles: z.array(RoleCardSchema).length(4),
   befaehigungSlides: z.array(CarouselSlideSchema).length(5),
   outcomes: z.array(OutcomeSchema).length(5),
   contactInfos: z.array(ContactInfoSchema),
-  values: z.array(z.string().min(1)).length(4),
+  values: z.array(ValueSchema).length(4),
 });
 export type Content = z.infer<typeof ContentSchema>;
 
 export const content: Content = ContentSchema.parse({
   values: [
-    'Mittelstandsnah',
-    'Sicherheit als Kern',
-    'Wirkung vor Technologie',
-    'Befähigung statt Abhängigkeit',
+    {
+      title: 'Passt zu Ihrem Mittelstand',
+      detail:
+        'Lösungen im Maßstab Ihres Unternehmens, ohne Konzern-Overhead und ohne Plattformzwang.',
+    },
+    {
+      title: 'Sicher und regelkonform',
+      detail:
+        'Datenschutz, Governance und EU AI Act sind von Anfang an mitgedacht, nicht nachträglich.',
+    },
+    {
+      title: 'Erst der Nutzen, dann die Technik',
+      detail:
+        'Wir starten beim Geschäftsproblem und machen den Effekt messbar, statt Werkzeuge zu verwalten.',
+    },
+    {
+      title: 'Sie bleiben unabhängig',
+      detail:
+        'Wir schulen Ihr Team und übergeben Wissen, damit Sie KI selbst steuern können.',
+    },
   ],
   methodikPhases: [
     {
