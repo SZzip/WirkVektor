@@ -86,13 +86,13 @@ Diese Sätze sind dein Kompass in jeder Phase. Aus [[WirkVektor]] Kapitel 16.
 
 1. **Erstgespräch führen.** Nutze die [[Kundenerstkontakt Präsentation]] (10 Folien, ca. 20 Min., dann Dialog).
 2. **Qualifizieren** — passt der Kunde zum [[ICP]]? Prüfe:
-   - Mittelständisches Unternehmen in Deutschland?
+   - Kleines oder mittelständisches Unternehmen (KMU) in Deutschland?
    - Echter Leidensdruck oder nur Neugier?
    - Entscheidungskompetenz im Raum oder Zugang dazu?
    - Bereitschaft, Zeit von Schlüsselpersonen bereitzustellen?
 3. **Bedarf einordnen** — welcher der typischen sechs Schmerzpunkte dominiert? (Siehe [[ICP]]: ungesteuerte Nutzung, fehlende Use Cases, unvorbereitete Daten, späte Governance, fehlende Befähigung, keine Messung.)
-4. **Paket empfehlen** anhand der Mapping-Tabelle oben und der dominanten Rolle.
-5. **Angebot ableiten** — Umfang, Ergebnis, Zeitraum, Beteiligte, Preis.
+4. **Paket empfehlen** anhand der Mapping-Tabelle oben und der dominanten Rolle. Bei kleinen Unternehmen die Kompakt-Variante des Pakets wählen (siehe [[Angebot]]).
+5. **Angebot ableiten** — Umfang, Ergebnis, Zeitraum, Beteiligte, Preis. Variante (Kompakt für kleine Unternehmen / Standard für Mittelständler) an Unternehmensgröße und Budget ausrichten.
 
 ### Leitfragen für die Qualifizierung
 

@@ -62,7 +62,7 @@ Großer **WV**-Schriftzug, sticky, bewegt sich beim Scroll dezent in Position. H
 *(„KI." in Vector Teal — einziger Farbakzent.)*
 
 **Subline:**
-Wir bringen Künstliche Intelligenz kontrolliert in mittelständische Unternehmen — mit klarer Wirkung, sauberer Governance und messbarem Nutzen.
+Wir bringen Künstliche Intelligenz kontrolliert in kleine und mittelständische Unternehmen — mit klarer Wirkung, sauberer Governance und messbarem Nutzen.
 
 **CTAs:**
 - Primär: `Erstgespräch buchen`
@@ -86,9 +86,9 @@ Wir bringen Künstliche Intelligenz kontrolliert in mittelständische Unternehme
 
 **Body (3 Absätze):**
 
-WirkVektor ist eine Beratung, die KI strukturiert in den Mittelstand bringt. Wir verbinden Strategie, Sicherheit und Umsetzung — ohne Plattformbindung, ohne Folienzauber.
+WirkVektor ist eine Beratung, die KI strukturiert in kleine und mittelständische Unternehmen bringt. Wir verbinden Strategie, Sicherheit und Umsetzung — ohne Plattformbindung, ohne Folienzauber.
 
-Effiziente Pakete und klare Methodik, belastbare Governance und messbarer Nutzen setzen einen neuen Standard für KI-Einführung im Mittelstand.
+Effiziente Pakete und klare Methodik, belastbare Governance und messbarer Nutzen setzen einen neuen Standard für KI-Einführung in kleinen und mittelständischen Unternehmen.
 
 Auf diesem Niveau ist WirkVektor selten zu finden.
 
@@ -109,7 +109,7 @@ Auf diesem Niveau ist WirkVektor selten zu finden.
 > der KI-Einführung.
 
 **Body-Intro:**
-WirkVektor ist nicht nur eine Beratung — sondern eine klare Methodik aus sechs Phasen, entwickelt für die Realität mittelständischer Unternehmen.
+WirkVektor ist nicht nur eine Beratung — sondern eine klare Methodik aus sechs Phasen, entwickelt für die Realität kleiner und mittelständischer Unternehmen.
 
 ### Scroll-Carousel — 2 Slides (Counter „1 / 2")
 
@@ -140,7 +140,7 @@ Die zweite Hälfte des Wegs. Wir klären Governance, Rollen und Datenzugriffe. W
 
 ### Werte-Card (rechts unten, 700×700, Off-White)
 
-- Mittelstandsnah
+- Nah an KMU
 - Sicherheit als Kern
 - Wirkung vor Technologie
 - Befähigung statt Abhängigkeit
@@ -155,14 +155,15 @@ Die zweite Hälfte des Wegs. Wir klären Governance, Rollen und Datenzugriffe. W
 
 **H2 (2 Zeilen):**
 
-> Im Zentrum
-> des Mittelstands.
+> Im Zentrum:
+> kleine und mittlere
+> Unternehmen.
 
 **Body (2 Absätze):**
 
-WirkVektor begleitet mittelständische Unternehmen, die KI nicht nur ausprobieren, sondern produktiv und regelkonform integrieren wollen — in Branchen, die hohe Anforderungen an Sicherheit, Nachvollziehbarkeit und Wirksamkeit stellen.
+WirkVektor begleitet kleine und mittelständische Unternehmen, die KI nicht nur ausprobieren, sondern produktiv und regelkonform integrieren wollen — in Branchen, die hohe Anforderungen an Sicherheit, Nachvollziehbarkeit und Wirksamkeit stellen.
 
-Wir arbeiten mit Geschäftsführungen, IT-Leitungen und Infosec-Verantwortlichen, die strukturierte Entscheidungen treffen wollen — und in deren Fachbereichen KI realen Mehrwert schaffen soll.
+Wir arbeiten mit Geschäftsführungen, IT-Verantwortlichen und Infosec-Verantwortlichen, die strukturierte Entscheidungen treffen wollen — und in deren Fachbereichen KI realen Mehrwert schaffen soll. In kleinen Unternehmen sind diese Rollen oft in einer Person vereint oder extern vergeben — wir passen uns daran an.
 
 **CTA:** `Passt das zu uns? Erstgespräch buchen →`
 
@@ -172,8 +173,8 @@ Wir arbeiten mit Geschäftsführungen, IT-Leitungen und Infosec-Verantwortlichen
 
 | Tag | Titel | Subline |
 |---|---|---|
-| `50–250 MITARBEITENDE` | Geschäftsführung | Klare Entscheidungsgrundlage, kontrollierte Risiken |
-| `250–1000 MITARBEITENDE` | IT-Leitung | Sichere Integration, beherrschbare Architektur |
+| `BIS 50 MITARBEITENDE` | Geschäftsführung & Inhaber | Klare Entscheidungsgrundlage, kontrollierte Risiken |
+| `50–250 MITARBEITENDE` | IT-Verantwortliche | Sichere Integration, beherrschbare Architektur |
 | `ALLE GRÖSSEN` | Infosec & Datenschutz | Governance vor Produktivsetzung, EU AI Act ready |
 | `FACHBEREICHE` | Operations & Vertrieb | Spürbare Entlastung im Tagesgeschäft |
 
@@ -244,7 +245,7 @@ Bei WirkVektor wird Wirkung sichtbar. Jedes Paket liefert ein konkretes Ergebnis
 **Sub-Line:** Berater an der Schnittstelle von KI, Sicherheit und Geschäft.
 
 **Body:**
-Sebastian Schucht ist Gründer und Geschäftsführer von WirkVektor. Er begleitet mittelständische Unternehmen bei der strukturierten Einführung von Künstlicher Intelligenz — vom ersten Use Case bis zum produktiven Betrieb. Schwerpunkte: KI-Strategie und Use-Case-Priorisierung, Governance und EU AI Act, generative KI in der Praxis, AI Literacy für Teams. Hintergrund in Informationssicherheit und Datenschutz.
+Sebastian Schucht ist Gründer und Geschäftsführer von WirkVektor. Er begleitet kleine und mittelständische Unternehmen bei der strukturierten Einführung von Künstlicher Intelligenz — vom ersten Use Case bis zum produktiven Betrieb. Schwerpunkte: KI-Strategie und Use-Case-Priorisierung, Governance und EU AI Act, generative KI in der Praxis, AI Literacy für Teams. Hintergrund in Informationssicherheit und Datenschutz.
 
 **Zitat:**
 > „KI schafft erst dann Wirkung, wenn Strategie, Sicherheit und Umsetzung zusammen gedacht werden. Genau dafür ist WirkVektor da."
@@ -302,8 +303,8 @@ ANSCHRIFT
 - Name *
 - Unternehmen *
 - E-Mail *
-- Rolle * (Dropdown: Geschäftsführung / IT-Leitung / Infosec / Fachbereich / Sonstige)
-- Mitarbeiterzahl (Dropdown: <50 / 50–250 / 250–1000 / >1000)
+- Rolle * (Dropdown: Geschäftsführung / Inhaber / IT-Verantwortung / Infosec / Datenschutz / Fachbereich / Sonstige)
+- Mitarbeiterzahl (Dropdown: <10 / 10–50 / 50–250 / >250)
 - Interessantes Paket (Dropdown, vorbefüllbar aus Section 7)
 - Worum geht es? (Textarea)
 - DSGVO-Checkbox * mit Link zu [[Datenschutz]]
@@ -340,8 +341,8 @@ Zeigt vorgemerkte Pakete (aus Section 7). Persistenz via `localStorage`. CTA „
 
 ## SEO & Meta
 
-- **Title:** „WirkVektor — KI-Beratung für den Mittelstand · Strategie, Governance, Wirkung"
-- **Description (max 155 Zeichen):** „Strukturierte KI-Einführung für mittelständische Unternehmen. Strategie, Governance und produktive Wirkung — mit messbarem Nutzen."
+- **Title:** „WirkVektor — KI-Beratung für KMU · Strategie, Governance, Wirkung"
+- **Description (max 155 Zeichen):** „Strukturierte KI-Einführung für kleine und mittelständische Unternehmen. Strategie, Governance und produktive Wirkung — mit messbarem Nutzen."
 - **OG-Image:** Hero-Vektor-SVG + Claim „Die Architektur wirksamer KI."
 
 ---
@@ -354,7 +355,7 @@ Zeigt vorgemerkte Pakete (aus Section 7). Persistenz via `localStorage`. CTA „
 | 2 | „The momentum to rise higher" | „Der Hebel zur Wirkung." |
 | 3 | „A new premium format" | „Eine neue Form der KI-Einführung." |
 | 4 | „An intelligent harmony of curved glass and radiant metal" | „Die intelligente Verbindung aus Strategie, Sicherheit und Wirkung." |
-| 5 | „At the center of life" | „Im Zentrum des Mittelstands." |
+| 5 | „At the center of life" | „Im Zentrum: kleine und mittlere Unternehmen." |
 | 6 | „Designed with people in mind" | „KI-Einführung — mit Menschen gedacht." |
 | 7 | „A tangible sense of status" | „Greifbare Wirkung, keine Folientheorie." |
 

@@ -25,6 +25,8 @@ Anforderungsaufnahme, Lasten- und Fachkonzepte, Tool- und Anbieterbewertung, Aus
 
 ## Standardisierte Pakete (Einstiegsangebote)
 
+Jedes Paket ist in Umfang und Tiefe skalierbar. Für kleine Unternehmen gibt es niedrigschwellige Kompakt-Varianten mit reduziertem Aufwand und geringerem Festpreis (siehe Preise unten), für größere Mittelständler umfangreichere Varianten.
+
 | Paket | Ziel | Ergebnis |
 |---|---|---|
 | **KI-Readiness-Check** | Reifegrad und Handlungsfelder bewerten | Reifegradprofil, priorisierte Maßnahmen, Entscheidungsgrundlage |
@@ -35,7 +37,7 @@ Anforderungsaufnahme, Lasten- und Fachkonzepte, Tool- und Anbieterbewertung, Aus
 
 ## Was macht mein Angebot besonders
 
-- **Mittelstandsnähe** statt Konzernsprache
+- **Nähe zu kleinen und mittelständischen Unternehmen** statt Konzernsprache — Aufwand und Tiefe an die Unternehmensgröße angepasst
 - **Informationssicherheit als Kernkompetenz**, nicht als Nebenpunkt
 - **Wirkung vor Technologie** — Business Case zuerst, Tool danach
 - **Governance als Ermöglicher**, nicht als Bremse
@@ -69,13 +71,18 @@ Anforderungsaufnahme, Lasten- und Fachkonzepte, Tool- und Anbieterbewertung, Aus
 
 Verkauf bevorzugt über Festpreis-Pakete mit klarem Ergebnis (nimmt die Tagessatz-Diskussion raus). Korridore auf Basis Solo-Lieferung durch Sebastian; bei Lieferung durch Mitarbeiter verbessert sich die Marge.
 
-| Paket | Aufwand (Beratertage) | Festpreis-Korridor | Hinweis |
+Zwei Größenklassen: die **Kompakt-Variante** für kleine Unternehmen (reduzierter Umfang, weniger Interviews/Workshops, schlankere Dokumentation) und die **Standard-Variante** für mittelständische Unternehmen. Welche Variante passt, wird im Erstgespräch festgelegt.
+
+| Paket | Kompakt (kleine Unternehmen) | Standard (Mittelstand) | Hinweis |
 |---|---|---|---|
-| **KI-Readiness-Check** | 4–7 | **7.500–12.000 €** | Türöffner, bewusst niedrigschwellig |
-| **KI-Use-Case-Sprint** | 5–8 | **9.000–15.000 €** | inkl. 1–2 Workshops |
-| **KI-Governance-Starterpaket** | 8–12 | **14.000–22.000 €** | inkl. EU-AI-Act-Einordnung |
-| **AI-Literacy-Schulung** | 1,5–2 je Schulungstag | **2.500–3.500 € / Schulungstag** | Konzeption einmalig 1–2 Tage extra |
-| **Produktiver KI-Pilot** | 10–18 (Steuerung) | **18.000–35.000 €** | zzgl. Technik-/Lizenzkosten, stark fallabhängig |
+| **KI-Readiness-Check** | 2–3 Tage · **4.000–6.000 €** | 4–7 Tage · **7.500–12.000 €** | Türöffner, bewusst niedrigschwellig |
+| **KI-Use-Case-Sprint** | 3–4 Tage · **5.500–8.000 €** | 5–8 Tage · **9.000–15.000 €** | inkl. 1–2 Workshops |
+| **KI-Governance-Starterpaket** | 4–6 Tage · **7.500–11.000 €** | 8–12 Tage · **14.000–22.000 €** | inkl. EU-AI-Act-Einordnung |
+| **AI-Literacy-Schulung** | — | 1,5–2 Tage je Schulungstag · **2.500–3.500 € / Schulungstag** | Konzeption einmalig 1–2 Tage extra; für kleine Teams kompakte Halbtagesformate möglich |
+| **Produktiver KI-Pilot** | 6–10 Tage · **11.000–18.000 €** | 10–18 Tage · **18.000–35.000 €** | zzgl. Technik-/Lizenzkosten, stark fallabhängig |
+
+> [!note] Kompakt-Korridore
+> Richtwerte, Stand 2026-06 — vor Angebotslegung je Mandat prüfen. Die Kompakt-Varianten senken die Einstiegshürde für kleine Unternehmen mit begrenztem Budget, ohne den Festpreis-Charakter und das klare Ergebnis aufzugeben.
 
 ### Weitere Modelle
 
@@ -83,4 +90,4 @@ Verkauf bevorzugt über Festpreis-Pakete mit klarem Ergebnis (nimmt die Tagessat
 - **Umsetzungsbegleitung / Projektsteuerung:** nach Aufwand zum jeweiligen Tagessatz.
 
 > [!note] Einordnung
-> Tagessätze 2025 erstmals seit Jahren leicht rückläufig (–2 %, BDU), IT-Beratung –3 %, nur Strategieberatung +2 %. Mittelstand zahlt eher am Schnitt als an der Spitze. Daher: über Wirkung und klares Ergebnis verkaufen, nicht über den Tagessatz.
+> Tagessätze 2025 erstmals seit Jahren leicht rückläufig (–2 %, BDU), IT-Beratung –3 %, nur Strategieberatung +2 %. Kleine und mittelständische Unternehmen zahlen eher am Schnitt als an der Spitze; kleine Unternehmen achten besonders auf eine niedrige Einstiegshürde. Daher: über Wirkung und klares Ergebnis verkaufen, nicht über den Tagessatz — und für kleine Unternehmen die Kompakt-Varianten anbieten.
