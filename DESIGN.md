@@ -76,6 +76,44 @@ motion:
 
 > Dieses Dokument beschreibt das tatsächlich auf der WirkVektor-Website (`02 Projekte/WebSite aufbauen/site`) implementierte Designsystem. Die maßgebliche Quelle der Tokens ist `src/styles/tokens.css`; dieses Dokument hält sie für alle weiteren visuellen Aufgaben (Slides, Materialien, Print) fest. Grafiken: siehe `07 Anhänge/Website Grafiken/`.
 
+## Logo
+
+Das offizielle WirkVektor-Logo liegt unter `07 Anhänge/WirkVektor Logo.svg`. Es ist ein abstraktes Monogramm aus drei Vektor-Strichen, die zusammen das „W" für **W**irkVektor bilden — interpretiert als gerichtete Bewegung: zwei tragende Striche und ein dritter, leichter „Vektor-Aufschwung" rechts oben als visuelle Übersetzung von **Wirkung mit Richtung**.
+
+### Struktur
+
+Das Logo nutzt eine quadratische Zeichenfläche (`viewBox="0 0 1448 1448"`) und besteht aus drei separaten Pfaden, die individuell eingefärbt werden können:
+
+| Pfad | Funktion | Original-Hex |
+|---|---|---|
+| **Pfad A** (`fill #434a5d`) | Haupt-V-Strich links | Slate-Dark |
+| **Pfad B** (`fill #abaeb7`) | Sekundär-Strich rechts | Slate-Cool |
+| **Pfad C** (`fill #94cccc`) | Vektor-Aufschwung (Akzent) | Teal-Cool |
+
+### Farbvarianten
+
+Verbindlich für Markenmaterial sind die drei Hauptvarianten:
+
+| Variante | Pfad A | Pfad B | Pfad C | Einsatz |
+|---|---|---|---|---|
+| **Original** | `#434a5d` | `#abaeb7` | `#94cccc` | Standard auf hellem, neutralem Untergrund |
+| **Marke Light** | `#0F172A` | `#94A3B8` | `#0D9488` | Off-White-Hintergrund, volle Markenfarben |
+| **Marke Dark** | `#FFFFFF` | `rgba(255,255,255,0.55)` | `#22D3EE` | Navy-Hintergrund |
+| **Mono Navy** | `#0F172A` | `#0F172A` | `#0F172A` | Print, einfarbig auf Hell |
+| **Mono Weiß** | `#FFFFFF` | `#FFFFFF` | `#FFFFFF` | Print, einfarbig auf Dunkel |
+
+### Verwendungsregeln
+
+- **Mindestgröße:** 16 px (digital), 8 mm Höhe (Print)
+- **Schutzraum:** umlaufend mindestens ½ Höhe der Pfad-A-Form frei von anderen Elementen
+- **Hintergründe:** Originalfarben auf Off-White (`#F7F9FB`) oder reinem Weiß; Marke-Dark-/Mono-Weiß-Varianten auf Navy Deep
+- **Veredelungen erlaubt:** Heißfolienprägung (Pfad C bevorzugt), Blindprägung des kompletten Logos, Spot UV / Glanzlack tonal auf Navy
+- **Verboten:** Verzerren, Rotieren, Drop-Shadow, Verläufe innerhalb der Pfade (außer Foil-Effekte), Stroke-Outlines, separate Farben außerhalb der definierten Varianten
+
+### Wortmarke
+
+Logo + Wortmarke werden in der Regel **horizontal kombiniert** (Logo links, „WirkVektor" rechts in Hanken Grotesk 600, optisch zentriert auf die Logo-Höhe). Eine vertikale Anordnung (Logo oben, Wortmarke darunter zentriert) ist für quadratische Flächen und Avatare zulässig.
+
 ## Brand & Style
 Das Designsystem ist für **WirkVektor** entwickelt — eine Beratung, die hochwertige KI mit den pragmatischen Bedürfnissen des deutschen Mittelstands verbindet. Die Markenpersönlichkeit gründet auf **Kompetenz** und **Klarheit** und verzichtet bewusst auf „KI-Hype" zugunsten einer visuellen Sprache von **Verlässlichkeit** und **gerichteter Wirkung**.
 

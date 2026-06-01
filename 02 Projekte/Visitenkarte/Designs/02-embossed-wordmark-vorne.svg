@@ -1,44 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 02 Vorderseite">
   <title>02 · Embossed Wordmark · Vorderseite</title>
   <defs>
-    <filter id="emboss02" x="-2%" y="-2%" width="104%" height="104%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.4"/>
-      <feSpecularLighting result="hl" specularExponent="20" lighting-color="#FFFFFF">
-        <feDistantLight azimuth="225" elevation="55"/>
-      </feSpecularLighting>
-      <feComposite in="hl" in2="SourceAlpha" operator="in" result="hl2"/>
-      <feComposite in="SourceGraphic" in2="hl2" operator="arithmetic" k1="0" k2="1" k3="0.4" k4="0"/>
-    </filter>
+    <symbol id="logo-02v" viewBox="50 180 1264 970">
+      <path fill="rgba(255,255,255,0.45)" d="m 429.86877,411.1051 c -1.61657,-3.28338 -0.23281,-5.40738 3.51227,-5.80804 1.15418,-0.12351 2.33078,-0.0467 3.4971,-0.0467 71.15146,-0.004 142.30307,0.0548 213.45401,-0.13648 5.03845,-0.0136 7.80518,2.01184 9.80085,6.00174 305.19045,610.16118 326.41774,624.94358 356.0654,694.59738 0.4907,1.1797 -1.5793,4.0457 -3.1435,5.2598 -1.2194,0.9464 -3.4904,0.7058 -5.2942,0.7066 -66.4858,0.031 -132.97194,-0.081 -199.45675,0.1716 -8.1336,0.031 -12.85974,-3.0369 -16.17999,-10.1645"/>
+      <path fill="#22D3EE" d="m 1069.3154,1077.0327 c -1.3246,3.1886 -2.4818,6.4563 -3.9767,9.5621 -1.4637,3.0418 -5.1129,3.0688 -6.6904,-0.01 -16.175,-31.5528 -228.36191,-440.11632 -232.67515,-451.98425 -1.82545,-5.02276 -0.85097,-6.41455 4.36071,-6.44873 140.34798,-0.9205 0.10512,-0.55038 140.39105,-0.99927 6.0313,-0.0193 9.35431,3.56574 11.7652,7.86597 26.53439,47.32844 -9.99492,-16.83992 59.32349,114.26306 0.7718,1.4596 1.4094,3.51294 3.4915,3.75708 1.6102,-0.0637 2.185,-1.87634 2.8453,-3.0564 32.0284,-57.24544 162.3648,-299.34951 172.784,-316.92538 2.0473,-3.45343 1.165,-4.85858 -2.304,-6.25717 -13.7265,-5.53427 -27.3681,-11.27988 -41.0049,-17.0332 -0.9154,-0.38621 -2.0782,-1.77029 -2.1493,-2.19986 -0.5186,-3.13419 1.4989,-3.99778 2.9658,-4.84583 101.5773,-59.1002 49.4324,-31.75504 175.9856,-106.7373 2.0223,-1.19824 4.4367,-1.91517 6.3338,-0.94759 1.2001,0.6121 2.3526,3.34429 2.3549,5.30193 9.6576,97.44743 9.8304,98.54992 18.3217,193.50423 0.189,2.11358 -0.3426,3.10158 -2.4233,4.10603 -2.0796,0.49187 -4.3198,-1.2023 -6.3829,-2.22759 -19.7623,-9.82138 -20.3411,-9.18774 -33.209,-15.47949 -4.1495,-2.02891 -6.2503,-1.89632 -7.9182,2.21095"/>
+      <path fill="#FFFFFF" d="m 536.37622,842.62567 c 1.59448,2.95239 4.39184,2.51502 6.41718,-0.86596 11.32783,-18.90996 20.53585,-37.89523 30.65041,-56.92038 32.24356,59.36125 21.34992,37.82179 31.27091,57.03915 1.25562,2.44641 1.3988,6.54285 0.21655,8.98474 -48.10517,96.83085 -97.0517,193.24568 -144.97952,290.17398 -1.41989,2.8423 -4.22564,2.8809 -5.68341,0.101 C 435.33407,1105.0314 49.43269,423.34317 54.2545,407.71488 c 0.1212,-1.40369 3.420965,-1.08234 5.310724,-1.08396 79.819956,-0.0685 159.640216,-0.0246 239.459406,-0.2948 6.46127,-0.0218 7.12616,4.87793 8.98758,8.31549"/>
+    </symbol>
   </defs>
 
   <rect width="850" height="550" fill="#0F172A"/>
-  <!-- Vector-Teal Edge -->
   <rect x="0" y="540" width="850" height="10" fill="#0D9488"/>
 
-  <!-- Geprägte Wortmarke "letterpress" -->
-  <g transform="translate(425 285)" text-anchor="middle">
-    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
-          font-size="96" letter-spacing="-3" fill="#0F172A" stroke="rgba(255,255,255,0.18)" stroke-width="0.6" filter="url(#emboss02)">WirkVektor</text>
-    <!-- Highlight Layer -->
+  <!-- Logo oben links -->
+  <use href="#logo-02v" x="50" y="50" width="78" height="60"/>
+
+  <!-- Eyebrows -->
+  <text x="800" y="80" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="10" letter-spacing="3" fill="rgba(255,255,255,0.45)">EST · 2026 · MAINBURG</text>
+
+  <!-- Embossed Wortmarke zentral (Letterpress-Simulation) -->
+  <g transform="translate(425 305)" text-anchor="middle">
+    <text y="3" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="100" letter-spacing="-3.5" fill="rgba(0,0,0,0.45)">WirkVektor</text>
     <text y="-1" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
-          font-size="96" letter-spacing="-3" fill="rgba(255,255,255,0.06)">WirkVektor</text>
-    <!-- Shadow Layer -->
-    <text y="1.5" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
-          font-size="96" letter-spacing="-3" fill="rgba(0,0,0,0.5)">WirkVektor</text>
-    <!-- Surface Layer -->
+          font-size="100" letter-spacing="-3.5" fill="rgba(255,255,255,0.07)">WirkVektor</text>
     <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
-          font-size="96" letter-spacing="-3" fill="#0F172A">WirkVektor</text>
+          font-size="100" letter-spacing="-3.5" fill="#0F172A">WirkVektor</text>
   </g>
 
   <!-- Sub-Label -->
-  <text x="425" y="350" text-anchor="middle" font-family="Inter, system-ui, sans-serif"
-        font-weight="600" font-size="11" letter-spacing="4" fill="#0D9488">
+  <text x="425" y="370" text-anchor="middle" font-family="Inter, system-ui, sans-serif"
+        font-weight="600" font-size="11" letter-spacing="5" fill="#0D9488">
     KI · BERATUNG · MITTELSTAND
   </text>
-
-  <!-- Top eyebrow -->
-  <text x="50" y="60" font-family="Inter, system-ui, sans-serif" font-weight="600"
-        font-size="10" letter-spacing="3" fill="rgba(255,255,255,0.4)">EST · 2026</text>
-  <text x="800" y="60" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-weight="600"
-        font-size="10" letter-spacing="3" fill="rgba(255,255,255,0.4)">MAINBURG · DE</text>
 </svg>
