@@ -212,12 +212,12 @@ Track mit `transform`-Transition (800ms `ease-in-out`), Slides voll breit in Car
 - **Progress:** lineare, dünne Balken in Vector Teal statt zirkulärer Loader — klarer Weg von A nach B.
 
 ## Logo
-Das Markenzeichen ist das **„W" mit Teal-Aufwärtspfeil** — die navyfarbenen W-Striche stehen für Struktur und Fundament, der Vector-Teal-Pfeil für gerichtete Wirkung („Vektor"). Master: `07 Anhänge/WirkVektor Logo.svg`.
+Das Markenzeichen ist das **„W" mit Teal-Aufwärtspfeil** — die navyfarbenen W-Striche stehen für Struktur und Fundament, der Vector-Teal-Pfeil für gerichtete Wirkung („Vektor"). Maßgebliche Datei: `07 Anhänge/WirkVektor Logo.svg`.
 
-- **Transparente Variante** (`wirkvektor-logo.svg`, `logo-wv.svg`, `logo-wv-glyph.svg`): für flexible Platzierung. Auf hellem Grund direkt nutzbar; auf dunklem Grund auf eine helle Kachel setzen (das navyfarbene W ist sonst nicht lesbar — der Website-Footer nutzt dafür eine weiße CSS-Kachel mit 6px Radius).
-- **Favicon** (`favicon.svg`): Markenzeichen auf weißer, abgerundeter Kachel — lesbar auf hellen und dunklen Browser-Tabs.
-- **Wortmarke:** „WirkVektor" in Hanken Grotesk (600/700), neben dem Glyph oder eigenständig.
-- Die abgeleiteten Varianten werden zentral aus dem Master erzeugt: `02 Projekte/Geschäftsausstattung und Vorlagen/_build/sync_logos.py`.
+- **Eine Quelldatei für alles:** Dieses Logo wird wortgetreu an allen Stellen verwendet — Website-Logo, Favicon, Anhänge-Kopien und (als PNG gerendert) in den Office-Vorlagen. Es bringt einen **weißen Hintergrund** mit und ist dadurch auf hellem wie dunklem Grund lesbar (auf Dunkel wirkt es als weiße Logo-Karte).
+- **Favicon** (`favicon.svg`): identisch mit dem Logo.
+- **Wortmarke:** „WirkVektor" in Hanken Grotesk (600/700), neben dem Logo oder eigenständig.
+- Die Verteilung an alle Stellen erfolgt zentral über `02 Projekte/Geschäftsausstattung und Vorlagen/_build/sync_logos.py`.
 
 ## Grafiken / Assets
 Alle Website-Grafiken liegen unter `07 Anhänge/Website Grafiken/` (Index dort in `README.md`). Live im Einsatz: `wirkvektor-logo.svg`, `favicon.svg`, `sebastian-schucht.png` und das Inline-Icon-Sprite. Gestaltete Kern-Illustrationen: `hero-vektor.svg`, `hebel-grafik-drehpunkt-rechts.svg`. Platzhalter-SVGs markieren Foto-/Mockup-Slots aus der [[Asset-Liste]] (Ersatz durch echte Assets in Phase 2). Das Logo-Intro nutzt einen per Canvas erzeugten Vektor-Hintergrund (kein statisches File).
