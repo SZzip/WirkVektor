@@ -47,6 +47,13 @@ Wenn du Inhalte für WirkVektor erstellst (Texte, Mails, Präsentationen, Websit
 
 Für alle visuellen und gestalterischen Aufgaben (Website, Slides, Materialien) gilt das in `DESIGN.md` definierte System. Kernelemente: Navy Deep (#0F172A) als Primärfarbe, Vector Teal (#0D9488) als Impact-Akzent, Hanken Grotesk für Headlines, Inter für Body. Stil: Corporate Modern mit Technical Edge — strukturiert, präzise, ohne dekorative Effekte.
 
+## GitHub und Pull Requests
+
+- Änderungen werden auf einem Feature-Branch committet und gepusht; für gepushte Branches wird ein Pull Request (als Draft) angelegt, falls noch keiner existiert.
+- **Nach dem Anlegen eines PRs immer die Überwachung aktivieren** (`subscribe_pr_activity`). So werden CI-Status, Review-Kommentare und andere Aktivität automatisch als Events in die Session geliefert.
+- Eingehende PR-Events untersuchen: kleine, eindeutige Fixes direkt umsetzen und pushen; bei Mehrdeutigkeit oder größeren Änderungen vorher nachfragen; sonst still überspringen.
+- Den Überwachungs-Status nicht ungefragt beenden — erst auf ausdrückliche Anweisung (`unsubscribe_pr_activity`).
+
 ## Session-Routinen
 
 ### Bei Session-Start
