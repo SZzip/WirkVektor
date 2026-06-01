@@ -8,18 +8,18 @@ tags: [kontext]
 
 ## Wer ist meine Zielgruppe
 
-Primär mittelständische Unternehmen in Deutschland, die KI strukturiert einführen oder bestehende KI-Nutzung kontrollieren möchten. Innerhalb dieser Unternehmen adressiere ich vier Buyer-Rollen:
+Primär kleine und mittelständische Unternehmen (KMU) in Deutschland, die KI strukturiert einführen oder bestehende KI-Nutzung kontrollieren möchten — vom kleinen Unternehmen mit wenigen Dutzend Mitarbeitenden bis zum etablierten Mittelständler. Innerhalb dieser Unternehmen adressiere ich vier Buyer-Rollen. Wichtig: In kleinen Unternehmen sind diese Rollen oft nicht getrennt besetzt — die Geschäftsführung vereint mehrere davon, IT und Datenschutz sind teilweise extern vergeben. Aufwand und Ansprache passe ich an die Unternehmensgröße an.
 
 ### 1. Geschäftsführung und Inhaber
-Benötigen Orientierung, Priorisierung und Entscheidungsgrundlagen. Sie fragen: Wo schafft KI bei uns echten Nutzen? Welche Risiken gehen wir ein? Welche Investitionen sind sinnvoll?
+Benötigen Orientierung, Priorisierung und Entscheidungsgrundlagen. In kleinen Unternehmen oft der einzige Ansprechpartner für Strategie, IT und Compliance zugleich. Sie fragen: Wo schafft KI bei uns echten Nutzen? Welche Risiken gehen wir ein? Welche Investitionen sind sinnvoll?
 
-### 2. IT-Leitung und Digitalisierungsteams
-Suchen belastbare Konzepte für Integration, Sicherheit, Datenzugriff und Betrieb. Sie fragen: Welche Tools passen in unsere Landschaft? Wie kontrollieren wir Datenabfluss und Berechtigungen?
+### 2. IT-Verantwortliche und Digitalisierungsteams
+Suchen belastbare Konzepte für Integration, Sicherheit, Datenzugriff und Betrieb. In kleinen Unternehmen häufig an ein externes Systemhaus ausgelagert. Sie fragen: Welche Tools passen in unsere Landschaft? Wie kontrollieren wir Datenabfluss und Berechtigungen?
 
 ### 3. Informationssicherheits- und Datenschutzverantwortliche
-Benötigen Governance, Risikobewertung und klare Nutzungsregeln. Sie fragen: Welche KI-Anwendungen sind datenschutzrechtlich vertretbar? Wie klassifizieren wir KI-Risiken?
+Benötigen Governance, Risikobewertung und klare Nutzungsregeln. In kleinen Unternehmen oft nebenbei von der Geschäftsführung oder von externen Datenschutzbeauftragten wahrgenommen. Sie fragen: Welche KI-Anwendungen sind datenschutzrechtlich vertretbar? Wie klassifizieren wir KI-Risiken?
 
-### 4. Fachbereichsleitungen
+### 4. Fachbereichs- und Teamleitungen
 Suchen konkrete Arbeitserleichterung und Prozessverbesserung. Sie fragen: Welche Aufgaben können durch KI unterstützt werden? Wie messen wir den Nutzen?
 
 ## Sekundäre Zielgruppen
@@ -52,4 +52,4 @@ Suchen konkrete Arbeitserleichterung und Prozessverbesserung. Sie fragen: Welche
 
 ## Wie ich ihnen helfe
 
-WirkVektor bringt KI kontrolliert in die Unternehmenspraxis — mit klarer Wirkung, sauberer Governance und messbarem Nutzen. Die fünf Einstiegspakete (KI-Readiness-Check, KI-Use-Case-Sprint, KI-Governance-Starterpaket, AI-Literacy-Schulung, Produktiver KI-Pilot) senken die Einstiegshürde und passen zum Entscheidungsverhalten mittelständischer Unternehmen. Details siehe `00 Kontext/Angebot.md`.
+WirkVektor bringt KI kontrolliert in die Unternehmenspraxis — mit klarer Wirkung, sauberer Governance und messbarem Nutzen. Die fünf Einstiegspakete (KI-Readiness-Check, KI-Use-Case-Sprint, KI-Governance-Starterpaket, AI-Literacy-Schulung, Produktiver KI-Pilot) sind in Umfang und Tiefe skalierbar — mit kompakten Varianten für kleine Unternehmen — und senken so die Einstiegshürde für kleine und mittelständische Unternehmen. Details siehe `00 Kontext/Angebot.md`.

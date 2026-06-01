@@ -4,7 +4,7 @@ Dieses Vault ist das Zweite Gehirn von Sebastian Schucht, Gründer und Geschäft
 
 ## Über mich
 
-Sebastian Schucht, Gründer und Geschäftsführer von **WirkVektor** — einer spezialisierten Beratungsgesellschaft für die sichere, strukturierte und wirksame Einführung von Künstlicher Intelligenz in Unternehmen. Schwerpunkt: mittelständische Unternehmen in Deutschland, die KI nicht nur ausprobieren, sondern produktiv, regelkonform und wirtschaftlich sinnvoll integrieren wollen. Aktuell im Aufbau, plant ein Team. Arbeitet strukturiert und organisiert. Ausführliches Profil in `00 Kontext/Über mich.md`, vollständiges Unternehmenskonzept in `WirkVektor.md`.
+Sebastian Schucht, Gründer und Geschäftsführer von **WirkVektor** — einer spezialisierten Beratungsgesellschaft für die sichere, strukturierte und wirksame Einführung von Künstlicher Intelligenz in Unternehmen. Schwerpunkt: kleine und mittelständische Unternehmen (KMU) in Deutschland, die KI nicht nur ausprobieren, sondern produktiv, regelkonform und wirtschaftlich sinnvoll integrieren wollen. Aktuell im Aufbau, plant ein Team. Arbeitet strukturiert und organisiert. Ausführliches Profil in `00 Kontext/Über mich.md`, vollständiges Unternehmenskonzept in `WirkVektor.md`.
 
 ## Vault-Struktur
 

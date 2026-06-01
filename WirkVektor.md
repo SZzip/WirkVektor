@@ -25,7 +25,7 @@
 
 # 1. Executive Summary
 
-**WirkVektor** ist eine spezialisierte Beratungsgesellschaft für die sichere, strukturierte und wirksame Einführung von Künstlicher Intelligenz in Unternehmen. Der Schwerpunkt liegt auf mittelständischen Unternehmen, die KI nicht nur ausprobieren, sondern produktiv, regelkonform und wirtschaftlich sinnvoll in ihre Geschäftsprozesse integrieren möchten.
+**WirkVektor** ist eine spezialisierte Beratungsgesellschaft für die sichere, strukturierte und wirksame Einführung von Künstlicher Intelligenz in Unternehmen. Der Schwerpunkt liegt auf kleinen und mittelständischen Unternehmen (KMU), die KI nicht nur ausprobieren, sondern produktiv, regelkonform und wirtschaftlich sinnvoll in ihre Geschäftsprozesse integrieren möchten.
 
 Das Unternehmen verbindet strategische KI-Beratung mit Governance, Informationssicherheit, Datenschutz, Prozessverständnis und Change Management. WirkVektor positioniert sich bewusst nicht als reiner Technologieanbieter und nicht als allgemeine Digitalberatung, sondern als unabhängiger Umsetzungspartner für Unternehmen, die aus KI messbaren geschäftlichen Nutzen erzeugen wollen.
 
@@ -69,7 +69,7 @@ Die Mission besteht darin, Unternehmen von der ersten Orientierung bis zur produ
 
 ## Vision
 
-**WirkVektor will eine führende spezialisierte Beratung für sichere und wirksame KI-Einführung im deutschen Mittelstand werden.**
+**WirkVektor will eine führende spezialisierte Beratung für sichere und wirksame KI-Einführung bei kleinen und mittelständischen Unternehmen in Deutschland werden.**
 
 Die Vision ist ein Markt, in dem Unternehmen KI nicht unkontrolliert, opportunistisch oder aus reinem Innovationsdruck einsetzen, sondern bewusst, strukturiert und verantwortungsvoll. KI soll dort eingesetzt werden, wo sie einen klaren Nutzen erzeugt und organisatorisch beherrschbar ist.
 
@@ -97,16 +97,16 @@ WirkVektor steht für:
 
 # 5. Positionierung im Markt
 
-WirkVektor positioniert sich als spezialisierte KI-Einführungsberatung für mittelständische Unternehmen und Organisationen mit erhöhtem Anspruch an Sicherheit, Compliance und Umsetzbarkeit.
+WirkVektor positioniert sich als spezialisierte KI-Einführungsberatung für kleine und mittelständische Unternehmen (KMU) und Organisationen mit erhöhtem Anspruch an Sicherheit, Compliance und Umsetzbarkeit.
 
 Die Positionierung lautet:
 
-## **WirkVektor unterstützt mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, regelkonform und messbar wirksam in Geschäftsprozesse einzuführen.**
+## **WirkVektor unterstützt kleine und mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, regelkonform und messbar wirksam in Geschäftsprozesse einzuführen.**
 
 Diese Positionierung grenzt WirkVektor von drei Wettbewerbergruppen ab:
 
 1. **Große Strategieberatungen**  
-    Diese sind häufig stark im Konzernumfeld, aber für mittelständische Unternehmen oft zu abstrakt, teuer oder überdimensioniert.
+    Diese sind häufig stark im Konzernumfeld, aber für kleine und mittelständische Unternehmen oft zu abstrakt, zu teuer oder überdimensioniert.
     
 2. **Technische KI- und Softwaredienstleister**  
     Diese sind stark in Entwicklung und Implementierung, setzen aber häufig voraus, dass Strategie, Governance, Datenschutz und organisatorische Einführung bereits geklärt sind.
@@ -121,13 +121,15 @@ WirkVektor besetzt die Schnittstelle zwischen Unternehmensstrategie, KI-Nutzung,
 
 # 6. Zielgruppen
 
-WirkVektor richtet sich primär an mittelständische Unternehmen in Deutschland, die KI strukturiert einführen oder bestehende KI-Nutzung kontrollieren möchten.
+WirkVektor richtet sich primär an kleine und mittelständische Unternehmen (KMU) in Deutschland, die KI strukturiert einführen oder bestehende KI-Nutzung kontrollieren möchten. Das reicht vom kleinen Unternehmen mit wenigen Dutzend Mitarbeitenden bis zum etablierten Mittelständler.
+
+Wichtig: In kleineren Unternehmen sind die unten beschriebenen Rollen oft nicht getrennt besetzt. Häufig vereint die Geschäftsführung mehrere dieser Verantwortlichkeiten, IT und Datenschutz sind teilweise extern vergeben. WirkVektor passt Tiefe, Aufwand und Ansprache an die jeweilige Unternehmensgröße an — vom kompakten Format für kleine Unternehmen bis zum strukturierten Programm für größere Mittelständler.
 
 ## Primäre Zielgruppen
 
-### Geschäftsführung und Inhaber mittelständischer Unternehmen
+### Geschäftsführung und Inhaber
 
-Diese Zielgruppe benötigt Orientierung, Priorisierung und Entscheidungsgrundlagen. Typische Fragen sind:
+Diese Zielgruppe benötigt Orientierung, Priorisierung und Entscheidungsgrundlagen. In kleinen Unternehmen ist sie häufig zugleich der einzige Ansprechpartner für Strategie, IT und Compliance. Typische Fragen sind:
 
 - Wo kann KI in unserem Unternehmen echten Nutzen schaffen?
 - Welche Risiken gehen wir ein?
@@ -135,9 +137,9 @@ Diese Zielgruppe benötigt Orientierung, Priorisierung und Entscheidungsgrundlag
 - Welche Investitionen sind sinnvoll?
 - Wie vermeiden wir Fehlentscheidungen und Schatten-KI?
 
-### IT-Leitung und Digitalisierungsteams
+### IT-Verantwortliche und Digitalisierungsteams
 
-Diese Zielgruppe sucht nach belastbaren Konzepten für Integration, Sicherheit, Datenzugriff und Betrieb. Typische Fragen sind:
+Diese Zielgruppe sucht nach belastbaren Konzepten für Integration, Sicherheit, Datenzugriff und Betrieb. In kleinen Unternehmen ist diese Rolle oft an einen externen IT-Dienstleister oder ein Systemhaus ausgelagert. Typische Fragen sind:
 
 - Welche KI-Tools passen in unsere IT-Landschaft?
 - Wie kontrollieren wir Datenabfluss und Berechtigungen?
@@ -146,7 +148,7 @@ Diese Zielgruppe sucht nach belastbaren Konzepten für Integration, Sicherheit, 
 
 ### Informationssicherheits- und Datenschutzverantwortliche
 
-Diese Zielgruppe benötigt Governance, Risikobewertung und klare Nutzungsregeln. Typische Fragen sind:
+Diese Zielgruppe benötigt Governance, Risikobewertung und klare Nutzungsregeln. In kleinen Unternehmen wird diese Funktion oft nebenbei von der Geschäftsführung oder von externen Datenschutzbeauftragten wahrgenommen. Typische Fragen sind:
 
 - Welche KI-Anwendungen sind datenschutzrechtlich vertretbar?
 - Wie klassifizieren wir KI-Risiken?
@@ -318,6 +320,8 @@ Ziel ist, dass KI-Projekte nicht nur technisch gebaut, sondern organisatorisch e
 
 Für einen klaren Markteintritt bietet WirkVektor standardisierte Leistungspakete an. Diese reduzieren Komplexität und erleichtern Kunden die Kaufentscheidung.
 
+Jedes Paket ist in Umfang und Tiefe skalierbar. Für kleine Unternehmen gibt es bewusst niedrigschwellige Kompakt-Varianten mit reduziertem Aufwand und entsprechend geringerem Festpreis; für größere Mittelständler stehen umfangreichere Varianten zur Verfügung. So bleibt der Einstieg auch für Unternehmen mit kleinem Budget und ohne eigenes KI-Team realistisch.
+
 ## Paket 1: KI-Readiness-Check
 
 **Ziel:** Bewertung des aktuellen KI-Reifegrads und der wichtigsten Handlungsfelder.
@@ -460,9 +464,9 @@ Nach Einführung wird der Nutzen überprüft. Dafür werden messbare Kriterien d
 
 WirkVektor differenziert sich nicht durch die Behauptung, „alles rund um KI“ anzubieten. Die Differenzierung liegt in der Kombination aus Wirkung, Sicherheit und Umsetzung.
 
-## 12.1 Mittelstandsnähe
+## 12.1 Nähe zu kleinen und mittelständischen Unternehmen
 
-WirkVektor spricht die Sprache mittelständischer Unternehmen. Statt abstrakter Konzernprogramme stehen konkrete Geschäftsprozesse, klare Entscheidungen und pragmatische Umsetzung im Vordergrund.
+WirkVektor spricht die Sprache kleiner und mittelständischer Unternehmen. Statt abstrakter Konzernprogramme stehen konkrete Geschäftsprozesse, knappe Ressourcen, kurze Entscheidungswege und pragmatische Umsetzung im Vordergrund. Aufwand und Tiefe werden an die jeweilige Unternehmensgröße angepasst.
 
 ## 12.2 Informationssicherheit als Kernkompetenz
 
@@ -488,7 +492,7 @@ Governance wird nicht als Bremse verstanden, sondern als Voraussetzung für skal
 
 ## 12.5 Pragmatische Leistungspakete
 
-WirkVektor bietet klar abgegrenzte Pakete, die auch ohne Großprojekt beauftragt werden können. Das senkt die Einstiegshürde und passt besser zum Entscheidungsverhalten vieler mittelständischer Unternehmen.
+WirkVektor bietet klar abgegrenzte Pakete, die auch ohne Großprojekt beauftragt werden können — mit kompakten Einstiegsvarianten für kleine Unternehmen. Das senkt die Einstiegshürde und passt besser zum Entscheidungsverhalten vieler kleiner und mittelständischer Unternehmen.
 
 ---
 
@@ -558,9 +562,9 @@ Dieser Claim ist kurz, merkfähig und greift den Namen WirkVektor direkt auf. Er
 
 # 15. Typische Kundenprojekte
 
-## Projektbeispiel 1: KI-Governance für ein mittelständisches Unternehmen
+## Projektbeispiel 1: KI-Governance für ein kleines Unternehmen
 
-Ein Unternehmen nutzt bereits verschiedene KI-Tools, jedoch ohne klare Regeln. WirkVektor analysiert die aktuelle Nutzung, entwickelt eine KI-Richtlinie, erstellt ein Tool-Freigabeverfahren, definiert Rollen und schult Mitarbeitende.
+Ein kleines Unternehmen mit rund 40 Mitarbeitenden nutzt bereits verschiedene KI-Tools, jedoch ohne klare Regeln. WirkVektor analysiert die aktuelle Nutzung, entwickelt eine KI-Richtlinie, erstellt ein Tool-Freigabeverfahren, definiert Rollen und schult Mitarbeitende.
 
 Ergebnis:
 
@@ -687,7 +691,7 @@ Für den Markteintritt sollte WirkVektor eine fokussierte Strategie wählen. Ein
 
 ## Empfohlene Einstiegspositionierung
 
-# **KI-Einführung für den Mittelstand — sicher, regelkonform und messbar wirksam.**
+# **KI-Einführung für kleine und mittelständische Unternehmen — sicher, regelkonform und messbar wirksam.**
 
 ## Empfohlene Einstiegsangebote
 
@@ -717,7 +721,7 @@ Für den Markteintritt sollte WirkVektor eine fokussierte Strategie wählen. Ein
 
 ## Themen für Content-Marketing
 
-- „Warum KI-Projekte im Mittelstand scheitern“
+- „Warum KI-Projekte in kleinen und mittelständischen Unternehmen scheitern“
 - „Schatten-KI: Das unterschätzte Risiko im Unternehmen“
 - „KI-Governance pragmatisch aufbauen“
 - „Was Geschäftsführer vor der Einführung von KI wissen müssen“
@@ -729,7 +733,7 @@ Für den Markteintritt sollte WirkVektor eine fokussierte Strategie wählen. Ein
 
 # 20. Zusammenfassung
 
-WirkVektor ist als Beratungsgesellschaft klar positioniert: Das Unternehmen unterstützt mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, strukturiert und messbar wirksam einzuführen.
+WirkVektor ist als Beratungsgesellschaft klar positioniert: Das Unternehmen unterstützt kleine und mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, strukturiert und messbar wirksam einzuführen.
 
 Der Name ist fachlich passend, markenfähig und strategisch stark. Er verbindet Wirkung und Richtung. Das Leistungsportfolio ist anschlussfähig an reale Marktbedarfe: KI-Strategie, Use-Case-Entwicklung, Governance, Compliance, Schulung, generative KI und produktive Umsetzung.
 
@@ -745,4 +749,4 @@ Damit lautet die zentrale Marktposition:
 
 Oder ausführlicher:
 
-# **WirkVektor unterstützt mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, regelkonform und messbar wirksam in Geschäftsprozesse einzuführen.**
+# **WirkVektor unterstützt kleine und mittelständische Unternehmen dabei, Künstliche Intelligenz sicher, regelkonform und messbar wirksam in Geschäftsprozesse einzuführen.**

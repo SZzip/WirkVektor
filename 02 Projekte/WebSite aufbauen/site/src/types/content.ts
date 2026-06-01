@@ -53,9 +53,9 @@ export type Content = z.infer<typeof ContentSchema>;
 export const content: Content = ContentSchema.parse({
   values: [
     {
-      title: 'Passt zu Ihrem Mittelstand',
+      title: 'Passt zu Ihrem Unternehmen',
       detail:
-        'Lösungen im Maßstab Ihres Unternehmens, ohne Konzern-Overhead und ohne Plattformzwang.',
+        'Lösungen im Maßstab Ihres Unternehmens, vom kleinen Betrieb bis zum Mittelständler, ohne Konzern-Overhead und ohne Plattformzwang.',
     },
     {
       title: 'Sicher und regelkonform',
@@ -107,13 +107,13 @@ export const content: Content = ContentSchema.parse({
   ],
   zielgruppeRoles: [
     {
-      tag: '50–250 MITARBEITENDE',
-      title: 'Geschäftsführung',
+      tag: 'BIS 50 MITARBEITENDE',
+      title: 'Geschäftsführung & Inhaber',
       subline: 'Klare Entscheidungsgrundlage, kontrollierte Risiken',
     },
     {
-      tag: '250–1000 MITARBEITENDE',
-      title: 'IT-Leitung',
+      tag: '50–250 MITARBEITENDE',
+      title: 'IT-Verantwortliche',
       subline: 'Sichere Integration, beherrschbare Architektur',
     },
     {

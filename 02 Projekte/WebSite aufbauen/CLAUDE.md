@@ -6,7 +6,7 @@ Dieses Verzeichnis enthält die WirkVektor-Website als statischen OnePager. Der 
 
 Ziel:
 
-- Stabile, performante, barrierearme Website für mittelständische Entscheider.
+- Stabile, performante, barrierearme Website für Entscheider in kleinen und mittelständischen Unternehmen.
 - Sachliche, vertrauenswürdige Wirkung über strukturierte Komposition statt visuelle Effekte.
 - Wirkung des Inhalts steht über visueller Verspieltheit. Keine Hype-Animationen.
 
