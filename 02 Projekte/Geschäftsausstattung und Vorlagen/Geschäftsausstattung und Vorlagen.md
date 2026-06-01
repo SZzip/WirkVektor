@@ -41,6 +41,7 @@ Die Vorlagen werden per Skript erzeugt (Single Source of Truth = [[DESIGN]] bzw.
 ```bash
 cd "_build"
 pip install python-pptx python-docx
+python3 sync_logos.py     # Logos/Favicon aus Master ableiten + PNG für Vorlagen
 python3 build_docx.py     # 16 Word-Vorlagen
 python3 build_pptx.py     # Master-Foliensammlung
 ```
@@ -50,5 +51,5 @@ Marken-/Kontaktdaten (Adresse, Telefon, USt-IdNr., Bankverbindung) stehen zentra
 ## Offene Punkte
 
 - Platzhalter in `_build/brand.py` mit echten Firmendaten füllen (Adresse, Telefon, USt-IdNr., Bank).
-- Optional: echtes Logo-SVG in Briefkopf und Cover einbinden, sobald final (siehe [[DESIGN]] › Grafiken).
+- Logo ist eingebunden: echtes Markenzeichen aus `07 Anhänge/WirkVektor Logo.svg` in Briefkopf (docx) und Covern/Divider (pptx), abgeleitet via `_build/sync_logos.py`.
 - Rechtsdokumente (AGB, NDA, AV-Vertrag) bewusst nicht enthalten — bei Bedarf separat mit anwaltlicher Prüfung.

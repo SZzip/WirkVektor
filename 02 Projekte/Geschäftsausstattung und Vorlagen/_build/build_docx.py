@@ -17,6 +17,7 @@ import brand as B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", "Vorlagen"))
+LOGO_PNG = os.path.join(HERE, "assets", "wv-logo.png")  # transparente Marke (sync_logos.py)
 
 # Farben als RGBColor
 NAVY  = RGBColor.from_string(B.NAVY_DEEP)
@@ -146,8 +147,11 @@ def _build_header(section):
     _no_table_borders(tbl)
     left, right = tbl.rows[0].cells
     left.width = Cm(9); right.width = Cm(8)
-    # links: Wortmarke + Claim
+    # links: Logo-Glyph + Wortmarke + Claim
     lp = left.paragraphs[0]; lp.paragraph_format.space_after = Pt(0)
+    if os.path.exists(LOGO_PNG):
+        gr = lp.add_run(); gr.add_picture(LOGO_PNG, height=Cm(0.6))
+        lp.add_run("  ")
     run(lp, "WirkVektor", size=17, color=NAVY, bold=True, font=DISPLAY)
     lp2 = left.add_paragraph(); lp2.paragraph_format.space_after = Pt(0)
     run(lp2, CO["claim"], size=8, color=TEAL, bold=True)
