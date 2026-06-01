@@ -12,10 +12,12 @@ Alle auf der WirkVektor-Website verwendeten bzw. für sie produzierten Grafiken.
 
 | Datei | Beschreibung | Format |
 |---|---|---|
-| `wirkvektor-logo.svg` | Vollständiges WV-Logo (Glyph + Wortmarke), live im Einsatz | SVG |
-| `logo-wv.svg` | Logo-Variante (Glyph + Wortmarke), kompakt | SVG |
-| `logo-wv-glyph.svg` | Reiner Markenglyph (WV) | SVG |
-| `favicon.svg` | Favicon — Navy-Quadrat (4px Radius) mit „WV" in Hanken Grotesk | SVG 32×32 |
+| `wirkvektor-logo.svg` | Markenzeichen (W + Teal-Aufwärtspfeil), transparent, live im Einsatz | SVG |
+| `logo-wv.svg` | Markenzeichen, transparent (= `wirkvektor-logo.svg`) | SVG |
+| `logo-wv-glyph.svg` | Markenzeichen, transparent (Glyph) | SVG |
+| `favicon.svg` | Favicon — Markenzeichen auf weißer, abgerundeter Kachel | SVG |
+
+> Quelle/Master aller Logos: `../WirkVektor Logo.svg` (Markenzeichen mit weißem Hintergrund). Transparente Variante und Favicon werden daraus über `02 Projekte/Geschäftsausstattung und Vorlagen/_build/sync_logos.py` abgeleitet und an alle Stellen verteilt.
 
 ## Kern-Illustrationen
 

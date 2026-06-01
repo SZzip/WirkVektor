@@ -18,6 +18,7 @@ import brand as B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.normpath(os.path.join(HERE, "..", "..", "..", "07 Anhänge", "Website Grafiken"))
+LOGO_PNG = os.path.join(HERE, "assets", "wv-logo.png")  # transparente Marke (sync_logos.py)
 OUT = os.path.normpath(os.path.join(HERE, "..", "Vorlagen", "Präsentation", "WirkVektor Master-Folien.pptx"))
 
 # --- Geometrie ---------------------------------------------------------------
@@ -90,20 +91,21 @@ def eyebrow(slide, x, y, label, color=B.VECTOR_TEAL, w=6.0):
          bold=True, font=B.FONT_BODY, caps=True)
 
 def logo(slide, x, y, scale=1.0, on_dark=False, wordmark=True):
-    """WV-Glyph (Navy-Quadrat mit WV) + Wortmarke, gemäß favicon.svg."""
-    s = 0.42 * scale
-    glyph_fill = B.WHITE if on_dark else B.NAVY_DEEP
-    glyph_txt  = B.NAVY_DEEP if on_dark else B.WHITE
-    g = rect(slide, x, y, s, s, fill=glyph_fill, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.16)
-    tf = g.text_frame; tf.word_wrap = False
-    tf.margin_left = 0; tf.margin_right = 0; tf.margin_top = 0; tf.margin_bottom = 0
-    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
-    p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-    r = p.add_run(); r.text = "WV"
-    r.font.size = Pt(15 * scale); r.font.bold = True; r.font.name = B.FONT_DISPLAY
-    r.font.color.rgb = C(glyph_txt)
+    """WirkVektor-Markenzeichen (W + Teal-Pfeil) + Wortmarke.
+    Auf dunklem Grund liegt die Marke auf einer weißen Kachel, damit das
+    navyfarbene W lesbar bleibt (analog zum Website-Footer)."""
+    s = 0.5 * scale
+    if on_dark:
+        # weiße, abgerundete Kachel als Träger, Marke mit Innenabstand
+        rect(slide, x, y, s, s, fill=B.WHITE,
+             shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.16)
+        pad = 0.1 * scale
+        slide.shapes.add_picture(LOGO_PNG, Inches(x + pad), Inches(y + pad),
+                                 height=Inches(s - 2 * pad))
+    else:
+        slide.shapes.add_picture(LOGO_PNG, Inches(x), Inches(y), height=Inches(s))
     if wordmark:
-        text(slide, x + s + 0.16, y - 0.04, 3.0, s + 0.1, "WirkVektor",
+        text(slide, x + s + 0.18, y - 0.04, 3.2, s + 0.1, "WirkVektor",
              size=int(17 * scale), color=(B.WHITE if on_dark else B.NAVY_DEEP),
              bold=True, font=B.FONT_DISPLAY, anchor=MSO_ANCHOR.MIDDLE)
 
