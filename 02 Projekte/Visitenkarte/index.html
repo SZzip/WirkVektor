@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WirkVektor · Visitenkarten — 10 Konzepte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:            #F7F9FB;
+    --bg-elevated:   #FFFFFF;
+    --fg:            #0F172A;
+    --fg-muted:      #475569;
+    --fg-subtle:     #94A3B8;
+    --border:        #E2E8F0;
+    --border-strong: #CBD5E1;
+    --accent:        #0D9488;
+    --cyan:          #22D3EE;
+    --navy:          #0F172A;
+    --container:     1320px;
+    --gutter:        24px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    background: var(--navy);
+    color: #FFFFFF;
+    padding: 96px 0 80px;
+  }
+  .site-header .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .site-header h1 {
+    font-family: "Hanken Grotesk", "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 24px;
+    max-width: 900px;
+  }
+  .site-header .lead {
+    font-size: 18px;
+    color: rgba(255,255,255,0.72);
+    max-width: 680px;
+    margin: 0;
+  }
+  .site-header .meta {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+  .site-header .meta strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    margin-right: 8px;
+  }
+
+  /* ---------- Section ---------- */
+  section { padding: 80px 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+  .section-head .num {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .section-head h2 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 1.4vw + 1rem, 2.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 12px;
+  }
+  .section-head .stil {
+    color: var(--fg-muted);
+    font-size: 15px;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  /* ---------- Card pair ---------- */
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .pair { grid-template-columns: 1fr; }
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .side-label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--fg-subtle);
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .card.querformat img {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 85 / 55;
+  }
+  .card.hochformat img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 55 / 85;
+  }
+
+  /* ---------- Specs Strip ---------- */
+  .specs {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  .specs > div {
+    padding: 18px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .specs > div:last-child { border-right: 0; }
+  .specs dt {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--fg-subtle);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .specs dd {
+    margin: 0;
+    font-size: 14px;
+    color: var(--fg);
+    font-weight: 500;
+  }
+  @media (max-width: 760px) {
+    .specs { grid-template-columns: 1fr; }
+    .specs > div {
+      border-right: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .specs > div:last-child { border-bottom: 0; }
+  }
+
+  /* ---------- Recommendation ---------- */
+  .rec {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: #E7F4F2;
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--fg);
+  }
+  .rec strong {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 0;
+  }
+  .toc h3 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 24px;
+    color: var(--fg);
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .toc-grid a {
+    padding: 16px 20px 16px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--fg);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .toc-grid a:hover { color: var(--accent); }
+  .toc-grid .num {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    min-width: 24px;
+  }
+  .toc-grid .name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.72);
+    padding: 64px 0;
+    font-size: 13px;
+  }
+  .site-footer h4 {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: 0 0 16px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 48px;
+  }
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .site-footer li { margin-bottom: 8px; }
+  .site-footer .legal {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { background: #FFFFFF; }
+    .site-header, .site-footer, .toc { display: none; }
+    section { page-break-inside: avoid; padding: 24px 0; border: 0; }
+    .card { box-shadow: none; border: 1px solid #CBD5E1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="eyebrow">Visitenkarten · 10 Konzepte</div>
+    <h1>Hochwertige Visitenkarten für WirkVektor</h1>
+    <p class="lead">Zehn doppelseitige Designkonzepte für Sebastian Schucht, basierend auf dem offiziellen Logo und dem WirkVektor-Designsystem. Jedes Konzept inkl. Empfehlung für Veredelung (Heißfolie, Blindprägung, Letterpress, Spot UV).</p>
+    <div class="meta">
+      <span><strong>Format</strong>85 × 55 mm oder 55 × 85 mm</span>
+      <span><strong>Daten</strong>Sebastian Schucht · Geschäftsführer · sebastian.schucht@wirkvektor.de</span>
+      <span><strong>Stand</strong>01.06.2026</span>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top: 64px;">
+  <div class="container">
+    <div class="toc">
+      <h3>Übersicht</h3>
+      <div class="toc-grid">
+        <a href="#d01"><span class="num">01</span><span class="name">Statement Logo</span></a>
+        <a href="#d02"><span class="num">02</span><span class="name">Embossed Wordmark</span></a>
+        <a href="#d03"><span class="num">03</span><span class="name">Tonal Sophistication</span></a>
+        <a href="#d04"><span class="num">04</span><span class="name">Foil Logo</span></a>
+        <a href="#d05"><span class="num">05</span><span class="name">Minimal QR</span></a>
+        <a href="#d06"><span class="num">06</span><span class="name">Vertical Authority</span></a>
+        <a href="#d07"><span class="num">07</span><span class="name">Editorial Quiet</span></a>
+        <a href="#d08"><span class="num">08</span><span class="name">Split Identity</span></a>
+        <a href="#d09"><span class="num">09</span><span class="name">Technical Grid</span></a>
+        <a href="#d10"><span class="num">10</span><span class="name">Pure Wordmark</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="d01">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">01</div>
+      <h2>Statement Logo</h2>
+      <p class="stil">Hochformat. Logo zentral in Impact-Cyan auf einem dezenten Wortmarken-Muster. Die Vorderseite ist reines Branding-Statement, die Rückseite klassisch-strukturiert mit Logo, Wortmarke und Kontaktblock.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep</span>
+        <div class="card hochformat"><img src="Designs/01-statement-logo-vorne.svg" alt="01 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White</span>
+        <div class="card hochformat"><img src="Designs/01-statement-logo-hinten.svg" alt="01 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>55 × 85 mm · Hochformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Vorne Marke Dark · Hinten Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Heißfolie Cyan auf Logo, Blindprägung Wortmarke</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Premium-Branding-Statement. Funktioniert bei Networking-Events stark, weil das Logo selbst zur Verteilkarte wird.</div>
+  </div>
+</section>
+
+<section id="d02">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">02</div>
+      <h2>Embossed Wordmark</h2>
+      <p class="stil">Querformat. Die geprägte Wortmarke ist Hauptdarsteller, das Logo bleibt klein oben links als Signatur. Auf der Rückseite eine groß angelegte Logo-Outline als Blindprägung rechts, daneben die Kontaktdaten.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Letterpress</span>
+        <div class="card querformat"><img src="Designs/02-embossed-wordmark-vorne.svg" alt="02 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White · Outline</span>
+        <div class="card querformat"><img src="Designs/02-embossed-wordmark-hinten.svg" alt="02 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Vorne Marke Dark · Hinten Outline + Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Letterpress (Wortmarke) · Edge-Print Teal · Blindprägung (Rückseite)</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Tradition trifft Moderne. Die haptische Letterpress-Wortmarke gibt der Karte sofortige Wertigkeit.</div>
+  </div>
+</section>
+
+<section id="d03">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">03</div>
+      <h2>Tonal Sophistication</h2>
+      <p class="stil">Querformat mit abgerundeten Ecken und Cyan-Edge oben/unten. Logo + Wortmarke unten links, Name + Kontakt rechts mit vertikaler Trennlinie. Die Rückseite zeigt das gesamte Logo + Wortmarke in tonaler Spot-UV-Optik.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Rounded</span>
+        <div class="card querformat"><img src="Designs/03-tonal-sophistication-vorne.svg" alt="03 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Navy Deep · Spot UV</span>
+        <div class="card querformat"><img src="Designs/03-tonal-sophistication-hinten.svg" alt="03 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat · 5 mm Radius</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Dark · Spot-UV tonal</dd></div>
+      <div><dt>Empfehlung</dt><dd>Spot-UV-Glanzlack auf gesamtem Logo + Wortmarke · Edge-Print Cyan</dd></div>
+    </dl>
+    <div class="rec"><strong>Empfehlung</strong>Mein Favorit für maximale Wirkung im Beratungs-Kontext. Trägt Kompetenz und Klarheit am stärksten.</div>
+  </div>
+</section>
+
+<section id="d04">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">04</div>
+      <h2>Foil Logo</h2>
+      <p class="stil">Querformat. Großes Logo zentral als Heißfolienprägung mit metallischem Cyan/Teal-Verlauf. Die Vorderseite ist eine reine Logo-Inszenierung; die Rückseite klassisch ruhig mit allen Kontaktdaten.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Foil</span>
+        <div class="card querformat"><img src="Designs/04-foil-logo-vorne.svg" alt="04 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White · Klassisch</span>
+        <div class="card querformat"><img src="Designs/04-foil-logo-hinten.svg" alt="04 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Foil-Gradient · Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Heißfolie Cyan-Metallic auf Logo · Edge-Print Teal</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Maximaler Wow-Effekt. Wenn das Logo selbst der Held sein soll und Premium-Wirkung gewünscht ist.</div>
+  </div>
+</section>
+
+<section id="d05">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">05</div>
+      <h2>Minimal QR</h2>
+      <p class="stil">Querformat. Vorderseite mit QR-Code als vCard (digitale Übergabe per Scan), Name groß oben links, Logo klein oben rechts. Die Rückseite zeigt das Logo + Wortmarke groß in Blindprägung auf Navy.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Off-White · QR-vCard</span>
+        <div class="card querformat"><img src="Designs/05-minimal-qr-vorne.svg" alt="05 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Navy Deep · Blindprägung</span>
+        <div class="card querformat"><img src="Designs/05-minimal-qr-hinten.svg" alt="05 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Light · Embossed (Rückseite)</dd></div>
+      <div><dt>Empfehlung</dt><dd>QR-Code mit Live-vCard-URL · Blindprägung Rückseite</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Ideal für digital-affine Kontakte. Der Scan überträgt sofort alle Kontaktdaten ins Telefon.</div>
+  </div>
+</section>
+
+<section id="d06">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">06</div>
+      <h2>Vertical Authority</h2>
+      <p class="stil">Hochformat. Logo zentral in einer Cyan-Box, Wortmarke + Claim + Name vertikal gestaffelt. Die Rückseite mit linker Teal-Akzentleiste und sauber strukturierten Kontaktblöcken.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Hochformat</span>
+        <div class="card hochformat"><img src="Designs/06-vertical-authority-vorne.svg" alt="06 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White · Hochformat</span>
+        <div class="card hochformat"><img src="Designs/06-vertical-authority-hinten.svg" alt="06 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>55 × 85 mm · Hochformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Dark · Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Heißfolie Cyan auf Box-Rahmen · Edge-Print Teal</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Klassisches Hochformat-Statement. Das Layout liest sich wie eine Briefkartenversion — sehr formell.</div>
+  </div>
+</section>
+
+<section id="d07">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">07</div>
+      <h2>Editorial Quiet</h2>
+      <p class="stil">Querformat. Magazin-Stil: Name dominant rechts, Logo klein unten links als Signatur. Sehr viel Weißraum. Die Rückseite ruhig in Navy mit zentralem Logo + Claim zwischen zwei dünnen Linien.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Off-White · Editorial</span>
+        <div class="card querformat"><img src="Designs/07-editorial-quiet-vorne.svg" alt="07 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Navy Deep · Centered</span>
+        <div class="card querformat"><img src="Designs/07-editorial-quiet-hinten.svg" alt="07 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Light · Marke Dark</dd></div>
+      <div><dt>Empfehlung</dt><dd>Reiner Druck · optional Spot-UV auf Name</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Sehr zurückhaltend, sehr selbstbewusst. Funktioniert für Berater, die nicht laut sein müssen.</div>
+  </div>
+</section>
+
+<section id="d08">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">08</div>
+      <h2>Split Identity</h2>
+      <p class="stil">Querformat. Vertikale Teilung: ein Drittel Vector-Teal-Block links (Logo Mono-Weiß), zwei Drittel Off-White mit Name und Kontakt rechts. Die Rückseite ergänzt mit oberer Navy-Leiste und einer Drei-Säulen-Struktur (Strategie · Governance · Umsetzung).</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Split Teal/Off-White</span>
+        <div class="card querformat"><img src="Designs/08-split-identity-vorne.svg" alt="08 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Navy-Header + Off-White</span>
+        <div class="card querformat"><img src="Designs/08-split-identity-hinten.svg" alt="08 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Dark · Marke Dark</dd></div>
+      <div><dt>Empfehlung</dt><dd>Vollflächiger Teal-Druck links · Edge-Color Teal</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Verkauft das Leistungsportfolio mit. Die Rückseite ist fast schon eine Mini-One-Pager.</div>
+  </div>
+</section>
+
+<section id="d09">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">09</div>
+      <h2>Technical Grid</h2>
+      <p class="stil">Querformat. Feines Koordinaten-Grid im Hintergrund (Technical Edge) mit Achsenmarkern X₀/X₁/Y₀/Y₁. Logo zentral, Wortmarke darunter in Cyan. Die Rückseite spiegelt das Grid in Off-White und zeigt Name + Kontakt zweispaltig.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Grid</span>
+        <div class="card querformat"><img src="Designs/09-technical-grid-vorne.svg" alt="09 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White · Grid</span>
+        <div class="card querformat"><img src="Designs/09-technical-grid-hinten.svg" alt="09 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Marke Dark · Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Reiner Druck · optional Spot-UV auf Wortmarke</dd></div>
+    </dl>
+    <div class="rec"><strong>Wirkung</strong>Unterstreicht das „Vektor"-Konzept visuell. Spricht technikaffine Zielgruppen besonders an.</div>
+  </div>
+</section>
+
+<section id="d10">
+  <div class="container">
+    <div class="section-head">
+      <div class="num">10</div>
+      <h2>Pure Wordmark</h2>
+      <p class="stil">Querformat. Die Vorderseite zeigt nur Logo + Wortmarke als tonale Spot-UV-Glanzlack-Veredelung — gleiche Farbe wie der Hintergrund, anderer Glanz. Maximal reduziert. Die Rückseite klassisch mit Logo, Wortmarke, Name und ausführlichen Kontaktdaten.</p>
+    </div>
+    <div class="pair">
+      <div class="side">
+        <span class="side-label">Vorderseite · Navy Deep · Spot UV</span>
+        <div class="card querformat"><img src="Designs/10-pure-wordmark-vorne.svg" alt="10 Vorderseite"></div>
+      </div>
+      <div class="side">
+        <span class="side-label">Rückseite · Off-White · Klassisch</span>
+        <div class="card querformat"><img src="Designs/10-pure-wordmark-hinten.svg" alt="10 Rückseite"></div>
+      </div>
+    </div>
+    <dl class="specs">
+      <div><dt>Format</dt><dd>85 × 55 mm · Querformat</dd></div>
+      <div><dt>Logo-Variante</dt><dd>Spot-UV tonal · Marke Light</dd></div>
+      <div><dt>Empfehlung</dt><dd>Spot-UV-Glanzlack auf Logo + Wortmarke (kein Farbdruck vorne)</dd></div>
+    </dl>
+    <div class="rec"><strong>Empfehlung</strong>Maximum Sophistication. Funktioniert nur mit der richtigen Druckerei — dort aber überwältigend.</div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>WirkVektor</h4>
+        <ul>
+          <li>KI Beratungsgesellschaft mbH</li>
+          <li>Sebastian Schucht · Geschäftsführer</li>
+          <li>Leitenstr. 18 · 84048 Mainburg</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>+49 176 20 139 739</li>
+          <li>sebastian.schucht@wirkvektor.de</li>
+          <li>wirkvektor.de</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Konzepte</h4>
+        <ul>
+          <li>10 doppelseitige Designs</li>
+          <li>SVG · vektorbasiert · druckfertig</li>
+          <li>Veredelungen: Foil · Letterpress · Spot UV · Blindprägung</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nächste Schritte</h4>
+        <ul>
+          <li>Design auswählen</li>
+          <li>PDF/X-4 mit Bleed exportieren</li>
+          <li>Druckerei-Briefing erstellen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">© 2026 WirkVektor KI Beratungsgesellschaft mbH · Ihr Vektor zur wirkungsvollen KI.</div>
+  </div>
+</footer>
+
+</body>
+</html>
