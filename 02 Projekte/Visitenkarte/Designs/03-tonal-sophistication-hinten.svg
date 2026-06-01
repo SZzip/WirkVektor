@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 03 Rückseite">
+  <title>03 · Tonal Sophistication · Rückseite (Spot UV)</title>
+  <defs>
+    <clipPath id="rounded03b"><rect width="850" height="550" rx="22" ry="22"/></clipPath>
+    <linearGradient id="spot-uv-03" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#1A253C"/>
+      <stop offset="50%"  stop-color="#1F2F4D"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <g clip-path="url(#rounded03b)">
+    <rect width="850" height="550" fill="#0F172A"/>
+    <rect x="0" y="0" width="850" height="6" fill="#22D3EE"/>
+    <rect x="0" y="544" width="850" height="6" fill="#22D3EE"/>
+
+    <!-- Tonal Glyph + Wortmarke (Spot-UV-Effekt = nur Glanz) -->
+    <g transform="translate(425 275)" text-anchor="middle">
+      <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+            font-size="140" letter-spacing="-5" fill="url(#spot-uv-03)" y="0">WV</text>
+      <text y="60" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+            font-size="36" letter-spacing="-1" fill="url(#spot-uv-03)">WirkVektor</text>
+    </g>
+
+    <!-- Linie + Claim -->
+    <line x1="180" y1="450" x2="380" y2="450" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+    <text x="425" y="455" text-anchor="middle" font-family="Inter, system-ui, sans-serif"
+          font-style="italic" font-weight="400" font-size="13" fill="rgba(255,255,255,0.78)">
+      Ihr Vektor zur wirkungsvollen KI.
+    </text>
+    <line x1="470" y1="450" x2="670" y2="450" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+  </g>
+</svg>

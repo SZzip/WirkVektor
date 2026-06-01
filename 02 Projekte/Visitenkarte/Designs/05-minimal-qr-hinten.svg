@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 05 Rückseite">
+  <title>05 · Minimal QR · Rückseite (Embossed Wordmark)</title>
+  <defs>
+    <linearGradient id="emboss05" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1A253C"/>
+      <stop offset="55%"  stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#070B16"/>
+    </linearGradient>
+  </defs>
+  <rect width="850" height="550" fill="#0F172A"/>
+
+  <!-- Großer Glyph + Wortmarke zentral (Blindprägung) -->
+  <g transform="translate(425 275)" text-anchor="middle">
+    <!-- Shadow layer (unten) -->
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="120" letter-spacing="-4" fill="rgba(0,0,0,0.45)" y="2">WV</text>
+    <!-- Highlight layer (oben) -->
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="120" letter-spacing="-4" fill="rgba(255,255,255,0.12)" y="-1">WV</text>
+    <!-- Surface -->
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="120" letter-spacing="-4" fill="url(#emboss05)" y="0">WV</text>
+
+    <!-- Wortmarke darunter -->
+    <text y="80" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+          font-size="40" letter-spacing="-1" fill="rgba(0,0,0,0.4)" transform="translate(0 2)">WirkVektor</text>
+    <text y="80" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+          font-size="40" letter-spacing="-1" fill="rgba(255,255,255,0.08)" transform="translate(0 -1)">WirkVektor</text>
+    <text y="80" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+          font-size="40" letter-spacing="-1" fill="url(#emboss05)">WirkVektor</text>
+  </g>
+</svg>

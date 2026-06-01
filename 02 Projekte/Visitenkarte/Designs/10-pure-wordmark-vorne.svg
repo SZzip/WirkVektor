@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 10 Vorderseite">
+  <title>10 · Pure Wordmark · Vorderseite (Spot UV)</title>
+  <defs>
+    <linearGradient id="spot10" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0%"  stop-color="#0F172A"/>
+      <stop offset="40%" stop-color="#1F2F4D"/>
+      <stop offset="60%" stop-color="#1F2F4D"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="850" height="550" fill="#0F172A"/>
+
+  <!-- Tonale Wortmarke (Spot UV / Glanzlack) -->
+  <g transform="translate(425 295)" text-anchor="middle">
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="120" letter-spacing="-4" fill="url(#spot10)">WirkVektor</text>
+  </g>
+</svg>

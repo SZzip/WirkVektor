@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 09 Rückseite">
+  <title>09 · Technical Grid · Rückseite</title>
+  <defs>
+    <pattern id="grid09b" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="850" height="550" fill="#F7F9FB"/>
+  <rect width="850" height="550" fill="url(#grid09b)"/>
+
+  <!-- Name links -->
+  <g transform="translate(60 130)">
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="36" fill="#0F172A" letter-spacing="-1.2">Sebastian</text>
+    <text y="38" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+          font-size="36" fill="#0F172A" letter-spacing="-1.2">Schucht</text>
+    <text y="68" font-family="Inter, system-ui, sans-serif" font-weight="500"
+          font-size="13" fill="#0D9488" letter-spacing="2">GESCHÄFTSFÜHRER</text>
+  </g>
+
+  <!-- Vertikale Trennlinie -->
+  <line x1="425" y1="100" x2="425" y2="450" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Kontakt rechts -->
+  <g transform="translate(470 130)" font-family="Inter, system-ui, sans-serif">
+    <text font-weight="600" font-size="9" letter-spacing="2" fill="#94A3B8">+49</text>
+    <text y="20" font-weight="500" font-size="15" fill="#0F172A">176 20 139 739</text>
+
+    <text y="58" font-weight="600" font-size="9" letter-spacing="2" fill="#94A3B8">E-MAIL</text>
+    <text y="78" font-weight="500" font-size="14" fill="#0F172A">sebastian.schucht@wirkvektor.de</text>
+
+    <text y="118" font-weight="600" font-size="9" letter-spacing="2" fill="#94A3B8">WEB</text>
+    <text y="138" font-weight="500" font-size="14" fill="#0F172A">wirkvektor.de</text>
+
+    <text y="178" font-weight="600" font-size="9" letter-spacing="2" fill="#94A3B8">ADRESSE</text>
+    <text y="198" font-weight="500" font-size="14" fill="#0F172A">Leitenstr. 18</text>
+    <text y="216" font-weight="500" font-size="14" fill="#0F172A">84048 Mainburg</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="490" x2="790" y2="490" stroke="#0D9488" stroke-width="2"/>
+  <g transform="translate(60 520)" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700">
+    <text font-size="20" fill="#0F172A" letter-spacing="-0.8">WV</text>
+    <text x="38" font-size="18" fill="#0F172A" letter-spacing="-0.5" font-weight="600">WirkVektor</text>
+  </g>
+  <text x="790" y="520" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-style="italic"
+        font-weight="400" font-size="11" fill="#475569">Ihr Vektor zur wirkungsvollen KI.</text>
+</svg>

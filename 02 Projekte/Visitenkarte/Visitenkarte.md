@@ -8,67 +8,100 @@ date: 2026-06-01
 
 ## Ziel
 
-Hochwertige Visitenkarte für Sebastian Schucht / WirkVektor. Doppelseitig, druckfertig, voll im Markensystem (siehe `DESIGN.md`).
+Hochwertige Visitenkarten für **WirkVektor KI Beratungsgesellschaft mbH** / Sebastian Schucht. Doppelseitig, druckfertig, voll im Markensystem (siehe `DESIGN.md`). Veredelungen wie Heißfolienprägung, Blindprägung und Spot-UV/Glanzlack sind ausdrücklich erlaubt — die Konzepte sind so angelegt, dass jede Druckerei mit den nötigen technischen Vorgaben weiterarbeiten kann.
+
+## Personendaten
+
+- **Firma:** WirkVektor KI Beratungsgesellschaft mbH
+- **Name:** Sebastian Schucht
+- **Rolle:** Geschäftsführer
+- **Adresse:** Leitenstr. 18, 84048 Mainburg
+- **Telefon:** +49 176 20 139 739
+- **E-Mail:** sebastian.schucht@wirkvektor.de
+- **Web:** wirkvektor.de
 
 ## Format
 
-- **Maße:** 85 × 55 mm (DE-Standard, Querformat)
-- **Bleed (für Druck):** 3 mm rundum empfohlen — beim Export aus dem Druckprogramm auf 91 × 61 mm skalieren
-- **Sicherheitsabstand zum Rand:** 5 mm
-- **Dateien:** SVG, vektor-basiert, beliebig skalierbar
+- **Querformat:** 85 × 55 mm (viewBox `0 0 850 550`)
+- **Hochformat:** 55 × 85 mm (viewBox `0 0 550 850`)
+- **Bleed für Druck:** +3 mm rundum (91 × 61 mm bzw. 61 × 91 mm)
+- **Sicherheitsabstand:** 5 mm zu den Schnittkanten
 
-## Designkonzept
+## Die 10 Designs
 
-### Vorderseite (Navy Deep — Autorität, Vertrauen)
-Visuelle Hauptaussage: **Der Vektor selbst.** Aus dem Ursprung (kleiner Cyan-Kreis) zieht ein dünner gerichteter Pfeil diagonal nach rechts oben zum Endpunkt-Label „WIRKUNG". Der Markenname wird damit nicht erklärt, sondern gezeigt. Subtiles Koordinatensystem (5% Opazität) im Hintergrund liefert den „Technical Edge" ohne aufdringlich zu sein.
+| # | Name | Format | Stil-Inspiration | Veredelung-Empfehlung |
+|---|---|---|---|---|
+| **01** | Statement Glyph | Hochformat | Award Hospitality | Heißfolie auf Glyph (Cyan-Metallic), Blindprägung der Wortmarke auf Rückseite |
+| **02** | Embossed Wordmark | Querformat | dwell well | Letterpress-Prägung (Wortmarke), Off-White Edge mit Teal-Kante (Edge-Print) |
+| **03** | Tonal Sophistication | Querformat, abgerundete Ecken | TrustedOne | Spot UV auf Wortmarke + Glyph (Rückseite), Foil Cyan (Vorderseite) |
+| **04** | Foil Glyph | Querformat | BoldtCast | Heißfolienprägung Cyan/Teal-Verlauf auf zentralem Glyph |
+| **05** | Minimal QR | Querformat | wizible | QR-Code als vCard, Blindprägung Wortmarke auf Rückseite |
+| **06** | Vertical Authority | Hochformat | eigene Variante | Heißfolie Cyan auf Box + Wortmarke, Edge-Print Teal |
+| **07** | Editorial Quiet | Querformat | eigene Variante | Optional: Spot UV auf Name, blindgeprägtes Muster auf Rückseite |
+| **08** | Split Identity | Querformat | eigene Variante | Vollflächiger Teal-Block, Edge-Color Teal |
+| **09** | Technical Grid | Querformat | eigene Variante | Reiner Druck, optional Spot UV auf Wortmarke |
+| **10** | Pure Wordmark | Querformat | eigene Variante | Spot-UV-Glanzlack auf Wortmarke (Vorderseite komplett ruhig, nur Glanz erzeugt das Statement) |
 
-- Großer WV-Glyph oben links (Hanken Grotesk 700)
-- Eyebrow „KI · GOVERNANCE · WIRKUNG" als Kategorisierung
-- Name in der unteren Hälfte (52px, dominant)
-- Rolle in Slate-Ton darunter
-- Cyan-Akzentlinie als „Anker" unter dem Namen
+## Empfehlungen aus Designer-Sicht
 
-### Rückseite (Off-White — Sachlich, klar lesbar)
-Klassische Kontaktseite, klar strukturiert in zwei Spalten. Vertikale Vector-Teal-Akzentleiste links als Wiedererkennungsmerkmal. Mini-Vektor unten rechts als Signatur — schließt visuell die Klammer zur Vorderseite.
+**Wenn nur ein Design:** **03 Tonal Sophistication** oder **10 Pure Wordmark** — beide tragen am stärksten die WirkVektor-Werte „Klarheit, Verlässlichkeit, Kompetenz" und nutzen Veredelung intelligent statt dekorativ.
 
-- Wortmarke + Claim oben
-- Kontakt-Eyebrow in Teal
-- Zwei Spalten Kontaktdaten mit Label-Caps in Slate Light
-- Footer-Zeile mit Positionierung
+**Wenn zwei Sets gedruckt werden sollen:** **02 Embossed Wordmark** (Hauptset, Akquise) + **05 Minimal QR** (für digitale Übergabe per Scan).
 
-## Verwendete Markenfarben
+**Wenn maximales Statement gewünscht:** **04 Foil Glyph** — die metallische Heißfolienprägung auf dem WV-Glyph wirkt auf Augenhöhe mit High-End-Beratungen.
 
-| Farbe | Hex | Wo |
+## Veredelungs-Glossar (zur Bestellung bei der Druckerei)
+
+| Effekt | Was es ist | Im Design |
 |---|---|---|
-| Navy Deep | `#0F172A` | Vorderseite Hintergrund |
-| Off-White | `#F7F9FB` | Rückseite Hintergrund |
-| Impact Cyan | `#22D3EE` | Vorderseite Akzent (Dark-Mode-Regel) |
-| Vector Teal | `#0D9488` | Rückseite Akzent (Light-Mode-Regel) |
-| White / Slate Mid / Slate Light | `#FFFFFF` / `#475569` / `#94A3B8` | Typografie-Hierarchie |
+| **Heißfolienprägung** (Hot Foil) | Metallische Folie wird heiß auf das Papier gepresst | Cyan/Teal-Verläufe simulieren in 03, 04, 06 |
+| **Blindprägung** (Embossing) | Relief im Papier ohne Farbe — nur Tastsinn + Lichtspiel | Wortmarke / Glyph auf 02, 05 Rückseite |
+| **Letterpress** (Tiefprägung) | Buchdruck mit Stempel-Vertiefung | Wortmarke auf 02 Vorderseite |
+| **Spot UV / Glanzlack** | Selektiver Klarlack — gleiche Farbe, anderer Glanz | Wortmarke auf 03 Rückseite, 10 Vorderseite |
+| **Edge-Print / Color Edge** | Eingefärbte Kanten der Karte | Empfohlen für 02, 03, 06, 08 (Teal/Cyan) |
 
-## Typografie
+## Empfohlene Spezifikationen
 
-- Headlines (Name, Wortmarke, Glyph): **Hanken Grotesk** 700
-- UI-Labels / Eyebrows: **Inter** 600, Letter-Spacing weit
-- Body / Kontaktdaten: **Inter** 400/500
+- **Papier:** 600 g/m² Naturpapier (z. B. Gmund Cotton Max White oder GF Smith Colorplan Ebony für Navy-only Karten), alternativ Soft-Touch-Lamination auf 350 g
+- **Farbsystem:** CMYK + ggf. Pantone-Sonderfarben für exakten Markenton (Navy `#0F172A` und Teal `#0D9488` lassen sich am sichersten über Pantone definieren)
+- **Druckverfahren:** Offset (ab 250 Stück) oder Letterpress (ab 100 Stück, höhere Premium-Wirkung)
+- **Endformat:** 85 × 55 mm (DIN) oder 91 × 55 mm (USA), Klassik
+- **Empfohlene Auflage:** Start mit 250 Stück (Akquise-Vorrat 6–9 Monate)
 
-## Offene Punkte
+## Druckvorbereitung
 
-- [ ] Telefonnummer ergänzen (Platzhalter „+49 — bitte ergänzen" auf Rückseite)
-- [ ] LinkedIn-Handle ergänzen (Platzhalter „linkedin.com/in/…")
-- [ ] Druckerei wählen (Empfehlung: hochwertiges 350g Naturpapier, leicht strukturiert; alternativ Soft-Touch-Lamination für Premium-Haptik)
-- [ ] Beim Druck: Fonts entweder einbetten oder vorher in Pfade konvertieren (Inkscape: „Text → In Pfad umwandeln") — sonst greift der Druckerei-Standardfont
-- [ ] PDF-Export für Druck erstellen (Inkscape oder Affinity Designer öffnen → PDF X-1a oder X-4)
+1. Wunsch-Design auswählen
+2. SVG in Affinity Designer / Illustrator öffnen
+3. **Text in Pfade konvertieren** (Affinity: „Ebene → In Kurven umwandeln") — sonst greift bei der Druckerei ein Fallback-Font
+4. **3 mm Bleed** hinzufügen (Hintergrundfläche verlängern)
+5. CMYK-Konvertierung — empfohlene Werte:
+   - Navy Deep `#0F172A` → C90 M82 Y50 K70 (oder Pantone Black 6 C)
+   - Vector Teal `#0D9488` → C82 M20 Y50 K3 (oder Pantone 7716 C)
+   - Impact Cyan `#22D3EE` → C70 M0 Y15 K0 (oder Pantone 305 C)
+   - Off-White `#F7F9FB` → Naturweiß / unbedruckter Papierton
+6. Export als **PDF/X-4** mit eingebetteten Profilen
+7. Veredelungs-Maskenebenen separat exportieren (Heißfolie und Spot UV in Sonderebenen `MASK_FOIL`, `MASK_SPOTUV`)
+
+## Empfohlene Druckereien (DE)
+
+- **Letterpress / High-End:** Letterpress-Manufaktur, Wir machen Druck Premium
+- **Heißfolie / Spot UV:** Saxoprint Premium, Diedruckerei.de Edelflächen
+- **Schnelle Standard-Aufträge:** Onlineprinters.com, Flyeralarm Premium-Linie
 
 ## Dateien
 
-- `visitenkarte-vorderseite.svg` — Navy Hauptseite mit Name + Vektor-Grafik
-- `visitenkarte-rueckseite.svg` — Off-White Kontaktseite
+```
+Designs/
+├── 01-statement-glyph-vorne.svg + hinten.svg      (Hochformat)
+├── 02-embossed-wordmark-vorne.svg + hinten.svg    (Querformat)
+├── 03-tonal-sophistication-vorne.svg + hinten.svg (Querformat, abgerundet)
+├── 04-foil-glyph-vorne.svg + hinten.svg           (Querformat)
+├── 05-minimal-qr-vorne.svg + hinten.svg           (Querformat)
+├── 06-vertical-authority-vorne.svg + hinten.svg   (Hochformat)
+├── 07-editorial-quiet-vorne.svg + hinten.svg      (Querformat)
+├── 08-split-identity-vorne.svg + hinten.svg       (Querformat)
+├── 09-technical-grid-vorne.svg + hinten.svg       (Querformat)
+└── 10-pure-wordmark-vorne.svg + hinten.svg        (Querformat)
+```
 
-## Druckvorbereitung (Empfehlung)
-
-1. SVGs in Affinity Designer / Inkscape / Illustrator öffnen
-2. Text in Pfade konvertieren (sichert die Schrift beim Druck)
-3. 3 mm Beschnittzugabe (Bleed) hinzufügen — Hintergrundflächen entsprechend erweitern
-4. CMYK-Konvertierung (Navy `#0F172A` ≈ C90 M80 Y50 K70; Teal `#0D9488` ≈ C82 M20 Y50 K0; Cyan `#22D3EE` ≈ C70 M0 Y15 K0) — Druckerei-spezifisch prüfen
-5. Export als PDF X-1a oder X-4
+Die früheren Entwürfe `visitenkarte-vorderseite.svg` / `visitenkarte-rueckseite.svg` (v1) bleiben zunächst im Ordner — können bei Auswahl eines neuen Designs entfernt werden.

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 03 Vorderseite">
+  <title>03 · Tonal Sophistication · Vorderseite</title>
+  <defs>
+    <linearGradient id="cyan-foil-03" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#22D3EE"/>
+      <stop offset="50%"  stop-color="#67E8F9"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <clipPath id="rounded03"><rect width="850" height="550" rx="22" ry="22"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#rounded03)">
+    <rect width="850" height="550" fill="#0F172A"/>
+    <!-- Edge Painted -->
+    <rect x="0" y="0" width="850" height="6" fill="#22D3EE"/>
+    <rect x="0" y="544" width="850" height="6" fill="#22D3EE"/>
+
+    <!-- Foil-Logo unten links -->
+    <g transform="translate(60 430)">
+      <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+            font-size="60" letter-spacing="-2.5" fill="url(#cyan-foil-03)">WV</text>
+      <text x="92" y="-4" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="600"
+            font-size="22" fill="#FFFFFF" letter-spacing="-0.5">WirkVektor</text>
+      <text x="92" y="20" font-family="Inter, system-ui, sans-serif" font-style="italic" font-weight="400"
+            font-size="12" fill="rgba(255,255,255,0.55)">Ihr Vektor zur wirkungsvollen KI.</text>
+    </g>
+
+    <!-- Vertikale Linie -->
+    <line x1="490" y1="80" x2="490" y2="470" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+
+    <!-- Rechte Seite: Name + Kontakt -->
+    <g transform="translate(530 130)">
+      <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+            font-size="26" fill="#22D3EE" letter-spacing="-0.5">Sebastian Schucht</text>
+      <text y="26" font-family="Inter, system-ui, sans-serif" font-weight="400"
+            font-size="13" fill="rgba(255,255,255,0.72)">Geschäftsführer</text>
+    </g>
+
+    <g transform="translate(530 230)" font-family="Inter, system-ui, sans-serif" fill="#FFFFFF">
+      <g>
+        <circle cx="5" cy="-4" r="3" fill="#22D3EE"/>
+        <text x="20" font-weight="400" font-size="13">+49 176 20 139 739</text>
+      </g>
+      <g transform="translate(0 26)">
+        <rect x="0" y="-9" width="10" height="7" fill="none" stroke="#22D3EE" stroke-width="1.2"/>
+        <text x="20" font-weight="400" font-size="13">sebastian.schucht@wirkvektor.de</text>
+      </g>
+      <g transform="translate(0 52)">
+        <circle cx="5" cy="-4" r="4" fill="none" stroke="#22D3EE" stroke-width="1.2"/>
+        <text x="20" font-weight="400" font-size="13">wirkvektor.de</text>
+      </g>
+      <g transform="translate(0 78)">
+        <path d="M 0 -10 L 5 -2 L 10 -10 Z" fill="none" stroke="#22D3EE" stroke-width="1.2"/>
+        <text x="20" font-weight="400" font-size="13">Leitenstr. 18 · 84048 Mainburg</text>
+      </g>
+    </g>
+  </g>
+</svg>

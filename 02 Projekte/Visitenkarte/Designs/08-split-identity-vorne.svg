@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 08 Vorderseite">
+  <title>08 · Split Identity · Vorderseite</title>
+
+  <!-- Off-White Hauptfläche -->
+  <rect width="850" height="550" fill="#F7F9FB"/>
+  <!-- Teal Block links -->
+  <rect width="280" height="550" fill="#0D9488"/>
+
+  <!-- Glyph weiß im Teal -->
+  <text x="140" y="295" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif"
+        font-weight="700" font-size="120" fill="#FFFFFF" letter-spacing="-5">WV</text>
+
+  <!-- Vertikale Wortmarke im Teal -->
+  <text x="140" y="500" text-anchor="middle" font-family="Inter, system-ui, sans-serif"
+        font-weight="600" font-size="11" letter-spacing="5" fill="#FFFFFF">WIRKVEKTOR</text>
+
+  <!-- Rechts: Wortmarke + Kontakt -->
+  <text x="330" y="120" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="40" fill="#0F172A" letter-spacing="-1.4">WirkVektor</text>
+  <text x="330" y="145" font-family="Inter, system-ui, sans-serif" font-style="italic"
+        font-weight="400" font-size="13" fill="#475569">KI Beratungsgesellschaft mbH</text>
+
+  <line x1="330" y1="185" x2="800" y2="185" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Name + Rolle -->
+  <text x="330" y="240" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="28" fill="#0F172A" letter-spacing="-0.8">Sebastian Schucht</text>
+  <text x="330" y="265" font-family="Inter, system-ui, sans-serif" font-weight="500"
+        font-size="13" fill="#0D9488" letter-spacing="2">GESCHÄFTSFÜHRER</text>
+
+  <!-- Kontakt -->
+  <g transform="translate(330 330)" font-family="Inter, system-ui, sans-serif" fill="#0F172A">
+    <g>
+      <circle cx="5" cy="-5" r="3" fill="#0D9488"/>
+      <text x="22" font-weight="500" font-size="14">+49 176 20 139 739</text>
+    </g>
+    <g transform="translate(0 28)">
+      <rect x="0" y="-10" width="10" height="7" fill="none" stroke="#0D9488" stroke-width="1.3"/>
+      <text x="22" font-weight="500" font-size="14">sebastian.schucht@wirkvektor.de</text>
+    </g>
+    <g transform="translate(0 56)">
+      <circle cx="5" cy="-5" r="4" fill="none" stroke="#0D9488" stroke-width="1.3"/>
+      <text x="22" font-weight="500" font-size="14">wirkvektor.de</text>
+    </g>
+    <g transform="translate(0 84)">
+      <path d="M 0 -10 L 5 -2 L 10 -10 Z" fill="none" stroke="#0D9488" stroke-width="1.3"/>
+      <text x="22" font-weight="500" font-size="14">Leitenstr. 18 · 84048 Mainburg</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="85mm" height="55mm" role="img" aria-label="WirkVektor Visitenkarte 02 Rückseite">
+  <title>02 · Embossed Wordmark · Rückseite</title>
+  <rect width="850" height="550" fill="#F7F9FB"/>
+  <rect x="0" y="540" width="850" height="10" fill="#0D9488"/>
+
+  <!-- Großer Outline-Glyph rechts (Blindprägung-Effekt) -->
+  <g transform="translate(560 130)">
+    <text font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700" font-size="280"
+          fill="none" stroke="#CBD5E1" stroke-width="1" letter-spacing="-10">WV</text>
+  </g>
+
+  <!-- Name & Position -->
+  <text x="50" y="125" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700"
+        font-size="36" fill="#0F172A" letter-spacing="-1.2">Sebastian Schucht</text>
+  <text x="50" y="155" font-family="Inter, system-ui, sans-serif" font-weight="400"
+        font-size="15" fill="#475569">Geschäftsführer</text>
+  <line x1="50" y1="180" x2="120" y2="180" stroke="#0D9488" stroke-width="2"/>
+
+  <!-- Kontakt-Block -->
+  <g transform="translate(50 240)" font-family="Inter, system-ui, sans-serif">
+    <g>
+      <circle cx="6" cy="-5" r="3.5" fill="#0D9488"/>
+      <text x="22" font-weight="500" font-size="14" fill="#0F172A">+49 176 20 139 739</text>
+    </g>
+    <g transform="translate(0 32)">
+      <rect x="1" y="-12" width="11" height="8" fill="none" stroke="#0D9488" stroke-width="1.4"/>
+      <text x="22" font-weight="500" font-size="14" fill="#0F172A">sebastian.schucht@wirkvektor.de</text>
+    </g>
+    <g transform="translate(0 64)">
+      <circle cx="6" cy="-5" r="5" fill="none" stroke="#0D9488" stroke-width="1.4"/>
+      <text x="22" font-weight="500" font-size="14" fill="#0F172A">wirkvektor.de</text>
+    </g>
+    <g transform="translate(0 96)">
+      <path d="M 1 -10 L 6 -2 L 11 -10 Z" fill="none" stroke="#0D9488" stroke-width="1.4"/>
+      <text x="22" font-weight="500" font-size="14" fill="#0F172A">Leitenstr. 18 · 84048 Mainburg</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="50" y="500" font-family="Inter, system-ui, sans-serif" font-weight="600"
+        font-size="10" letter-spacing="2" fill="#94A3B8">
+    WIRKVEKTOR KI BERATUNGSGESELLSCHAFT MBH
+  </text>
+</svg>
