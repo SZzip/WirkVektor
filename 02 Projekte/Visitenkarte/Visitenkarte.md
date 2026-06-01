@@ -31,10 +31,10 @@ Hochwertige Visitenkarten für **WirkVektor KI Beratungsgesellschaft mbH** / Seb
 
 | # | Name | Format | Stil-Inspiration | Veredelung-Empfehlung |
 |---|---|---|---|---|
-| **01** | Statement Glyph | Hochformat | Award Hospitality | Heißfolie auf Glyph (Cyan-Metallic), Blindprägung der Wortmarke auf Rückseite |
+| **01** | Statement Logo | Hochformat | Award Hospitality | Heißfolie auf Logo (Cyan-Metallic), Blindprägung der Wortmarke auf Rückseite |
 | **02** | Embossed Wordmark | Querformat | dwell well | Letterpress-Prägung (Wortmarke), Off-White Edge mit Teal-Kante (Edge-Print) |
 | **03** | Tonal Sophistication | Querformat, abgerundete Ecken | TrustedOne | Spot UV auf Wortmarke + Glyph (Rückseite), Foil Cyan (Vorderseite) |
-| **04** | Foil Glyph | Querformat | BoldtCast | Heißfolienprägung Cyan/Teal-Verlauf auf zentralem Glyph |
+| **04** | Foil Logo | Querformat | BoldtCast | Heißfolienprägung Cyan/Teal-Verlauf auf zentralem Logo |
 | **05** | Minimal QR | Querformat | wizible | QR-Code als vCard, Blindprägung Wortmarke auf Rückseite |
 | **06** | Vertical Authority | Hochformat | eigene Variante | Heißfolie Cyan auf Box + Wortmarke, Edge-Print Teal |
 | **07** | Editorial Quiet | Querformat | eigene Variante | Optional: Spot UV auf Name, blindgeprägtes Muster auf Rückseite |
@@ -92,10 +92,10 @@ Hochwertige Visitenkarten für **WirkVektor KI Beratungsgesellschaft mbH** / Seb
 
 ```
 Designs/
-├── 01-statement-glyph-vorne.svg + hinten.svg      (Hochformat)
+├── 01-statement-logo-vorne.svg + hinten.svg       (Hochformat)
 ├── 02-embossed-wordmark-vorne.svg + hinten.svg    (Querformat)
 ├── 03-tonal-sophistication-vorne.svg + hinten.svg (Querformat, abgerundet)
-├── 04-foil-glyph-vorne.svg + hinten.svg           (Querformat)
+├── 04-foil-logo-vorne.svg + hinten.svg            (Querformat)
 ├── 05-minimal-qr-vorne.svg + hinten.svg           (Querformat)
 ├── 06-vertical-authority-vorne.svg + hinten.svg   (Hochformat)
 ├── 07-editorial-quiet-vorne.svg + hinten.svg      (Querformat)
@@ -103,5 +103,14 @@ Designs/
 ├── 09-technical-grid-vorne.svg + hinten.svg       (Querformat)
 └── 10-pure-wordmark-vorne.svg + hinten.svg        (Querformat)
 ```
+
+## Verwendung des offiziellen Logos
+
+Alle 10 Designs nutzen das offizielle WirkVektor-Logo aus `07 Anhänge/WirkVektor Logo.svg` (drei Pfade, viewBox 0 0 1448 1448), eingebettet in jede SVG als `<symbol>` mit den im Design System (`DESIGN.md` Sektion „Logo") definierten Farbvarianten:
+
+- **Marke Light** (Off-White-Hintergrund): Navy Deep / Slate Light / Vector Teal
+- **Marke Dark** (Navy-Hintergrund): White / Weiß-Transparent / Impact Cyan
+- **Foil** (Design 04 Vorderseite): metallische Cyan/Teal-Verläufe
+- **Spot UV** (Designs 03, 05, 10): tonal auf Navy
 
 Die früheren Entwürfe `visitenkarte-vorderseite.svg` / `visitenkarte-rueckseite.svg` (v1) bleiben zunächst im Ordner — können bei Auswahl eines neuen Designs entfernt werden.
