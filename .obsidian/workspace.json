@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8de07c0473121145",
+        "id": "b5eff4004491f455",
         "type": "tabs",
         "children": [
           {
-            "id": "c22473c034fb6e22",
+            "id": "80e029c64baf3dfc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DESIGN.md",
+                "file": "CLAUDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DESIGN"
+              "title": "CLAUDE"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DESIGN.md",
+                "file": "CLAUDE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Rückverweise auf DESIGN"
+              "title": "Rückverweise auf CLAUDE"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DESIGN.md",
+                "file": "CLAUDE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links von DESIGN öffnen"
+              "title": "Ausgehende Links von CLAUDE öffnen"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DESIGN.md",
+                "file": "CLAUDE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Gliederung von DESIGN"
+              "title": "Gliederung von CLAUDE"
             }
           },
           {
@@ -194,13 +194,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c22473c034fb6e22",
+  "active": "80e029c64baf3dfc",
   "lastOpenFiles": [
+    "02 Projekte/WebSite aufbauen/CLAUDE.md",
+    "02 Projekte/WebSite aufbauen/PROGRESS.md",
+    "CLAUDE.md",
+    "02 Projekte/Visitenkarte/index.html",
     "07 Anhänge/WirkVektor Logo.svg",
-    "02 Projekte/Visitenkarte/Designs/04-foil-logo-vorne.svg",
-    "02 Projekte/Visitenkarte/Designs/04-foil-logo-hinten.svg",
-    "02 Projekte/Visitenkarte/Designs/01-statement-logo-vorne.svg",
-    "02 Projekte/Visitenkarte/Designs/01-statement-logo-hinten.svg",
+    "07 Anhänge/Website Grafiken/wirkvektor-logo.svg",
+    "07 Anhänge/Website Grafiken/sebastian-schucht.png",
+    "07 Anhänge/Website Grafiken/README.md",
+    "07 Anhänge/Website Grafiken/placeholder-workshop.svg",
+    "07 Anhänge/Website Grafiken/placeholder-whiteboard.svg",
+    "07 Anhänge/Website Grafiken/placeholder-training.svg",
+    "07 Anhänge/Website Grafiken/placeholder-portrait.svg",
+    "07 Anhänge/Website Grafiken/placeholder-mockup-usecase.svg",
+    "07 Anhänge/Website Grafiken/placeholder-mockup-readiness.svg",
+    "07 Anhänge/Website Grafiken/placeholder-meeting.svg",
+    "02 Projekte/WebSite aufbauen/Asset-Liste.md",
+    "DESIGN.md",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/build_docx.py",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/build_pptx.py",
     "02 Projekte/Geschäftsausstattung und Vorlagen/_build/brand.py",
@@ -211,15 +223,8 @@
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Workshop-Dokumentation.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Meeting-Protokoll.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Use-Case-Steckbrief.docx",
-    "02 Projekte/Geschäftsausstattung und Vorlagen/Vorlagen/Projekt und Beratung/Projektstatusbericht.docx",
     "02 Projekte/Geschäftsausstattung und Vorlagen/Geschäftsausstattung und Vorlagen.md",
     "WirkVektor.md",
-    "02 Projekte/Visitenkarte/Designs/01-statement-glyph-hinten.svg",
-    "02 Projekte/Visitenkarte/visitenkarte-vorderseite.svg",
-    "02 Projekte/Visitenkarte/visitenkarte-rueckseite.svg",
-    "02 Projekte/Visitenkarte/Visitenkarte.md",
-    "02 Projekte/Visitenkarte/Designs/10-pure-wordmark-vorne.svg",
-    "02 Projekte/Visitenkarte/Designs/10-pure-wordmark-hinten.svg",
-    "02 Projekte/Visitenkarte/Designs/09-technical-grid-vorne.svg"
+    "02 Projekte/Visitenkarte/Visitenkarte.md"
   ]
 }

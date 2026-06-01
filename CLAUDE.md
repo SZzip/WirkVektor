@@ -33,7 +33,7 @@ Sebastian Schucht, Gründer und Geschäftsführer von **WirkVektor** — einer s
 - Wenn du Dateien erstellst oder verschiebst, erkläre kurz warum
 - Bevor du Dateien löschst oder überschreibst, frag nach
 - Wenn Sebastian sagt "merk dir das" oder "speicher das", speichere es dort wo es thematisch hingehört. Schreibregeln nach 00 Kontext/Schreibstil.md, Projekt-Infos in die jeweilige Projekt-Datei, technische Erkenntnisse in 04 Ressourcen/, Vault-Regeln in diese CLAUDE.md, Design-Entscheidungen in DESIGN.md. Im Zweifel kurz fragen wo es hin soll.
-
+- 
 ## Schreibstil-Hinweis
 
 Wenn du Inhalte für WirkVektor erstellst (Texte, Mails, Präsentationen, Website-Copy), orientiere dich an `00 Kontext/Schreibstil.md` und Kapitel 13 in `WirkVektor.md`. Kernregeln:
@@ -49,10 +49,12 @@ Für alle visuellen und gestalterischen Aufgaben (Website, Slides, Materialien) 
 
 ## GitHub und Pull Requests
 
+- Nach der Eingabe eines Prompts wird geprüft ob der PR bereits gemerged wurde. In diesem fall wird ein neuer Branch erstellt, der für den nächsten PR genutzt wird.
 - Änderungen werden auf einem Feature-Branch committet und gepusht; für gepushte Branches wird ein Pull Request (als Draft) angelegt, falls noch keiner existiert.
 - **Nach dem Anlegen eines PRs immer die Überwachung aktivieren** (`subscribe_pr_activity`). So werden CI-Status, Review-Kommentare und andere Aktivität automatisch als Events in die Session geliefert.
 - Eingehende PR-Events untersuchen: kleine, eindeutige Fixes direkt umsetzen und pushen; bei Mehrdeutigkeit oder größeren Änderungen vorher nachfragen; sonst still überspringen.
 - Den Überwachungs-Status nicht ungefragt beenden — erst auf ausdrückliche Anweisung (`unsubscribe_pr_activity`).
+- Zum Abschluss der Session werden alle zuvor in dieser Session erstlleten und bereits gemergten branches ohne changes gelöscht.
 
 ## Session-Routinen
 
