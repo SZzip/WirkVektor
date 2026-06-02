@@ -87,8 +87,10 @@ Das Logo nutzt eine quadratische Zeichenfläche (`viewBox="0 0 1448 1448"`) und 
 | Pfad                        | Funktion                   | Original-Hex |
 | --------------------------- | -------------------------- | ------------ |
 | **Pfad A** (`fill #434a5d`) | Haupt-V-Strich links       | Slate-Dark   |
-| **Pfad B** (`fill #abaeb7`) | Sekundär-Strich rechts     | Slate-Cool   |
+| **Pfad B** (`fill #434a5d`) | Sekundär-Strich rechts     | Slate-Dark   |
 | **Pfad C** (`fill #94cccc`) | Vektor-Aufschwung (Akzent) | Teal-Cool    |
+
+> **Update 2026-06-02:** Pfad B trägt jetzt denselben Slate-Dark-Ton wie Pfad A (vorher Slate-Cool `#abaeb7`). Das Logo ist damit visuell ein 2-Ton-Zeichen — zwei tragende Striche in einem ruhigen Dunkelton + ein Teal-Akzent. Quelle: `07 Anhänge/WirkVektor Logo.svg`.
 
 ### Farbvarianten
 
@@ -96,9 +98,9 @@ Verbindlich für Markenmaterial sind die drei Hauptvarianten:
 
 | Variante | Pfad A | Pfad B | Pfad C | Einsatz |
 |---|---|---|---|---|
-| **Original** | `#434a5d` | `#abaeb7` | `#94cccc` | Standard auf hellem, neutralem Untergrund |
-| **Marke Light** | `#0F172A` | `#94A3B8` | `#0D9488` | Off-White-Hintergrund, volle Markenfarben |
-| **Marke Dark** | `#FFFFFF` | `rgba(255,255,255,0.55)` | `#22D3EE` | Navy-Hintergrund |
+| **Original** | `#434a5d` | `#434a5d` | `#94cccc` | Standard auf hellem, neutralem Untergrund |
+| **Marke Light** | `#0F172A` | `#0F172A` | `#0D9488` | Off-White-Hintergrund, volle Markenfarben |
+| **Marke Dark** | `#FFFFFF` | `#FFFFFF` | `#22D3EE` | Navy-Hintergrund |
 | **Mono Navy** | `#0F172A` | `#0F172A` | `#0F172A` | Print, einfarbig auf Hell |
 | **Mono Weiß** | `#FFFFFF` | `#FFFFFF` | `#FFFFFF` | Print, einfarbig auf Dunkel |
 

@@ -106,11 +106,12 @@ Designs/
 
 ## Verwendung des offiziellen Logos
 
-Alle 10 Designs nutzen das offizielle WirkVektor-Logo aus `07 Anhänge/WirkVektor Logo.svg` (drei Pfade, viewBox 0 0 1448 1448), eingebettet in jede SVG als `<symbol>` mit den im Design System (`DESIGN.md` Sektion „Logo") definierten Farbvarianten:
+Alle 10 Designs nutzen das offizielle WirkVektor-Logo aus `07 Anhänge/WirkVektor Logo.svg` (drei Pfade, viewBox 0 0 1448 1448), eingebettet in jede SVG als `<symbol>` mit den im Design System (`DESIGN.md` Sektion „Logo") definierten Farbvarianten. Seit dem Logo-Update vom 2026-06-02 tragen Pfad A und Pfad B den gleichen dunklen Ton — das Logo wirkt als 2-Tone-Zeichen (zwei tragende Striche + Teal-Akzent):
 
-- **Marke Light** (Off-White-Hintergrund): Navy Deep / Slate Light / Vector Teal
-- **Marke Dark** (Navy-Hintergrund): White / Weiß-Transparent / Impact Cyan
+- **Marke Light** (Off-White-Hintergrund): Navy Deep / Navy Deep / Vector Teal
+- **Marke Dark** (Navy-Hintergrund): White / White / Impact Cyan
 - **Foil** (Design 04 Vorderseite): metallische Cyan/Teal-Verläufe
 - **Spot UV** (Designs 03, 05, 10): tonal auf Navy
+- **Tonal-/Split-Variante** (03 Vorderseite, 08 Vorderseite): bewusste, gestaffelte Weißtöne als Designeffekt — bleiben so erhalten
 
 Die früheren Entwürfe `visitenkarte-vorderseite.svg` / `visitenkarte-rueckseite.svg` (v1) bleiben zunächst im Ordner — können bei Auswahl eines neuen Designs entfernt werden.
