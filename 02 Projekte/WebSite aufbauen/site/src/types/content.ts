@@ -23,6 +23,7 @@ export type RoleCard = z.infer<typeof RoleCardSchema>;
 
 const OutcomeSchema = z.object({
   id: z.string().min(1),
+  paket: z.string().min(1),
   text: z.string().min(1),
 });
 export type Outcome = z.infer<typeof OutcomeSchema>;
@@ -155,20 +156,35 @@ export const content: Content = ContentSchema.parse({
     },
   ],
   outcomes: [
-    { id: 'reifegrad', text: '2–3 Wochen bis zum belastbaren Reifegradbericht.' },
-    { id: 'usecase', text: '4–6 Wochen bis zur priorisierten Use-Case-Liste.' },
-    { id: 'governance', text: '3–4 Wochen bis zum sofort nutzbaren Governance-Rahmen.' },
-    { id: 'schulung', text: '1–2 Tage für geschulte Mitarbeitende.' },
-    { id: 'pilot', text: '8–12 Wochen vom Pilot zur Skalierungs-Entscheidung.' },
+    {
+      id: 'readiness',
+      paket: 'KI-Readiness-Check',
+      text: '2–3 Wochen bis zum belastbaren Reifegradbericht.',
+    },
+    {
+      id: 'usecase',
+      paket: 'KI-Use-Case-Sprint',
+      text: '4–6 Wochen bis zur priorisierten Use-Case-Liste.',
+    },
+    {
+      id: 'governance',
+      paket: 'KI-Governance-Starterpaket',
+      text: '3–4 Wochen bis zum sofort nutzbaren Governance-Rahmen.',
+    },
+    {
+      id: 'schulung',
+      paket: 'AI-Literacy-Schulung',
+      text: '1–2 Tage für geschulte Mitarbeitende.',
+    },
+    {
+      id: 'pilot',
+      paket: 'Produktiver KI-Pilot',
+      text: '8–12 Wochen vom Pilot zur Skalierungs-Entscheidung.',
+    },
   ],
   contactInfos: [
-    { label: 'E-MAIL', value: 'kontakt@wirkvektor.de', href: 'mailto:kontakt@wirkvektor.de' },
-    { label: 'TELEFON', value: '[noch festzulegen]', href: null },
-    {
-      label: 'LINKEDIN',
-      value: 'linkedin.com/in/sebastianschucht',
-      href: 'https://linkedin.com/in/sebastianschucht',
-    },
-    { label: 'ANSCHRIFT', value: '[noch festzulegen]', href: null },
+    { label: 'E-MAIL', value: 'info@wirkvektor.de', href: 'mailto:info@wirkvektor.de' },
+    { label: 'TELEFON', value: '+49 176 20 139 739', href: 'tel:+4917620139739' },
+    { label: 'ANSCHRIFT', value: 'Leitenstr. 18, 84048 Mainburg', href: null },
   ],
 });

@@ -62,8 +62,11 @@ function renderOutcomes(): void {
       (outcome) => `
       <li class="outcome-list__item">
         <span class="outcome-list__arrow" aria-hidden="true">→</span>
-        <span class="outcome-list__text">${escapeHtml(outcome.text)}</span>
-        <button type="button" class="bookmark-btn" data-bookmark="${escapeHtml(outcome.id)}" data-bookmark-label="${escapeHtml(outcome.text)}" aria-pressed="false">
+        <div class="outcome-list__body">
+          <span class="outcome-list__text">${escapeHtml(outcome.paket)}</span>
+          <span class="outcome-list__detail">${escapeHtml(outcome.text)}</span>
+        </div>
+        <button type="button" class="bookmark-btn" data-bookmark="${escapeHtml(outcome.id)}" data-bookmark-label="${escapeHtml(outcome.paket)}" aria-pressed="false">
           <svg class="icon icon--sm icon-plus" aria-hidden="true"><use href="#icon-plus"/></svg>
           <svg class="icon icon--sm icon-check" aria-hidden="true"><use href="#icon-check"/></svg>
           <span class="bookmark-btn__label">Merken</span>

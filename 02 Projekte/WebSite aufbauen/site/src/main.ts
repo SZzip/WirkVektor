@@ -15,6 +15,7 @@ import { setupModals } from './components/modal';
 import { setupCarousels } from './components/carousel';
 import { setupBookmarks } from './components/bookmarkList';
 import { setupForms } from './components/contactForm';
+import { setupPhoneLink } from './components/phoneLink';
 import { setupSnakeBackground } from './components/snakeBackground';
 import { renderContent } from './render';
 
@@ -28,6 +29,7 @@ function boot(): void {
   setupCarousels();
   setupBookmarks();
   setupForms();
+  setupPhoneLink();
   setupThemeObserver();
   setupRevealOnView();
   setupParallaxBackgrounds();
