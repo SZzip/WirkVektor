@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   root: '.',
@@ -7,6 +8,12 @@ export default defineConfig({
     target: 'es2022',
     cssMinify: true,
     sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        impressum: resolve(__dirname, 'impressum.html'),
+      },
+    },
   },
   server: {
     port: 5173,
