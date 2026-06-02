@@ -43,7 +43,7 @@ Vollständige Token-Liste in `DESIGN.md`.
 
 - **Headlines:** Hanken Grotesk (sharp, contemporary engineering feel)
 - **Body / UI:** Inter (exzellente Lesbarkeit in Software-Kontexten)
-- **Label Caps:** Inter, 12px, 600, Letter-Spacing 0.05em — für Eyebrow-Text und Tags
+- **Label Caps:** Inter, 12px, 600, Letter-Spacing 0.1em — für Eyebrow-Text und Tags
 
 ## Logo
 
