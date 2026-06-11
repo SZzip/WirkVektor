@@ -433,9 +433,28 @@ a { color: inherit; }
 .stage__rail li.is-active .stage__rail-label { opacity: 1; transform: translateX(0); }
 
 @media (max-width: 767px) {
-  .stage__rail { left: var(--margin); top: 12vh; transform: none; gap: 8px; }
+  .stage__rail { left: var(--margin); top: 11vh; transform: none; gap: 8px; }
+  .stage__caption { width: calc(100vw - 2 * var(--margin)); }
   .stage__caption h2 { font-size: 1.125rem; }
-  .stage__stats { display: none; }
+  .stage__caption p:last-child { font-size: 0.8125rem; }
+
+  /* Hero kompakter */
+  .stage__hero { top: 13vh; }
+  .stage__hero .display--xl { font-size: 2.375rem; }
+  .stage__hero .body-lg { font-size: var(--body-md); margin-top: 16px; }
+  .stage__hint { margin-top: 28px; }
+
+  /* Kennzahlen kompakt als 2x2-Raster am unteren Rand statt versteckt */
+  .stage__stats {
+    left: var(--margin);
+    right: var(--margin);
+    bottom: 3.5vh;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .stat { flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 12px; }
+  .stat__value { font-size: 1.125rem; min-width: 0; }
+  .stat__label { font-size: 0.6875rem; line-height: 1.3; }
 }
 
 /* ============================================================

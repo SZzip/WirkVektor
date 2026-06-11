@@ -247,8 +247,12 @@ async function main() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    /* Blickziel (Pfad-Spitze) auf die rechte Drittel-Linie verschieben */
-    camera.setViewOffset(w, h, -w / 6, 0, w, h);
+    const portrait = w < 768 || w / h < 0.9;
+    /* Hochkant: weiterer Blickwinkel (sonst zu enger Ausschnitt) und
+       Blickziel mittig, leicht nach unten (UI liegt oben).
+       Desktop: Blickziel auf der rechten Drittel-Linie. */
+    camera.fov = portrait ? 56 : 40;
+    camera.setViewOffset(w, h, portrait ? 0 : -w / 6, portrait ? -h * 0.08 : 0, w, h);
     camera.updateProjectionMatrix();
   }
   window.addEventListener('resize', resize);
