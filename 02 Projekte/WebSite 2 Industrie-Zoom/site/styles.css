@@ -389,8 +389,9 @@ a { color: inherit; }
 
 .stage__rail {
   position: absolute;
-  left: var(--margin);
-  top: 18vh;
+  left: calc(100% / 3);
+  top: 50%;
+  transform: translate(-50%, -50%);
   list-style: none;
   display: grid;
   gap: 14px;
@@ -432,7 +433,7 @@ a { color: inherit; }
 .stage__rail li.is-active .stage__rail-label { opacity: 1; transform: translateX(0); }
 
 @media (max-width: 767px) {
-  .stage__rail { top: 12vh; gap: 8px; }
+  .stage__rail { left: var(--margin); top: 12vh; transform: none; gap: 8px; }
   .stage__caption h2 { font-size: 1.125rem; }
   .stage__stats { display: none; }
 }
