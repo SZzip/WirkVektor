@@ -268,14 +268,18 @@ async function main() {
       headLight.intensity = 0;
     }
 
-    /* Akt 1 — KMU-Markierung wacht auf, wenn der Berater ankommt */
+    /* Akt 1 — KMU-Markierung wacht auf; das Gebäude läuft mit dem
+       Scroll-Fortschritt von unten nach oben mit Teal voll */
     const smeNear = THREE.MathUtils.clamp(1 - Math.abs(u - uSme) * 14, 0, 1);
     const smeOn = THREE.MathUtils.clamp((p - 0.1) / 0.08, 0, 1);
+    const q1 = actProgress(p, 1);
     sme.ring.material.opacity = 0.25 + 0.75 * Math.max(smeNear, smeOn * 0.6);
     sme.ring.rotation.z = REDUCED ? 0 : t * 0.25;
     sme.label.material.opacity = smeOn;
     sme.edges.material.opacity = 0.35 + 0.65 * smeOn;
-    sme.body.material.emissiveIntensity = 0.15 + 0.35 * smeOn;
+    sme.fill.visible = q1 > 0.004;
+    sme.fill.scale.y = Math.max(q1, 0.001);
+    sme.fill.material.emissiveIntensity = 0.15 + 0.35 * smeOn;
 
     /* Akt 2 — Stationen aktivieren sich, sobald der Pfad sie passiert */
     for (const st of stations) {
@@ -405,19 +409,30 @@ function buildTurbines(scene) {
 }
 
 function buildSme(scene) {
-  /* Markenfarben statt Weiß: Teal-Körper mit Navy-Dach (Zweiklang des Logos),
-     damit das Zielgebäude klar aus der weißen Stadt heraussticht */
+  /* Das Zielgebäude startet weiß und läuft beim Scrollen von unten nach
+     oben mit Teal voll — Navy-Dach als Logo-Zweiklang */
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(8, 12, 8),
-    new THREE.MeshStandardMaterial({
-      color: COLORS.tealBright, roughness: 0.85,
-      emissive: COLORS.teal, emissiveIntensity: 0.15,
-    })
+    new THREE.MeshStandardMaterial({ color: COLORS.building, roughness: 0.9 })
   );
   body.position.set(32, 6, 0);
   body.castShadow = true;
   body.receiveShadow = true;
   scene.add(body);
+
+  /* Teal-Füllung: minimal größer als der Korpus, wächst über scale.y */
+  const fill = new THREE.Mesh(
+    new THREE.BoxGeometry(8.08, 12, 8.08),
+    new THREE.MeshStandardMaterial({
+      color: COLORS.tealBright, roughness: 0.85,
+      emissive: COLORS.teal, emissiveIntensity: 0.15,
+    })
+  );
+  fill.geometry.translate(0, 6, 0); /* Pivot an die Unterkante */
+  fill.position.set(32, 0, 0);
+  fill.scale.y = 0.001;
+  fill.visible = false;
+  scene.add(fill);
 
   const roof = new THREE.Mesh(
     new THREE.BoxGeometry(4.4, 1.6, 4.4),
@@ -450,7 +465,7 @@ function buildSme(scene) {
   label.material.opacity = 0;
   scene.add(label);
 
-  return { body, ring, label, edges };
+  return { body, fill, ring, label, edges };
 }
 
 function buildStation(scene, name, pos) {
