@@ -300,21 +300,23 @@ async function main() {
     }
     field.update(state.headPos, u, q3);
 
-    /* Akt 4 — das extrudierte Logo baut sich auf */
-    const q4 = actProgress(p, 4);
-    const aVisible = q4 > 0.02;
-    const aScale = 0.55 + 0.45 * easeOut(q4);
+    /* Akt 4 — das extrudierte Logo blendet früh ein: vollständig sichtbar,
+       sobald der Pfad die halbe Strecke vom Diagramm zum Logo geschafft hat
+       (Hub-Abflug p≈0.74 → Logo p≈0.88, 50 % also p≈0.81) */
+    const qL = THREE.MathUtils.clamp((p - 0.74) / 0.07, 0, 1);
+    const aVisible = qL > 0.02;
+    const aScale = 0.55 + 0.45 * easeOut(qL);
     finale.group.visible = aVisible;
     finale.group.scale.setScalar(aScale);
     finale.group.position.y = finale.baseY * aScale;
-    for (const m of finale.mats) m.opacity = easeOut(q4);
+    for (const m of finale.mats) m.opacity = easeOut(qL);
     for (let i = 0; i < finale.diamonds.length; i++) {
       const d = finale.diamonds[i];
       d.mesh.visible = aVisible;
-      d.mesh.material.opacity = easeOut(q4);
+      d.mesh.material.opacity = easeOut(qL);
       d.mesh.position.y = d.base.y + (REDUCED ? 0 : Math.sin(t * 1.4 + i * 1.7) * 0.5);
       d.mesh.rotation.y = REDUCED ? 0 : t * 0.8 + i;
-      d.mesh.material.emissiveIntensity = 0.4 + 1.2 * q4;
+      d.mesh.material.emissiveIntensity = 0.4 + 1.2 * qL;
     }
 
     applyUi(ui, p);
@@ -686,11 +688,13 @@ async function buildFinale(scene) {
     const data = await new SVGLoader().loadAsync('wirkvektor-logo.svg');
     const inner = new THREE.Group();
     for (const path of data.paths) {
-      const fill = (path.userData.style && path.userData.style.fill) || '';
-      const isAccent = /0d9488|94cccc/i.test(fill);
+      /* Original-Logofarben direkt aus dem SVG übernehmen; Emissive-Anteil
+         und toneMapped:false halten den Farbton auch im 3D-Licht markentreu */
+      const fill = (path.userData.style && path.userData.style.fill) || '#0f172a';
+      const fillColor = new THREE.Color().setStyle(fill);
       const mat = new THREE.MeshStandardMaterial({
-        color: isAccent ? COLORS.teal : COLORS.navy,
-        roughness: 0.5, transparent: true,
+        color: fillColor, roughness: 0.55, transparent: true,
+        emissive: fillColor, emissiveIntensity: 0.4, toneMapped: false,
       });
       mats.push(mat);
       for (const shape of SVGLoader.createShapes(path)) {
