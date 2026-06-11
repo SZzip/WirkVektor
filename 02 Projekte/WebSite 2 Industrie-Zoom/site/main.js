@@ -167,7 +167,9 @@ async function main() {
 
   /* ---------- Akt 1: Stadt + KMU ---------- */
   buildCity(scene, pathCurve);
-  buildTurbines(scene);
+  const turbines = buildTurbines(scene);
+  const cars = buildCars(scene, pathCurve, uOf);
+  buildPeople(scene);
   const sme = buildSme(scene);
   const uSme = uOf(new THREE.Vector3(26.5, 0.6, 3.2));
 
@@ -288,6 +290,10 @@ async function main() {
       headLight.intensity = 0;
     }
 
+    /* Stadtleben: Windräder drehen, Autos fahren (bei reduced motion statisch) */
+    for (const r of turbines.rotors) r.rotation.z = r.userData.phase - t * 0.7;
+    cars.update(t);
+
     /* Akt 1 — KMU-Markierung wacht auf; die Sättigung von Teal-Korpus
        und Navy-Dach steigt mit dem Scroll-Fortschritt */
     const smeNear = THREE.MathUtils.clamp(1 - Math.abs(u - uSme) * 14, 0, 1);
@@ -406,25 +412,181 @@ function buildCity(scene, pathCurve) {
 function buildTurbines(scene) {
   const mat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.9 });
   const rng = mulberry32(21);
+  const rotors = [];
   for (let i = 0; i < 6; i++) {
     const g = new THREE.Group();
-    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.18, 9, 6), mat);
+
+    /* Mast mit Gondel */
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.22, 9, 8), mat);
     pole.position.y = 4.5;
     pole.castShadow = true;
     g.add(pole);
+    const nacelle = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.45, 1), mat);
+    nacelle.position.set(0, 9, 0.1);
+    nacelle.castShadow = true;
+    g.add(nacelle);
+
+    /* Rotor: Nabe + drei Blätter exakt im 120°-Stern, Ebene zur Kamera */
     const rotor = new THREE.Group();
-    rotor.position.y = 9;
+    rotor.position.set(0, 9, 0.68);
+    const hubCap = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.25, 10), mat);
+    hubCap.rotation.x = Math.PI / 2;
+    rotor.add(hubCap);
     for (let b = 0; b < 3; b++) {
-      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.16, 3.4, 0.05), mat);
-      blade.position.y = 1.7;
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.3, 3.6, 0.08), mat);
+      blade.geometry.scale(1, 1, 1);
+      blade.position.y = 1.85;
+      blade.castShadow = true;
       const arm = new THREE.Group();
-      arm.rotation.z = (b * Math.PI * 2) / 3 + rng() * 6;
+      arm.rotation.z = (b * Math.PI * 2) / 3;
       arm.add(blade);
       rotor.add(arm);
     }
+    rotor.userData.phase = rng() * Math.PI * 2;
+    rotor.rotation.z = rotor.userData.phase;
     g.add(rotor);
+    rotors.push(rotor);
+
     g.position.set(-44 + i * 13 + rng() * 4, 0, -26 - rng() * 9);
     scene.add(g);
+  }
+  return { rotors };
+}
+
+/* Drei Autos: eins parkt am KMU (der Berater kam mit dem Auto), zwei
+   fahren auf der freien Schneise neben dem Berater-Pfad durch die Stadt */
+function buildCars(scene, pathCurve, uOf) {
+  const bodyMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.7 });
+  const cabinMat = new THREE.MeshStandardMaterial({ color: 0xdde5ee, roughness: 0.5 });
+  const wheelMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.9 });
+
+  function makeCar() {
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.42, 2), bodyMat);
+    body.position.y = 0.46;
+    body.castShadow = true;
+    g.add(body);
+    const cabin = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.36, 1.05), cabinMat);
+    cabin.position.set(0, 0.82, -0.12);
+    cabin.castShadow = true;
+    g.add(cabin);
+    const wheelGeo = new THREE.CylinderGeometry(0.19, 0.19, 0.14, 12);
+    for (const [wx, wz] of [[-0.45, 0.62], [0.45, 0.62], [-0.45, -0.62], [0.45, -0.62]]) {
+      const w = new THREE.Mesh(wheelGeo, wheelMat);
+      w.rotation.z = Math.PI / 2;
+      w.position.set(wx, 0.19, wz);
+      g.add(w);
+    }
+    scene.add(g);
+    return g;
+  }
+
+  /* Parker am KMU-Eingang */
+  const parked = makeCar();
+  parked.position.set(24.5, 0, 6.2);
+  parked.rotation.y = 0.9;
+
+  /* Fahrende Autos auf der Pfad-Schneise (lateral versetzt, Stadt-Abschnitt) */
+  const u0 = 0.015;
+  const u1 = uOf(new THREE.Vector3(22, 0.6, 1));
+  const movers = [
+    { car: makeCar(), offset: 0.15, speed: 0.011, side: 2.6 },
+    { car: makeCar(), offset: 0.62, speed: 0.009, side: -2.6 },
+  ];
+
+  const pos = new THREE.Vector3();
+  const tan = new THREE.Vector3();
+  const side = new THREE.Vector3();
+  const UP = new THREE.Vector3(0, 1, 0);
+
+  function place(m, k) {
+    const u = u0 + k * (u1 - u0);
+    pathCurve.getPointAt(u, pos);
+    pathCurve.getTangentAt(u, tan);
+    side.crossVectors(tan, UP).setLength(m.side);
+    m.car.position.set(pos.x + side.x, 0, pos.z + side.z);
+    m.car.rotation.y = Math.atan2(tan.x, tan.z);
+  }
+
+  function update(t) {
+    for (const m of movers) place(m, REDUCED ? m.offset : (m.offset + t * m.speed) % 1);
+  }
+  update(0);
+
+  return { update };
+}
+
+/* Zehn weiße Figuren (Architekturmodell-Stil) über die ganze Welt:
+   Werksarbeiter, Manager, Bauarbeiter, Sekretärin, Arzt … */
+function buildPeople(scene) {
+  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 });
+
+  function makePerson(variant) {
+    const g = new THREE.Group();
+    for (const lx of [-0.09, 0.09]) {
+      const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.08, 0.66, 8), mat);
+      leg.position.set(lx, 0.33, 0);
+      g.add(leg);
+    }
+    const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.21, 0.78, 10), mat);
+    torso.position.y = 1.05;
+    g.add(torso);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.2, 12, 10), mat);
+    head.position.y = 1.62;
+    g.add(head);
+
+    if (variant === 'builder') {
+      /* Bauhelm */
+      const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.23, 12, 8), mat);
+      helmet.scale.y = 0.62;
+      helmet.position.y = 1.72;
+      g.add(helmet);
+    } else if (variant === 'worker') {
+      /* Schirmmütze */
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.23, 0.23, 0.06, 12), mat);
+      cap.position.set(0, 1.76, 0.03);
+      g.add(cap);
+    } else if (variant === 'manager') {
+      /* Aktenkoffer */
+      const case_ = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.32, 0.42), mat);
+      case_.position.set(0.3, 0.62, 0);
+      g.add(case_);
+    } else if (variant === 'secretary') {
+      /* Klemmbrett vor der Brust */
+      const board = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.38, 0.04), mat);
+      board.position.set(0, 1.12, 0.24);
+      board.rotation.x = -0.35;
+      g.add(board);
+    } else if (variant === 'doctor') {
+      /* Kittel */
+      const coat = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.27, 0.55, 10), mat);
+      coat.position.y = 0.82;
+      g.add(coat);
+    }
+
+    g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+    scene.add(g);
+    return g;
+  }
+
+  /* [Variante, x, z, Blickrichtung] — verteilt über Stadt, Stationen,
+     BPMN-Feld und Logo-Zone, abseits des Pfad-Korridors */
+  const defs = [
+    ['manager', 24.2, 8.4, -0.8],
+    ['builder', -8, 13, 0.6],
+    ['worker', -30, 2.5, 1.8],
+    ['secretary', 60.5, -8.2, 0.4],
+    ['worker', 81, -8.6, -0.3],
+    ['doctor', 103.5, -8.4, 0.5],
+    ['manager', 112.5, 8.6, 2.6],
+    ['builder', 146, 9.6, -0.5],
+    ['secretary', 170, 10.2, 2.9],
+    ['worker', 205, 7, -1.1],
+  ];
+  for (const [variant, x, z, ry] of defs) {
+    const person = makePerson(variant);
+    person.position.set(x, 0, z);
+    person.rotation.y = ry;
   }
 }
 
