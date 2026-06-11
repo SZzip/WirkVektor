@@ -133,15 +133,15 @@ async function main() {
   tubeBright.geometry.setDrawRange(0, 0);
   scene.add(tubeDim, tubeBright);
 
-  /* Leuchtender Kopf des Pfads */
+  /* Leuchtender Kopf des Pfads — türkis, nicht weiß */
   const headSprite = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: makeGlowTexture('#22d3ee'),
+    map: makeGlowTexture('#14b8a6'),
     transparent: true, depthWrite: false, toneMapped: false,
   }));
   headSprite.scale.set(3, 3, 1);
   scene.add(headSprite);
 
-  const headLight = new THREE.PointLight(COLORS.cyan, 60, 22, 1.8);
+  const headLight = new THREE.PointLight(COLORS.tealBright, 60, 22, 1.8);
   scene.add(headLight);
 
   /* Pfad-Parameter wichtiger Orte (per Arc-Length-Sampling) */
