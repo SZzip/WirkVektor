@@ -166,9 +166,9 @@ async function main() {
   const uOf = makeCurveLocator(pathCurve);
 
   /* ---------- Akt 1: Stadt + KMU ---------- */
-  buildCity(scene, pathCurve);
+  const cityBuildings = buildCity(scene, pathCurve);
   const turbines = buildTurbines(scene);
-  const cars = buildCars(scene, pathCurve, uOf);
+  const cars = buildCars(scene, pathCurve, uOf, cityBuildings);
   buildPeople(scene);
   const sme = buildSme(scene);
   const uSme = uOf(new THREE.Vector3(26.5, 0.6, 3.2));
@@ -372,6 +372,7 @@ function buildCity(scene, pathCurve) {
     new THREE.MeshStandardMaterial({ color: COLORS.buildingAlt, roughness: 0.95 }),
   ];
 
+  const footprints = []; /* Grundrisse für Kollisionsprüfungen (Autos) */
   const edgePositions = [];
   const rng = mulberry32(7);
 
@@ -398,6 +399,7 @@ function buildCity(scene, pathCurve) {
       mesh.receiveShadow = true;
       scene.add(mesh);
       collectEdges(edgePositions, mesh.geometry, mesh.position);
+      footprints.push({ x: cx, z: cz, hw: w / 2, hd: d / 2, h });
     }
   }
 
@@ -407,6 +409,11 @@ function buildCity(scene, pathCurve) {
     edgeGeo,
     new THREE.LineBasicMaterial({ color: COLORS.edge, transparent: true, opacity: 0.7 })
   ));
+
+  /* KMU-Gebäude ebenfalls als Hindernis führen */
+  footprints.push({ x: 32, z: 0, hw: 4, hd: 4, h: 12 });
+
+  return footprints;
 }
 
 function buildTurbines(scene) {
@@ -454,8 +461,10 @@ function buildTurbines(scene) {
 }
 
 /* Drei Autos: eins parkt am KMU (der Berater kam mit dem Auto), zwei
-   fahren auf der freien Schneise neben dem Berater-Pfad durch die Stadt */
-function buildCars(scene, pathCurve, uOf) {
+   fahren auf der freien Schneise neben dem Berater-Pfad durch die Stadt.
+   Die Routen werden gegen die Gebäude-Grundrisse kollisionsbereinigt und
+   so beschnitten, dass Start und Ende hinter einem hohen Gebäude liegen. */
+function buildCars(scene, pathCurve, uOf, buildings) {
   /* vollständig weiß — Karosserie, Kabine und Räder */
   const bodyMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.7 });
   const cabinMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
@@ -487,32 +496,88 @@ function buildCars(scene, pathCurve, uOf) {
   parked.position.set(24.5, 0, 6.2);
   parked.rotation.y = 0.9;
 
-  /* Fahrende Autos auf der Pfad-Schneise (lateral versetzt, Stadt-Abschnitt) */
+  /* Fahrende Autos: Route = Pfad-Schneise lateral versetzt (Stadt-Abschnitt) */
   const u0 = 0.015;
   const u1 = uOf(new THREE.Vector3(22, 0.6, 1));
+  const MARGIN = 1.3; /* halbe Auto-Diagonale + Abstand */
+
+  /* Verdeckt ein hohes Gebäude den Punkt aus Süd-Kamerasicht? */
+  function occluded(p) {
+    return buildings.some((b) =>
+      b.h >= 4 &&
+      Math.abs(p.x - b.x) < b.hw + 0.5 &&
+      p.z < b.z - b.hd &&
+      (b.z - b.hd) - p.z < 5
+    );
+  }
+
+  function buildRoute(off) {
+    const N = 140;
+    const pts = [];
+    const c = new THREE.Vector3();
+    const a = new THREE.Vector3();
+    for (let i = 0; i <= N; i++) {
+      const u = u0 + (i / N) * (u1 - u0);
+      pathCurve.getPointAt(u, c);
+      pathCurve.getPointAt(Math.min(u + 0.004, 1), a);
+      const dx = a.x - c.x;
+      const dz = a.z - c.z;
+      const len = Math.hypot(dx, dz) || 1;
+      /* Seitenvektor = Fahrtrichtung × hoch */
+      pts.push(new THREE.Vector3(c.x + (-dz / len) * off, 0, c.z + (dx / len) * off));
+    }
+
+    /* Kollisionen mit Gebäuden auflösen (kleinste Verschiebung raus),
+       glätten, dann erneut auflösen */
+    const resolve = () => {
+      for (const p of pts) {
+        for (const b of buildings) {
+          const dx = p.x - b.x;
+          const dz = p.z - b.z;
+          const px = b.hw + MARGIN - Math.abs(dx);
+          const pz = b.hd + MARGIN - Math.abs(dz);
+          if (px > 0 && pz > 0) {
+            if (px < pz) p.x += Math.sign(dx || 1) * px;
+            else p.z += Math.sign(dz || 1) * pz;
+          }
+        }
+      }
+    };
+    const mid = new THREE.Vector3();
+    const smooth = () => {
+      for (let i = 1; i < pts.length - 1; i++) {
+        mid.addVectors(pts[i - 1], pts[i + 1]).multiplyScalar(0.5);
+        pts[i].lerp(mid, 0.4);
+      }
+    };
+    resolve(); smooth(); resolve(); smooth(); resolve();
+
+    /* Route so beschneiden, dass Start und Ende hinter einem Gebäude liegen */
+    let i0 = 0;
+    while (i0 < N / 3 && !occluded(pts[i0])) i0++;
+    let i1 = pts.length - 1;
+    while (i1 > (2 * N) / 3 && !occluded(pts[i1])) i1--;
+    const sliced = pts.slice(i0, i1 + 1);
+    return new THREE.CatmullRomCurve3(sliced.length > 6 ? sliced : pts, false, 'centripetal');
+  }
+
   const movers = [
-    { car: makeCar(), offset: 0.15, speed: 0.05, side: 2.6 },
-    { car: makeCar(), offset: 0.62, speed: 0.04, side: -2.6 },
+    { car: makeCar(), route: buildRoute(2.6), offset: 0.15, speed: 0.05 },
+    { car: makeCar(), route: buildRoute(-2.6), offset: 0.62, speed: 0.04 },
   ];
 
   const pos = new THREE.Vector3();
   const aheadPos = new THREE.Vector3();
-  const dir = new THREE.Vector3();
-  const side = new THREE.Vector3();
-  const UP = new THREE.Vector3(0, 1, 0);
 
   function place(m, k) {
-    const u = u0 + k * (u1 - u0);
-    pathCurve.getPointAt(u, pos);
+    m.route.getPointAt(k, pos);
     /* Blick auf einen Punkt deutlich voraus: glättet die Kurvenfahrt,
        das Auto dreht nicht auf der Stelle, sondern fährt vorwärts hinein */
-    pathCurve.getPointAt(Math.min(u + 0.014, 1), aheadPos);
-    dir.subVectors(aheadPos, pos);
-    dir.y = 0;
-    dir.normalize();
-    side.crossVectors(dir, UP).setLength(m.side);
-    m.car.position.set(pos.x + side.x, 0, pos.z + side.z);
-    m.car.rotation.y = Math.atan2(dir.x, dir.z);
+    m.route.getPointAt(Math.min(k + 0.02, 1), aheadPos);
+    const dx = aheadPos.x - pos.x;
+    const dz = aheadPos.z - pos.z;
+    m.car.position.set(pos.x, 0, pos.z);
+    if (dx || dz) m.car.rotation.y = Math.atan2(dx, dz);
   }
 
   function update(t) {
