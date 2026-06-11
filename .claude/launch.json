@@ -4,7 +4,7 @@
     {
       "name": "website2",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx -y serve -l 4173"],
+      "runtimeArgs": ["/c", "npx", "-y", "serve", "-l", "4173", "02 Projekte/WebSite 2 Industrie-Zoom/site"],
       "port": 4173
     }
   ]

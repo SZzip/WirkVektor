@@ -10,22 +10,21 @@ Zweite WirkVektor-Website nach dem Vorbild von [vectrfl.com](https://www.vectrfl
 
 ## Konzept
 
-Eine gepinnte Scroll-Bühne in vier Akten, danach klassische Inhaltssektionen:
+Eine gepinnte Scroll-Bühne als 3D-Kamerafahrt (nach dem Vorbild von vectrfl.com), die den Weg des Beraters erzählt — ein leuchtender Teal-Pfad zieht durch eine helle Low-Poly-Welt, die Kamera folgt ihm, die umliegende Szene reagiert. Danach klassische Inhaltssektionen:
 
-1. **Industrie** — Skyline mit Branchen (Fertigung, Logistik, Handel, Dienstleistung), das Mittelstandsgebäude in der Mitte ist als Zoom-Ziel markiert.
-2. **Unternehmen** — die Kamera zoomt in das Gebäude, die Fassade weicht einem Querschnitt mit drei Etagen (Vertrieb & Auftrag, Planung & Service, Fertigung & Abwicklung).
-3. **Prozesse** — die Prozesskette erscheint Station für Station als Ring: Anfrage → Angebot → Auftrag → Planung → Fertigung → Lieferung → Rechnung → Service, verbunden durch gestrichelte „manuelle" Übergaben.
-4. **Wirkung** — ein KI-Hub im Zentrum verbindet sich mit allen Stationen, Impulse fließen, die manuellen Übergaben treten zurück und die Studien-Kennzahlen der ersten Website zählen hoch (+14 %, +59 %, ~55 %, ~75 %).
+1. **Ankommen** — der Berater kommt ins Unternehmen: Kamerafahrt durch eine weiße Stadt, das KMU-Gebäude ist mit Cyan-Kanten, Label und gestricheltem Ring markiert; der Pfad führt zum Eingang.
+2. **Verstehen** — der Pfad zieht durch die acht Prozess-Stationen (Anfrage → Angebot → Auftrag → Planung → Fertigung → Lieferung → Rechnung → Service); passierte Stationen aktivieren sich (Cyan-Ring, Label).
+3. **Umsetzen** — Kachel-Feld mit KI-Hub im Zentrum: der Hub erwacht, Verbindungslinien und Impulse fließen zu den Prozesskacheln.
+4. **Wirkung** — der Pfad mündet in den großen Vektor-Pfeil (Chevron mit Cyan-Diamanten), die Studien-Kennzahlen zählen hoch (+14 %, +59 %, ~55 %, ~75 %).
 
-Alle Überschriften und Texte stammen wörtlich aus der ersten Website ([[Inhaltskonzept OnePager]] bzw. `02 Projekte/WebSite aufbauen/site/`). Farben, Typografie und Linien-Ästhetik folgen [[DESIGN]] (Dark-Theme: Navy Deep, Impact Cyan, Hanken Grotesk/Inter).
+Alle Überschriften und Texte stammen aus der ersten Website ([[Inhaltskonzept OnePager]] bzw. `02 Projekte/WebSite aufbauen/site/`). Farben und Typografie folgen [[DESIGN]] (Light-Theme: Off-White, Navy Deep, Vector Teal/Impact Cyan, Hanken Grotesk/Inter); Footer und Closing dunkel mit riesigem WIRKVEKTOR-Wortzug.
 
 ## Technik
 
-- Statische Site ohne Build-Tooling: `site/index.html` + `styles.css` + `main.js` — direkt im Browser zu öffnen.
-- Animation komplett scroll-gebunden (Scrubbing über eine sticky Bühne, 560vh): kein Timer steuert die Inszenierung; nur die Fließ-Impulse in Akt 4 laufen als CSS-Loop.
-- SVG-Linien bleiben beim Kamera-Zoom haarfein (`vector-effect: non-scaling-stroke`).
-- `prefers-reduced-motion` deaktiviert Loops und Hint-Animation; ohne JavaScript bleibt der Hero lesbar.
-- Keine Dependencies, keine Frameworks.
+- Statische Site ohne Build-Tooling: `site/index.html` + `styles.css` + `main.js`, Bibliotheken lokal unter `site/lib/` (Three.js 0.170 als ES-Modul, GSAP 3.12 + ScrollTrigger als klassische Skripte).
+- Eine durchgehende Three.js-Welt entlang der x-Achse; Kamera-Keyframes und Pfad-Fortschritt werden über GSAP ScrollTrigger gescrubbt (sticky Bühne, 780vh). Der Pfad ist eine `TubeGeometry` entlang einer CatmullRom-Kurve, der Fortschritt läuft über `setDrawRange`; Anker-Punkte koppeln Pfad und Kamera-Erzählung.
+- Wichtig auf hellem Hintergrund: kein Additive Blending für Glow-Effekte (weiß + Licht = unsichtbar) — stattdessen normale Alpha-Sprites und `toneMapped: false` für markenfarbtreue Pfad-/Glow-Materialien.
+- `prefers-reduced-motion` stoppt alle zeitbasierten Loops (Hub-Rotation, Impulse, Puls); die Inszenierung bleibt rein scroll-gesteuert. Kennzahlen-Caveat (Studienquellen) steht in der Pakete-Sektion.
 
 ## Abgrenzung zur ersten Website
 
@@ -33,5 +32,6 @@ Die erste Website ([[Website aufbauen]]) bleibt der seriöse OnePager mit zurüc
 
 ## Status
 
-- 2026-06-11: Erste Version gebaut und im Browser verifiziert (vier Akte, Sektionen, Footer).
+- 2026-06-11: Erste Version (SVG/CSS, ohne Dependencies) gebaut und verifiziert.
+- 2026-06-11: Neuaufbau als Three.js/GSAP-Kamerafahrt nach Video-Referenz der vectrfl-Scrollanimation; Erzählung umgestellt auf die Berater-Geschichte (Ankommen → Verstehen → Umsetzen → Wirkung). Alle vier Akte, Mobile und Footer im Browser verifiziert.
 - Offen: Entscheidung, ob und wo die Variante deployt wird; Impressums-/Datenschutz-Links zeigen auf die Pfade der Hauptseite.

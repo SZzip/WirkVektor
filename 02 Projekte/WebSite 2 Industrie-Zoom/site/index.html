@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0F172A" />
+    <meta name="theme-color" content="#F7F9FB" />
     <link rel="icon" type="image/svg+xml" href="wirkvektor-logo.svg" />
 
-    <title>WirkVektor: Von der Industrie ins Unternehmen · KI-Beratung für KMU</title>
+    <title>WirkVektor: Der Weg ins Unternehmen · KI-Beratung für KMU</title>
     <meta
       name="description"
-      content="Strukturierte KI-Einführung für kleine und mittelständische Unternehmen. Von der Branche über das Unternehmen bis in den einzelnen Prozess: klare Wirkung, saubere Governance, messbarer Nutzen."
+      content="Eine scroll-erzählte Geschichte: Der Berater kommt ins Unternehmen, versteht die Prozesse, führt KI strukturiert ein — und macht die Wirkung messbar. KI-Beratung für kleine und mittelständische Unternehmen."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,319 +28,167 @@
           <img class="header__logo-mark" src="wirkvektor-logo.svg" alt="" />
           <span class="header__wordmark">WirkVektor</span>
         </a>
+        <nav class="header__nav" aria-label="Hauptnavigation">
+          <a href="#methodik">Methodik</a>
+          <a href="#haltung">Haltung</a>
+          <a href="#pakete">Pakete</a>
+        </nav>
         <a class="btn btn--impact" href="mailto:info@wirkvektor.de?subject=Erstgespr%C3%A4ch">Erstgespräch buchen</a>
       </div>
     </header>
 
     <main id="top">
-      <!-- ============== SCROLL-BÜHNE: Industrie → Unternehmen → Prozesse → Wirkung ============== -->
-      <section class="stage" data-stage aria-label="Vom Industrieblick in den automatisierten Prozess">
-        <div class="stage__sticky">
-          <!-- Szene -->
-          <svg class="stage__scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <marker id="m-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M1 1 L9 5 L1 9" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </marker>
-              <marker id="m-arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M1 1 L9 5 L1 9" fill="none" stroke="#22D3EE" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </marker>
-            </defs>
+      <!-- ============== SCROLL-BÜHNE: Der Weg des Beraters ============== -->
+      <section class="stage" data-stage aria-label="Der Weg des Beraters ins Unternehmen — eine Scroll-Erzählung">
+        <div class="stage__sticky" data-stage-sticky>
+          <canvas class="stage__canvas" data-canvas aria-hidden="true"></canvas>
 
-            <!-- Hintergrundraster (bleibt in beiden Szenen) -->
-            <g opacity="0.06" stroke="#FFFFFF" stroke-width="1" fill="none">
-              <path d="M200 0V900 M400 0V900 M600 0V900 M800 0V900 M1000 0V900 M1200 0V900 M1400 0V900"/>
-              <path d="M0 150H1600 M0 300H1600 M0 450H1600 M0 600H1600 M0 750H1600"/>
-            </g>
-
-            <!-- ===== SZENE 1: Industrieansicht ===== -->
-            <g data-scene="industrie">
-              <g data-zoom="industrie">
-                <g stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-                  <!-- Boden -->
-                  <path d="M80 700 H1520" opacity="0.5"/>
-                  <path d="M80 700 H1520" opacity="0.15" transform="translate(0 8)" stroke-dasharray="2 14"/>
-
-                  <!-- Fertigung: Sägezahndach + Schornstein -->
-                  <g opacity="0.75">
-                    <rect x="140" y="520" width="240" height="180"/>
-                    <path d="M140 520 L200 465 L200 520 M200 520 L260 465 L260 520 M260 520 L320 465 L320 520 M320 520 L380 465 L380 520"/>
-                    <rect x="335" y="405" width="22" height="60"/>
-                    <path d="M170 560 h40 M230 560 h40 M290 560 h40 M170 610 h40 M230 610 h40 M290 610 h40"/>
-                    <rect x="240" y="650" width="44" height="50"/>
-                  </g>
-
-                  <!-- Logistik: Halle mit Docktoren -->
-                  <g opacity="0.75">
-                    <rect x="430" y="545" width="230" height="155"/>
-                    <path d="M430 545 Q545 495 660 545"/>
-                    <rect x="455" y="610" width="50" height="90"/>
-                    <rect x="520" y="610" width="50" height="90"/>
-                    <rect x="585" y="610" width="50" height="90"/>
-                  </g>
-
-                  <!-- Mittelstand (Zoom-Ziel) -->
-                  <g data-el="zielgebaeude">
-                    <rect x="700" y="420" width="200" height="280"/>
-                    <rect x="760" y="380" width="80" height="40"/>
-                    <path d="M725 455 h30 M785 455 h30 M845 455 h30 M725 510 h30 M785 510 h30 M845 510 h30 M725 565 h30 M785 565 h30 M845 565 h30 M725 620 h30 M845 620 h30"/>
-                    <rect x="778" y="640" width="44" height="60"/>
-                  </g>
-
-                  <!-- Handel: Markise + Schaufenster -->
-                  <g opacity="0.75">
-                    <rect x="940" y="560" width="220" height="140"/>
-                    <path d="M940 560 L955 590 L970 560 L985 590 L1000 560 L1015 590 L1030 560 L1045 590 L1060 560 L1075 590 L1090 560 L1105 590 L1120 560 L1135 590 L1150 560 L1160 580"/>
-                    <rect x="960" y="615" width="80" height="85"/>
-                    <rect x="1060" y="615" width="80" height="85"/>
-                  </g>
-
-                  <!-- Dienstleistung: Büroturm -->
-                  <g opacity="0.75">
-                    <rect x="1240" y="390" width="160" height="310"/>
-                    <path d="M1320 390 V340"/>
-                    <path d="M1265 430 h25 M1310 430 h25 M1355 430 h25 M1265 485 h25 M1310 485 h25 M1355 485 h25 M1265 540 h25 M1310 540 h25 M1355 540 h25 M1265 595 h25 M1310 595 h25 M1355 595 h25 M1265 650 h25 M1355 650 h25"/>
-                  </g>
-                </g>
-
-                <!-- Zoom-Ziel-Markierung -->
-                <g data-el="zielring">
-                  <rect x="676" y="356" width="248" height="368" rx="10" fill="none" stroke="#22D3EE" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-dasharray="6 8"/>
-                  <text x="800" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="600" letter-spacing="2.5" fill="#22D3EE">MITTELSTAND</text>
-                </g>
-
-                <!-- Branchen-Labels -->
-                <g font-family="Inter, sans-serif" font-size="17" font-weight="600" letter-spacing="2.5" fill="rgba(255,255,255,0.55)" text-anchor="middle">
-                  <text x="260" y="748">FERTIGUNG</text>
-                  <text x="545" y="748">LOGISTIK</text>
-                  <text x="800" y="748" fill="#22D3EE">MITTELSTAND</text>
-                  <text x="1050" y="748">HANDEL</text>
-                  <text x="1320" y="748">DIENSTLEISTUNG</text>
-                </g>
-              </g>
-            </g>
-
-            <!-- ===== SZENE 2: Unternehmens-Querschnitt ===== -->
-            <g data-scene="firma">
-              <g data-zoom="firma">
-                <!-- Gebäudehülle -->
-                <g stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-                  <rect x="220" y="130" width="1160" height="690"/>
-                  <path d="M220 360 H1380 M220 580 H1380"/>
-                  <rect x="640" y="78" width="320" height="52" rx="6"/>
-                </g>
-                <text x="800" y="111" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="600" letter-spacing="3" fill="rgba(255,255,255,0.85)">MITTELSTAND GMBH</text>
-
-                <!-- Etagen-Labels -->
-                <g font-family="Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="2.5" fill="rgba(255,255,255,0.4)">
-                  <text x="248" y="166">VERTRIEB &amp; AUFTRAG</text>
-                  <text x="248" y="396">PLANUNG &amp; SERVICE</text>
-                  <text x="248" y="616">FERTIGUNG &amp; ABWICKLUNG</text>
-                </g>
-
-                <!-- Manuelle Prozesskette (Stage 3) -->
-                <g data-layer="kette" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke">
-                  <path data-link="1" d="M442 250 H736" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="2" d="M822 250 H1116" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="3" d="M1160 292 V428" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="4" d="M1160 512 V648" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="5" d="M1118 690 H824" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="6" d="M738 690 H444" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="7" d="M400 648 V512" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                  <path data-link="8" d="M400 428 V292" marker-end="url(#m-arrow)" stroke-dasharray="3 9"/>
-                </g>
-
-                <!-- Prozess-Stationen -->
-                <g font-family="Inter, sans-serif" text-anchor="middle">
-                  <g data-node="1" transform="translate(400 250)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linejoin="round"><rect x="-12" y="-9" width="24" height="18" rx="2"/><path d="M-12 -8 L0 3 L12 -8"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">ANFRAGE</text>
-                  </g>
-                  <g data-node="2" transform="translate(780 250)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linejoin="round"><rect x="-9" y="-12" width="18" height="24" rx="2"/><path d="M-4 -5 h8 M-4 0 h8 M-4 5 h5"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">ANGEBOT</text>
-                  </g>
-                  <g data-node="3" transform="translate(1160 250)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="-11" y="-11" width="22" height="22" rx="3"/><path d="M-5 0 L-1 4 L6 -4"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">AUFTRAG</text>
-                  </g>
-                  <g data-node="4" transform="translate(1160 470)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linecap="round"><rect x="-11" y="-11" width="22" height="22" rx="2"/><path d="M-11 -4 H11 M-4 -11 V11"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">PLANUNG</text>
-                  </g>
-                  <g data-node="5" transform="translate(1160 690)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linecap="round"><circle r="8"/><path d="M0 -12 V-8 M0 8 V12 M-12 0 H-8 M8 0 H12 M-8.5 -8.5 L-5.7 -5.7 M5.7 5.7 L8.5 8.5 M8.5 -8.5 L5.7 -5.7 M-5.7 5.7 L-8.5 8.5"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">FERTIGUNG</text>
-                  </g>
-                  <g data-node="6" transform="translate(780 690)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linejoin="round"><rect x="-13" y="-7" width="15" height="11"/><path d="M2 -4 h8 l3 5 v3 h-11 z"/><circle cx="-7" cy="7" r="3"/><circle cx="7" cy="7" r="3"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">LIEFERUNG</text>
-                  </g>
-                  <g data-node="7" transform="translate(400 690)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <text y="6" font-size="20" font-weight="600" fill="rgba(255,255,255,0.85)">€</text>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">RECHNUNG</text>
-                  </g>
-                  <g data-node="8" transform="translate(400 470)">
-                    <circle r="34" fill="#0F172A" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-                    <g stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none" stroke-linecap="round"><path d="M-9 3 a9 9 0 0 1 18 0"/><rect x="-12" y="2" width="5" height="8" rx="2"/><rect x="7" y="2" width="5" height="8" rx="2"/><path d="M9 10 a 7 7 0 0 1 -7 5 H0"/></g>
-                    <text y="58" font-size="14" font-weight="600" letter-spacing="1.5" fill="rgba(255,255,255,0.75)">SERVICE</text>
-                  </g>
-                </g>
-
-                <!-- KI-Hub + Automatisierung (Stage 4) -->
-                <g data-layer="ki">
-                  <g data-kilinks stroke="#22D3EE" stroke-width="1.5" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke">
-                    <path data-kilink="1" pathLength="1" d="M768 432 L424 282"/>
-                    <path data-kilink="2" pathLength="1" d="M798 414 L782 292"/>
-                    <path data-kilink="3" pathLength="1" d="M832 432 L1136 282"/>
-                    <path data-kilink="4" pathLength="1" d="M856 470 L1118 470"/>
-                    <path data-kilink="5" pathLength="1" d="M832 508 L1136 658"/>
-                    <path data-kilink="6" pathLength="1" d="M798 526 L782 648"/>
-                    <path data-kilink="7" pathLength="1" d="M768 508 L424 658"/>
-                    <path data-kilink="8" pathLength="1" d="M744 470 L442 470"/>
-                  </g>
-                  <!-- Fließende Impulse (nur in Stage 4 sichtbar, CSS-animiert) -->
-                  <g data-kiflow stroke="#14B8A6" stroke-width="3" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity="0.9">
-                    <path class="flow" pathLength="100" d="M768 432 L424 282"/>
-                    <path class="flow" pathLength="100" d="M832 432 L1136 282"/>
-                    <path class="flow" pathLength="100" d="M856 470 L1118 470"/>
-                    <path class="flow" pathLength="100" d="M832 508 L1136 658"/>
-                    <path class="flow" pathLength="100" d="M768 508 L424 658"/>
-                    <path class="flow" pathLength="100" d="M744 470 L442 470"/>
-                  </g>
-
-                  <g data-kihub transform="translate(800 470)">
-                    <path d="M0 -56 L48.5 -28 L48.5 28 L0 56 L-48.5 28 L-48.5 -28 Z" fill="#0F172A" stroke="#22D3EE" stroke-width="2" vector-effect="non-scaling-stroke"/>
-                    <path d="M0 -44 L38.1 -22 L38.1 22 L0 44 L-38.1 22 L-38.1 -22 Z" fill="none" stroke="#22D3EE" stroke-width="1" opacity="0.4" vector-effect="non-scaling-stroke"/>
-                    <text y="9" text-anchor="middle" font-family="Hanken Grotesk, Inter, sans-serif" font-size="26" font-weight="700" fill="#22D3EE">KI</text>
-                  </g>
-
-                  <!-- Wirkungs-Kennzahlen -->
-                  <g font-family="Inter, sans-serif" text-anchor="middle">
-                    <g data-stat="1" transform="translate(780 182)">
-                      <rect x="-104" y="-28" width="208" height="56" rx="6" fill="#0F172A" stroke="#22D3EE" stroke-width="1" vector-effect="non-scaling-stroke"/>
-                      <text y="-2" font-family="Hanken Grotesk, Inter, sans-serif" font-size="22" font-weight="700" fill="#22D3EE"><tspan data-count="59" data-prefix="+" data-suffix=" %">+0 %</tspan></text>
-                      <text y="18" font-size="12" fill="rgba(255,255,255,0.7)">Dokumente pro Stunde</text>
-                    </g>
-                    <g data-stat="2" transform="translate(360 818)">
-                      <rect x="-104" y="-28" width="208" height="56" rx="6" fill="#0F172A" stroke="#22D3EE" stroke-width="1" vector-effect="non-scaling-stroke"/>
-                      <text y="-2" font-family="Hanken Grotesk, Inter, sans-serif" font-size="22" font-weight="700" fill="#22D3EE"><tspan data-count="14" data-prefix="+" data-suffix=" %">+0 %</tspan></text>
-                      <text y="18" font-size="12" fill="rgba(255,255,255,0.7)">Produktivität im Kundenservice</text>
-                    </g>
-                    <g data-stat="3" transform="translate(1310 385)">
-                      <rect x="-104" y="-28" width="208" height="56" rx="6" fill="#0F172A" stroke="#22D3EE" stroke-width="1" vector-effect="non-scaling-stroke"/>
-                      <text y="-2" font-family="Hanken Grotesk, Inter, sans-serif" font-size="22" font-weight="700" fill="#22D3EE"><tspan data-count="55" data-prefix="~" data-suffix=" %">~0 %</tspan></text>
-                      <text y="18" font-size="12" fill="rgba(255,255,255,0.7)">schneller bei Entwicklungsaufgaben</text>
-                    </g>
-                    <g data-stat="4" transform="translate(800 820)">
-                      <rect x="-150" y="-26" width="300" height="52" rx="6" fill="#0F172A" stroke="#22D3EE" stroke-width="1" vector-effect="non-scaling-stroke"/>
-                      <text y="-1" font-family="Hanken Grotesk, Inter, sans-serif" font-size="20" font-weight="700" fill="#22D3EE"><tspan data-count="75" data-prefix="~" data-suffix=" %">~0 %</tspan></text>
-                      <text y="17" font-size="12" fill="rgba(255,255,255,0.7)">des KI-Nutzens in vier Feldern</text>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </svg>
-
-          <!-- Captions -->
-          <div class="stage__caption" data-cap="1">
+          <!-- Hero-Caption -->
+          <div class="stage__hero" data-cap="0">
             <p class="eyebrow">KI-BERATUNG FÜR DEN MITTELSTAND</p>
-            <h1 class="display display--xl">Ihr Vektor<br/>zur wirkungsvollen <span class="accent">KI</span></h1>
-            <p class="body-lg">Wir bringen Künstliche Intelligenz kontrolliert in kleine und mittelständische Unternehmen und sorgen für klare Wirkung, saubere Governance und messbaren Nutzen.</p>
-            <p class="stage__hint" aria-hidden="true">Scrollen, um ins Unternehmen einzutauchen <span class="stage__hint-arrow">↓</span></p>
+            <h1 class="display display--xl">Ihr Vektor<br />zur wirkungsvollen <span class="accent">KI</span></h1>
+            <p class="body-lg">
+              Wir bringen Künstliche Intelligenz kontrolliert in kleine und mittelständische Unternehmen
+              und sorgen für klare Wirkung, saubere Governance und messbaren Nutzen.
+            </p>
+            <p class="stage__hint" aria-hidden="true">Scrollen, um den Weg zu verfolgen<span class="stage__hint-bar"></span></p>
+          </div>
+
+          <!-- Akt-Captions -->
+          <div class="stage__caption" data-cap="1" aria-hidden="true">
+            <p class="stage__step-no">01</p>
+            <h2>Ankommen</h2>
+            <p>
+              Am Anfang steht kein Toolkatalog, sondern ein Besuch: Wir kommen in Ihr Unternehmen.
+              WirkVektor begleitet kleine und mittelständische Unternehmen, die KI nicht nur ausprobieren,
+              sondern produktiv und regelkonform integrieren wollen.
+            </p>
           </div>
           <div class="stage__caption" data-cap="2" aria-hidden="true">
-            <p class="eyebrow">UNSERE KUNDEN</p>
-            <h2 class="display">Im Zentrum:<br/>kleine und mittlere Unternehmen</h2>
-            <p class="body-lg">WirkVektor begleitet kleine und mittelständische Unternehmen, die KI nicht nur ausprobieren, sondern produktiv und regelkonform integrieren wollen, vor allem in Branchen mit hohen Anforderungen an Sicherheit, Nachvollziehbarkeit und Wirksamkeit.</p>
+            <p class="stage__step-no">02</p>
+            <h2>Verstehen</h2>
+            <p>
+              Wir gehen mit Ihnen durch die Prozesse — von der Anfrage bis zum Service.
+              Wir analysieren Geschäftsmodell, Abläufe, Datenlage und IT-Landschaft.
+              So entsteht ein realistisches Bild der Ausgangslage.
+            </p>
           </div>
           <div class="stage__caption" data-cap="3" aria-hidden="true">
-            <p class="eyebrow">DER HEBEL</p>
-            <h2 class="display">Der Hebel<br/>zur Wirkung</h2>
-            <p class="body-lg">WirkVektor ist eine Beratung, die KI strukturiert in kleine und mittelständische Unternehmen bringt. Wir verbinden Strategie, Sicherheit und Umsetzung, ohne Plattformbindung und ohne Folienzauber.</p>
+            <p class="stage__step-no">03</p>
+            <h2>Umsetzen</h2>
+            <p>
+              Wir klären Governance, Rollen und Risiken, bevor KI in den produktiven Betrieb geht —
+              dann begleiten wir Pilotierung, Toolauswahl, Prozessintegration und Schulung.
+              Strukturiert statt Stückwerk.
+            </p>
           </div>
           <div class="stage__caption" data-cap="4" aria-hidden="true">
-            <p class="eyebrow">GREIFBARE WIRKUNG</p>
-            <h2 class="display">Greifbare Wirkung,<br/>keine Folientheorie</h2>
-            <p class="body-lg">Wir versprechen keine Wunder. Unabhängige Studien zeigen aber, was KI im Arbeitsalltag realistisch bewirkt. Genau darauf richten wir Ihre Use Cases aus, statt auf Folientheorie.</p>
+            <p class="stage__step-no">04</p>
+            <h2>Wirkung</h2>
+            <p>
+              Wir versprechen keine Wunder. Unabhängige Studien zeigen aber, was KI im Arbeitsalltag
+              realistisch bewirkt. Genau darauf richten wir Ihre Use Cases aus — und messen den Effekt.
+            </p>
+          </div>
+
+          <!-- Wirkungs-Kennzahlen (Akt 4) -->
+          <div class="stage__stats" data-stats aria-hidden="true">
+            <div class="stat"><span class="stat__value" data-count="14" data-prefix="+" data-suffix=" %">+0 %</span><span class="stat__label">Produktivität im Kundenservice</span></div>
+            <div class="stat"><span class="stat__value" data-count="59" data-prefix="+" data-suffix=" %">+0 %</span><span class="stat__label">Dokumente pro Stunde</span></div>
+            <div class="stat"><span class="stat__value" data-count="55" data-prefix="~" data-suffix=" %">~0 %</span><span class="stat__label">schneller bei Entwicklungsaufgaben</span></div>
+            <div class="stat"><span class="stat__value" data-count="75" data-prefix="~" data-suffix=" %">~0 %</span><span class="stat__label">des KI-Nutzens in vier Feldern</span></div>
           </div>
 
           <!-- Akt-Navigation -->
-          <ol class="stage__rail" aria-hidden="true">
-            <li data-rail="1"><span>01</span>Industrie</li>
-            <li data-rail="2"><span>02</span>Unternehmen</li>
-            <li data-rail="3"><span>03</span>Prozesse</li>
-            <li data-rail="4"><span>04</span>Wirkung</li>
+          <ol class="stage__rail" data-rail aria-hidden="true">
+            <li data-rail-item="1"><span class="stage__rail-no">01</span><span class="stage__rail-label">Ankommen</span></li>
+            <li data-rail-item="2"><span class="stage__rail-no">02</span><span class="stage__rail-label">Verstehen</span></li>
+            <li data-rail-item="3"><span class="stage__rail-no">03</span><span class="stage__rail-label">Umsetzen</span></li>
+            <li data-rail-item="4"><span class="stage__rail-no">04</span><span class="stage__rail-label">Wirkung</span></li>
           </ol>
         </div>
       </section>
 
-      <!-- ============== METHODIK ============== -->
-      <section class="section" id="methodik">
+      <!-- ============== HALTUNG (weiße Karten-Sektion) ============== -->
+      <section class="section section--cards" id="haltung">
         <div class="container">
-          <p class="eyebrow">UNSERE METHODIK</p>
-          <h2 class="display">Eine neue Form<br/>der KI-Einführung</h2>
-          <p class="body-lg section__intro">WirkVektor ist nicht nur eine Beratung, sondern eine klare Methodik aus sechs Phasen, entwickelt für die Realität kleiner und mittelständischer Unternehmen.</p>
-
-          <div class="phasen">
-            <article class="phase"><span class="phase__step">01</span><h3>Verstehen</h3><p>Wir analysieren Geschäftsmodell, Prozesse, Datenlage und IT-Landschaft. So entsteht ein realistisches Bild der Ausgangslage.</p></article>
-            <article class="phase"><span class="phase__step">02</span><h3>Bewerten</h3><p>Wir prüfen mögliche KI-Anwendungsfälle nach Nutzen, Aufwand, Datenlage, Risiko und Compliance.</p></article>
-            <article class="phase"><span class="phase__step">03</span><h3>Priorisieren</h3><p>Wir wählen die Vorhaben aus, die wirtschaftlich, realistisch und kontrollierbar sind.</p></article>
-            <article class="phase"><span class="phase__step">04</span><h3>Absichern</h3><p>Wir klären Governance, Rollen, Datenzugriffe und Risiken, bevor KI in den produktiven Betrieb geht.</p></article>
-            <article class="phase"><span class="phase__step">05</span><h3>Umsetzen</h3><p>Wir begleiten Pilotierung, Toolauswahl, Prozessintegration, Schulung und Produktivsetzung.</p></article>
-            <article class="phase"><span class="phase__step">06</span><h3>Messen</h3><p>Nach der Einführung prüfen wir den Nutzen an klaren Kriterien wie Zeitersparnis, Qualität und Akzeptanz und verbessern weiter.</p></article>
+          <h2 class="display" data-reveal>Entwickelt für Ihren Alltag,<br />nicht für Konzern-Folien.</h2>
+          <div class="cards">
+            <article class="card" data-reveal>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M24 6 L40 15 L40 33 L24 42 L8 33 L8 15 Z"/><path d="M24 6 L24 24 L40 33 M24 24 L8 33"/></g></svg>
+              <h3>Passt zu Ihrem Unternehmen</h3>
+              <p>Lösungen im Maßstab Ihres Unternehmens, vom kleinen Betrieb bis zum Mittelständler — ohne Konzern-Overhead und ohne Plattformzwang.</p>
+            </article>
+            <article class="card" data-reveal>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M24 5 L40 11 V23 C40 33 33 40 24 43 C15 40 8 33 8 23 V11 Z"/><path d="M17 23 L22 28 L31 18"/></g></svg>
+              <h3>Sicher und regelkonform</h3>
+              <p>Datenschutz, Governance und EU AI Act sind von Anfang an mitgedacht, nicht nachträglich.</p>
+            </article>
+            <article class="card" data-reveal>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 H40"/><path d="M12 40 V26 M22 40 V18 M32 40 V22 M42 40 V10"/><path d="M34 10 H42 V18"/></g></svg>
+              <h3>Erst der Nutzen, dann die Technik</h3>
+              <p>Wir starten beim Geschäftsproblem und machen den Effekt messbar, statt Werkzeuge zu verwalten.</p>
+            </article>
+            <article class="card" data-reveal>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="14" r="5"/><path d="M7 38 C7 30 12 26 17 26 C22 26 27 30 27 38"/><circle cx="34" cy="16" r="4"/><path d="M29 36 C29 30 33 27 36 27 C39 27 43 30 43 36"/></g></svg>
+              <h3>Sie bleiben unabhängig</h3>
+              <p>Wir schulen Ihr Team und übergeben Wissen, damit Sie KI selbst steuern können.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- ============== HALTUNG ============== -->
-      <section class="section section--elevated" id="haltung">
+      <!-- ============== METHODIK ============== -->
+      <section class="section section--elevated" id="methodik">
         <div class="container">
-          <p class="eyebrow">UNSERE HALTUNG</p>
-          <h2 class="display">Die intelligente Verbindung<br/>aus Strategie, <span class="accent">Sicherheit</span> und Wirkung</h2>
-
-          <ul class="values">
-            <li><h3>Passt zu Ihrem Unternehmen</h3><p>Lösungen im Maßstab Ihres Unternehmens, vom kleinen Betrieb bis zum Mittelständler, ohne Konzern-Overhead und ohne Plattformzwang.</p></li>
-            <li><h3>Sicher und regelkonform</h3><p>Datenschutz, Governance und EU AI Act sind von Anfang an mitgedacht, nicht nachträglich.</p></li>
-            <li><h3>Erst der Nutzen, dann die Technik</h3><p>Wir starten beim Geschäftsproblem und machen den Effekt messbar, statt Werkzeuge zu verwalten.</p></li>
-            <li><h3>Sie bleiben unabhängig</h3><p>Wir schulen Ihr Team und übergeben Wissen, damit Sie KI selbst steuern können.</p></li>
-          </ul>
+          <p class="eyebrow" data-reveal>UNSERE METHODIK</p>
+          <h2 class="display" data-reveal>Eine neue Form<br />der KI-Einführung</h2>
+          <p class="body-lg section__intro" data-reveal>
+            WirkVektor ist nicht nur eine Beratung, sondern eine klare Methodik aus sechs Phasen,
+            entwickelt für die Realität kleiner und mittelständischer Unternehmen.
+          </p>
+          <div class="phasen">
+            <article class="phase" data-reveal><span class="phase__step">01</span><h3>Verstehen</h3><p>Wir analysieren Geschäftsmodell, Prozesse, Datenlage und IT-Landschaft. So entsteht ein realistisches Bild der Ausgangslage.</p></article>
+            <article class="phase" data-reveal><span class="phase__step">02</span><h3>Bewerten</h3><p>Wir prüfen mögliche KI-Anwendungsfälle nach Nutzen, Aufwand, Datenlage, Risiko und Compliance.</p></article>
+            <article class="phase" data-reveal><span class="phase__step">03</span><h3>Priorisieren</h3><p>Wir wählen die Vorhaben aus, die wirtschaftlich, realistisch und kontrollierbar sind.</p></article>
+            <article class="phase" data-reveal><span class="phase__step">04</span><h3>Absichern</h3><p>Wir klären Governance, Rollen, Datenzugriffe und Risiken, bevor KI in den produktiven Betrieb geht.</p></article>
+            <article class="phase" data-reveal><span class="phase__step">05</span><h3>Umsetzen</h3><p>Wir begleiten Pilotierung, Toolauswahl, Prozessintegration, Schulung und Produktivsetzung.</p></article>
+            <article class="phase" data-reveal><span class="phase__step">06</span><h3>Messen</h3><p>Nach der Einführung prüfen wir den Nutzen an klaren Kriterien wie Zeitersparnis, Qualität und Akzeptanz und verbessern weiter.</p></article>
+          </div>
         </div>
       </section>
 
-      <!-- ============== PAKETE / OUTCOMES ============== -->
+      <!-- ============== PAKETE ============== -->
       <section class="section" id="pakete">
         <div class="container">
-          <p class="eyebrow">GREIFBARE WIRKUNG</p>
-          <h2 class="display">Klare Pakete,<br/>klare Ergebnisse</h2>
-
+          <p class="eyebrow" data-reveal>GREIFBARE WIRKUNG</p>
+          <h2 class="display" data-reveal>Klare Pakete,<br />klare Ergebnisse</h2>
           <ul class="outcomes">
-            <li><span class="outcomes__paket">KI-Readiness-Check</span><span>2–3 Wochen bis zum belastbaren Reifegradbericht.</span></li>
-            <li><span class="outcomes__paket">KI-Use-Case-Sprint</span><span>4–6 Wochen bis zur priorisierten Use-Case-Liste.</span></li>
-            <li><span class="outcomes__paket">KI-Governance-Starterpaket</span><span>3–4 Wochen bis zum sofort nutzbaren Governance-Rahmen.</span></li>
-            <li><span class="outcomes__paket">AI-Literacy-Schulung</span><span>1–2 Tage für geschulte Mitarbeitende.</span></li>
-            <li><span class="outcomes__paket">Produktiver KI-Pilot</span><span>8–12 Wochen vom Pilot zur Skalierungs-Entscheidung.</span></li>
+            <li data-reveal><span class="outcomes__paket">KI-Readiness-Check</span><span>2–3 Wochen bis zum belastbaren Reifegradbericht.</span></li>
+            <li data-reveal><span class="outcomes__paket">KI-Use-Case-Sprint</span><span>4–6 Wochen bis zur priorisierten Use-Case-Liste.</span></li>
+            <li data-reveal><span class="outcomes__paket">KI-Governance-Starterpaket</span><span>3–4 Wochen bis zum sofort nutzbaren Governance-Rahmen.</span></li>
+            <li data-reveal><span class="outcomes__paket">AI-Literacy-Schulung</span><span>1–2 Tage für geschulte Mitarbeitende.</span></li>
+            <li data-reveal><span class="outcomes__paket">Produktiver KI-Pilot</span><span>8–12 Wochen vom Pilot zur Skalierungs-Entscheidung.</span></li>
           </ul>
-
-          <p class="body-sm outcomes__caveat">Die in der Animation gezeigten Werte sind Ergebnisse unabhängiger Studien (MIT &amp; Stanford 2025, Nielsen Norman Group 2023, GitHub &amp; Microsoft 2023, McKinsey 2023), keine Garantien. Die Effekte hängen stark von Aufgabe, Datenqualität und Umsetzung ab und fallen bei wiederkehrender Wissensarbeit sowie bei weniger erfahrenen Teams am größten aus. Genau das prüfen wir vorab in der Use-Case-Bewertung.</p>
+          <p class="body-sm outcomes__caveat" data-reveal>
+            Die in der Animation gezeigten Werte sind Ergebnisse unabhängiger Studien (MIT &amp; Stanford 2025,
+            Nielsen Norman Group 2023, GitHub &amp; Microsoft 2023, McKinsey 2023), keine Garantien. Die Effekte
+            hängen stark von Aufgabe, Datenqualität und Umsetzung ab und fallen bei wiederkehrender Wissensarbeit
+            sowie bei weniger erfahrenen Teams am größten aus. Genau das prüfen wir vorab in der Use-Case-Bewertung.
+          </p>
         </div>
       </section>
 
       <!-- ============== CLOSING ============== -->
       <section class="section section--closing" id="kontakt">
         <div class="container">
-          <p class="eyebrow">BEREIT ZU STARTEN</p>
-          <h2 class="display display--xl">Bringen Sie KI<br/>in Wirkung</h2>
-          <p class="body-lg section__intro">Im 30-minütigen Erstgespräch klären wir, wo Sie stehen und welches Paket passt. Kostenlos, unverbindlich, vertraulich.</p>
-          <div class="closing__ctas">
+          <p class="eyebrow" data-reveal>BEREIT ZU STARTEN</p>
+          <h2 class="display display--xl" data-reveal>Bringen Sie KI<br />in Wirkung</h2>
+          <p class="body-lg section__intro" data-reveal>
+            Im 30-minütigen Erstgespräch klären wir, wo Sie stehen und welches Paket passt.
+            Kostenlos, unverbindlich, vertraulich.
+          </p>
+          <div class="closing__ctas" data-reveal>
             <a class="btn btn--impact btn--lg" href="mailto:info@wirkvektor.de?subject=Erstgespr%C3%A4ch">Erstgespräch buchen</a>
             <a class="btn btn--secondary btn--lg" href="tel:+4917620139739">+49 176 20 139 739</a>
           </div>
@@ -350,30 +198,29 @@
 
     <!-- ============== FOOTER ============== -->
     <footer class="footer">
-      <div class="container footer__grid">
-        <div>
-          <div class="footer__brand">
-            <img class="footer__logo" src="wirkvektor-logo.svg" alt="" />
-            <span class="header__wordmark">WirkVektor</span>
-          </div>
-          <p class="footer__claim">Ihr Vektor zur wirkungsvollen KI.</p>
-        </div>
-        <ul class="footer__list">
+      <div class="footer__panels">
+        <a class="footer__panel" href="#methodik"><span>Methodik</span><span class="footer__panel-arrow" aria-hidden="true">→</span></a>
+        <a class="footer__panel" href="#haltung"><span>Haltung</span><span class="footer__panel-arrow" aria-hidden="true">→</span></a>
+        <a class="footer__panel" href="mailto:info@wirkvektor.de?subject=Erstgespr%C3%A4ch"><span>Kontakt</span><span class="footer__panel-arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="footer__word" aria-hidden="true">
+        <svg viewBox="0 0 1060 130" preserveAspectRatio="xMidYMid meet">
+          <text x="50%" y="104" text-anchor="middle" textLength="1020" lengthAdjust="spacingAndGlyphs">WIRKVEKTOR</text>
+        </svg>
+      </div>
+      <div class="container footer__bottom">
+        <span>© 2026 WirkVektor. Alle Rechte vorbehalten.</span>
+        <ul class="footer__legal">
           <li><a href="mailto:info@wirkvektor.de">info@wirkvektor.de</a></li>
           <li><a href="tel:+4917620139739">+49 176 20 139 739</a></li>
-          <li><span>Leitenstr. 18, 84048 Mainburg</span></li>
-        </ul>
-        <ul class="footer__list">
           <li><a href="/impressum.html">Impressum</a></li>
           <li><a href="#">Datenschutz</a></li>
         </ul>
       </div>
-      <div class="container footer__bottom">
-        <span>© 2026 WirkVektor. Alle Rechte vorbehalten.</span>
-        <span>Inhalte dienen Informationszwecken, stellen kein bindendes Angebot dar.</span>
-      </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/ScrollTrigger.min.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
