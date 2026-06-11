@@ -435,8 +435,8 @@ a { color: inherit; }
 @media (max-width: 767px) {
   .stage__rail { left: var(--margin); top: 11vh; transform: none; gap: 8px; }
   .stage__caption { width: calc(100vw - 2 * var(--margin)); }
-  .stage__caption h2 { font-size: 1.125rem; }
-  .stage__caption p:last-child { font-size: 0.8125rem; }
+  .stage__caption h2 { font-size: 1.25rem; }
+  .stage__caption p:last-child { font-size: 0.875rem; }
 
   /* Hero kompakter */
   .stage__hero { top: 13vh; }

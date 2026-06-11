@@ -37,10 +37,13 @@ const ACTS = [
 
 const STATIONS = [
   'IHRE GESCHÄFTSMODELLE', 'IHRE PRODUKTE', 'IHRE LEISTUNGEN', 'IHRE PROZESSE',
-  'IHRE DATEN', 'IHRE IT-LANDSCHAFT', 'IHRE ZIELE', 'IHRE SERVICES',
+  'IHRE DATEN', 'IHRE IT-LANDSCHAFT', 'IHRE SERVICES', 'IHRE ZIELE',
 ];
 
-const state = { p: 0, headPos: new THREE.Vector3() };
+const state = { p: 0, portrait: false, headPos: new THREE.Vector3() };
+
+/* Mobile: Welt-Labels größer rendern, damit sie lesbar bleiben */
+const LABEL_SCALE = window.innerWidth < 768 ? 1.65 : 1;
 
 main();
 
@@ -248,11 +251,12 @@ async function main() {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     const portrait = w < 768 || w / h < 0.9;
-    /* Hochkant: weiterer Blickwinkel (sonst zu enger Ausschnitt) und
-       Blickziel mittig, leicht nach unten (UI liegt oben).
+    state.portrait = portrait;
+    /* Hochkant: weiterer Blickwinkel; die Kamera schaut auf die Pfad-Spitze,
+       der vertikale View-Offset legt sie auf die untere Drittel-Linie.
        Desktop: Blickziel auf der rechten Drittel-Linie. */
     camera.fov = portrait ? 56 : 40;
-    camera.setViewOffset(w, h, portrait ? 0 : -w / 6, portrait ? -h * 0.08 : 0, w, h);
+    camera.setViewOffset(w, h, portrait ? 0 : -w / 6, portrait ? -h / 6 : 0, w, h);
     camera.updateProjectionMatrix();
   }
   window.addEventListener('resize', resize);
@@ -260,6 +264,7 @@ async function main() {
 
   /* ---------- Render-Loop ---------- */
   const clock = new THREE.Clock();
+  const headTarget = new THREE.Vector3();
 
   function frame() {
     const p = state.p;
@@ -268,6 +273,15 @@ async function main() {
     /* Kamera */
     const { pos, tgt } = camSampler(p);
     camera.position.copy(pos);
+    /* Hochkant: Blick auf die Pfad-Spitze — horizontal mittig, vertikal
+       legt der View-Offset sie auf die untere Drittel-Linie */
+    if (state.portrait) {
+      const k = THREE.MathUtils.clamp((p - 0.05) / 0.05, 0, 1);
+      if (k > 0) {
+        pathCurve.getPointAt(pathU(p), headTarget);
+        tgt.lerp(headTarget, k);
+      }
+    }
     camera.lookAt(tgt);
 
     /* Sonne folgt dem Blickziel, damit Schatten dort scharf sind */
@@ -301,7 +315,7 @@ async function main() {
     /* Akt 1 — KMU-Markierung wacht auf; die Sättigung von Teal-Korpus
        und Navy-Dach steigt mit dem Scroll-Fortschritt */
     const smeNear = THREE.MathUtils.clamp(1 - Math.abs(u - uSme) * 14, 0, 1);
-    const smeOn = THREE.MathUtils.clamp((p - 0.1) / 0.08, 0, 1);
+    const smeOn = THREE.MathUtils.clamp((p - 0.06) / 0.07, 0, 1);
     const q1 = actProgress(p, 1);
     sme.setSaturation(q1);
     sme.ring.material.opacity = 0.25 + 0.75 * Math.max(smeNear, smeOn * 0.6);
@@ -310,12 +324,15 @@ async function main() {
     sme.edges.material.opacity = 0.35 + 0.65 * smeOn;
     sme.body.material.emissiveIntensity = (0.15 + 0.35 * smeOn) * q1;
 
-    /* Akt 2 — Stationen aktivieren sich, sobald der Pfad sie passiert */
+    /* Akt 2 — Stationen aktivieren sich, sobald der Pfad sie passiert;
+       die Beschriftung läuft deutlich voraus, damit sie lesbar ist,
+       bevor die Spitze ankommt */
     for (const st of stations) {
       const on = THREE.MathUtils.clamp((u - st.u + 0.012) * 60, 0, 1);
+      const labelOn = THREE.MathUtils.clamp((u - st.u + 0.07) * 22, 0, 1);
       st.ring.material.opacity = on * 0.9;
       st.ring.scale.setScalar(1 + 0.25 * (1 - on));
-      st.label.material.opacity = 0.15 + 0.85 * on;
+      st.label.material.opacity = 0.25 + 0.75 * labelOn;
       st.body.material.emissiveIntensity = 0.35 * on;
     }
 
@@ -324,7 +341,7 @@ async function main() {
     hub.core.material.emissiveIntensity = 0.2 + 1.6 * q3;
     hub.core.rotation.y = REDUCED ? 0 : t * 0.6;
     hub.links.material.opacity = q3 * 0.85;
-    hub.label.material.opacity = q3;
+    hub.label.material.opacity = THREE.MathUtils.clamp(q3 * 2.5, 0, 1);
     hub.glow.material.opacity = q3 * 0.85;
     for (let i = 0; i < hub.pulses.length; i++) {
       const s = hub.pulses[i];
@@ -1100,13 +1117,15 @@ function collectUi() {
 }
 
 function applyUi(ui, p) {
-  ui.hero.classList.toggle('is-hidden', p > 0.07);
-  ui.rail.classList.toggle('is-visible', p > 0.07);
+  ui.hero.classList.toggle('is-hidden', p > 0.05);
+  ui.rail.classList.toggle('is-visible', p > 0.05);
 
+  /* Captions mit Vorlauf einblenden, damit die Texte früher lesbar sind */
+  const lead = 0.025;
   let active = -1;
   for (let i = 0; i < ACTS.length; i++) {
     const a = ACTS[i];
-    const on = p >= a.from && p < a.to;
+    const on = p >= a.from - lead && p < a.to - lead;
     if (on) active = i;
     ui.caps[i].classList.toggle('is-active', on);
     ui.caps[i].setAttribute('aria-hidden', String(!on));
@@ -1280,7 +1299,7 @@ function makeLabelSprite(text, { color = '#475569', accent = false, big = false 
   const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
     map: tex, transparent: true, depthWrite: false,
   }));
-  const worldH = big ? 2.6 : 1.5;
+  const worldH = (big ? 2.6 : 1.5) * LABEL_SCALE;
   sprite.scale.set((worldH * w) / h, worldH, 1);
   return sprite;
 }
