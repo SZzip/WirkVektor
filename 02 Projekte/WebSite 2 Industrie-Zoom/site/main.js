@@ -5,11 +5,13 @@
    Erzählung in vier Akten entlang einer Kamerafahrt:
    01 Ankommen  — der Berater kommt ins Unternehmen (Stadt → KMU)
    02 Verstehen — der Weg durch die Prozess-Stationen
-   03 Umsetzen  — der KI-Hub verbindet sich mit dem Prozessfeld
-   04 Wirkung   — der Pfad mündet in den Vektor-Pfeil, Kennzahlen zählen
+   03 Umsetzen  — der KI-Hub färbt das BPMN-Prozessnetz ein
+   04 Wirkung   — der Pfad passiert das extrudierte Logo und läuft
+                  in den Hintergrund, Kennzahlen zählen hoch
    ============================================================ */
 
-import * as THREE from './lib/three.module.js';
+import * as THREE from 'three';
+import { SVGLoader } from './lib/SVGLoader.js';
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -34,8 +36,8 @@ const ACTS = [
 ];
 
 const STATIONS = [
-  'ANFRAGE', 'ANGEBOT', 'AUFTRAG', 'PLANUNG',
-  'FERTIGUNG', 'LIEFERUNG', 'RECHNUNG', 'SERVICE',
+  'IHRE GESCHÄFTSMODELLE', 'IHRE PRODUKTE', 'IHRE LEISTUNGEN', 'IHRE PROZESSE',
+  'IHRE DATEN', 'IHRE IT-LANDSCHAFT', 'IHRE ZIELE', 'IHRE SERVICES',
 ];
 
 const state = { p: 0, headPos: new THREE.Vector3() };
@@ -91,17 +93,22 @@ async function main() {
   ground.receiveShadow = true;
   scene.add(ground);
 
-  /* ---------- Berater-Pfad ---------- */
+  /* ---------- Berater-Pfad ----------
+     Läuft an festen Objekten VORBEI, nicht hindurch: ums KMU herum,
+     seitlich an den Stationen entlang, am Logo vorbei in den Horizont. */
   const pathPoints = [
     [-48, 0.6, 8], [-34, 0.6, -6], [-18, 0.6, 9], [-2, 0.6, -7],
-    [12, 0.6, 4], [22, 0.6, 0], [27.5, 0.6, 0], [36, 0.6, 0], [48, 0.6, 0],
-    /* Prozess-Stationen (Akt 2) */
-    [62, 0.6, -6], [72, 0.6, 6], [82, 0.6, -6], [92, 0.6, 6],
-    [102, 0.6, -6], [112, 0.6, 6], [122, 0.6, -6], [132, 0.6, 6],
-    /* Kachel-Feld (Akt 3) */
+    [12, 0.6, 4], [22, 0.6, 1],
+    /* Bogen um das KMU-Gebäude (Akt 1) */
+    [26.5, 0.6, 3.2], [32, 0.6, 5.2], [38, 0.6, 3], [46, 0.6, 0],
+    /* seitlich an den Prozess-Stationen vorbei (Akt 2) */
+    [62, 0.6, -4.4], [72, 0.6, 4.4], [82, 0.6, -4.4], [92, 0.6, 4.4],
+    [102, 0.6, -4.4], [112, 0.6, 4.4], [122, 0.6, -4.4], [132, 0.6, 4.4],
+    /* BPMN-Feld (Akt 3) */
     [142, 0.7, 2], [154, 0.9, 0], [165, 2.2, 0],
-    /* Vektor-Pfeil (Akt 4) */
-    [180, 2.4, 0], [198, 3.4, 0], [212, 5, 0],
+    /* am Logo vorbei und in den Hintergrund (Akt 4) */
+    [180, 2.6, 1], [196, 4, 3.6], [206, 5, 4.2], [216, 6, 4],
+    [230, 7.5, 0], [248, 10, -10], [270, 14, -22],
   ].map((p) => new THREE.Vector3(...p));
 
   const pathCurve = new THREE.CatmullRomCurve3(pathPoints, false, 'centripetal');
@@ -131,7 +138,7 @@ async function main() {
     map: makeGlowTexture('#22d3ee'),
     transparent: true, depthWrite: false, toneMapped: false,
   }));
-  headSprite.scale.set(4.2, 4.2, 1);
+  headSprite.scale.set(3, 3, 1);
   scene.add(headSprite);
 
   const headLight = new THREE.PointLight(COLORS.cyan, 60, 22, 1.8);
@@ -144,22 +151,22 @@ async function main() {
   buildCity(scene, pathCurve);
   buildTurbines(scene);
   const sme = buildSme(scene);
-  const uSme = uOf(new THREE.Vector3(27.5, 0.6, 0));
+  const uSme = uOf(new THREE.Vector3(26.5, 0.6, 3.2));
 
-  /* ---------- Akt 2: Prozess-Stationen ---------- */
+  /* ---------- Akt 2: Prozess-Stationen (Pfad läuft seitlich vorbei) ---------- */
   const stations = STATIONS.map((name, i) => {
     const pos = new THREE.Vector3(62 + i * 10, 0, i % 2 === 0 ? -6 : 6);
     const st = buildStation(scene, name, pos);
-    st.u = uOf(new THREE.Vector3(pos.x, 0.6, pos.z));
+    st.u = uOf(new THREE.Vector3(pos.x, 0.6, Math.sign(pos.z) * 4.4));
     return st;
   });
 
-  /* ---------- Akt 3: Kachel-Feld + KI-Hub ---------- */
-  const field = buildTileField(scene);
-  const hub = buildHub(scene);
+  /* ---------- Akt 3: BPMN-Prozessnetz + KI-Hub ---------- */
+  const field = buildBpmnField(scene);
+  const hub = buildHub(scene, field.linkTargets);
 
-  /* ---------- Akt 4: Vektor-Pfeil ---------- */
-  const arrow = buildArrow(scene);
+  /* ---------- Akt 4: extrudiertes Logo ---------- */
+  const finale = await buildFinale(scene);
 
   /* ---------- Kamera-Keyframes ---------- */
   const CAM = [
@@ -182,11 +189,12 @@ async function main() {
     { p: 0.04, u: 0 },
     { p: 0.16, u: uOf(new THREE.Vector3(-2, 0.6, -7)) },
     { p: 0.26, u: uSme },
-    { p: 0.31, u: uOf(new THREE.Vector3(48, 0.6, 0)) },
-    { p: 0.46, u: uOf(new THREE.Vector3(92, 0.6, 6)) },
-    { p: 0.58, u: uOf(new THREE.Vector3(136, 0.6, 4)) },
+    { p: 0.31, u: uOf(new THREE.Vector3(46, 0.6, 0)) },
+    { p: 0.46, u: uOf(new THREE.Vector3(92, 0.6, 4.4)) },
+    { p: 0.58, u: uOf(new THREE.Vector3(134, 0.6, 4)) },
     { p: 0.74, u: uOf(new THREE.Vector3(165, 2.2, 0)) },
-    { p: 0.92, u: 1 },
+    { p: 0.88, u: uOf(new THREE.Vector3(216, 6, 4)) },
+    { p: 1.0, u: 1 },
   ];
 
   function pathU(p) {
@@ -252,9 +260,9 @@ async function main() {
       headSprite.position.copy(state.headPos);
       headLight.position.copy(state.headPos).y += 1;
       const pulse = REDUCED ? 1 : 0.9 + 0.1 * Math.sin(t * 4);
-      headSprite.scale.setScalar(4.2 * pulse);
-      headSprite.material.opacity = u >= 1 ? 0 : 1;
-      headLight.intensity = u >= 1 ? 0 : 60;
+      headSprite.scale.setScalar(3 * pulse);
+      headSprite.material.opacity = 1; /* läuft am Ende sichtbar in den Nebel */
+      headLight.intensity = 60;
     } else {
       headSprite.material.opacity = 0;
       headLight.intensity = 0;
@@ -277,7 +285,7 @@ async function main() {
       st.body.material.emissiveIntensity = 0.35 * on;
     }
 
-    /* Akt 3 — Hub erwacht, Links + Impulse, Kacheln heben sich in einer Welle */
+    /* Akt 3 — Hub erwacht, Links + Impulse, BPMN-Knoten färben sich ein */
     const q3 = actProgress(p, 3);
     hub.core.material.emissiveIntensity = 0.2 + 1.6 * q3;
     hub.core.rotation.y = REDUCED ? 0 : t * 0.6;
@@ -290,19 +298,18 @@ async function main() {
       s.position.lerpVectors(hub.pos, hub.linkTargets[i], k);
       s.material.opacity = q3 * (1 - k) * 0.9;
     }
-    field.update(state.headPos, u, q3, t);
+    field.update(state.headPos, u, q3);
 
-    /* Akt 4 — Pfeil baut sich auf */
+    /* Akt 4 — das extrudierte Logo baut sich auf */
     const q4 = actProgress(p, 4);
     const aVisible = q4 > 0.02;
     const aScale = 0.55 + 0.45 * easeOut(q4);
-    arrow.group.visible = aVisible;
-    arrow.group.scale.setScalar(aScale);
-    arrow.group.position.y = 5.5 * aScale;
-    arrow.arrowMats[0].opacity = easeOut(q4);
-    arrow.arrowMats[1].opacity = 0.8 * easeOut(q4);
-    for (let i = 0; i < arrow.diamonds.length; i++) {
-      const d = arrow.diamonds[i];
+    finale.group.visible = aVisible;
+    finale.group.scale.setScalar(aScale);
+    finale.group.position.y = finale.baseY * aScale;
+    for (const m of finale.mats) m.opacity = easeOut(q4);
+    for (let i = 0; i < finale.diamonds.length; i++) {
+      const d = finale.diamonds[i];
       d.mesh.visible = aVisible;
       d.mesh.material.opacity = easeOut(q4);
       d.mesh.position.y = d.base.y + (REDUCED ? 0 : Math.sin(t * 1.4 + i * 1.7) * 0.5);
@@ -430,7 +437,7 @@ function buildSme(scene) {
   ring.position.set(32, 0.06, 0);
   scene.add(ring);
 
-  const label = makeLabelSprite('MITTELSTAND GMBH', { color: '#0f172a', accent: true });
+  const label = makeLabelSprite('Ihr Unternehmen', { color: '#0f172a', accent: true });
   label.position.set(32, 15.6, 0);
   label.material.opacity = 0;
   scene.add(label);
@@ -466,25 +473,85 @@ function buildStation(scene, name, pos) {
   return { body, ring, label };
 }
 
-function buildTileField(scene) {
-  const COLS = 9, ROWS = 7, PITCH = 5.4, CX = 165;
-  const geo = new THREE.BoxGeometry(4, 0.7, 4);
-  const mat = new THREE.MeshStandardMaterial({ color: 0xfafcfe, roughness: 0.9 });
-  const count = COLS * ROWS - 1;
-  const inst = new THREE.InstancedMesh(geo, mat, count);
-  inst.castShadow = true;
-  inst.receiveShadow = true;
-  scene.add(inst);
+/* BPMN-Prozessnetz (Akt 3): Tasks, Gateways und Events in Lanes um den
+   KI-Hub. Knoten färben sich ein, wenn der Pfad-Kopf vorbeifliegt, und
+   werden zusätzlich vom erwachenden Hub aus eingefärbt. */
+function buildBpmnField(scene) {
+  const HUB = new THREE.Vector2(165, 0);
 
-  const bases = [];
-  let k = 0;
-  for (let i = 0; i < COLS; i++) {
-    for (let j = 0; j < ROWS; j++) {
-      if (i === 4 && j === 3) continue; /* Mitte: Hub-Sockel */
-      bases.push(new THREE.Vector3(CX + (i - 4) * PITCH, 0.35, (j - 3) * PITCH));
-      k++;
+  /* [Typ, x, z] — Mittelkorridor |z| < 2.5 bleibt frei für den Pfad */
+  const defs = [
+    /* Lane Nord (z = -7) */
+    ['start', 144, -7], ['task', 151, -7], ['task', 158, -7],
+    ['gateway', 165, -7], ['task', 172, -7], ['task', 179, -7], ['end', 186, -7],
+    /* Lane Süd (z = +7) */
+    ['start', 144, 7], ['task', 151, 7], ['gateway', 158, 7],
+    ['task', 165, 7], ['task', 172, 7], ['gateway', 179, 7], ['end', 186, 7],
+    /* mittlere Zubringer (z = ±3.5) */
+    ['task', 150, -3.5], ['gateway', 158, -3.5], ['task', 172, -3.5], ['end', 180, -3.5],
+    ['task', 150, 3.5], ['task', 158, 3.5], ['task', 172, 3.5], ['end', 180, 3.5],
+  ];
+
+  const white = new THREE.Color(0xfafcfe);
+  const teal = new THREE.Color(COLORS.teal);
+
+  const taskShape = roundedRectShape(3.2, 2.2, 0.5);
+  const taskGeo = new THREE.ExtrudeGeometry(taskShape, { depth: 0.7, bevelEnabled: false });
+  taskGeo.rotateX(-Math.PI / 2);
+
+  const nodes = defs.map(([type, x, z]) => {
+    const mat = new THREE.MeshStandardMaterial({
+      color: white.clone(), roughness: 0.85,
+      emissive: COLORS.teal, emissiveIntensity: 0,
+    });
+    const grp = new THREE.Group();
+
+    if (type === 'task') {
+      grp.add(new THREE.Mesh(taskGeo, mat));
+    } else if (type === 'gateway') {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.7, 2.1), mat);
+      m.rotation.y = Math.PI / 4;
+      m.position.y = 0.35;
+      grp.add(m);
+    } else {
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.7, 28), mat);
+      m.position.y = 0.35;
+      grp.add(m);
+      if (type === 'end') {
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.07, 8, 40), mat);
+        ring.rotation.x = -Math.PI / 2;
+        ring.position.y = 0.72;
+        grp.add(ring);
+      }
     }
-  }
+    grp.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+    grp.position.set(x, type === 'task' ? 0.7 : 0, z);
+    if (type === 'task') grp.position.y = 0; /* ExtrudeGeo liegt nach rotateX bereits auf y 0..0.7 */
+    scene.add(grp);
+
+    return { mat, pos: new THREE.Vector2(x, z), distHub: HUB.distanceTo(new THREE.Vector2(x, z)) };
+  });
+
+  /* Sequenzfluss-Linien */
+  const flows = [];
+  const lane = (z, xs) => { for (let i = 0; i < xs.length - 1; i++) flows.push([xs[i], z, xs[i + 1], z]); };
+  lane(-7, [144, 151, 158, 165, 172, 179, 186]);
+  lane(7, [144, 151, 158, 165, 172, 179, 186]);
+  lane(-3.5, [150, 158]);
+  lane(3.5, [150, 158]);
+  lane(-3.5, [172, 180]);
+  lane(3.5, [172, 180]);
+  /* Diagonalen zum Hub und Querverbinder */
+  flows.push([158, -3.5, 165, 0], [158, 3.5, 165, 0], [165, 0, 172, -3.5], [165, 0, 172, 3.5]);
+  flows.push([158, -3.5, 158, -7], [158, 3.5, 158, 7], [172, -3.5, 172, -7], [172, 3.5, 172, 7]);
+
+  const flowPos = [];
+  for (const [x1, z1, x2, z2] of flows) flowPos.push(x1, 0.4, z1, x2, 0.4, z2);
+  const flowGeo = new THREE.BufferGeometry();
+  flowGeo.setAttribute('position', new THREE.Float32BufferAttribute(flowPos, 3));
+  scene.add(new THREE.LineSegments(flowGeo, new THREE.LineBasicMaterial({
+    color: COLORS.edge, transparent: true, opacity: 0.6,
+  })));
 
   /* Punktraster-Untergrund (Halbton-Anmutung des Originals) */
   const dots = new THREE.Mesh(
@@ -494,33 +561,32 @@ function buildTileField(scene) {
     })
   );
   dots.rotation.x = -Math.PI / 2;
-  dots.position.set(CX, 0.02, 0);
+  dots.position.set(165, 0.02, 0);
   scene.add(dots);
 
-  const m = new THREE.Matrix4();
-  const q = new THREE.Quaternion();
-  const s = new THREE.Vector3(1, 1, 1);
+  /* Hub-Verbindungen zu den inneren Knoten */
+  const linkTargets = nodes
+    .filter((n) => n.distHub > 0.1 && n.distHub < 12)
+    .map((n) => new THREE.Vector3(n.pos.x, 0.8, n.pos.y));
 
-  function update(headPos, u, q3, t) {
-    for (let n = 0; n < bases.length; n++) {
-      const b = bases[n];
-      const d = Math.hypot(b.x - headPos.x, b.z - headPos.z);
-      const near = u > 0.78 ? Math.exp(-(d * d) / 90) * 1.1 : 0;
-      const wave = q3 > 0 && !REDUCED
-        ? Math.sin(t * 1.2 - d * 0.35) * 0.12 * q3
-        : 0;
-      m.compose(
-        new THREE.Vector3(b.x, b.y + near + Math.max(wave, 0), b.z), q, s
-      );
-      inst.setMatrixAt(n, m);
+  const head2 = new THREE.Vector2();
+
+  function update(headPos, u, q3) {
+    head2.set(headPos.x, headPos.z);
+    for (const n of nodes) {
+      const dHead = n.pos.distanceTo(head2);
+      const aHead = u > 0.7 ? Math.exp(-(dHead * dHead) / 26) : 0;
+      const aHub = THREE.MathUtils.clamp((q3 * 1.5 - n.distHub / 24) * 2.2, 0, 1);
+      const a = Math.min(1, Math.max(aHead, aHub));
+      n.mat.color.lerpColors(white, teal, a);
+      n.mat.emissiveIntensity = 0.35 * a;
     }
-    inst.instanceMatrix.needsUpdate = true;
   }
 
-  return { update };
+  return { update, linkTargets };
 }
 
-function buildHub(scene) {
+function buildHub(scene, linkTargets) {
   const pos = new THREE.Vector3(165, 3.6, 0);
 
   const pedestal = new THREE.Mesh(
@@ -554,13 +620,7 @@ function buildHub(scene) {
   label.material.opacity = 0;
   scene.add(label);
 
-  /* Verbindungen zu den umliegenden Kacheln */
-  const offsets = [
-    [1, 0], [-1, 0], [0, 1], [0, -1],
-    [1, 1], [1, -1], [-1, 1], [-1, -1],
-    [2, 0], [-2, 0], [0, 2], [0, -2],
-  ];
-  const linkTargets = offsets.map(([i, j]) => new THREE.Vector3(165 + i * 5.4, 0.85, j * 5.4));
+  /* Verbindungen zu den umliegenden BPMN-Knoten */
   const linkPos = [];
   for (const tgt of linkTargets) linkPos.push(pos.x, pos.y, pos.z, tgt.x, tgt.y, tgt.z);
   const linkGeo = new THREE.BufferGeometry();
@@ -585,37 +645,57 @@ function buildHub(scene) {
   return { pos, core, glow, label, links, linkTargets, pulses };
 }
 
-function buildArrow(scene) {
+/* Finale (Akt 4): das WirkVektor-Logo als 3D-Extrusion. Fällt auf das
+   Chevron-Motiv zurück, wenn das SVG nicht geladen werden kann. */
+async function buildFinale(scene) {
+  const BASE_Y = 6.4;
   const group = new THREE.Group();
-
-  /* Chevron-Pfeil — das Vektor-Motiv */
-  const shape = new THREE.Shape();
-  shape.moveTo(0, 0);
-  shape.lineTo(7, 7);
-  shape.lineTo(0, 14);
-  shape.lineTo(4, 14);
-  shape.lineTo(11, 7);
-  shape.lineTo(4, 0);
-  shape.closePath();
-
-  const geo = new THREE.ExtrudeGeometry(shape, { depth: 2.4, bevelEnabled: false });
-  geo.translate(-5.5, -7, -1.2);
-  const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
-    color: COLORS.navy, roughness: 0.5, transparent: true,
-  }));
-  mesh.castShadow = true;
-  group.add(mesh);
-
-  const edges = new THREE.LineSegments(
-    new THREE.EdgesGeometry(geo, 20),
-    new THREE.LineBasicMaterial({ color: COLORS.cyan, transparent: true, opacity: 0.8, toneMapped: false })
-  );
-  group.add(edges);
-
-  group.position.set(215, 5.5, 0);
+  group.position.set(215, BASE_Y, 0);
+  group.rotation.y = -0.5; /* leicht zur Kamera gedreht */
   scene.add(group);
 
-  const arrowMats = [mesh.material, edges.material];
+  const mats = [];
+  try {
+    const data = await new SVGLoader().loadAsync('wirkvektor-logo.svg');
+    const inner = new THREE.Group();
+    for (const path of data.paths) {
+      const fill = (path.userData.style && path.userData.style.fill) || '';
+      const isAccent = /0d9488|94cccc/i.test(fill);
+      const mat = new THREE.MeshStandardMaterial({
+        color: isAccent ? COLORS.teal : COLORS.navy,
+        roughness: 0.5, transparent: true,
+      });
+      mats.push(mat);
+      for (const shape of SVGLoader.createShapes(path)) {
+        const geo = new THREE.ExtrudeGeometry(shape, { depth: 240, bevelEnabled: false });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        inner.add(mesh);
+      }
+    }
+    const s = 13 / 1448; /* viewBox 1448 → ~13 Welteinheiten hoch */
+    inner.scale.set(s, -s, s); /* SVG-y zeigt nach unten */
+    const box = new THREE.Box3().setFromObject(inner);
+    inner.position.sub(box.getCenter(new THREE.Vector3()));
+    group.add(inner);
+  } catch (e) {
+    /* Fallback: Chevron */
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0);
+    shape.lineTo(7, 7);
+    shape.lineTo(0, 14);
+    shape.lineTo(4, 14);
+    shape.lineTo(11, 7);
+    shape.lineTo(4, 0);
+    shape.closePath();
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: 2.4, bevelEnabled: false });
+    geo.translate(-5.5, -7, -1.2);
+    const mat = new THREE.MeshStandardMaterial({ color: COLORS.navy, roughness: 0.5, transparent: true });
+    mats.push(mat);
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.castShadow = true;
+    group.add(mesh);
+  }
 
   /* Cyan-Diamanten um den Pfeil */
   const diamonds = [
@@ -634,7 +714,24 @@ function buildArrow(scene) {
     return { mesh: d, base: new THREE.Vector3(...p) };
   });
 
-  return { group, diamonds, arrowMats };
+  return { group, diamonds, mats, baseY: BASE_Y };
+}
+
+/* Abgerundetes Rechteck (BPMN-Task) */
+function roundedRectShape(w, h, r) {
+  const s = new THREE.Shape();
+  const x = -w / 2;
+  const y = -h / 2;
+  s.moveTo(x + r, y);
+  s.lineTo(x + w - r, y);
+  s.quadraticCurveTo(x + w, y, x + w, y + r);
+  s.lineTo(x + w, y + h - r);
+  s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  s.lineTo(x + r, y + h);
+  s.quadraticCurveTo(x, y + h, x, y + h - r);
+  s.lineTo(x, y + r);
+  s.quadraticCurveTo(x, y, x + r, y);
+  return s;
 }
 
 /* ============================================================

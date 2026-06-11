@@ -246,13 +246,15 @@ a { color: inherit; }
   50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
 }
 
-/* Akt-Captions (unten links) */
+/* Akt-Captions: links, direkt unter der Akt-Navigation */
 
 .stage__caption {
   position: absolute;
   left: var(--margin);
-  bottom: 9vh;
-  width: min(420px, calc(100vw - 2 * var(--margin)));
+  top: calc(18vh + 190px);
+  width: min(480px, calc(100vw - 2 * var(--margin)));
+  padding-left: 22px;
+  border-left: 2px solid var(--vector-teal);
   opacity: 0;
   visibility: hidden;
   transform: translateY(16px);
@@ -267,26 +269,27 @@ a { color: inherit; }
 
 .stage__step-no {
   font-family: var(--font-display);
-  font-size: var(--label-caps);
+  font-size: var(--body-sm);
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--vector-teal);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .stage__caption h2 {
   font-family: var(--font-display);
-  font-size: var(--headline-md);
+  font-size: var(--display-lg);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.18;
-  margin-bottom: 12px;
+  line-height: 1.08;
+  margin-bottom: 14px;
 }
 
 .stage__caption p:last-child {
-  font-size: var(--body-sm);
+  font-size: var(--body-md);
   line-height: 1.55;
   color: var(--slate-mid);
+  max-width: 420px;
 }
 
 /* Kennzahlen Akt 4 */
@@ -331,11 +334,10 @@ a { color: inherit; }
 .stage__rail {
   position: absolute;
   left: var(--margin);
-  top: 50%;
-  transform: translateY(-50%);
+  top: 18vh;
   list-style: none;
   display: grid;
-  gap: 18px;
+  gap: 14px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 400ms var(--ease-out), visibility 400ms;
@@ -371,8 +373,10 @@ a { color: inherit; }
 .stage__rail li.is-active .stage__rail-label { opacity: 1; transform: translateX(0); }
 
 @media (max-width: 767px) {
-  .stage__rail { top: auto; bottom: 38vh; gap: 10px; }
-  .stage__caption { bottom: 7vh; }
+  .stage__rail { top: 12vh; gap: 8px; }
+  .stage__caption { top: calc(12vh + 140px); }
+  .stage__caption h2 { font-size: var(--headline-md); }
+  .stage__caption p:last-child { font-size: var(--body-sm); }
   .stage__stats { display: none; }
 }
 
