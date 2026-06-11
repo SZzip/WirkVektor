@@ -443,9 +443,10 @@ function buildSme(scene) {
   new THREE.Color(COLORS.tealBright).getHSL(bodyHSL);
   new THREE.Color(COLORS.navy).getHSL(roofHSL);
 
+  /* Start bei Weiß (Helligkeit 1, Sättigung 0), Ziel: voller Markenton */
   function setSaturation(q) {
-    body.material.color.setHSL(bodyHSL.h, bodyHSL.s * q, bodyHSL.l);
-    roof.material.color.setHSL(roofHSL.h, roofHSL.s * q, roofHSL.l);
+    body.material.color.setHSL(bodyHSL.h, bodyHSL.s * q, THREE.MathUtils.lerp(1, bodyHSL.l, q));
+    roof.material.color.setHSL(roofHSL.h, roofHSL.s * q, THREE.MathUtils.lerp(1, roofHSL.l, q));
   }
   setSaturation(0);
 

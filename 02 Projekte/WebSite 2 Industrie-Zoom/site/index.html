@@ -36,7 +36,11 @@
     <span class="loader__bar" aria-hidden="true"><span></span></span>
   </div>
   <noscript>
-    <style>.loader { display: none; }</style>
+    <style>
+      .loader {
+        display: none;
+      }
+    </style>
   </noscript>
 
   <!-- ============== HEADER ============== -->
@@ -73,43 +77,6 @@
               class="stage__hint-bar"></span></p>
         </div>
 
-        <!-- Akt-Captions -->
-        <div class="stage__caption" data-cap="1" aria-hidden="true">
-          <p class="stage__step-no">01</p>
-          <h2>Ihr Unternehmen wahrnehmen</h2>
-          <p>
-            Am Anfang steht kein Toolkatalog, sondern ein Besuch: Wir kommen in Ihr Unternehmen.
-            WirkVektor begleitet kleine und mittelständische Unternehmen, die KI nicht nur ausprobieren,
-            sondern produktiv und regelkonform integrieren wollen.
-          </p>
-        </div>
-        <div class="stage__caption" data-cap="2" aria-hidden="true">
-          <p class="stage__step-no">02</p>
-          <h2>Verstehen</h2>
-          <p>
-            Wir gehen mit Ihnen durch die Prozesse — von der Anfrage bis zum Service.
-            Wir analysieren Geschäftsmodell, Abläufe, Datenlage und IT-Landschaft.
-            So entsteht ein realistisches Bild der Ausgangslage.
-          </p>
-        </div>
-        <div class="stage__caption" data-cap="3" aria-hidden="true">
-          <p class="stage__step-no">03</p>
-          <h2>Umsetzen</h2>
-          <p>
-            Wir klären Governance, Rollen und Risiken, bevor KI in den produktiven Betrieb geht —
-            dann begleiten wir Pilotierung, Toolauswahl, Prozessintegration und Schulung.
-            Strukturiert statt Stückwerk.
-          </p>
-        </div>
-        <div class="stage__caption" data-cap="4" aria-hidden="true">
-          <p class="stage__step-no">04</p>
-          <h2>Wirkung</h2>
-          <p>
-            Wir versprechen keine Wunder. Unabhängige Studien zeigen aber, was KI im Arbeitsalltag
-            realistisch bewirkt. Genau darauf richten wir Ihre Use Cases aus — und messen den Effekt.
-          </p>
-        </div>
-
         <!-- Wirkungs-Kennzahlen (Akt 4) -->
         <div class="stage__stats" data-stats aria-hidden="true">
           <div class="stat"><span class="stat__value" data-count="14" data-prefix="+" data-suffix=" %">+0 %</span><span
@@ -122,15 +89,54 @@
               class="stat__label">des KI-Nutzens in vier Feldern</span></div>
         </div>
 
-        <!-- Akt-Navigation -->
-        <ol class="stage__rail" data-rail aria-hidden="true">
-          <li data-rail-item="1"><span class="stage__rail-no">01</span><span class="stage__rail-label">Ankommen</span>
+        <!-- Akt-Navigation: die aktive Caption klappt als Karte zwischen den Nummern auf -->
+        <ol class="stage__rail" data-rail>
+          <li data-rail-item="1">
+            <div class="stage__rail-row"><span class="stage__rail-no">01</span><span class="stage__rail-label">Ihr
+                Unternehmen</span></div>
+            <div class="stage__caption" data-cap="1" aria-hidden="true">
+              <h2>Ihr Unternehmen wahrnehmen</h2>
+              <p>
+                Am Anfang steht kein Toolkatalog, sondern ein Besuch: Wir kommen in Ihr Unternehmen.
+                WirkVektor begleitet kleine und mittelständische Unternehmen, die KI nicht nur ausprobieren,
+                sondern produktiv und regelkonform integrieren wollen.
+              </p>
+            </div>
           </li>
-          <li data-rail-item="2"><span class="stage__rail-no">02</span><span class="stage__rail-label">Verstehen</span>
+          <li data-rail-item="2">
+            <div class="stage__rail-row"><span class="stage__rail-no">02</span><span
+                class="stage__rail-label">Verstehen</span></div>
+            <div class="stage__caption" data-cap="2" aria-hidden="true">
+              <h2>Verstehen</h2>
+              <p>
+                Wir gehen mit Ihnen durch die Prozesse — von der Anfrage bis zum Service.
+                Wir analysieren Geschäftsmodell, Abläufe, Datenlage und IT-Landschaft.
+                So entsteht ein realistisches Bild der Ausgangslage.
+              </p>
+            </div>
           </li>
-          <li data-rail-item="3"><span class="stage__rail-no">03</span><span class="stage__rail-label">Umsetzen</span>
+          <li data-rail-item="3">
+            <div class="stage__rail-row"><span class="stage__rail-no">03</span><span
+                class="stage__rail-label">Umsetzen</span></div>
+            <div class="stage__caption" data-cap="3" aria-hidden="true">
+              <h2>Umsetzen</h2>
+              <p>
+                Wir klären Governance, Rollen und Risiken, bevor KI in den produktiven Betrieb geht —
+                dann begleiten wir Pilotierung, Toolauswahl, Prozessintegration und Schulung.
+                Strukturiert statt Stückwerk.
+              </p>
+            </div>
           </li>
-          <li data-rail-item="4"><span class="stage__rail-no">04</span><span class="stage__rail-label">Wirkung</span>
+          <li data-rail-item="4">
+            <div class="stage__rail-row"><span class="stage__rail-no">04</span><span
+                class="stage__rail-label">Wirkung</span></div>
+            <div class="stage__caption" data-cap="4" aria-hidden="true">
+              <h2>Wirkung</h2>
+              <p>
+                Wir versprechen keine Wunder. Unabhängige Studien zeigen aber, was KI im Arbeitsalltag
+                realistisch bewirkt. Genau darauf richten wir Ihre Use Cases aus — und messen den Effekt.
+              </p>
+            </div>
           </li>
         </ol>
       </div>

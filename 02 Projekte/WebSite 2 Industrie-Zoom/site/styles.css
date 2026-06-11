@@ -302,50 +302,50 @@ a { color: inherit; }
   50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
 }
 
-/* Akt-Captions: links, direkt unter der Akt-Navigation */
+/* Akt-Captions: Karten (wie die Kennzahlen), klappen in der Rail
+   zwischen den Nummern auf */
 
 .stage__caption {
-  position: absolute;
-  left: var(--margin);
-  top: calc(18vh + 190px);
-  width: min(480px, calc(100vw - 2 * var(--margin)));
-  padding-left: 22px;
-  border-left: 2px solid var(--vector-teal);
+  width: min(380px, calc(100vw - 2 * var(--margin)));
+  max-height: 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(16px);
-  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), visibility 400ms;
+  overflow: hidden;
+  transform: translateY(8px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 18px;
+  margin: 0;
+  transition: max-height 400ms var(--ease-out), opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out), padding 400ms var(--ease-out),
+    margin 400ms var(--ease-out), visibility 400ms;
 }
 
 .stage__caption.is-active {
+  max-height: 320px;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-.stage__step-no {
-  font-family: var(--font-display);
-  font-size: var(--body-sm);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--vector-teal);
-  margin-bottom: 10px;
+  border-color: var(--border);
+  padding: 16px 18px;
+  margin: 12px 0 6px;
 }
 
 .stage__caption h2 {
   font-family: var(--font-display);
-  font-size: var(--display-lg);
+  font-size: 1.375rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.08;
-  margin-bottom: 14px;
+  line-height: 1.18;
+  margin-bottom: 10px;
 }
 
 .stage__caption p:last-child {
-  font-size: var(--body-md);
+  font-size: var(--body-sm);
   line-height: 1.55;
   color: var(--slate-mid);
-  max-width: 420px;
 }
 
 /* Kennzahlen Akt 4 */
@@ -402,12 +402,15 @@ a { color: inherit; }
 .stage__rail.is-visible { opacity: 1; visibility: visible; }
 
 .stage__rail li {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
   font-size: var(--body-sm);
   color: var(--slate-light);
   transition: color 300ms var(--ease-out);
+}
+
+.stage__rail-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .stage__rail-no {
@@ -430,9 +433,7 @@ a { color: inherit; }
 
 @media (max-width: 767px) {
   .stage__rail { top: 12vh; gap: 8px; }
-  .stage__caption { top: calc(12vh + 140px); }
-  .stage__caption h2 { font-size: var(--headline-md); }
-  .stage__caption p:last-child { font-size: var(--body-sm); }
+  .stage__caption h2 { font-size: 1.125rem; }
   .stage__stats { display: none; }
 }
 
