@@ -100,6 +100,17 @@ async function main() {
   ground.receiveShadow = true;
   scene.add(ground);
 
+  /* Punktraster über die gesamte Welt (Halbton-Anmutung des Originals) */
+  const dots = new THREE.Mesh(
+    new THREE.PlaneGeometry(900, 500),
+    new THREE.MeshBasicMaterial({
+      map: makeDotTexture(40, 22), transparent: true, opacity: 0.35, depthWrite: false,
+    })
+  );
+  dots.rotation.x = -Math.PI / 2;
+  dots.position.set(120, 0.02, 0);
+  scene.add(dots);
+
   /* ---------- Berater-Pfad ----------
      Läuft an festen Objekten VORBEI, nicht hindurch: ums KMU herum,
      seitlich an den Stationen entlang, am Logo vorbei in den Horizont. */
@@ -234,6 +245,8 @@ async function main() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+    /* Blickziel (Pfad-Spitze) auf die rechte Drittel-Linie verschieben */
+    camera.setViewOffset(w, h, -w / 6, 0, w, h);
     camera.updateProjectionMatrix();
   }
   window.addEventListener('resize', resize);
@@ -614,17 +627,6 @@ function buildBpmnField(scene) {
     color: 0x94a3b8, transparent: true, opacity: 0.85,
   })));
 
-  /* Punktraster-Untergrund (Halbton-Anmutung des Originals) */
-  const dots = new THREE.Mesh(
-    new THREE.PlaneGeometry(92, 64),
-    new THREE.MeshBasicMaterial({
-      map: makeDotTexture(), transparent: true, opacity: 0.4, depthWrite: false,
-    })
-  );
-  dots.rotation.x = -Math.PI / 2;
-  dots.position.set(165, 0.02, 0);
-  scene.add(dots);
-
   /* Hub-Verbindungen zu den inneren Knoten */
   const linkTargets = nodes
     .filter((n) => n.distHub > 0.1 && n.distHub < 12)
@@ -941,7 +943,7 @@ function makeGlowTexture(color) {
   return tex;
 }
 
-function makeDotTexture() {
+function makeDotTexture(repeatX = 4, repeatY = 3) {
   const c = document.createElement('canvas');
   c.width = c.height = 512;
   const ctx = c.getContext('2d');
@@ -956,7 +958,7 @@ function makeDotTexture() {
   }
   const tex = new THREE.CanvasTexture(c);
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.repeat.set(4, 3);
+  tex.repeat.set(repeatX, repeatY);
   return tex;
 }
 
