@@ -13,12 +13,32 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Importmap muss vor jedem Modul-Load registriert sein -->
+  <script type="importmap">
+    { "imports": { "three": "./lib/three.module.min.js" } }
+  </script>
+
+  <!-- Modulkette vorab laden: main.js → three + SVGLoader -->
+  <link rel="modulepreload" href="main.js" />
+  <link rel="modulepreload" href="lib/three.module.min.js" />
+  <link rel="modulepreload" href="lib/SVGLoader.js" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!-- ============== LADESCREEN ============== -->
+  <div class="loader" data-loader>
+    <img class="loader__logo" src="wirkvektor-logo.svg" alt="" />
+    <span class="loader__word">WirkVektor</span>
+    <span class="loader__bar" aria-hidden="true"><span></span></span>
+  </div>
+  <noscript>
+    <style>.loader { display: none; }</style>
+  </noscript>
+
   <!-- ============== HEADER ============== -->
   <header class="header" data-header>
     <div class="header__inner">
@@ -119,7 +139,7 @@
     <!-- ============== HALTUNG (weiße Karten-Sektion) ============== -->
     <section class="section section--cards" id="haltung">
       <div class="container">
-        <h2 class="display" data-reveal>Entwickelt für Ihren Alltag,<br />nicht für Konzern-Folien.</h2>
+        <h2 class="display" data-reveal>Entwickelt für Ihren Alltag,<br />nicht für Konzernfolien.</h2>
         <div class="cards">
           <article class="card" data-reveal>
             <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
@@ -281,9 +301,6 @@
 
   <script src="lib/gsap.min.js"></script>
   <script src="lib/ScrollTrigger.min.js"></script>
-  <script type="importmap">
-    { "imports": { "three": "./lib/three.module.js" } }
-  </script>
   <script type="module" src="main.js"></script>
 </body>
 

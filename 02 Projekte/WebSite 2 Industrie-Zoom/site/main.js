@@ -45,6 +45,12 @@ const state = { p: 0, headPos: new THREE.Vector3() };
 main();
 
 async function main() {
+  /* Ladescreen: verschwindet nach dem ersten gerenderten Frame,
+     spätestens aber nach 6 s (Sicherheitsnetz) */
+  const loader = document.querySelector('[data-loader]');
+  const hideLoader = () => loader && loader.classList.add('is-hidden');
+  setTimeout(hideLoader, 6000);
+
   /* Canvas-Labels erst rendern, wenn die Webfonts da sind */
   try {
     await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
@@ -56,6 +62,7 @@ async function main() {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   } catch (e) {
     document.querySelector('[data-stage]').style.height = '100vh';
+    hideLoader();
     return;
   }
 
@@ -268,18 +275,17 @@ async function main() {
       headLight.intensity = 0;
     }
 
-    /* Akt 1 — KMU-Markierung wacht auf; das Gebäude läuft mit dem
-       Scroll-Fortschritt von unten nach oben mit Teal voll */
+    /* Akt 1 — KMU-Markierung wacht auf; die Sättigung von Teal-Korpus
+       und Navy-Dach steigt mit dem Scroll-Fortschritt */
     const smeNear = THREE.MathUtils.clamp(1 - Math.abs(u - uSme) * 14, 0, 1);
     const smeOn = THREE.MathUtils.clamp((p - 0.1) / 0.08, 0, 1);
     const q1 = actProgress(p, 1);
+    sme.setSaturation(q1);
     sme.ring.material.opacity = 0.25 + 0.75 * Math.max(smeNear, smeOn * 0.6);
     sme.ring.rotation.z = REDUCED ? 0 : t * 0.25;
     sme.label.material.opacity = smeOn;
     sme.edges.material.opacity = 0.35 + 0.65 * smeOn;
-    sme.fill.visible = q1 > 0.004;
-    sme.fill.scale.y = Math.max(q1, 0.001);
-    sme.fill.material.emissiveIntensity = 0.15 + 0.35 * smeOn;
+    sme.body.material.emissiveIntensity = (0.15 + 0.35 * smeOn) * q1;
 
     /* Akt 2 — Stationen aktivieren sich, sobald der Pfad sie passiert */
     for (const st of stations) {
@@ -327,6 +333,7 @@ async function main() {
     applyUi(ui, p);
 
     renderer.render(scene, camera);
+    hideLoader(); /* erster Frame steht — Ladescreen ausblenden */
     requestAnimationFrame(frame);
   }
 
@@ -409,38 +416,38 @@ function buildTurbines(scene) {
 }
 
 function buildSme(scene) {
-  /* Das Zielgebäude startet weiß und läuft beim Scrollen von unten nach
-     oben mit Teal voll — Navy-Dach als Logo-Zweiklang */
+  /* Das Zielgebäude trägt Teal-Korpus und Navy-Dach (Logo-Zweiklang),
+     startet aber entsättigt: beim Scrollen steigt die Sättigung beider
+     Farben bis zum vollen Markenton */
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(8, 12, 8),
-    new THREE.MeshStandardMaterial({ color: COLORS.building, roughness: 0.9 })
+    new THREE.MeshStandardMaterial({
+      roughness: 0.85, emissive: COLORS.teal, emissiveIntensity: 0,
+    })
   );
   body.position.set(32, 6, 0);
   body.castShadow = true;
   body.receiveShadow = true;
   scene.add(body);
 
-  /* Teal-Füllung: minimal größer als der Korpus, wächst über scale.y */
-  const fill = new THREE.Mesh(
-    new THREE.BoxGeometry(8.08, 12, 8.08),
-    new THREE.MeshStandardMaterial({
-      color: COLORS.tealBright, roughness: 0.85,
-      emissive: COLORS.teal, emissiveIntensity: 0.15,
-    })
-  );
-  fill.geometry.translate(0, 6, 0); /* Pivot an die Unterkante */
-  fill.position.set(32, 0, 0);
-  fill.scale.y = 0.001;
-  fill.visible = false;
-  scene.add(fill);
-
   const roof = new THREE.Mesh(
     new THREE.BoxGeometry(4.4, 1.6, 4.4),
-    new THREE.MeshStandardMaterial({ color: COLORS.navy, roughness: 0.7 })
+    new THREE.MeshStandardMaterial({ roughness: 0.7 })
   );
   roof.position.set(32, 12.8, 0);
   roof.castShadow = true;
   scene.add(roof);
+
+  const bodyHSL = { h: 0, s: 0, l: 0 };
+  const roofHSL = { h: 0, s: 0, l: 0 };
+  new THREE.Color(COLORS.tealBright).getHSL(bodyHSL);
+  new THREE.Color(COLORS.navy).getHSL(roofHSL);
+
+  function setSaturation(q) {
+    body.material.color.setHSL(bodyHSL.h, bodyHSL.s * q, bodyHSL.l);
+    roof.material.color.setHSL(roofHSL.h, roofHSL.s * q, roofHSL.l);
+  }
+  setSaturation(0);
 
   const edges = new THREE.LineSegments(
     new THREE.EdgesGeometry(body.geometry),
@@ -465,7 +472,7 @@ function buildSme(scene) {
   label.material.opacity = 0;
   scene.add(label);
 
-  return { body, fill, ring, label, edges };
+  return { body, ring, label, edges, setSaturation };
 }
 
 function buildStation(scene, name, pos) {
