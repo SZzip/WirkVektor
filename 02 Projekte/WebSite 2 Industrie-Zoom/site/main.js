@@ -456,9 +456,10 @@ function buildTurbines(scene) {
 /* Drei Autos: eins parkt am KMU (der Berater kam mit dem Auto), zwei
    fahren auf der freien Schneise neben dem Berater-Pfad durch die Stadt */
 function buildCars(scene, pathCurve, uOf) {
+  /* vollständig weiß — Karosserie, Kabine und Räder */
   const bodyMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.7 });
-  const cabinMat = new THREE.MeshStandardMaterial({ color: 0xdde5ee, roughness: 0.5 });
-  const wheelMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.9 });
+  const cabinMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
+  const wheelMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.95 });
 
   function makeCar() {
     const g = new THREE.Group();
@@ -490,22 +491,28 @@ function buildCars(scene, pathCurve, uOf) {
   const u0 = 0.015;
   const u1 = uOf(new THREE.Vector3(22, 0.6, 1));
   const movers = [
-    { car: makeCar(), offset: 0.15, speed: 0.011, side: 2.6 },
-    { car: makeCar(), offset: 0.62, speed: 0.009, side: -2.6 },
+    { car: makeCar(), offset: 0.15, speed: 0.05, side: 2.6 },
+    { car: makeCar(), offset: 0.62, speed: 0.04, side: -2.6 },
   ];
 
   const pos = new THREE.Vector3();
-  const tan = new THREE.Vector3();
+  const aheadPos = new THREE.Vector3();
+  const dir = new THREE.Vector3();
   const side = new THREE.Vector3();
   const UP = new THREE.Vector3(0, 1, 0);
 
   function place(m, k) {
     const u = u0 + k * (u1 - u0);
     pathCurve.getPointAt(u, pos);
-    pathCurve.getTangentAt(u, tan);
-    side.crossVectors(tan, UP).setLength(m.side);
+    /* Blick auf einen Punkt deutlich voraus: glättet die Kurvenfahrt,
+       das Auto dreht nicht auf der Stelle, sondern fährt vorwärts hinein */
+    pathCurve.getPointAt(Math.min(u + 0.014, 1), aheadPos);
+    dir.subVectors(aheadPos, pos);
+    dir.y = 0;
+    dir.normalize();
+    side.crossVectors(dir, UP).setLength(m.side);
     m.car.position.set(pos.x + side.x, 0, pos.z + side.z);
-    m.car.rotation.y = Math.atan2(tan.x, tan.z);
+    m.car.rotation.y = Math.atan2(dir.x, dir.z);
   }
 
   function update(t) {
@@ -520,6 +527,9 @@ function buildCars(scene, pathCurve, uOf) {
    Werksarbeiter, Manager, Bauarbeiter, Sekretärin, Arzt … */
 function buildPeople(scene) {
   const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 });
+  /* Akzentfarben nach DESIGN.md — je Figur 1-2 kleine Hervorhebungen */
+  const tealMat = new THREE.MeshStandardMaterial({ color: COLORS.teal, roughness: 0.8 });
+  const navyMat = new THREE.MeshStandardMaterial({ color: COLORS.navy, roughness: 0.8 });
 
   function makePerson(variant) {
     const g = new THREE.Group();
@@ -531,37 +541,84 @@ function buildPeople(scene) {
     const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.21, 0.78, 10), mat);
     torso.position.y = 1.05;
     g.add(torso);
+    for (const ax of [-0.24, 0.24]) {
+      const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.06, 0.62, 8), mat);
+      arm.position.set(ax, 1.08, 0);
+      arm.rotation.z = ax < 0 ? 0.12 : -0.12;
+      g.add(arm);
+    }
     const head = new THREE.Mesh(new THREE.SphereGeometry(0.2, 12, 10), mat);
     head.position.y = 1.62;
     g.add(head);
 
     if (variant === 'builder') {
-      /* Bauhelm */
-      const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.23, 12, 8), mat);
+      /* Teal-Bauhelm mit Krempe */
+      const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.23, 12, 8), tealMat);
       helmet.scale.y = 0.62;
       helmet.position.y = 1.72;
       g.add(helmet);
+      const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.27, 0.27, 0.04, 12), tealMat);
+      brim.position.y = 1.69;
+      g.add(brim);
+      /* Werkzeugkiste */
+      const toolbox = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.2, 0.34), navyMat);
+      toolbox.position.set(0.32, 0.56, 0);
+      g.add(toolbox);
     } else if (variant === 'worker') {
-      /* Schirmmütze */
-      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.23, 0.23, 0.06, 12), mat);
-      cap.position.set(0, 1.76, 0.03);
+      /* Navy-Schirmmütze mit Schild */
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.23, 0.23, 0.07, 12), navyMat);
+      cap.position.set(0, 1.77, 0);
       g.add(cap);
+      const visor = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.03, 0.16), navyMat);
+      visor.position.set(0, 1.74, 0.26);
+      g.add(visor);
+      /* Teal-Arbeitsweste (dünne Auflage auf dem Torso) */
+      const vest = new THREE.Mesh(new THREE.CylinderGeometry(0.185, 0.225, 0.42, 10), tealMat);
+      vest.position.y = 1.16;
+      g.add(vest);
     } else if (variant === 'manager') {
-      /* Aktenkoffer */
-      const case_ = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.32, 0.42), mat);
-      case_.position.set(0.3, 0.62, 0);
+      /* Navy-Aktenkoffer mit Griff + Teal-Krawatte */
+      const case_ = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.32, 0.42), navyMat);
+      case_.position.set(0.34, 0.6, 0);
       g.add(case_);
+      const handle = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.05, 0.16), navyMat);
+      handle.position.set(0.34, 0.79, 0);
+      g.add(handle);
+      const tie = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.34, 0.03), tealMat);
+      tie.position.set(0, 1.22, 0.19);
+      tie.rotation.x = -0.06;
+      g.add(tie);
     } else if (variant === 'secretary') {
-      /* Klemmbrett vor der Brust */
-      const board = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.38, 0.04), mat);
+      /* Navy-Klemmbrett mit weißem Blatt + Teal-Halstuch */
+      const board = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.38, 0.04), navyMat);
       board.position.set(0, 1.12, 0.24);
       board.rotation.x = -0.35;
       g.add(board);
+      const sheet = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.3, 0.012), mat);
+      sheet.position.set(0, 1.13, 0.27);
+      sheet.rotation.x = -0.35;
+      g.add(sheet);
+      const scarf = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.045, 8, 16), tealMat);
+      scarf.rotation.x = Math.PI / 2;
+      scarf.position.y = 1.44;
+      g.add(scarf);
     } else if (variant === 'doctor') {
-      /* Kittel */
-      const coat = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.27, 0.55, 10), mat);
-      coat.position.y = 0.82;
+      /* Kittel + Teal-Stethoskop + Navy-Brusttasche */
+      const coat = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.28, 0.6, 10), mat);
+      coat.position.y = 0.85;
       g.add(coat);
+      const steth = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.025, 8, 18, Math.PI), tealMat);
+      steth.position.set(0, 1.34, 0.18);
+      steth.rotation.x = 0.5;
+      steth.rotation.z = Math.PI;
+      g.add(steth);
+      const chestpiece = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.03, 10), tealMat);
+      chestpiece.position.set(0.14, 1.18, 0.2);
+      chestpiece.rotation.x = Math.PI / 2;
+      g.add(chestpiece);
+      const pocket = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, 0.02), navyMat);
+      pocket.position.set(-0.1, 1.18, 0.21);
+      g.add(pocket);
     }
 
     g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
