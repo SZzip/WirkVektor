@@ -473,31 +473,47 @@ function buildStation(scene, name, pos) {
   return { body, ring, label };
 }
 
-/* BPMN-Prozessnetz (Akt 3): Tasks, Gateways und Events in Lanes um den
-   KI-Hub. Knoten färben sich ein, wenn der Pfad-Kopf vorbeifliegt, und
-   werden zusätzlich vom erwachenden Hub aus eingefärbt. */
+/* BPMN-Diagramm (Akt 3): ein kleiner Auftragsprozess, ohne Texte.
+
+       Start ○ → [Erfassen] → ◇XOR → [Angebot] → ◇AND ⇉ [Fertigung] ⇉ ◇AND → ◎ → ⦿ Ende
+                    abgelehnt ↳ [Absage] → ⦿            ⇉ [Material] ⇉
+   Hauptfluss auf z=+4, Ablehnungs-Ast auf z=+10, Parallel-Ast auf z=-2.
+   Der Mittelkorridor bleibt frei: der Berater-Pfad steigt zum Hub (165,0). */
 function buildBpmnField(scene) {
   const HUB = new THREE.Vector2(165, 0);
 
-  /* [Typ, x, z] — Mittelkorridor |z| < 2.5 bleibt frei für den Pfad */
+  /* [Typ, x, z] */
   const defs = [
-    /* Lane Nord (z = -7) */
-    ['start', 144, -7], ['task', 151, -7], ['task', 158, -7],
-    ['gateway', 165, -7], ['task', 172, -7], ['task', 179, -7], ['end', 186, -7],
-    /* Lane Süd (z = +7) */
-    ['start', 144, 7], ['task', 151, 7], ['gateway', 158, 7],
-    ['task', 165, 7], ['task', 172, 7], ['gateway', 179, 7], ['end', 186, 7],
-    /* mittlere Zubringer (z = ±3.5) */
-    ['task', 150, -3.5], ['gateway', 158, -3.5], ['task', 172, -3.5], ['end', 180, -3.5],
-    ['task', 150, 3.5], ['task', 158, 3.5], ['task', 172, 3.5], ['end', 180, 3.5],
+    ['start', 142, 4], ['task', 147.5, 4], ['xor', 153, 4], ['task', 158.5, 4],
+    ['and', 162, 4], ['task', 168, 4], ['and', 174, 4], ['inter', 179.5, 4], ['end', 184.5, 4],
+    /* Ablehnungs-Ast */
+    ['task', 158.5, 10], ['end', 164, 10],
+    /* Parallel-Ast */
+    ['task', 168, -2],
   ];
 
   const white = new THREE.Color(0xfafcfe);
   const teal = new THREE.Color(COLORS.teal);
 
-  const taskShape = roundedRectShape(3.2, 2.2, 0.5);
+  const taskShape = roundedRectShape(3.4, 2.4, 0.5);
   const taskGeo = new THREE.ExtrudeGeometry(taskShape, { depth: 0.7, bevelEnabled: false });
   taskGeo.rotateX(-Math.PI / 2);
+
+  /* Statisches Slate-Material für BPMN-Symbolik (Ringe, Gateway-Marker, Pfeile) */
+  const symbolMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.7 });
+
+  const addRing = (grp, r, tube) => {
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(r, tube, 8, 48), symbolMat);
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.y = 0.72;
+    grp.add(ring);
+  };
+  const addBar = (grp, angle) => {
+    const bar = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.16, 0.32), symbolMat);
+    bar.rotation.y = angle;
+    bar.position.y = 0.78;
+    grp.add(bar);
+  };
 
   const nodes = defs.map(([type, x, z]) => {
     const mat = new THREE.MeshStandardMaterial({
@@ -508,49 +524,63 @@ function buildBpmnField(scene) {
 
     if (type === 'task') {
       grp.add(new THREE.Mesh(taskGeo, mat));
-    } else if (type === 'gateway') {
-      const m = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.7, 2.1), mat);
+    } else if (type === 'xor' || type === 'and') {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.7, 2.2), mat);
       m.rotation.y = Math.PI / 4;
       m.position.y = 0.35;
       grp.add(m);
+      if (type === 'xor') { addBar(grp, Math.PI / 4); addBar(grp, -Math.PI / 4); } /* X-Marker */
+      else { addBar(grp, 0); addBar(grp, Math.PI / 2); } /* +-Marker */
     } else {
-      const m = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.7, 28), mat);
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, 0.7, 28), mat);
       m.position.y = 0.35;
       grp.add(m);
-      if (type === 'end') {
-        const ring = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.07, 8, 40), mat);
-        ring.rotation.x = -Math.PI / 2;
-        ring.position.y = 0.72;
-        grp.add(ring);
-      }
+      if (type === 'start') addRing(grp, 0.95, 0.05); /* dünner Rand */
+      if (type === 'end') addRing(grp, 0.95, 0.14); /* dicker Rand */
+      if (type === 'inter') { addRing(grp, 0.95, 0.05); addRing(grp, 0.68, 0.05); } /* Doppelrand */
     }
     grp.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
-    grp.position.set(x, type === 'task' ? 0.7 : 0, z);
-    if (type === 'task') grp.position.y = 0; /* ExtrudeGeo liegt nach rotateX bereits auf y 0..0.7 */
+    grp.position.set(x, 0, z);
     scene.add(grp);
 
-    return { mat, pos: new THREE.Vector2(x, z), distHub: HUB.distanceTo(new THREE.Vector2(x, z)) };
+    return { mat, x, pos: new THREE.Vector2(x, z), distHub: HUB.distanceTo(new THREE.Vector2(x, z)) };
   });
 
-  /* Sequenzfluss-Linien */
-  const flows = [];
-  const lane = (z, xs) => { for (let i = 0; i < xs.length - 1; i++) flows.push([xs[i], z, xs[i + 1], z]); };
-  lane(-7, [144, 151, 158, 165, 172, 179, 186]);
-  lane(7, [144, 151, 158, 165, 172, 179, 186]);
-  lane(-3.5, [150, 158]);
-  lane(3.5, [150, 158]);
-  lane(-3.5, [172, 180]);
-  lane(3.5, [172, 180]);
-  /* Diagonalen zum Hub und Querverbinder */
-  flows.push([158, -3.5, 165, 0], [158, 3.5, 165, 0], [165, 0, 172, -3.5], [165, 0, 172, 3.5]);
-  flows.push([158, -3.5, 158, -7], [158, 3.5, 158, 7], [172, -3.5, 172, -7], [172, 3.5, 172, 7]);
+  /* Sequenzflüsse als orthogonale Polylinien, jeweils mit Pfeilspitze am Ende */
+  const routes = [
+    [[143.2, 4], [145.6, 4]],            /* Start → Erfassen */
+    [[149.4, 4], [151.4, 4]],            /* Erfassen → XOR */
+    [[154.6, 4], [156.6, 4]],            /* XOR → Angebot */
+    [[160.4, 4], [160.6, 4]],            /* Angebot → AND-Split */
+    [[163.6, 4], [166.1, 4]],            /* AND → Fertigung */
+    [[169.9, 4], [172.4, 4]],            /* Fertigung → AND-Join */
+    [[175.6, 4], [178.2, 4]],            /* AND-Join → Zwischenereignis */
+    [[180.8, 4], [183.2, 4]],            /* Zwischenereignis → Ende */
+    [[153, 5.6], [153, 10], [156.6, 10]],   /* XOR → Absage (abgelehnt) */
+    [[160.4, 10], [162.7, 10]],          /* Absage → Ende */
+    [[162, 2.4], [162, -2], [166.1, -2]],   /* AND-Split → Material */
+    [[169.9, -2], [174, -2], [174, 2.4]],   /* Material → AND-Join */
+  ];
 
   const flowPos = [];
-  for (const [x1, z1, x2, z2] of flows) flowPos.push(x1, 0.4, z1, x2, 0.4, z2);
+  const arrowGeo = new THREE.ConeGeometry(0.26, 0.65, 10);
+  const up = new THREE.Vector3(0, 1, 0);
+  for (const route of routes) {
+    for (let i = 0; i < route.length - 1; i++) {
+      flowPos.push(route[i][0], 0.4, route[i][1], route[i + 1][0], 0.4, route[i + 1][1]);
+    }
+    const [ax, az] = route[route.length - 2];
+    const [bx, bz] = route[route.length - 1];
+    const dir = new THREE.Vector3(bx - ax, 0, bz - az).normalize();
+    const head = new THREE.Mesh(arrowGeo, symbolMat);
+    head.quaternion.setFromUnitVectors(up, dir);
+    head.position.set(bx - dir.x * 0.32, 0.4, bz - dir.z * 0.32);
+    scene.add(head);
+  }
   const flowGeo = new THREE.BufferGeometry();
   flowGeo.setAttribute('position', new THREE.Float32BufferAttribute(flowPos, 3));
   scene.add(new THREE.LineSegments(flowGeo, new THREE.LineBasicMaterial({
-    color: COLORS.edge, transparent: true, opacity: 0.6,
+    color: 0x94a3b8, transparent: true, opacity: 0.85,
   })));
 
   /* Punktraster-Untergrund (Halbton-Anmutung des Originals) */
@@ -569,15 +599,12 @@ function buildBpmnField(scene) {
     .filter((n) => n.distHub > 0.1 && n.distHub < 12)
     .map((n) => new THREE.Vector3(n.pos.x, 0.8, n.pos.y));
 
-  const head2 = new THREE.Vector2();
-
+  /* Einfärben entlang des Pfades: die Front wandert mit dem Pfad-Kopf
+     in Flussrichtung (+x) durch das Diagramm — nicht radial vom Hub. */
   function update(headPos, u, q3) {
-    head2.set(headPos.x, headPos.z);
+    const front = headPos.x;
     for (const n of nodes) {
-      const dHead = n.pos.distanceTo(head2);
-      const aHead = u > 0.7 ? Math.exp(-(dHead * dHead) / 26) : 0;
-      const aHub = THREE.MathUtils.clamp((q3 * 1.5 - n.distHub / 24) * 2.2, 0, 1);
-      const a = Math.min(1, Math.max(aHead, aHub));
+      const a = THREE.MathUtils.clamp((front - n.x + 2.5) / 5, 0, 1);
       n.mat.color.lerpColors(white, teal, a);
       n.mat.emissiveIntensity = 0.35 * a;
     }
