@@ -275,6 +275,7 @@ async function main() {
     sme.ring.rotation.z = REDUCED ? 0 : t * 0.25;
     sme.label.material.opacity = smeOn;
     sme.edges.material.opacity = 0.35 + 0.65 * smeOn;
+    sme.body.material.emissiveIntensity = 0.15 + 0.35 * smeOn;
 
     /* Akt 2 — Stationen aktivieren sich, sobald der Pfad sie passiert */
     for (const st of stations) {
@@ -404,9 +405,14 @@ function buildTurbines(scene) {
 }
 
 function buildSme(scene) {
+  /* Markenfarben statt Weiß: Teal-Körper mit Navy-Dach (Zweiklang des Logos),
+     damit das Zielgebäude klar aus der weißen Stadt heraussticht */
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(8, 12, 8),
-    new THREE.MeshStandardMaterial({ color: COLORS.building, roughness: 0.9 })
+    new THREE.MeshStandardMaterial({
+      color: COLORS.tealBright, roughness: 0.85,
+      emissive: COLORS.teal, emissiveIntensity: 0.15,
+    })
   );
   body.position.set(32, 6, 0);
   body.castShadow = true;
@@ -415,7 +421,7 @@ function buildSme(scene) {
 
   const roof = new THREE.Mesh(
     new THREE.BoxGeometry(4.4, 1.6, 4.4),
-    new THREE.MeshStandardMaterial({ color: COLORS.buildingAlt, roughness: 0.9 })
+    new THREE.MeshStandardMaterial({ color: COLORS.navy, roughness: 0.7 })
   );
   roof.position.set(32, 12.8, 0);
   roof.castShadow = true;
@@ -423,7 +429,7 @@ function buildSme(scene) {
 
   const edges = new THREE.LineSegments(
     new THREE.EdgesGeometry(body.geometry),
-    new THREE.LineBasicMaterial({ color: COLORS.cyan, transparent: true, opacity: 0.35 })
+    new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.35 })
   );
   edges.position.copy(body.position);
   scene.add(edges);
