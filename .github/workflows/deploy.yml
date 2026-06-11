@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '02 Projekte/WebSite aufbauen/site/**'
+      - '02 Projekte/WebSite 2 Industrie-Zoom/site/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -12,13 +12,9 @@ concurrency:
   group: deploy-website
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: '02 Projekte/WebSite aufbauen/site'
-
 jobs:
-  build-and-deploy:
-    name: Build & Deploy to Hetzner
+  deploy:
+    name: Deploy to Hetzner
     runs-on: ubuntu-latest
     environment: production
 
@@ -26,31 +22,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: '02 Projekte/WebSite aufbauen/site/package-lock.json'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Type-check
-        run: npm run typecheck
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Test
-        run: npm run test
-
-      - name: Build
-        run: npm run build
-
-      - name: Stage build output to space-free path
-        run: cp -r "02 Projekte/WebSite aufbauen/site/dist" _deploy
-        working-directory: ${{ github.workspace }}
+      # Statische Site ohne Build-Tooling — der Ordner ist das Artefakt
+      - name: Stage site to space-free path
+        run: cp -r "02 Projekte/WebSite 2 Industrie-Zoom/site" _deploy
 
       - name: Install lftp
         run: sudo apt-get update -qq && sudo apt-get install -y lftp
@@ -61,12 +35,11 @@ jobs:
           SFTP_USER: ${{ secrets.SFTP_USER }}
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           SFTP_REMOTE_PATH: ${{ secrets.SFTP_REMOTE_PATH }}
-        working-directory: ${{ github.workspace }}
         run: |
           lftp -u "$SFTP_USER,$SFTP_PASSWORD" -p 22 "sftp://$SFTP_HOST" <<EOF
           set sftp:auto-confirm yes
           set net:max-retries 2
           set net:timeout 20
-          mirror --reverse --verbose --parallel=4 _deploy/ "$SFTP_REMOTE_PATH"
+          mirror --reverse --delete --verbose --parallel=4 _deploy/ "$SFTP_REMOTE_PATH"
           bye
           EOF

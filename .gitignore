@@ -1,0 +1,4 @@
+# Große Mediendateien (über GitHubs 100-MB-Limit) — bleiben lokal
+*.mp4
+*.mov
+*.mkv

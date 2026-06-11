@@ -34,4 +34,5 @@ Die erste Website ([[Website aufbauen]]) bleibt der seriöse OnePager mit zurüc
 
 - 2026-06-11: Erste Version (SVG/CSS, ohne Dependencies) gebaut und verifiziert.
 - 2026-06-11: Neuaufbau als Three.js/GSAP-Kamerafahrt nach Video-Referenz der vectrfl-Scrollanimation; Erzählung umgestellt auf die Berater-Geschichte (Ankommen → Verstehen → Umsetzen → Wirkung). Alle vier Akte, Mobile und Footer im Browser verifiziert.
-- Offen: Entscheidung, ob und wo die Variante deployt wird; Impressums-/Datenschutz-Links zeigen auf die Pfade der Hauptseite.
+- 2026-06-11: **Diese Site ist jetzt die produktive Website.** Die Vorgängerversion (`02 Projekte/WebSite aufbauen/site/`, Vite/TypeScript-OnePager) wurde entfernt; der Deploy-Workflow (`.github/workflows/deploy.yml`) spiegelt diesen Ordner ohne Build-Schritt per SFTP auf Hetzner (wirkvektor.de). Impressum als statische Seite (`impressum.html`) und `.htaccess` aus der Vorgängerversion übernommen.
+- Offen: Datenschutz-Seite (Link zeigt noch auf `#`); Handelsregister-/USt-ID-Angaben im Impressum folgen nach Eintragung.
