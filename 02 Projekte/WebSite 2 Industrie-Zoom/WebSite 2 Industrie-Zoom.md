@@ -8,6 +8,8 @@ date: 2026-06-11
 
 Zweite WirkVektor-Website nach dem Vorbild von [vectrfl.com](https://www.vectrfl.com/) — eine scroll-gesteuerte Erzählung, die von der Industrieansicht ins Unternehmen hineinzoomt und dort die Automatisierung der Prozesse als Entfaltung von Wirkung inszeniert.
 
+> **Für die Weiterentwicklung:** Die ausführliche technische Dokumentation (Architektur, Welt-Layout, Akt-Timing, Pitfalls, Deployment, offene Punkte) steht in der [[02 Projekte/WebSite 2 Industrie-Zoom/CLAUDE|CLAUDE.md]] dieses Ordners.
+
 ## Konzept
 
 Eine gepinnte Scroll-Bühne als 3D-Kamerafahrt (nach dem Vorbild von vectrfl.com), die den Weg des Beraters erzählt — ein leuchtender Teal-Pfad zieht durch eine helle Low-Poly-Welt, die Kamera folgt ihm, die umliegende Szene reagiert. Danach klassische Inhaltssektionen:
