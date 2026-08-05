@@ -63,6 +63,6 @@ OnePager hat keine echten Sub-Routes, aber:
 
 ## SEO
 
-- Title: „WirkVektor — KI-Beratung für den Mittelstand · Strategie, Governance, Wirkung"
-- Description (max 155 Zeichen): „Strukturierte KI-Einführung für mittelständische Unternehmen. Strategie, Governance und produktive Wirkung — mit messbarem Nutzen."
+- Title: „WirkVektor — KI-Beratung für KMU · Strategie, Governance, Wirkung"
+- Description (max 155 Zeichen): „Strukturierte KI-Einführung für kleine und mittelständische Unternehmen. Strategie, Governance und produktive Wirkung — mit messbarem Nutzen."
 - OG-Image: Hero-Vektor-SVG + Claim

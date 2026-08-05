@@ -16,7 +16,7 @@ Standard-Deck für das erste persönliche Gespräch mit potenziellen Kunden — 
 - **Dauer im Gespräch:** ca. 20–25 Minuten reden, danach Dialog
 
 ## Adressat
-Erstgespräch mit Geschäftsführung, IT-Leitung oder Compliance-Verantwortlichen im Mittelstand. Siehe [[ICP]].
+Erstgespräch mit Geschäftsführung, IT-Verantwortlichen oder Compliance-Verantwortlichen in kleinen und mittelständischen Unternehmen. Siehe [[ICP]].
 
 ## Folienübersicht
 
@@ -24,7 +24,7 @@ Erstgespräch mit Geschäftsführung, IT-Leitung oder Compliance-Verantwortliche
 |---|---|---|
 | 1 | Titel | Einstieg, Person, Claim |
 | 2 | Agenda | Erwartungssteuerung |
-| 3 | Beobachtung im Mittelstand | Problem benennen, Resonanz erzeugen |
+| 3 | Beobachtung bei KMU | Problem benennen, Resonanz erzeugen |
 | 4 | Unsere Haltung | Positionierung in fünf Leitsätzen |
 | 5 | Leistungsportfolio | Fünf Kernbereiche im Überblick |
 | 6 | Einstiegspakete | Fünf konkrete Türöffner |
@@ -39,7 +39,7 @@ Erstgespräch mit Geschäftsführung, IT-Leitung oder Compliance-Verantwortliche
 Kurze Begrüßung, danke für die Zeit, kurzer Hinweis auf den Gesprächsrahmen (ca. 30–45 Minuten, davon ca. 20 Minuten Präsentation, danach Dialog).
 
 ### Folie 2 — Agenda
-„Ich gehe vier Dinge mit Ihnen durch: was wir aktuell im Mittelstand sehen, wie wir damit umgehen, welche konkreten Einstiegspakete wir anbieten und wie ein typisches Vorgehen aussieht. Am Ende schlage ich Ihnen einen konkreten nächsten Schritt vor."
+„Ich gehe vier Dinge mit Ihnen durch: was wir aktuell bei kleinen und mittelständischen Unternehmen sehen, wie wir damit umgehen, welche konkreten Einstiegspakete wir anbieten und wie ein typisches Vorgehen aussieht. Am Ende schlage ich Ihnen einen konkreten nächsten Schritt vor."
 
 ### Folie 3 — Beobachtung
 Hier nicht alarmistisch werden. Sachlich aufzählen, dann fragen: „Erkennen Sie davon etwas wieder?" — bewusst Resonanz erzeugen, statt einseitig zu senden.

@@ -43,11 +43,18 @@ Vollständige Token-Liste in `DESIGN.md`.
 
 - **Headlines:** Hanken Grotesk (sharp, contemporary engineering feel)
 - **Body / UI:** Inter (exzellente Lesbarkeit in Software-Kontexten)
-- **Label Caps:** Inter, 12px, 600, Letter-Spacing 0.05em — für Eyebrow-Text und Tags
+- **Label Caps:** Inter, 12px, 600, Letter-Spacing 0.1em — für Eyebrow-Text und Tags
 
 ## Logo
 
-Noch zu ergänzen.
+Offizielle Datei: `07 Anhänge/WirkVektor Logo.svg`. Abstraktes Monogramm aus drei Vektor-Strichen (das „W" für **W**irkVektor) — interpretiert als gerichtete Bewegung mit einem hellen Akzent-Aufschwung als visuelle Übersetzung von **Wirkung mit Richtung**.
+
+Drei Pfade, individuell einfärbbar:
+- **Pfad A** — Haupt-V-Strich (Original `#434a5d`)
+- **Pfad B** — Sekundär-Strich rechts (Original `#abaeb7`)
+- **Pfad C** — Akzent-Aufschwung (Original `#94cccc`)
+
+Verbindliche Farbvarianten (Original, Marke Light, Marke Dark, Mono Navy, Mono Weiß), Verwendungsregeln und Veredelungs-Spielraum siehe `DESIGN.md` Sektion „Logo".
 
 ## Form-Sprache
 

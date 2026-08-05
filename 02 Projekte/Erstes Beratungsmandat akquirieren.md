@@ -7,7 +7,7 @@ erstellt: 2026-05-28
 # Erstes Beratungsmandat akquirieren
 
 ## Ziel
-Den ersten zahlenden Kunden für WirkVektor gewinnen — bevorzugt im Mittelstand, mit einem der fünf Einstiegspakete als Türöffner.
+Den ersten zahlenden Kunden für WirkVektor gewinnen — bevorzugt ein kleines oder mittelständisches Unternehmen, mit einem der fünf Einstiegspakete (für kleine Unternehmen die Kompakt-Variante) als Türöffner.
 
 ## Status
 In Bearbeitung

@@ -12,7 +12,7 @@ Mein Ansatz verbindet strategische KI-Beratung mit Governance, Informationssiche
 
 ## Fachgebiete
 
-- **KI-Strategie und Use-Case-Entwicklung** für den Mittelstand
+- **KI-Strategie und Use-Case-Entwicklung** für kleine und mittelständische Unternehmen
 - **KI-Governance und Compliance** (inkl. EU AI Act)
 - **Generative KI produktiv einführen** (RAG, Wissensassistenten, Microsoft Copilot)
 - **AI Literacy** und KI-Schulungen für Führungskräfte und Mitarbeitende

@@ -7,10 +7,10 @@ erstellt: 2026-05-28
 # Website aufbauen
 
 ## Ziel
-Eine professionelle WirkVektor-Website, die die Positionierung „KI sicher, regelkonform und messbar wirksam in den Mittelstand einführen" überzeugend transportiert und Erstgespräche generiert. Visuell auf Basis von [[DESIGN]], inhaltlich auf Basis von [[WirkVektor]].
+Eine professionelle WirkVektor-Website, die die Positionierung „KI sicher, regelkonform und messbar wirksam in kleine und mittelständische Unternehmen einführen" überzeugend transportiert und Erstgespräche generiert. Visuell auf Basis von [[DESIGN]], inhaltlich auf Basis von [[WirkVektor]].
 
 ## Status
-Inhaltskonzept abgeschlossen — Asset-Produktion und Entwicklung folgen
+2026-06-11: Die Site-Implementierung (`site/`, Vite/TypeScript-OnePager) wurde durch die zweite Website ersetzt und aus dem Repo entfernt — produktiv ist jetzt [[WebSite 2 Industrie-Zoom]] (`02 Projekte/WebSite 2 Industrie-Zoom/site/`), der Deploy-Workflow zeigt dorthin. Inhaltskonzept, Sitemap und Asset-Liste bleiben als Quelldokumente erhalten (die Texte der neuen Site stammen daraus).
 
 ## Format
 OnePager. Conversion-Ziel: Erstgespräch buchen (Calendly).

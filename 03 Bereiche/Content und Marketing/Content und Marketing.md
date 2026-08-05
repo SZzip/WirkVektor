@@ -8,12 +8,12 @@ tags: [bereich]
 Laufende Verantwortung für Sichtbarkeit von WirkVektor: LinkedIn-Präsenz, Fachbeiträge, Webinare, Whitepaper, Vorträge, Newsletter und sonstige Marketing-Aktivitäten.
 
 ## Aktive Themen
-- Website aufbauen (siehe [[02 Projekte/WebSite aufbauen/Website aufbauen]]aufbauen/Website aufbauen]]]])
+- Website aufbauen (siehe [[Website aufbauen]])
 - LinkedIn-Profil aufbauen
 - Content-Plan entwickeln
 
 ## Content-Ideen (aus WirkVektor.md Kapitel 19)
-- „Warum KI-Projekte im Mittelstand scheitern"
+- „Warum KI-Projekte in kleinen und mittelständischen Unternehmen scheitern"
 - „Schatten-KI: Das unterschätzte Risiko im Unternehmen"
 - „KI-Governance pragmatisch aufbauen"
 - „Was Geschäftsführer vor der Einführung von KI wissen müssen"
